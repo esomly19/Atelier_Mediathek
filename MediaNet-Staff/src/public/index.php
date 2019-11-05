@@ -1,6 +1,6 @@
 <?php
 
-require_once '../../vendor/autoload.php';
+require_once '../vendor/autoload.php';
 require_once '../config/config.inc.php';
 
 use Slim\Http\Request;
@@ -36,12 +36,18 @@ $container['db'] = function ($container) use ($capsule) {
 };
 
 $app->get('/', function(Request $request, Response $response, $args){
-    return $this->view->render($response, 'test.html.twig');
+    return $this->view->render($response, 'Accueil.html.twig');
 });
 
 $app->get('/in', function(Request $request, Response $response, $args){
-    return $this->view->render($response, 'test.html.twig');
+    return $this->view->render($response, 'Accueil.html.twig');
 });
+
+$app->get('/gus', function(Request $request, Response $response, $args){
+    return $this->view->render($response, 'GestionUsagers.html.twig');
+});
+
+
 
 try {
     $app->run();
