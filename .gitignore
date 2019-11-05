@@ -1,5 +1,7 @@
-/vendor
 
+MediaNet-Staff/vendor/
+MediaNet-Usagers/vendor/
+MediaNet-Staff/src/config
 */config/capsule.php
 
 composer.json

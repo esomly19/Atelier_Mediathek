@@ -1,7 +1,7 @@
 <?php
 
-require_once '../../vendor/autoload.php';
-require_once '../config/config.inc.php';
+require_once '../vendor/autoload.php';
+require_once '../src/config/config.inc.php';
 
 use Slim\Http\Request;
 use Slim\Http\Response;
@@ -11,7 +11,7 @@ $container = array();
 
 $container["view"] = function ($container){
 
-    $view = new \Slim\Views\Twig(__DIR__.'/Views');
+    $view = new \Slim\Views\Twig(__DIR__.'/../src/Views');
     $router = $container->get('router');
     $uri = \Slim\Http\Uri::createFromEnvironment(new \Slim\Http\Environment($_SERVER));
     $view->addExtension(new \Slim\Views\TwigExtension($router, $uri));
@@ -21,7 +21,12 @@ $container["view"] = function ($container){
 $container['settings'] = $config;
 
 //Eloquent
-$app = new \Slim\App($container);
+$app = new \Slim\App($container,[
+    'settings' => [
+        'debug' => true,
+        'displayErrorDetails' => true
+    ]
+]);
 
 /**
  * on initialise la conn
@@ -34,14 +39,22 @@ $capsule->bootEloquent();
 $container['db'] = function ($container) use ($capsule) {
     return $capsule;
 };
+$app->get('/d', "\\app\\controllers\\documentController:Index");
 
 $app->get('/', function(Request $request, Response $response, $args){
-    return $this->view->render($response, 'test.html.twig');
+    return $this->view->render($response, 'Accueil.html.twig');
 });
 
-$app->get('/in', function(Request $request, Response $response, $args){
-    return $this->view->render($response, 'test.html.twig');
+$app->get('/accueil', function(Request $request, Response $response, $args){
+    return $this->view->render($response, 'Accueil.html.twig');
 });
+
+$app->get('/gus', function(Request $request, Response $response, $args){
+    return $this->view->render($response, 'GestionUsagers.html.twig');
+});
+
+$app->get('/informationUtilisateurs', app\controllers\utilisateurController::class.':informationUtilisateur');
+
 
 try {
     $app->run();
