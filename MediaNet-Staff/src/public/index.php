@@ -11,9 +11,7 @@ $container = array();
 
 $container["view"] = function ($container){
 
-    $view = new \Slim\Views\Twig(__DIR__.'/Views',[
-        'cache' => false
-    ]);
+    $view = new \Slim\Views\Twig(__DIR__.'/Views');
     $router = $container->get('router');
     $uri = \Slim\Http\Uri::createFromEnvironment(new \Slim\Http\Environment($_SERVER));
     $view->addExtension(new \Slim\Views\TwigExtension($router, $uri));
@@ -23,12 +21,7 @@ $container["view"] = function ($container){
 $container['settings'] = $config;
 
 //Eloquent
-$app = new \Slim\App($container,[
-    'settings' => [
-        'debug' => true,
-        'displayErrorDetails' => true
-    ]
-]);
+$app = new \Slim\App($container);
 
 /**
  * on initialise la conn
@@ -42,19 +35,21 @@ $container['db'] = function ($container) use ($capsule) {
     return $capsule;
 };
 
-
 $app->get('/', function(Request $request, Response $response, $args){
     return $this->view->render($response, 'test.html.twig');
 });
 
-
-
-
+$app->get('/in', function(Request $request, Response $response, $args){
+    return $this->view->render($response, 'test.html.twig');
+});
 
 try {
     $app->run();
 } catch (Throwable $e) {
     var_dump($e);
 }
+
+
+
 
 
