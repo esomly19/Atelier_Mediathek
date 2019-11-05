@@ -53,6 +53,7 @@ $app->get('/gus', function(Request $request, Response $response, $args){
     return $this->view->render($response, 'GestionUsagers.html.twig');
 });
 
+$app->get('/informationUtilisateurs', app\controllers\utilisateurController::class.':informationUtilisateur');
 
 
 try {

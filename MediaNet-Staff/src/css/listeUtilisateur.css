@@ -1,0 +1,23 @@
+.content {
+    display: flex;
+    flex-direction: column;
+
+
+}
+
+.ligne-p {
+    background-color: #4CAF50;
+}
+
+.ligne-u {
+    background-color: #f1c40f;
+}
+
+.nom {
+    max-width: 2em;
+    min-width: 2em;
+}
+
+span {
+    min-width: 8%;
+}
