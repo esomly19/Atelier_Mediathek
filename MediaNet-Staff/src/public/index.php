@@ -1,5 +1,4 @@
 <?php
-
 require_once '../../vendor/autoload.php';
 require_once '../config/config.inc.php';
 
@@ -21,7 +20,12 @@ $container["view"] = function ($container){
 $container['settings'] = $config;
 
 //Eloquent
-$app = new \Slim\App($container);
+$app = new \Slim\App($container,[
+    'settings' => [
+        'debug' => true,
+        'displayErrorDetails' => true
+    ]
+]);
 
 /**
  * on initialise la conn
@@ -34,15 +38,11 @@ $capsule->bootEloquent();
 $container['db'] = function ($container) use ($capsule) {
     return $capsule;
 };
+$app->get('/d', "\\app\\controllers\\documentController:Index");
 
-$app->get('/', function(Request $request, Response $response, $args){
-    return $this->view->render($response, 'test.html.twig');
+$app->post('/books', function ($request, $response, $args) {
+    // Return response headers
 });
-
-$app->get('/in', function(Request $request, Response $response, $args){
-    return $this->view->render($response, 'test.html.twig');
-});
-
 try {
     $app->run();
 } catch (Throwable $e) {
