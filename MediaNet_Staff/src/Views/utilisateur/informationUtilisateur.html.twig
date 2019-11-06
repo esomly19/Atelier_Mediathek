@@ -17,7 +17,7 @@
     </div>
     {% for utilisateur in utilisateurs %}
         <div class="ligne-u">
-            <span class="nom">{{ utilisateur.nom }} </span><span class="prenom">{{ utilisateur.prenom }} </span><span>{{ utilisateur.mail }} </span><span>{{ utilisateur.adresse }} </span><span>{{ utilisateur.telephone }} </span><span>{{ utilisateur.date_adhesion }} </span>
+            <span class="nom">{{ utilisateur.nom }} </span><span class="prenom">{{ utilisateur.prenom }} </span><span>{{ utilisateur.mail }} </span><span>{{ utilisateur.adresse }} </span><span>{{ utilisateur.telephone }} </span><span>{{ utilisateur.date_adhesion }} </span> <button value="{{ utilisateur.id }} id = {{ utilisateur.id }}">Sélectionner</button>
         </div>
     {% endfor %}
 </div>
