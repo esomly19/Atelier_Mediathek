@@ -27,4 +27,9 @@ class utilisateurController
         return $this->container->view->render($response, "utilisateur/informationUtilisateur.html.twig", ['utilisateurs'=>$listeUtilisateurs]);
     }
 
+    public function creerCompte($request, $response) {
+        $listeUtilisateurs = Utilisateur::all();
+        return $this->container->view->render($response, "creationCompte.html.twig", ['utilisateurs'=>$listeUtilisateurs]);
+    }
+
 }
