@@ -15,13 +15,18 @@ $container["view"] = function ($container){
     $router = $container->get('router');
     $uri = \Slim\Http\Uri::createFromEnvironment(new \Slim\Http\Environment($_SERVER));
     $view->addExtension(new \Slim\Views\TwigExtension($router, $uri));
+    $view->getEnvironment()->addGlobal('flash', $container->flash);
     return $view;
+};
+
+$container['flash'] = function ($container){
+    return new \Slim\Flash\Messages;
 };
 
 $container['settings'] = $config;
 
 //Eloquent
-$app = new \Slim\app($container,[
+$app = new \Slim\App($container,[
     'settings' => [
         'debug' => true,
         'displayErrorDetails' => true
@@ -51,9 +56,7 @@ $app->get('/', function(Request $request, Response $response, $args){
 $app->get('/connection', function(Request $request, Response $response, $args){
     return $this->view->render($response, 'Connexion.html.twig');
 })->setName('connexion');
-$app->post('/connection', function(Request $request, Response $response, $args){
-    return $this->view->render($response, 'Connexion.html.twig');
-});
+$app->post('/connection', "\\app\\Controllers\\loginController:seConnecter");
 
 $app->get('/emprunt&retour', function(Request $request, Response $response, $args){
     return $this->view->render($response, 'EmpruntRetour.html.twig');
