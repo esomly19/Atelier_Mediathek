@@ -64,7 +64,7 @@ $app->get('/profil', function(Request $request, Response $response, $args){
 })->setName('profil');
 
 
-$app->get('/catalogue', "\\app\\Controllers\\catalogueController:afficherCatalogue");
+$app->get('/catalogue', "\\app\\Controllers\\catalogueController:afficherCatalogue")->setName('catalogue');
 
 
 try {
