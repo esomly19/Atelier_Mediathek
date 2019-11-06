@@ -81,7 +81,7 @@ class ComposerStaticInitc64a2ca8a2f6316aba15aff480a925f3
     public static $prefixDirsPsr4 = array (
         'app\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/src/public',
+            0 => __DIR__ . '/../..' . '/src',
         ),
         'Twig\\' => 
         array (

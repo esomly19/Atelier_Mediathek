@@ -20,8 +20,10 @@ class utilisateurController
     }
 
     public function informationUtilisateur($request, $response) {
-        $listeUtilisateurs = Utilisateur::all();
-        return $this->container->view->render($response, "utilisateur/informationUtilisateur.html.twig", ['utilisateurs'=>$listeUtilisateurs]);
+
+        var_dump("moncul");
+        //$listeUtilisateurs = Utilisateur::all();
+        //return $this->container->view->render($response, "utilisateur/informationUtilisateur.html.twig", ['utilisateurs'=>$listeUtilisateurs]);
     }
 
 }

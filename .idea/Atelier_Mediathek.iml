@@ -3,7 +3,6 @@
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/MediaNet-Staff/ext" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/MediaNet-Staff/src" isTestSource="false" packagePrefix="app\" />
       <excludeFolder url="file://$MODULE_DIR$/MediaNet-Staff/vendor/composer" />
       <excludeFolder url="file://$MODULE_DIR$/MediaNet-Staff/vendor/container-interop/container-interop" />
       <excludeFolder url="file://$MODULE_DIR$/MediaNet-Staff/vendor/doctrine/inflector" />
