@@ -38,4 +38,9 @@
   margin-right: 0;
 }
 
+a {
+  outline: none;
+  text-decoration: none;
+}
+
 /*# sourceMappingURL=interface.css.map */

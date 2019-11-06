@@ -15,26 +15,24 @@
         {% block header %}
         <div class="navbar">
             <div class="navLeft">
-                <button id="1" class="boutton">Catalogue</button>
+                <button id="1" class="boutton"><a href="{{path_for('catalogue')}}">Catalogue</a></button>
             </div>
 
             <div class=""></div>
 
             {% if condition %}
 
-            <div class="navRight">
-                <button  id="3" class="boutton"> mes emprunts / mes retours</button>
-            
-                <button  id="4" class="boutton">mon profils</button>
-            </div>
-
-            
-            
             {% else %}
+
             <div class="navRight">
-                <button  id="2"  class="boutton"><span>Se connecter</span></button>
+                <button  id="2"  class="boutton"><a href="{{path_for('connexion')}}">Se connecter</a></button>
             </div>
             
+            <div class="navRight">
+                <button  id="3" class="boutton"><a href="{{path_for('emprunt&retour')}}">mes emprunts / mes retours</a></button>
+            
+                <button  id="4" class="boutton"><a href="{{path_for('profil')}}">mon profils</a></button>
+            </div>
 
             {% endif %}
 

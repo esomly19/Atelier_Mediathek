@@ -45,3 +45,7 @@ $gutter-width: 1.6%;
     @include col();
 }
 
+a{
+    outline: none;
+    text-decoration: none;
+}
