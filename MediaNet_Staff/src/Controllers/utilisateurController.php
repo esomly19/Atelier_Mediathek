@@ -9,6 +9,8 @@
 namespace app\controllers;
 
 
+use app\models\Document;
+use app\models\Emprunter;
 use app\models\Utilisateur;
 
 class utilisateurController
@@ -29,7 +31,7 @@ class utilisateurController
             'emprunter.id'
         )->get();
 
-        return $this->container->view->render($response, "utilisateur/informationUtilisateur.html.twig", ['utilisateurs'=>$listeUtilisateurs,'commandes'=>$listeCommandesUtilisateurs]);
+        return $this->container->view->render($response, "utilisateur/ListeUtilisateurs.html.twig", ['utilisateurs'=>$listeUtilisateurs,'commandes'=>$listeCommandesUtilisateurs]);
     }
 
     public function creerCompte($request, $response) {
@@ -37,4 +39,11 @@ class utilisateurController
         return $this->container->view->render($response, "creationCompte.html.twig", ['utilisateurs'=>$listeUtilisateurs]);
     }
 
+    public function informationUsager($request, $response) {
+        $id = $_POST["idu"];
+        $uti = Utilisateur::find($id);
+        $listeDocumentEmprunt = Document::where('emprunter.id_utilisateur', '=', $id)->Join('emprunter', 'emprunter.id_document', '=', 'document.id')->get();
+        //$listeEmprunt = Emprunter::where('id_utilisateur','=',$id)->Join("document", 'document.id','=',"emprunt.id_document")->get();
+        return $this->container->view->render($response, "utilisateur/informationUtilisateur.html.twig",["uti"=>$uti,"emprunt"=> $listeDocumentEmprunt]);
+    }
 }

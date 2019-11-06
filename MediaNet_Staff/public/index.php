@@ -51,7 +51,7 @@ $app->get('/listusagers', "\\app\\Controllers\\utilisateurController:information
 $app->get('/emprunts', "\\app\\Controllers\\emprunterController:emprunterinfo")->setName('emprunts');
 $app->get('/retour', "\\app\\Controllers\\emprunterController:retourinfo")->setName('retour');
 $app->get('/creercompte', "\\app\\Controllers\\utilisateurController:creerCompte")->setName('creercompte');
-
+$app->post('/informationusager', "\\app\\Controllers\\utilisateurController:informationUsager");
 
 try {
     $app->run();
