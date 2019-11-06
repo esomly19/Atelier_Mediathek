@@ -1,0 +1,12 @@
+@mixin navcouleur($couleur)
+{
+    background-color : $couleur;
+    :hover{
+        background-color:darken($couleur,70%);
+        color : lighten($couleur,70%);
+    }
+}
+
+@mixin justify($justify) {
+    justify-content: $justify;
+}

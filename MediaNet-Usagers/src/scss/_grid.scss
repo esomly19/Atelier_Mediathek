@@ -1,0 +1,21 @@
+@mixin dimension($column,$columns,$gutter-width) {
+	$column-width: (100% - (($columns - 1) * $gutter-width))/$columns;
+	width: ($column * $column-width) + (($column - 1) * $gutter-width);
+}
+
+@mixin row() {
+	width: 100%;
+	margin: 0 0 $gutter-width;
+	display:flex;
+	flex-wrap:wrap;
+}
+
+@mixin col() {
+	box-sizing: border-box;
+	display: block;
+	margin-right: $gutter-width;
+	padding: 1em;
+	.row &:last-of-type {
+		margin-right: 0;
+	}
+}

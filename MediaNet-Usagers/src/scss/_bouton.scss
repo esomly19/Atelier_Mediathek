@@ -1,0 +1,33 @@
+@mixin couleurbouton($couleur) {
+    background-color: $couleur;
+    color: darken($couleur,60%);
+    border-color: $couleur;
+}
+
+@mixin taillebouton($taille){
+    @if $taille == small {
+        font-size: 1.3em;
+        padding :0.1em;
+    }@else if $taille == medium{
+        font-size: 2.3em;
+        padding :0.2em;
+    }@else if $taille == large{
+        font-size: 3.5em;
+        padding : 0.4em;
+    }
+}
+
+@mixin stylebouton($style,$couleur,$taille){
+
+    @if $style == classic {
+        @include couleurbouton($couleur);
+    }@else if $style == flat{
+        @include couleurbouton($couleur);
+        border-radius: 15px;
+    }@else if $style == outline{
+        @include couleurbouton($couleur);
+        background-color: white;
+        border: 2px solid $couleur;
+    }
+    @include taillebouton($taille);
+}
