@@ -39,6 +39,9 @@ $capsule->bootEloquent();
 $container['db'] = function ($container) use ($capsule) {
     return $capsule;
 };
+
+session_start();
+
 $app->get('/d', "\\app\\controllers\\documentController:Index");
 
 $app->get('/', function(Request $request, Response $response, $args){
@@ -48,6 +51,9 @@ $app->get('/', function(Request $request, Response $response, $args){
 $app->get('/connection', function(Request $request, Response $response, $args){
     return $this->view->render($response, 'Connexion.html.twig');
 })->setName('connexion');
+$app->post('/connection', function(Request $request, Response $response, $args){
+    return $this->view->render($response, 'Connexion.html.twig');
+});
 
 $app->get('/catalogue', function(Request $request, Response $response, $args){
     return $this->view->render($response, 'Catalogue.html.twig');
