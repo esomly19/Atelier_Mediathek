@@ -1,0 +1,15 @@
+ {% include 'layout.html.twig' %}
+{% block stylesheets %}
+    <link href="../../src/css/gestionusagers.css" type="text/css" rel="stylesheet" />
+{% endblock %}
+
+
+   <div class="main">
+             <div class="sub-main">
+            <button  id="bu2"  class="button"><a href="{{ path_for('creercompte')}}">Créer un compte</a></button>
+            </div>
+            <div class="sub-main">
+            <button  id="bu3" class="button"><a href="{{ path_for('listusagers')}}">Liste des usagers</a></button>
+            </div>
+
+                    </div>

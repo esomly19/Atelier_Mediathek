@@ -15,4 +15,9 @@ class emprunterController
         $listeemprunts = Emprunter::all();
         return $this->container->view->render($response, "emprunts.html.twig", ['emprunts'=>$listeemprunts]);
     }
+
+    public function retourinfo($request, $response) {
+        $listeemprunts = Emprunter::all();
+        return $this->container->view->render($response, "retour.html.twig", ['emprunts'=>$listeemprunts]);
+    }
 }

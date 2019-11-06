@@ -1,0 +1,39 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+
+<h1> Création compte </h1>
+				
+
+
+				<!--path_for('login') -->
+				<form action="{{utilisateurs.id}}"method="post">	
+					<div class="form-group">
+						<label for="Nom">Nom</label>
+						<input type="text" name="Nom"  id="pseudo" value="{{utilisateurs.nom}}" required>
+                        <br>
+                        	<label for="prenom">Prénom</label>
+						<input type="text" name="prenom"  id="prenom" value="{{utilisateurs.prenom}}" required>
+                                <br>
+						<label for="mdp">Mot de passe</label>
+						<input type="password" name="mdp" id="mdp" value="{{utilisateurs.mdp}}" required>
+                                <br>
+                        	<label for="Email">Email</label>
+						<input type="text" name="mail" id="mail" value="{{utilisateurs.mail}}" required>
+                                <br>
+                        	<label for="Adresse">Adresse</label>
+						<input type="text" name="mail" id="mail" value="{{utilisateurs.adresse}}" required>
+                                <br>
+                        	<label for="telephone">Téléphone</label>
+						<input type="number" name="telephone" id="telephone" value="{{utilisateurs.telephone}}" required>
+                                <br>
+           		
+						<button type="submit" >Valider!</button>
+					</div>
+				</form>
+
+
+
+				
+
+{% endblock %}
