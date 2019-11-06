@@ -34,10 +34,10 @@ CREATE TABLE IF NOT EXISTS `document` (
   `id_image` int(11) DEFAULT NULL,
   `titre` varchar(55) NOT NULL,
   `description` varchar(255) NOT NULL,
-  `code` varchar(5) NOT NULL,
+  `code` varchar(10) NOT NULL,
   `etat` int(11) NOT NULL,
   `id_genre` int(11) NOT NULL,
-  `type` int(11) NOT NULL,
+  `type` varchar(20) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`),
   UNIQUE KEY `code` (`code`)
