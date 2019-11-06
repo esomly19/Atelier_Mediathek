@@ -46,12 +46,9 @@ $app->get('/', function(Request $request, Response $response, $args){
 });
 
 
-$app->get('/retour', function(Request $request, Response $response, $args){
-    return $this->view->render($response, 'retour.html.twig');
-})->setName('retour');
-
-$app->get('/informationUtilisateurs', "\\app\\Controllers\\utilisateurController:informationUtilisateur")->setName('usagers');;
-$app->get('/emprunts', "\\app\\Controllers\\emprunterController:emprunterinfo")->setName('emprunts');;
+$app->get('/informationUtilisateurs', "\\app\\Controllers\\utilisateurController:informationUtilisateur")->setName('usagers');
+$app->get('/emprunts', "\\app\\Controllers\\emprunterController:emprunterinfo")->setName('emprunts');
+$app->get('/retour', "\\app\\Controllers\\emprunterController:retourinfo")->setName('retour');
 
 
 try {

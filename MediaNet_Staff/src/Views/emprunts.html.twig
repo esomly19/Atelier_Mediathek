@@ -13,6 +13,9 @@
 </div>
 
 <div class="content">
+    <div class="ligne-p">
+        <span class="nom">ID Doc  | </span><span class="prenom">ID UTILISATEUR  |   </span><span>Date Emprunt   |  </span><span>Date Retour </span>
+    </div>
    {% for emprunt in emprunts %}
         <div class="ligne-u">
             <span class="nom">{{ emprunt.id_document }} </span><span class="prenom">{{ emprunt.id_utilisateur }} </span><span>{{ emprunt.date_emprunt }} </span><span>{{ emprunt.date_retour }} </span><span>{{ emprunt.date_limite }} </span>
