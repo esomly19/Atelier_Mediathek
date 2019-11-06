@@ -21,7 +21,7 @@ $container["view"] = function ($container){
 $container['settings'] = $config;
 
 //Eloquent
-$app = new \Slim\App($container,[
+$app = new \Slim\app($container,[
     'settings' => [
         'debug' => true,
         'displayErrorDetails' => true
@@ -49,10 +49,6 @@ $app->get('/connection', function(Request $request, Response $response, $args){
     return $this->view->render($response, 'Connexion.html.twig');
 })->setName('connexion');
 
-$app->get('/catalogue', function(Request $request, Response $response, $args){
-    return $this->view->render($response, 'Catalogue.html.twig');
-})->setName('catalogue');
-
 $app->get('/emprunt&retour', function(Request $request, Response $response, $args){
     return $this->view->render($response, 'EmpruntRetour.html.twig');
 })->setName('emprunt&retour');
@@ -60,6 +56,10 @@ $app->get('/emprunt&retour', function(Request $request, Response $response, $arg
 $app->get('/profil', function(Request $request, Response $response, $args){
     return $this->view->render($response, 'Profil.html.twig');
 })->setName('profil');
+
+
+$app->get('/catalogue', "\\app\\Controllers\\catalogueController:afficherCatalogue");
+
 
 try {
     $app->run();
