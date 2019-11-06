@@ -1,0 +1,23 @@
+{% include 'layout.html.twig' %}
+{% block stylesheets %}
+    <link href="../src/css/listeUtilisateur.css" type="text/css" rel="stylesheet" />
+{% endblock %}
+<h1>Liste des utilisateurs : </h1>
+<div>
+    <label for="rechercher-utilisateur">Rechercher un utilisateur</label>
+    <input type="search" id="rechercher-utilisateur" name="ru"
+           aria-label="Search through site content">
+
+    <button>rechercher</button>
+</div>
+
+<div class="content">
+    <div class="ligne-p">
+        <span class="nom">Nom </span><span class="prenom">Prenom </span><span>Email </span><span>Telephone </span><span>Adresse </span><span>Date d'adhesion </span><span>nombre d'emprunts </span>
+    </div>
+    {% for utilisateur in utilisateurs %}
+        <div class="ligne-u">
+            <span class="nom">{{ utilisateur.nom }} </span><span class="prenom">{{ utilisateur.prenom }} </span><span>{{ utilisateur.mail }} </span><span>{{ utilisateur.adresse }} </span><span>{{ utilisateur.telephone }} </span><span>{{ utilisateur.date_adhesion }} </span>
+        </div>
+    {% endfor %}
+</div>
