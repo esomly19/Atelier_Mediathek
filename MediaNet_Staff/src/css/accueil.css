@@ -26,11 +26,13 @@ a:hover{
    color:#2ecc71;
 }
 
-
+.main{
+  display: flex;
+}
 .sub-main{
   width: 30%;
   margin:22px;
-  float: left;
+
 }
 
 .button {

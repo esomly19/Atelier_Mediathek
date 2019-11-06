@@ -7,15 +7,15 @@
         <div class="main">
             <div class="sub-main">
             <h1>Gestion des usagers:</h1>
-            <button id="1" class="button">Usagers</button>
+            <button id="bu1" class="button"><a href="{{ path_for('usagers')}}">Usagers</a></button>
             </div>
             <div class="sub-main">
             <h1>Gestion des emprunts:</h1>
-            <button  id="2"  class="button"><span>Emprunts</span></button>
+            <button  id="bu2"  class="button"><a href="{{ path_for('emprunts')}}">Emprunts</a></button>
             </div>
             <div class="sub-main">
             <h1>Gestion des retour :</h1>
-            <button  id="3" class="button">Retour</button>
+            <button  id="bu3" class="button"><a href="{{ path_for('retour')}}">Retour</a></button>
             </div>
 
         </div>
