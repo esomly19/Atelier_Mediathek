@@ -2,7 +2,10 @@
 
 namespace Illuminate\Support\Facades;
 
+<<<<<<< HEAD
 use Closure;
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
 use Mockery;
 use RuntimeException;
 use Mockery\MockInterface;
@@ -24,6 +27,7 @@ abstract class Facade
     protected static $resolvedInstance;
 
     /**
+<<<<<<< HEAD
      * Run a Closure when the facade has been resolved.
      *
      * @param  \Closure  $callback
@@ -40,15 +44,24 @@ abstract class Facade
      * Convert the facade into a Mockery spy.
      *
      * @return \Mockery\MockInterface
+=======
+     * Convert the facade into a Mockery spy.
+     *
+     * @return void
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      */
     public static function spy()
     {
         if (! static::isMock()) {
             $class = static::getMockableClass();
 
+<<<<<<< HEAD
             return tap($class ? Mockery::spy($class) : Mockery::spy(), function ($spy) {
                 static::swap($spy);
             });
+=======
+            static::swap($class ? Mockery::spy($class) : Mockery::spy());
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
         }
     }
 
@@ -159,7 +172,11 @@ abstract class Facade
     /**
      * Resolve the facade root instance from the container.
      *
+<<<<<<< HEAD
      * @param  object|string  $name
+=======
+     * @param  string|object  $name
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * @return mixed
      */
     protected static function resolveFacadeInstance($name)
@@ -172,9 +189,13 @@ abstract class Facade
             return static::$resolvedInstance[$name];
         }
 
+<<<<<<< HEAD
         if (static::$app) {
             return static::$resolvedInstance[$name] = static::$app[$name];
         }
+=======
+        return static::$resolvedInstance[$name] = static::$app[$name];
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     }
 
     /**

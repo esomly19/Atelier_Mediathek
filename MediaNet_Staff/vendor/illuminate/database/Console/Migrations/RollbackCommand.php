@@ -57,12 +57,26 @@ class RollbackCommand extends BaseCommand
 
         $this->migrator->setConnection($this->option('database'));
 
+<<<<<<< HEAD
         $this->migrator->setOutput($this->output)->rollback(
+=======
+        $this->migrator->rollback(
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
             $this->getMigrationPaths(), [
                 'pretend' => $this->option('pretend'),
                 'step' => (int) $this->option('step'),
             ]
         );
+<<<<<<< HEAD
+=======
+
+        // Once the migrator has run we will grab the note output and send it out to
+        // the console screen, since the migrator itself functions without having
+        // any instances of the OutputInterface contract passed into the class.
+        foreach ($this->migrator->getNotes() as $note) {
+            $this->output->writeln($note);
+        }
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     }
 
     /**
@@ -73,6 +87,7 @@ class RollbackCommand extends BaseCommand
     protected function getOptions()
     {
         return [
+<<<<<<< HEAD
             ['database', null, InputOption::VALUE_OPTIONAL, 'The database connection to use'],
 
             ['force', null, InputOption::VALUE_NONE, 'Force the operation to run when in production'],
@@ -84,6 +99,17 @@ class RollbackCommand extends BaseCommand
             ['pretend', null, InputOption::VALUE_NONE, 'Dump the SQL queries that would be run'],
 
             ['step', null, InputOption::VALUE_OPTIONAL, 'The number of migrations to be reverted'],
+=======
+            ['database', null, InputOption::VALUE_OPTIONAL, 'The database connection to use.'],
+
+            ['force', null, InputOption::VALUE_NONE, 'Force the operation to run when in production.'],
+
+            ['path', null, InputOption::VALUE_OPTIONAL, 'The path of migrations files to be executed.'],
+
+            ['pretend', null, InputOption::VALUE_NONE, 'Dump the SQL queries that would be run.'],
+
+            ['step', null, InputOption::VALUE_OPTIONAL, 'The number of migrations to be reverted.'],
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
         ];
     }
 }

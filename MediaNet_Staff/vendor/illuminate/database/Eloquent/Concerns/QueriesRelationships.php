@@ -3,11 +3,17 @@
 namespace Illuminate\Database\Eloquent\Concerns;
 
 use Closure;
+<<<<<<< HEAD
 use RuntimeException;
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
+=======
+use Illuminate\Support\Str;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Query\Expression;
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Database\Query\Builder as QueryBuilder;
 
@@ -16,7 +22,11 @@ trait QueriesRelationships
     /**
      * Add a relationship count / exists condition to the query.
      *
+<<<<<<< HEAD
      * @param  string|\Illuminate\Database\Eloquent\Relations\Relation  $relation
+=======
+     * @param  string  $relation
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * @param  string  $operator
      * @param  int     $count
      * @param  string  $boolean
@@ -25,6 +35,7 @@ trait QueriesRelationships
      */
     public function has($relation, $operator = '>=', $count = 1, $boolean = 'and', Closure $callback = null)
     {
+<<<<<<< HEAD
         if (is_string($relation)) {
             if (strpos($relation, '.') !== false) {
                 return $this->hasNested($relation, $operator, $count, $boolean, $callback);
@@ -36,6 +47,13 @@ trait QueriesRelationships
         if ($relation instanceof MorphTo) {
             throw new RuntimeException('Please use whereHasMorph() for MorphTo relationships.');
         }
+=======
+        if (strpos($relation, '.') !== false) {
+            return $this->hasNested($relation, $operator, $count, $boolean, $callback);
+        }
+
+        $relation = $this->getRelationWithoutConstraints($relation);
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
 
         // If we only need to check for the existence of the relation, then we can optimize
         // the subquery to only run a "where exists" clause instead of this full "count"
@@ -45,7 +63,11 @@ trait QueriesRelationships
                         : 'getRelationExistenceCountQuery';
 
         $hasQuery = $relation->{$method}(
+<<<<<<< HEAD
             $relation->getRelated()->newQueryWithoutRelationships(), $this
+=======
+            $relation->getRelated()->newQuery(), $this
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
         );
 
         // Next we will call any given callback as an "anonymous" scope so they can get the
@@ -76,6 +98,7 @@ trait QueriesRelationships
     {
         $relations = explode('.', $relations);
 
+<<<<<<< HEAD
         $doesntHave = $operator === '<' && $count === 1;
 
         if ($doesntHave) {
@@ -83,6 +106,8 @@ trait QueriesRelationships
             $count = 1;
         }
 
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
         $closure = function ($q) use (&$closure, &$relations, $operator, $count, $callback) {
             // In order to nest "has", we need to add count relation constraints on the
             // callback Closure. We'll do this by simply passing the Closure its own
@@ -92,7 +117,11 @@ trait QueriesRelationships
                 : $q->has(array_shift($relations), $operator, $count, 'and', $callback);
         };
 
+<<<<<<< HEAD
         return $this->has(array_shift($relations), $doesntHave ? '<' : '>=', 1, $boolean, $closure);
+=======
+        return $this->has(array_shift($relations), '>=', 1, $boolean, $closure);
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     }
 
     /**
@@ -185,6 +214,7 @@ trait QueriesRelationships
     }
 
     /**
+<<<<<<< HEAD
      * Add a polymorphic relationship count / exists condition to the query.
      *
      * @param  string  $relation
@@ -346,6 +376,8 @@ trait QueriesRelationships
     }
 
     /**
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * Add subselect queries to count the relations.
      *
      * @param  mixed  $relations
@@ -371,8 +403,13 @@ trait QueriesRelationships
 
             unset($alias);
 
+<<<<<<< HEAD
             if (count($segments) === 3 && Str::lower($segments[1]) === 'as') {
                 [$name, $alias] = [$segments[0], $segments[2]];
+=======
+            if (count($segments) == 3 && Str::lower($segments[1]) == 'as') {
+                list($name, $alias) = [$segments[0], $segments[2]];
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
             }
 
             $relation = $this->getRelationWithoutConstraints($name);
@@ -386,18 +423,26 @@ trait QueriesRelationships
 
             $query->callScope($constraints);
 
+<<<<<<< HEAD
             $query = $query->mergeConstraintsFrom($relation->getQuery())->toBase();
 
             if (count($query->columns) > 1) {
                 $query->columns = [$query->columns[0]];
             }
+=======
+            $query->mergeConstraintsFrom($relation->getQuery());
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
 
             // Finally we will add the proper result column alias to the query and run the subselect
             // statement against the query builder. Then we will return the builder instance back
             // to the developer for further constraint chaining that needs to take place on it.
             $column = $alias ?? Str::snake($name.'_count');
 
+<<<<<<< HEAD
             $this->selectSub($query, $column);
+=======
+            $this->selectSub($query->toBase(), $column);
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
         }
 
         return $this;

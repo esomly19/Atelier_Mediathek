@@ -64,9 +64,22 @@ class ResetCommand extends BaseCommand
             return $this->comment('Migration table not found.');
         }
 
+<<<<<<< HEAD
         $this->migrator->setOutput($this->output)->reset(
             $this->getMigrationPaths(), $this->option('pretend')
         );
+=======
+        $this->migrator->reset(
+            $this->getMigrationPaths(), $this->option('pretend')
+        );
+
+        // Once the migrator has run we will grab the note output and send it out to
+        // the console screen, since the migrator itself functions without having
+        // any instances of the OutputInterface contract passed into the class.
+        foreach ($this->migrator->getNotes() as $note) {
+            $this->output->writeln($note);
+        }
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     }
 
     /**
@@ -77,6 +90,7 @@ class ResetCommand extends BaseCommand
     protected function getOptions()
     {
         return [
+<<<<<<< HEAD
             ['database', null, InputOption::VALUE_OPTIONAL, 'The database connection to use'],
 
             ['force', null, InputOption::VALUE_NONE, 'Force the operation to run when in production'],
@@ -86,6 +100,15 @@ class ResetCommand extends BaseCommand
             ['realpath', null, InputOption::VALUE_NONE, 'Indicate any provided migration file paths are pre-resolved absolute paths'],
 
             ['pretend', null, InputOption::VALUE_NONE, 'Dump the SQL queries that would be run'],
+=======
+            ['database', null, InputOption::VALUE_OPTIONAL, 'The database connection to use.'],
+
+            ['force', null, InputOption::VALUE_NONE, 'Force the operation to run when in production.'],
+
+            ['path', null, InputOption::VALUE_OPTIONAL | InputOption::VALUE_IS_ARRAY, 'The path(s) of migrations files to be executed.'],
+
+            ['pretend', null, InputOption::VALUE_NONE, 'Dump the SQL queries that would be run.'],
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
         ];
     }
 }

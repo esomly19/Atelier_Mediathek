@@ -4,6 +4,7 @@
 
 namespace Composer\Autoload;
 
+<<<<<<< HEAD
 class ComposerStaticInitc64a2ca8a2f6316aba15aff480a925f3
 {
     public static $files = array (
@@ -21,27 +22,47 @@ class ComposerStaticInitc64a2ca8a2f6316aba15aff480a925f3
         array (
             'app\\' => 4,
         ),
+=======
+class ComposerStaticInite0fe0e3ec64556490683c24f692eab8d
+{
+    public static $files = array (
+        '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
+        '253c157292f75eb38082b5acb06f3f01' => __DIR__ . '/..' . '/nikic/fast-route/src/functions.php',
+        '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
+        '72579e7bd17821bb1321b87411366eae' => __DIR__ . '/..' . '/illuminate/support/helpers.php',
+    );
+
+    public static $prefixLengthsPsr4 = array (
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
         'T' => 
         array (
             'Twig\\' => 5,
         ),
         'S' => 
         array (
+<<<<<<< HEAD
             'Symfony\\Polyfill\\Util\\' => 22,
             'Symfony\\Polyfill\\Php56\\' => 23,
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
             'Symfony\\Polyfill\\Mbstring\\' => 26,
             'Symfony\\Polyfill\\Ctype\\' => 23,
             'Symfony\\Contracts\\Translation\\' => 30,
             'Symfony\\Component\\Translation\\' => 30,
+<<<<<<< HEAD
             'SuperClosure\\' => 13,
             'Slim\\Views\\' => 11,
             'Slim\\Psr7\\' => 10,
             'Slim\\Flash\\' => 11,
+=======
+            'Slim\\Views\\' => 11,
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
             'Slim\\' => 5,
         ),
         'P' => 
         array (
             'Psr\\SimpleCache\\' => 16,
+<<<<<<< HEAD
             'Psr\\Log\\' => 8,
             'Psr\\Http\\Message\\' => 17,
             'Psr\\Container\\' => 14,
@@ -55,6 +76,13 @@ class ComposerStaticInitc64a2ca8a2f6316aba15aff480a925f3
         'I' => 
         array (
             'Invoker\\' => 8,
+=======
+            'Psr\\Http\\Message\\' => 17,
+            'Psr\\Container\\' => 14,
+        ),
+        'I' => 
+        array (
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
             'Interop\\Container\\' => 18,
             'Illuminate\\Support\\' => 19,
             'Illuminate\\Database\\' => 20,
@@ -63,30 +91,48 @@ class ComposerStaticInitc64a2ca8a2f6316aba15aff480a925f3
         ),
         'F' => 
         array (
+<<<<<<< HEAD
             'Fig\\Http\\Message\\' => 17,
             'FastRoute\\' => 10,
             'Faker\\' => 6,
+=======
+            'FastRoute\\' => 10,
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
         ),
         'D' => 
         array (
             'Doctrine\\Common\\Inflector\\' => 26,
+<<<<<<< HEAD
             'DI\\' => 3,
         ),
         'C' => 
         array (
             'Carbon\\' => 7,
+=======
+        ),
+        'A' => 
+        array (
+            'App\\Model\\' => 10,
+            'App\\Database\\' => 13,
+            'App\\Controller\\' => 15,
+            'App\\' => 4,
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
         ),
     );
 
     public static $prefixDirsPsr4 = array (
+<<<<<<< HEAD
         'app\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src',
         ),
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
         'Twig\\' => 
         array (
             0 => __DIR__ . '/..' . '/twig/twig/src',
         ),
+<<<<<<< HEAD
         'Symfony\\Polyfill\\Util\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-util',
@@ -95,6 +141,8 @@ class ComposerStaticInitc64a2ca8a2f6316aba15aff480a925f3
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-php56',
         ),
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
         'Symfony\\Polyfill\\Mbstring\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-mbstring',
@@ -111,14 +159,18 @@ class ComposerStaticInitc64a2ca8a2f6316aba15aff480a925f3
         array (
             0 => __DIR__ . '/..' . '/symfony/translation',
         ),
+<<<<<<< HEAD
         'SuperClosure\\' => 
         array (
             0 => __DIR__ . '/..' . '/jeremeamia/superclosure/src',
         ),
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
         'Slim\\Views\\' => 
         array (
             0 => __DIR__ . '/..' . '/slim/twig-view/src',
         ),
+<<<<<<< HEAD
         'Slim\\Psr7\\' => 
         array (
             0 => __DIR__ . '/..' . '/slim/psr7/src',
@@ -127,6 +179,8 @@ class ComposerStaticInitc64a2ca8a2f6316aba15aff480a925f3
         array (
             0 => __DIR__ . '/..' . '/slim/flash/src',
         ),
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
         'Slim\\' => 
         array (
             0 => __DIR__ . '/..' . '/slim/slim/Slim',
@@ -135,6 +189,7 @@ class ComposerStaticInitc64a2ca8a2f6316aba15aff480a925f3
         array (
             0 => __DIR__ . '/..' . '/psr/simple-cache/src',
         ),
+<<<<<<< HEAD
         'Psr\\Log\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/log/Psr/Log',
@@ -143,11 +198,17 @@ class ComposerStaticInitc64a2ca8a2f6316aba15aff480a925f3
         array (
             0 => __DIR__ . '/..' . '/psr/http-message/src',
             1 => __DIR__ . '/..' . '/psr/http-factory/src',
+=======
+        'Psr\\Http\\Message\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/http-message/src',
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
         ),
         'Psr\\Container\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/container/src',
         ),
+<<<<<<< HEAD
         'PhpParser\\' => 
         array (
             0 => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser',
@@ -164,6 +225,8 @@ class ComposerStaticInitc64a2ca8a2f6316aba15aff480a925f3
         array (
             0 => __DIR__ . '/..' . '/php-di/invoker/src',
         ),
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
         'Interop\\Container\\' => 
         array (
             0 => __DIR__ . '/..' . '/container-interop/container-interop/src/Interop/Container',
@@ -184,22 +247,29 @@ class ComposerStaticInitc64a2ca8a2f6316aba15aff480a925f3
         array (
             0 => __DIR__ . '/..' . '/illuminate/container',
         ),
+<<<<<<< HEAD
         'Fig\\Http\\Message\\' => 
         array (
             0 => __DIR__ . '/..' . '/fig/http-message-util/src',
         ),
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
         'FastRoute\\' => 
         array (
             0 => __DIR__ . '/..' . '/nikic/fast-route/src',
         ),
+<<<<<<< HEAD
         'Faker\\' => 
         array (
             0 => __DIR__ . '/..' . '/fzaninotto/faker/src/Faker',
         ),
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
         'Doctrine\\Common\\Inflector\\' => 
         array (
             0 => __DIR__ . '/..' . '/doctrine/inflector/lib/Doctrine/Common/Inflector',
         ),
+<<<<<<< HEAD
         'DI\\' => 
         array (
             0 => __DIR__ . '/..' . '/php-di/php-di/src',
@@ -211,6 +281,38 @@ class ComposerStaticInitc64a2ca8a2f6316aba15aff480a925f3
     );
 
     public static $prefixesPsr0 = array (
+=======
+        'App\\Model\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src/Model',
+        ),
+        'App\\Database\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src/Config',
+        ),
+        'App\\Controller\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src/Controller',
+        ),
+        'App\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src',
+        ),
+    );
+
+    public static $fallbackDirsPsr4 = array (
+        0 => __DIR__ . '/..' . '/nesbot/carbon/src',
+    );
+
+    public static $prefixesPsr0 = array (
+        'U' => 
+        array (
+            'UpdateHelper\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/kylekatarnls/update-helper/src',
+            ),
+        ),
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
         'T' => 
         array (
             'Twig_' => 
@@ -227,6 +329,7 @@ class ComposerStaticInitc64a2ca8a2f6316aba15aff480a925f3
         ),
     );
 
+<<<<<<< HEAD
     public static $fallbackDirsPsr0 = array (
         0 => __DIR__ . '/../..' . '/ext',
     );
@@ -238,6 +341,15 @@ class ComposerStaticInitc64a2ca8a2f6316aba15aff480a925f3
             $loader->prefixDirsPsr4 = ComposerStaticInitc64a2ca8a2f6316aba15aff480a925f3::$prefixDirsPsr4;
             $loader->prefixesPsr0 = ComposerStaticInitc64a2ca8a2f6316aba15aff480a925f3::$prefixesPsr0;
             $loader->fallbackDirsPsr0 = ComposerStaticInitc64a2ca8a2f6316aba15aff480a925f3::$fallbackDirsPsr0;
+=======
+    public static function getInitializer(ClassLoader $loader)
+    {
+        return \Closure::bind(function () use ($loader) {
+            $loader->prefixLengthsPsr4 = ComposerStaticInite0fe0e3ec64556490683c24f692eab8d::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInite0fe0e3ec64556490683c24f692eab8d::$prefixDirsPsr4;
+            $loader->fallbackDirsPsr4 = ComposerStaticInite0fe0e3ec64556490683c24f692eab8d::$fallbackDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInite0fe0e3ec64556490683c24f692eab8d::$prefixesPsr0;
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
 
         }, null, ClassLoader::class);
     }

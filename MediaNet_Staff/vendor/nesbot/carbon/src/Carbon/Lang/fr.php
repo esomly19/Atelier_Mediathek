@@ -1,6 +1,10 @@
 <?php
 
+<<<<<<< HEAD
 /**
+=======
+/*
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
  * This file is part of the Carbon package.
  *
  * (c) Brian Nesbitt <brian@nesbot.com>
@@ -9,6 +13,7 @@
  * file that was distributed with this source code.
  */
 
+<<<<<<< HEAD
 /**
  * Authors:
  * - Dieter Sting
@@ -43,11 +48,32 @@ return [
     'second' => ':count seconde|:count secondes',
     'a_second' => 'quelques secondes|:count secondes',
     's' => ':count s',
+=======
+return array(
+    'year' => ':count an|:count ans',
+    'y' => ':count an|:count ans',
+    'month' => ':count mois',
+    'm' => ':count mois',
+    'week' => ':count semaine|:count semaines',
+    'w' => ':count sem.',
+    'day' => ':count jour|:count jours',
+    'd' => ':count j.',
+    'hour' => ':count heure|:count heures',
+    'h' => ':count h.',
+    'minute' => ':count minute|:count minutes',
+    'min' => ':count min.',
+    'second' => ':count seconde|:count secondes',
+    's' => ':count sec.',
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     'ago' => 'il y a :time',
     'from_now' => 'dans :time',
     'after' => ':time après',
     'before' => ':time avant',
+<<<<<<< HEAD
     'diff_now' => 'à l\'instant',
+=======
+    'diff_now' => "à l'instant",
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     'diff_yesterday' => 'hier',
     'diff_tomorrow' => 'demain',
     'diff_before_yesterday' => 'avant-hier',
@@ -56,6 +82,7 @@ return [
     'period_interval' => 'tous les :interval',
     'period_start_date' => 'de :date',
     'period_end_date' => 'à :date',
+<<<<<<< HEAD
     'formats' => [
         'LT' => 'HH:mm',
         'LTS' => 'HH:mm:ss',
@@ -101,3 +128,6 @@ return [
     'day_of_first_week_of_year' => 4,
     'list' => [', ', ' et '],
 ];
+=======
+);
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10

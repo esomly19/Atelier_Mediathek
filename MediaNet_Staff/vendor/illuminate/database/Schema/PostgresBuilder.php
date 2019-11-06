@@ -12,7 +12,11 @@ class PostgresBuilder extends Builder
      */
     public function hasTable($table)
     {
+<<<<<<< HEAD
         [$schema, $table] = $this->parseSchemaAndTable($table);
+=======
+        list($schema, $table) = $this->parseSchemaAndTable($table);
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
 
         $table = $this->connection->getTablePrefix().$table;
 
@@ -52,6 +56,7 @@ class PostgresBuilder extends Builder
     }
 
     /**
+<<<<<<< HEAD
      * Drop all views from the database.
      *
      * @return void
@@ -98,6 +103,8 @@ class PostgresBuilder extends Builder
     }
 
     /**
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * Get all of the table names for the database.
      *
      * @return array
@@ -110,6 +117,7 @@ class PostgresBuilder extends Builder
     }
 
     /**
+<<<<<<< HEAD
      * Get all of the view names for the database.
      *
      * @return array
@@ -134,6 +142,8 @@ class PostgresBuilder extends Builder
     }
 
     /**
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * Get the column listing for a given table.
      *
      * @param  string  $table
@@ -141,7 +151,11 @@ class PostgresBuilder extends Builder
      */
     public function getColumnListing($table)
     {
+<<<<<<< HEAD
         [$schema, $table] = $this->parseSchemaAndTable($table);
+=======
+        list($schema, $table) = $this->parseSchemaAndTable($table);
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
 
         $table = $this->connection->getTablePrefix().$table;
 

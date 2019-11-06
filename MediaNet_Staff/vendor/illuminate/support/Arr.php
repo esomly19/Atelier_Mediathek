@@ -55,10 +55,17 @@ class Arr
                 continue;
             }
 
+<<<<<<< HEAD
             $results[] = $values;
         }
 
         return array_merge([], ...$results);
+=======
+            $results = array_merge($results, $values);
+        }
+
+        return $results;
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     }
 
     /**
@@ -213,6 +220,7 @@ class Arr
 
             if (! is_array($item)) {
                 $result[] = $item;
+<<<<<<< HEAD
             } else {
                 $values = $depth === 1
                     ? array_values($item)
@@ -221,6 +229,12 @@ class Arr
                 foreach ($values as $value) {
                     $result[] = $value;
                 }
+=======
+            } elseif ($depth === 1) {
+                $result = array_merge($result, array_values($item));
+            } else {
+                $result = array_merge($result, static::flatten($item, $depth - 1));
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
             }
         }
 
@@ -275,7 +289,11 @@ class Arr
      * Get an item from an array using "dot" notation.
      *
      * @param  \ArrayAccess|array  $array
+<<<<<<< HEAD
      * @param  string|int  $key
+=======
+     * @param  string  $key
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * @param  mixed   $default
      * @return mixed
      */
@@ -317,9 +335,23 @@ class Arr
      */
     public static function has($array, $keys)
     {
+<<<<<<< HEAD
         $keys = (array) $keys;
 
         if (! $array || $keys === []) {
+=======
+        if (is_null($keys)) {
+            return false;
+        }
+
+        $keys = (array) $keys;
+
+        if (! $array) {
+            return false;
+        }
+
+        if ($keys === []) {
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
             return false;
         }
 
@@ -381,7 +413,11 @@ class Arr
     {
         $results = [];
 
+<<<<<<< HEAD
         [$value, $key] = static::explodePluckParameters($value, $key);
+=======
+        list($value, $key) = static::explodePluckParameters($value, $key);
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
 
         foreach ($array as $item) {
             $itemValue = data_get($item, $value);
@@ -537,6 +573,7 @@ class Arr
      * Shuffle the given array and return the result.
      *
      * @param  array  $array
+<<<<<<< HEAD
      * @param  int|null  $seed
      * @return array
      */
@@ -549,6 +586,13 @@ class Arr
             shuffle($array);
             mt_srand();
         }
+=======
+     * @return array
+     */
+    public static function shuffle($array)
+    {
+        shuffle($array);
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
 
         return $array;
     }
@@ -589,6 +633,7 @@ class Arr
     }
 
     /**
+<<<<<<< HEAD
      * Convert the array into a query string.
      *
      * @param  array  $array
@@ -600,6 +645,8 @@ class Arr
     }
 
     /**
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * Filter the array using the given callback.
      *
      * @param  array  $array
@@ -612,17 +659,25 @@ class Arr
     }
 
     /**
+<<<<<<< HEAD
      * If the given value is not an array and not null, wrap it in one.
+=======
+     * If the given value is not an array, wrap it in one.
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      *
      * @param  mixed  $value
      * @return array
      */
     public static function wrap($value)
     {
+<<<<<<< HEAD
         if (is_null($value)) {
             return [];
         }
 
         return is_array($value) ? $value : [$value];
+=======
+        return ! is_array($value) ? [$value] : $value;
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     }
 }

@@ -41,7 +41,11 @@ class DatabaseMigrationRepository implements MigrationRepositoryInterface
     }
 
     /**
+<<<<<<< HEAD
      * Get the completed migrations.
+=======
+     * Get the ran migrations.
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      *
      * @return array
      */
@@ -81,6 +85,7 @@ class DatabaseMigrationRepository implements MigrationRepositoryInterface
     }
 
     /**
+<<<<<<< HEAD
      * Get the completed migrations with their batch numbers.
      *
      * @return array
@@ -98,6 +103,12 @@ class DatabaseMigrationRepository implements MigrationRepositoryInterface
      *
      * @param  string  $file
      * @param  int  $batch
+=======
+     * Log that a migration was run.
+     *
+     * @param  string  $file
+     * @param  int     $batch
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * @return void
      */
     public function log($file, $batch)

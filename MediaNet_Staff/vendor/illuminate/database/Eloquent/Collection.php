@@ -4,9 +4,13 @@ namespace Illuminate\Database\Eloquent;
 
 use LogicException;
 use Illuminate\Support\Arr;
+<<<<<<< HEAD
 use Illuminate\Support\Str;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Contracts\Queue\QueueableEntity;
+=======
+use Illuminate\Contracts\Support\Arrayable;
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
 use Illuminate\Contracts\Queue\QueueableCollection;
 use Illuminate\Support\Collection as BaseCollection;
 
@@ -17,7 +21,11 @@ class Collection extends BaseCollection implements QueueableCollection
      *
      * @param  mixed  $key
      * @param  mixed  $default
+<<<<<<< HEAD
      * @return \Illuminate\Database\Eloquent\Model|static|null
+=======
+     * @return \Illuminate\Database\Eloquent\Model|static
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      */
     public function find($key, $default = null)
     {
@@ -45,7 +53,11 @@ class Collection extends BaseCollection implements QueueableCollection
     /**
      * Load a set of relationships onto the collection.
      *
+<<<<<<< HEAD
      * @param  array|string  $relations
+=======
+     * @param  mixed  $relations
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * @return $this
      */
     public function load($relations)
@@ -64,6 +76,7 @@ class Collection extends BaseCollection implements QueueableCollection
     }
 
     /**
+<<<<<<< HEAD
      * Load a set of relationship counts onto the collection.
      *
      * @param  array|string  $relations
@@ -185,6 +198,16 @@ class Collection extends BaseCollection implements QueueableCollection
             ->each(function ($models, $className) use ($relations) {
                 static::make($models)->load($relations[$className] ?? []);
             });
+=======
+     * Add an item to the collection.
+     *
+     * @param  mixed  $item
+     * @return $this
+     */
+    public function add($item)
+    {
+        $this->items[] = $item;
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
 
         return $this;
     }
@@ -380,7 +403,13 @@ class Collection extends BaseCollection implements QueueableCollection
      */
     public function makeHidden($attributes)
     {
+<<<<<<< HEAD
         return $this->each->addHidden($attributes);
+=======
+        return $this->each(function ($model) use ($attributes) {
+            $model->addHidden($attributes);
+        });
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     }
 
     /**
@@ -391,7 +420,13 @@ class Collection extends BaseCollection implements QueueableCollection
      */
     public function makeVisible($attributes)
     {
+<<<<<<< HEAD
         return $this->each->makeVisible($attributes);
+=======
+        return $this->each(function ($model) use ($attributes) {
+            $model->makeVisible($attributes);
+        });
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     }
 
     /**
@@ -494,6 +529,7 @@ class Collection extends BaseCollection implements QueueableCollection
     }
 
     /**
+<<<<<<< HEAD
      * Get the comparison function to detect duplicates.
      *
      * @param  bool  $strict
@@ -511,6 +547,11 @@ class Collection extends BaseCollection implements QueueableCollection
      *
      * @return string|null
      *
+=======
+     * Get the type of the entities being queued.
+     *
+     * @return string|null
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * @throws \LogicException
      */
     public function getQueueableClass()
@@ -537,6 +578,7 @@ class Collection extends BaseCollection implements QueueableCollection
      */
     public function getQueueableIds()
     {
+<<<<<<< HEAD
         if ($this->isEmpty()) {
             return [];
         }
@@ -554,13 +596,19 @@ class Collection extends BaseCollection implements QueueableCollection
     public function getQueueableRelations()
     {
         return $this->isNotEmpty() ? $this->first()->getQueueableRelations() : [];
+=======
+        return $this->modelKeys();
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     }
 
     /**
      * Get the connection of the entities being queued.
      *
      * @return string|null
+<<<<<<< HEAD
      *
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * @throws \LogicException
      */
     public function getQueueableConnection()

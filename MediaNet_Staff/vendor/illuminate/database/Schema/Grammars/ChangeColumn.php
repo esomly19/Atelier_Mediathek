@@ -82,10 +82,14 @@ class ChangeColumn
                 if (! is_null($option = static::mapFluentOptionToDoctrine($key))) {
                     if (method_exists($column, $method = 'set'.ucfirst($option))) {
                         $column->{$method}(static::mapFluentValueToDoctrine($option, $value));
+<<<<<<< HEAD
                         continue;
                     }
 
                     $column->setCustomSchemaOption($option, static::mapFluentValueToDoctrine($option, $value));
+=======
+                    }
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
                 }
             }
         }
@@ -121,12 +125,15 @@ class ChangeColumn
             $options['length'] = static::calculateDoctrineTextLength($fluent['type']);
         }
 
+<<<<<<< HEAD
         if (in_array($fluent['type'], ['json', 'binary'])) {
             $options['customSchemaOptions'] = [
                 'collation' => '',
             ];
         }
 
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
         return $options;
     }
 
@@ -209,6 +216,10 @@ class ChangeColumn
      */
     protected static function mapFluentValueToDoctrine($option, $value)
     {
+<<<<<<< HEAD
         return $option === 'notnull' ? ! $value : $value;
+=======
+        return $option == 'notnull' ? ! $value : $value;
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     }
 }

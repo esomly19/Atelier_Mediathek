@@ -5,6 +5,7 @@ namespace Illuminate\Support\Facades;
 use Illuminate\Support\Testing\Fakes\MailFake;
 
 /**
+<<<<<<< HEAD
  * @method static \Illuminate\Mail\PendingMail to($users)
  * @method static \Illuminate\Mail\PendingMail bcc($users)
  * @method static void raw(string $text, $callback)
@@ -25,12 +26,16 @@ use Illuminate\Support\Testing\Fakes\MailFake;
  *
  * @see \Illuminate\Mail\Mailer
  * @see \Illuminate\Support\Testing\Fakes\MailFake
+=======
+ * @see \Illuminate\Mail\Mailer
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
  */
 class Mail extends Facade
 {
     /**
      * Replace the bound instance with a fake.
      *
+<<<<<<< HEAD
      * @return \Illuminate\Support\Testing\Fakes\MailFake
      */
     public static function fake()
@@ -38,6 +43,13 @@ class Mail extends Facade
         static::swap($fake = new MailFake);
 
         return $fake;
+=======
+     * @return void
+     */
+    public static function fake()
+    {
+        static::swap(new MailFake);
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     }
 
     /**

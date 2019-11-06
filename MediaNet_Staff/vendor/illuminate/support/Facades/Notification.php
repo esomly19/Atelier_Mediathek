@@ -7,11 +7,14 @@ use Illuminate\Notifications\AnonymousNotifiable;
 use Illuminate\Support\Testing\Fakes\NotificationFake;
 
 /**
+<<<<<<< HEAD
  * @method static void send(\Illuminate\Support\Collection|array|mixed $notifiables, $notification)
  * @method static void sendNow(\Illuminate\Support\Collection|array|mixed $notifiables, $notification)
  * @method static mixed channel(string|null $name = null)
  * @method static \Illuminate\Notifications\ChannelManager locale(string|null $locale)
  *
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
  * @see \Illuminate\Notifications\ChannelManager
  */
 class Notification extends Facade

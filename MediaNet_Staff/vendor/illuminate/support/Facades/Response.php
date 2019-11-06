@@ -5,6 +5,7 @@ namespace Illuminate\Support\Facades;
 use Illuminate\Contracts\Routing\ResponseFactory as ResponseFactoryContract;
 
 /**
+<<<<<<< HEAD
  * @method static \Illuminate\Http\Response make(string $content = '', int $status = 200, array $headers = [])
  * @method static \Illuminate\Http\Response noContent($status = 204, array $headers = [])
  * @method static \Illuminate\Http\Response view(string $view, array $data = [], int $status = 200, array $headers = [])
@@ -20,6 +21,8 @@ use Illuminate\Contracts\Routing\ResponseFactory as ResponseFactoryContract;
  * @method static \Illuminate\Http\RedirectResponse redirectGuest(string $path, int $status = 302, array $headers = [], bool|null $secure = null)
  * @method static \Illuminate\Http\RedirectResponse redirectToIntended(string $default = '/', int $status = 302, array $headers = [], bool|null $secure = null)
  *
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
  * @see \Illuminate\Contracts\Routing\ResponseFactory
  */
 class Response extends Facade

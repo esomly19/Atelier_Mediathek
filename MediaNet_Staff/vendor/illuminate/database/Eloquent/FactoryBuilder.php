@@ -46,6 +46,7 @@ class FactoryBuilder
     protected $states;
 
     /**
+<<<<<<< HEAD
      * The model after making callbacks.
      *
      * @var array
@@ -60,6 +61,8 @@ class FactoryBuilder
     protected $afterCreating = [];
 
     /**
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * The states to apply.
      *
      * @var array
@@ -87,6 +90,7 @@ class FactoryBuilder
      * @param  string  $name
      * @param  array  $definitions
      * @param  array  $states
+<<<<<<< HEAD
      * @param  array  $afterMaking
      * @param  array  $afterCreating
      * @param  \Faker\Generator  $faker
@@ -94,14 +98,23 @@ class FactoryBuilder
      */
     public function __construct($class, $name, array $definitions, array $states,
                                 array $afterMaking, array $afterCreating, Faker $faker)
+=======
+     * @param  \Faker\Generator  $faker
+     * @return void
+     */
+    public function __construct($class, $name, array $definitions, array $states, Faker $faker)
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     {
         $this->name = $name;
         $this->class = $class;
         $this->faker = $faker;
         $this->states = $states;
         $this->definitions = $definitions;
+<<<<<<< HEAD
         $this->afterMaking = $afterMaking;
         $this->afterCreating = $afterCreating;
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     }
 
     /**
@@ -118,6 +131,7 @@ class FactoryBuilder
     }
 
     /**
+<<<<<<< HEAD
      * Set the state to be applied to the model.
      *
      * @param  string  $state
@@ -129,6 +143,8 @@ class FactoryBuilder
     }
 
     /**
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * Set the states to be applied to the model.
      *
      * @param  array|mixed  $states
@@ -179,12 +195,17 @@ class FactoryBuilder
 
         if ($results instanceof Model) {
             $this->store(collect([$results]));
+<<<<<<< HEAD
 
             $this->callAfterCreating(collect([$results]));
         } else {
             $this->store($results);
 
             $this->callAfterCreating($results);
+=======
+        } else {
+            $this->store($results);
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
         }
 
         return $results;
@@ -216,15 +237,20 @@ class FactoryBuilder
     public function make(array $attributes = [])
     {
         if ($this->amount === null) {
+<<<<<<< HEAD
             return tap($this->makeInstance($attributes), function ($instance) {
                 $this->callAfterMaking(collect([$instance]));
             });
+=======
+            return $this->makeInstance($attributes);
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
         }
 
         if ($this->amount < 1) {
             return (new $this->class)->newCollection();
         }
 
+<<<<<<< HEAD
         $instances = (new $this->class)->newCollection(array_map(function () use ($attributes) {
             return $this->makeInstance($attributes);
         }, range(1, $this->amount)));
@@ -232,6 +258,11 @@ class FactoryBuilder
         $this->callAfterMaking($instances);
 
         return $instances;
+=======
+        return (new $this->class)->newCollection(array_map(function () use ($attributes) {
+            return $this->makeInstance($attributes);
+        }, range(1, $this->amount)));
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     }
 
     /**
@@ -260,6 +291,7 @@ class FactoryBuilder
      *
      * @param  array  $attributes
      * @return mixed
+<<<<<<< HEAD
      *
      * @throws \InvalidArgumentException
      */
@@ -269,6 +301,11 @@ class FactoryBuilder
             throw new InvalidArgumentException("Unable to locate factory with name [{$this->name}] [{$this->class}].");
         }
 
+=======
+     */
+    protected function getRawAttributes(array $attributes = [])
+    {
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
         $definition = call_user_func(
             $this->definitions[$this->class][$this->name],
             $this->faker, $attributes
@@ -284,10 +321,22 @@ class FactoryBuilder
      *
      * @param  array  $attributes
      * @return \Illuminate\Database\Eloquent\Model
+<<<<<<< HEAD
+=======
+     *
+     * @throws \InvalidArgumentException
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      */
     protected function makeInstance(array $attributes = [])
     {
         return Model::unguarded(function () use ($attributes) {
+<<<<<<< HEAD
+=======
+            if (! isset($this->definitions[$this->class][$this->name])) {
+                throw new InvalidArgumentException("Unable to locate factory with name [{$this->name}] [{$this->class}].");
+            }
+
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
             $instance = new $this->class(
                 $this->getRawAttributes($attributes)
             );
@@ -306,17 +355,23 @@ class FactoryBuilder
      * @param  array  $definition
      * @param  array  $attributes
      * @return array
+<<<<<<< HEAD
      *
      * @throws \InvalidArgumentException
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      */
     protected function applyStates(array $definition, array $attributes = [])
     {
         foreach ($this->activeStates as $state) {
             if (! isset($this->states[$this->class][$state])) {
+<<<<<<< HEAD
                 if ($this->stateHasAfterCallback($state)) {
                     continue;
                 }
 
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
                 throw new InvalidArgumentException("Unable to locate [{$state}] state for [{$this->class}].");
             }
 
@@ -359,7 +414,11 @@ class FactoryBuilder
     protected function expandAttributes(array $attributes)
     {
         foreach ($attributes as &$attribute) {
+<<<<<<< HEAD
             if (is_callable($attribute) && ! is_string($attribute) && ! is_array($attribute)) {
+=======
+            if (is_callable($attribute) && ! is_string($attribute)) {
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
                 $attribute = $attribute($attributes);
             }
 
@@ -374,6 +433,7 @@ class FactoryBuilder
 
         return $attributes;
     }
+<<<<<<< HEAD
 
     /**
      * Run after making callbacks on a collection of models.
@@ -445,4 +505,6 @@ class FactoryBuilder
         return isset($this->afterMaking[$this->class][$state]) ||
                isset($this->afterCreating[$this->class][$state]);
     }
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
 }

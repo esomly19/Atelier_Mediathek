@@ -6,7 +6,10 @@ use PDO;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use InvalidArgumentException;
+<<<<<<< HEAD
 use Illuminate\Support\ConfigurationUrlParser;
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
 use Illuminate\Database\Connectors\ConnectionFactory;
 
 /**
@@ -17,7 +20,11 @@ class DatabaseManager implements ConnectionResolverInterface
     /**
      * The application instance.
      *
+<<<<<<< HEAD
      * @var \Illuminate\Contracts\Foundation\Application
+=======
+     * @var \Illuminate\Foundation\Application
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      */
     protected $app;
 
@@ -43,6 +50,7 @@ class DatabaseManager implements ConnectionResolverInterface
     protected $extensions = [];
 
     /**
+<<<<<<< HEAD
      * The callback to be executed to reconnect to a database.
      *
      * @var callable
@@ -53,6 +61,11 @@ class DatabaseManager implements ConnectionResolverInterface
      * Create a new database manager instance.
      *
      * @param  \Illuminate\Contracts\Foundation\Application  $app
+=======
+     * Create a new database manager instance.
+     *
+     * @param  \Illuminate\Foundation\Application  $app
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * @param  \Illuminate\Database\Connectors\ConnectionFactory  $factory
      * @return void
      */
@@ -60,21 +73,32 @@ class DatabaseManager implements ConnectionResolverInterface
     {
         $this->app = $app;
         $this->factory = $factory;
+<<<<<<< HEAD
 
         $this->reconnector = function ($connection) {
             $this->reconnect($connection->getName());
         };
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     }
 
     /**
      * Get a database connection instance.
      *
+<<<<<<< HEAD
      * @param  string|null  $name
+=======
+     * @param  string  $name
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * @return \Illuminate\Database\Connection
      */
     public function connection($name = null)
     {
+<<<<<<< HEAD
         [$database, $type] = $this->parseConnectionName($name);
+=======
+        list($database, $type) = $this->parseConnectionName($name);
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
 
         $name = $name ?: $database;
 
@@ -149,11 +173,18 @@ class DatabaseManager implements ConnectionResolverInterface
         $connections = $this->app['config']['database.connections'];
 
         if (is_null($config = Arr::get($connections, $name))) {
+<<<<<<< HEAD
             throw new InvalidArgumentException("Database [{$name}] not configured.");
         }
 
         return (new ConfigurationUrlParser)
                     ->parseConfiguration($config);
+=======
+            throw new InvalidArgumentException("Database [$name] not configured.");
+        }
+
+        return $config;
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     }
 
     /**
@@ -177,7 +208,13 @@ class DatabaseManager implements ConnectionResolverInterface
         // Here we'll set a reconnector callback. This reconnector can be any callable
         // so we will set a Closure to reconnect from this manager with the name of
         // the connection, which will allow us to reconnect from the connections.
+<<<<<<< HEAD
         $connection->setReconnector($this->reconnector);
+=======
+        $connection->setReconnector(function ($connection) {
+            $this->reconnect($connection->getName());
+        });
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
 
         return $connection;
     }
@@ -186,14 +223,24 @@ class DatabaseManager implements ConnectionResolverInterface
      * Prepare the read / write mode for database connection instance.
      *
      * @param  \Illuminate\Database\Connection  $connection
+<<<<<<< HEAD
      * @param  string|null  $type
+=======
+     * @param  string  $type
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * @return \Illuminate\Database\Connection
      */
     protected function setPdoForType(Connection $connection, $type = null)
     {
+<<<<<<< HEAD
         if ($type === 'read') {
             $connection->setPdo($connection->getReadPdo());
         } elseif ($type === 'write') {
+=======
+        if ($type == 'read') {
+            $connection->setPdo($connection->getReadPdo());
+        } elseif ($type == 'write') {
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
             $connection->setReadPdo($connection->getPdo());
         }
 
@@ -203,7 +250,11 @@ class DatabaseManager implements ConnectionResolverInterface
     /**
      * Disconnect from the given database and remove from local cache.
      *
+<<<<<<< HEAD
      * @param  string|null  $name
+=======
+     * @param  string  $name
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * @return void
      */
     public function purge($name = null)
@@ -218,7 +269,11 @@ class DatabaseManager implements ConnectionResolverInterface
     /**
      * Disconnect from the given database.
      *
+<<<<<<< HEAD
      * @param  string|null  $name
+=======
+     * @param  string  $name
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * @return void
      */
     public function disconnect($name = null)
@@ -231,7 +286,11 @@ class DatabaseManager implements ConnectionResolverInterface
     /**
      * Reconnect to the given database.
      *
+<<<<<<< HEAD
      * @param  string|null  $name
+=======
+     * @param  string  $name
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * @return \Illuminate\Database\Connection
      */
     public function reconnect($name = null)
@@ -327,6 +386,7 @@ class DatabaseManager implements ConnectionResolverInterface
     }
 
     /**
+<<<<<<< HEAD
      * Set the database reconnector callback.
      *
      * @param  callable  $reconnector
@@ -338,6 +398,8 @@ class DatabaseManager implements ConnectionResolverInterface
     }
 
     /**
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * Dynamically pass methods to the default connection.
      *
      * @param  string  $method

@@ -8,7 +8,11 @@ interface Lock
      * Attempt to acquire the lock.
      *
      * @param  callable|null  $callback
+<<<<<<< HEAD
      * @return mixed
+=======
+     * @return bool
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      */
     public function get($callback = null);
 
@@ -27,6 +31,7 @@ interface Lock
      * @return void
      */
     public function release();
+<<<<<<< HEAD
 
     /**
      * Returns the current owner of the lock.
@@ -41,4 +46,6 @@ interface Lock
      * @return void
      */
     public function forceRelease();
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
 }

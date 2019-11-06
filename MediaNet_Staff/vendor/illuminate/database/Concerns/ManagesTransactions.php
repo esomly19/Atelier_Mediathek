@@ -26,7 +26,11 @@ trait ManagesTransactions
             // catch any exception we can rollback this transaction so that none of this
             // gets actually persisted to a database or stored in a permanent fashion.
             try {
+<<<<<<< HEAD
                 return tap($callback($this), function () {
+=======
+                return tap($callback($this), function ($result) {
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
                     $this->commit();
                 });
             }
@@ -85,7 +89,10 @@ trait ManagesTransactions
      * Start a new database transaction.
      *
      * @return void
+<<<<<<< HEAD
      *
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * @throws \Exception
      */
     public function beginTransaction()
@@ -130,7 +137,11 @@ trait ManagesTransactions
     /**
      * Handle an exception from a transaction beginning.
      *
+<<<<<<< HEAD
      * @param  \Throwable  $e
+=======
+     * @param  \Exception  $e
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * @return void
      *
      * @throws \Exception
@@ -167,8 +178,11 @@ trait ManagesTransactions
      *
      * @param  int|null  $toLevel
      * @return void
+<<<<<<< HEAD
      *
      * @throws \Exception
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      */
     public function rollBack($toLevel = null)
     {
@@ -186,11 +200,15 @@ trait ManagesTransactions
         // Next, we will actually perform this rollback within this database and fire the
         // rollback event. We will also set the current transaction level to the given
         // level that was passed into this method so it will be right from here out.
+<<<<<<< HEAD
         try {
             $this->performRollBack($toLevel);
         } catch (Exception $e) {
             $this->handleRollBackException($e);
         }
+=======
+        $this->performRollBack($toLevel);
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
 
         $this->transactions = $toLevel;
 
@@ -215,6 +233,7 @@ trait ManagesTransactions
     }
 
     /**
+<<<<<<< HEAD
      * Handle an exception from a rollback.
      *
      * @param \Exception  $e
@@ -231,6 +250,8 @@ trait ManagesTransactions
     }
 
     /**
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * Get the number of active transactions.
      *
      * @return int

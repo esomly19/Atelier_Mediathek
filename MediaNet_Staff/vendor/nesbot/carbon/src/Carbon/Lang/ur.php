@@ -1,6 +1,10 @@
 <?php
 
+<<<<<<< HEAD
 /**
+=======
+/*
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
  * This file is part of the Carbon package.
  *
  * (c) Brian Nesbitt <brian@nesbot.com>
@@ -8,6 +12,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+<<<<<<< HEAD
 $months = [
     'جنوری',
     'فروری',
@@ -84,3 +89,19 @@ return [
     'day_of_first_week_of_year' => 4,
     'list' => ['، ', ' اور '],
 ];
+=======
+
+return array(
+    'year' => ':count سال',
+    'month' => ':count ماه',
+    'week' => ':count ہفتے',
+    'day' => ':count روز',
+    'hour' => ':count گھنٹے',
+    'minute' => ':count منٹ',
+    'second' => ':count سیکنڈ',
+    'ago' => ':time پہلے',
+    'from_now' => ':time بعد',
+    'after' => ':time بعد',
+    'before' => ':time پہلے',
+);
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10

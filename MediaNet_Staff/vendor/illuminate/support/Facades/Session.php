@@ -3,6 +3,7 @@
 namespace Illuminate\Support\Facades;
 
 /**
+<<<<<<< HEAD
  * @method static string getName()
  * @method static string getId()
  * @method static void setId(string $id)
@@ -26,6 +27,8 @@ namespace Illuminate\Support\Facades;
  * @method static bool handlerNeedsRequest()
  * @method static void setRequestOnHandler(\Illuminate\Http\Request $request)
  *
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
  * @see \Illuminate\Session\SessionManager
  * @see \Illuminate\Session\Store
  */

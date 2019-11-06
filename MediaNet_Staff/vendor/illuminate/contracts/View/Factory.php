@@ -16,7 +16,11 @@ interface Factory
      * Get the evaluated view contents for the given path.
      *
      * @param  string  $path
+<<<<<<< HEAD
      * @param  \Illuminate\Contracts\Support\Arrayable|array  $data
+=======
+     * @param  array  $data
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * @param  array  $mergeData
      * @return \Illuminate\Contracts\View\View
      */
@@ -26,7 +30,11 @@ interface Factory
      * Get the evaluated view contents for the given view.
      *
      * @param  string  $view
+<<<<<<< HEAD
      * @param  \Illuminate\Contracts\Support\Arrayable|array  $data
+=======
+     * @param  array  $data
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * @param  array  $mergeData
      * @return \Illuminate\Contracts\View\View
      */

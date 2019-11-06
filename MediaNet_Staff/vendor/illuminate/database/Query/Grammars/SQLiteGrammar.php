@@ -2,8 +2,11 @@
 
 namespace Illuminate\Database\Query\Grammars;
 
+<<<<<<< HEAD
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
 use Illuminate\Database\Query\Builder;
 
 class SQLiteGrammar extends Grammar
@@ -46,10 +49,13 @@ class SQLiteGrammar extends Grammar
      */
     public function compileSelect(Builder $query)
     {
+<<<<<<< HEAD
         if ($query->unions && $query->aggregate) {
             return $this->compileUnionAggregate($query);
         }
 
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
         $sql = parent::compileSelect($query);
 
         if ($query->unions) {
@@ -67,9 +73,15 @@ class SQLiteGrammar extends Grammar
      */
     protected function compileUnion(array $union)
     {
+<<<<<<< HEAD
         $conjunction = $union['all'] ? ' union all ' : ' union ';
 
         return $conjunction.'select * from ('.$union['query']->toSql().')';
+=======
+        $conjuction = $union['all'] ? ' union all ' : ' union ';
+
+        return $conjuction.'select * from ('.$union['query']->toSql().')';
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     }
 
     /**
@@ -142,6 +154,7 @@ class SQLiteGrammar extends Grammar
      */
     protected function dateBasedWhere($type, Builder $query, $where)
     {
+<<<<<<< HEAD
         $value = $this->parameter($where['value']);
 
         return "strftime('{$type}', {$this->wrap($where['column'])}) {$where['operator']} cast({$value} as text)";
@@ -160,6 +173,13 @@ class SQLiteGrammar extends Grammar
         [$field, $path] = $this->wrapJsonFieldAndPath($column);
 
         return 'json_array_length('.$field.$path.') '.$operator.' '.$value;
+=======
+        $value = str_pad($where['value'], 2, '0', STR_PAD_LEFT);
+
+        $value = $this->parameter($value);
+
+        return "strftime('{$type}', {$this->wrap($where['column'])}) {$where['operator']} {$value}";
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     }
 
     /**
@@ -171,6 +191,7 @@ class SQLiteGrammar extends Grammar
      */
     public function compileInsert(Builder $query, array $values)
     {
+<<<<<<< HEAD
         $table = $this->wrapTable($query->from);
 
         return empty($values)
@@ -278,6 +299,40 @@ class SQLiteGrammar extends Grammar
         $selectSql = parent::compileSelect($query->select($alias.'.rowid'));
 
         return "delete from {$this->wrapTable($query->from)} where {$this->wrap('rowid')} in ({$selectSql})";
+=======
+        // Essentially we will force every insert to be treated as a batch insert which
+        // simply makes creating the SQL easier for us since we can utilize the same
+        // basic routine regardless of an amount of records given to us to insert.
+        $table = $this->wrapTable($query->from);
+
+        if (! is_array(reset($values))) {
+            $values = [$values];
+        }
+
+        // If there is only one record being inserted, we will just use the usual query
+        // grammar insert builder because no special syntax is needed for the single
+        // row inserts in SQLite. However, if there are multiples, we'll continue.
+        if (count($values) == 1) {
+            return empty(reset($values))
+                    ? "insert into $table default values"
+                    : parent::compileInsert($query, reset($values));
+        }
+
+        $names = $this->columnize(array_keys(reset($values)));
+
+        $columns = [];
+
+        // SQLite requires us to build the multi-row insert as a listing of select with
+        // unions joining them together. So we'll build out this list of columns and
+        // then join them all together with select unions to complete the queries.
+        foreach (array_keys(reset($values)) as $column) {
+            $columns[] = '? as '.$this->wrap($column);
+        }
+
+        $columns = array_fill(0, count($values), implode(', ', $columns));
+
+        return "insert into $table ($names) select ".implode(' union all select ', $columns);
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     }
 
     /**
@@ -293,6 +348,7 @@ class SQLiteGrammar extends Grammar
             'delete from '.$this->wrapTable($query->from) => [],
         ];
     }
+<<<<<<< HEAD
 
     /**
      * Wrap the given JSON selector.
@@ -306,4 +362,6 @@ class SQLiteGrammar extends Grammar
 
         return 'json_extract('.$field.$path.')';
     }
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
 }

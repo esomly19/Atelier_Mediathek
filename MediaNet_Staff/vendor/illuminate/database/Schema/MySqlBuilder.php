@@ -65,6 +65,7 @@ class MySqlBuilder extends Builder
     }
 
     /**
+<<<<<<< HEAD
      * Drop all views from the database.
      *
      * @return void
@@ -89,6 +90,8 @@ class MySqlBuilder extends Builder
     }
 
     /**
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * Get all of the table names for the database.
      *
      * @return array
@@ -99,6 +102,7 @@ class MySqlBuilder extends Builder
             $this->grammar->compileGetAllTables()
         );
     }
+<<<<<<< HEAD
 
     /**
      * Get all of the view names for the database.
@@ -111,4 +115,6 @@ class MySqlBuilder extends Builder
             $this->grammar->compileGetAllViews()
         );
     }
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
 }

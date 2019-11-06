@@ -2,6 +2,7 @@
 
 namespace Illuminate\Support\Facades;
 
+<<<<<<< HEAD
 /**
  * @method static void emergency(string $message, array $context = [])
  * @method static void alert(string $message, array $context = [])
@@ -16,6 +17,12 @@ namespace Illuminate\Support\Facades;
  * @method static \Psr\Log\LoggerInterface stack(array $channels, string $channel = null)
  *
  * @see \Illuminate\Log\Logger
+=======
+use Psr\Log\LoggerInterface;
+
+/**
+ * @see \Illuminate\Log\Writer
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
  */
 class Log extends Facade
 {
@@ -26,6 +33,10 @@ class Log extends Facade
      */
     protected static function getFacadeAccessor()
     {
+<<<<<<< HEAD
         return 'log';
+=======
+        return LoggerInterface::class;
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     }
 }

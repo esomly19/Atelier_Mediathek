@@ -2,11 +2,14 @@
 
 namespace Illuminate\Database\Eloquent;
 
+<<<<<<< HEAD
 /**
  * @method static static|\Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Query\Builder withTrashed()
  * @method static static|\Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Query\Builder onlyTrashed()
  * @method static static|\Illuminate\Database\Eloquent\Builder|\Illuminate\Database\Query\Builder withoutTrashed()
  */
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
 trait SoftDeletes
 {
     /**
@@ -27,6 +30,7 @@ trait SoftDeletes
     }
 
     /**
+<<<<<<< HEAD
      * Initialize the soft deleting trait for an instance.
      *
      * @return void
@@ -37,6 +41,8 @@ trait SoftDeletes
     }
 
     /**
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * Force a hard delete on a soft deleted model.
      *
      * @return bool|null
@@ -45,6 +51,7 @@ trait SoftDeletes
     {
         $this->forceDeleting = true;
 
+<<<<<<< HEAD
         return tap($this->delete(), function ($deleted) {
             $this->forceDeleting = false;
 
@@ -52,6 +59,13 @@ trait SoftDeletes
                 $this->fireModelEvent('forceDeleted', false);
             }
         });
+=======
+        $deleted = $this->delete();
+
+        $this->forceDeleting = false;
+
+        return $deleted;
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     }
 
     /**
@@ -64,7 +78,11 @@ trait SoftDeletes
         if ($this->forceDeleting) {
             $this->exists = false;
 
+<<<<<<< HEAD
             return $this->setKeysForSaveQuery($this->newModelQuery())->forceDelete();
+=======
+            return $this->newModelQuery()->where($this->getKeyName(), $this->getKey())->forceDelete();
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
         }
 
         return $this->runSoftDelete();
@@ -77,7 +95,11 @@ trait SoftDeletes
      */
     protected function runSoftDelete()
     {
+<<<<<<< HEAD
         $query = $this->setKeysForSaveQuery($this->newModelQuery());
+=======
+        $query = $this->newModelQuery()->where($this->getKeyName(), $this->getKey());
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
 
         $time = $this->freshTimestamp();
 

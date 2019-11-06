@@ -173,7 +173,11 @@ trait GuardsAttributes
      */
     public function totallyGuarded()
     {
+<<<<<<< HEAD
         return count($this->getFillable()) === 0 && $this->getGuarded() == ['*'];
+=======
+        return count($this->getFillable()) == 0 && $this->getGuarded() == ['*'];
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     }
 
     /**

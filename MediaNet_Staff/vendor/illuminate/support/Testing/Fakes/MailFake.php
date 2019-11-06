@@ -4,11 +4,18 @@ namespace Illuminate\Support\Testing\Fakes;
 
 use Illuminate\Contracts\Mail\Mailer;
 use Illuminate\Contracts\Mail\Mailable;
+<<<<<<< HEAD
 use Illuminate\Contracts\Mail\MailQueue;
 use PHPUnit\Framework\Assert as PHPUnit;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
 class MailFake implements Mailer, MailQueue
+=======
+use PHPUnit\Framework\Assert as PHPUnit;
+use Illuminate\Contracts\Queue\ShouldQueue;
+
+class MailFake implements Mailer
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
 {
     /**
      * All of the mailables that have been sent.
@@ -37,6 +44,7 @@ class MailFake implements Mailer, MailQueue
             return $this->assertSentTimes($mailable, $callback);
         }
 
+<<<<<<< HEAD
         $message = "The expected [{$mailable}] mailable was not sent.";
 
         if (count($this->queuedMailables) > 0) {
@@ -46,6 +54,11 @@ class MailFake implements Mailer, MailQueue
         PHPUnit::assertTrue(
             $this->sent($mailable, $callback)->count() > 0,
             $message
+=======
+        PHPUnit::assertTrue(
+            $this->sent($mailable, $callback)->count() > 0,
+            "The expected [{$mailable}] mailable was not sent."
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
         );
     }
 
@@ -263,11 +276,19 @@ class MailFake implements Mailer, MailQueue
     }
 
     /**
+<<<<<<< HEAD
      * Send a new message with only a raw text part.
      *
      * @param  string  $text
      * @param  \Closure|string  $callback
      * @return void
+=======
+     * Send a new message when only a raw text part.
+     *
+     * @param  string  $text
+     * @param  \Closure|string  $callback
+     * @return int
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      */
     public function raw($text, $callback)
     {
@@ -289,7 +310,11 @@ class MailFake implements Mailer, MailQueue
         }
 
         if ($view instanceof ShouldQueue) {
+<<<<<<< HEAD
             return $this->queue($view, $data);
+=======
+            return $this->queue($view, $data, $callback);
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
         }
 
         $this->mailables[] = $view;
@@ -312,6 +337,7 @@ class MailFake implements Mailer, MailQueue
     }
 
     /**
+<<<<<<< HEAD
      * Queue a new e-mail message for sending after (n) seconds.
      *
      * @param  \DateTimeInterface|\DateInterval|int  $delay
@@ -325,12 +351,18 @@ class MailFake implements Mailer, MailQueue
     }
 
     /**
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * Get the array of failed recipients.
      *
      * @return array
      */
     public function failures()
     {
+<<<<<<< HEAD
         return [];
+=======
+        //
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     }
 }

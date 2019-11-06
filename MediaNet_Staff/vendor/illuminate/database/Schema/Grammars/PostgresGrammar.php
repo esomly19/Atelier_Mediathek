@@ -2,6 +2,10 @@
 
 namespace Illuminate\Database\Schema\Grammars;
 
+<<<<<<< HEAD
+=======
+use RuntimeException;
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
 use Illuminate\Support\Fluent;
 use Illuminate\Database\Schema\Blueprint;
 
@@ -19,7 +23,11 @@ class PostgresGrammar extends Grammar
      *
      * @var array
      */
+<<<<<<< HEAD
     protected $modifiers = ['Collate', 'Increment', 'Nullable', 'Default'];
+=======
+    protected $modifiers = ['Increment', 'Nullable', 'Default'];
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
 
     /**
      * The columns available as serials.
@@ -29,6 +37,7 @@ class PostgresGrammar extends Grammar
     protected $serials = ['bigInteger', 'integer', 'mediumInteger', 'smallInteger', 'tinyInteger'];
 
     /**
+<<<<<<< HEAD
      * The commands to be executed outside of create or alter command.
      *
      * @var array
@@ -36,13 +45,19 @@ class PostgresGrammar extends Grammar
     protected $fluentCommands = ['Comment'];
 
     /**
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * Compile the query to determine if a table exists.
      *
      * @return string
      */
     public function compileTableExists()
     {
+<<<<<<< HEAD
         return "select * from information_schema.tables where table_schema = ? and table_name = ? and table_type = 'BASE TABLE'";
+=======
+        return 'select * from information_schema.tables where table_schema = ? and table_name = ?';
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     }
 
     /**
@@ -166,10 +181,13 @@ class PostgresGrammar extends Grammar
             $sql .= $command->initiallyImmediate ? ' initially immediate' : ' initially deferred';
         }
 
+<<<<<<< HEAD
         if (! is_null($command->notValid)) {
             $sql .= ' not valid';
         }
 
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
         return $sql;
     }
 
@@ -200,7 +218,11 @@ class PostgresGrammar extends Grammar
     /**
      * Compile the SQL needed to drop all tables.
      *
+<<<<<<< HEAD
      * @param  array  $tables
+=======
+     * @param  string  $tables
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * @return string
      */
     public function compileDropAllTables($tables)
@@ -209,6 +231,7 @@ class PostgresGrammar extends Grammar
     }
 
     /**
+<<<<<<< HEAD
      * Compile the SQL needed to drop all views.
      *
      * @param  array  $views
@@ -231,6 +254,8 @@ class PostgresGrammar extends Grammar
     }
 
     /**
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * Compile the SQL needed to retrieve all table names.
      *
      * @param  string  $schema
@@ -242,6 +267,7 @@ class PostgresGrammar extends Grammar
     }
 
     /**
+<<<<<<< HEAD
      * Compile the SQL needed to retrieve all view names.
      *
      * @param  string  $schema
@@ -263,6 +289,8 @@ class PostgresGrammar extends Grammar
     }
 
     /**
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * Compile a drop column command.
      *
      * @param  \Illuminate\Database\Schema\Blueprint  $blueprint
@@ -357,6 +385,7 @@ class PostgresGrammar extends Grammar
     }
 
     /**
+<<<<<<< HEAD
      * Compile a rename index command.
      *
      * @param  \Illuminate\Database\Schema\Blueprint $blueprint
@@ -372,6 +401,8 @@ class PostgresGrammar extends Grammar
     }
 
     /**
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * Compile the command to enable foreign key constraints.
      *
      * @return string
@@ -392,6 +423,7 @@ class PostgresGrammar extends Grammar
     }
 
     /**
+<<<<<<< HEAD
      * Compile a comment command.
      *
      * @param  \Illuminate\Database\Schema\Blueprint  $blueprint
@@ -408,6 +440,8 @@ class PostgresGrammar extends Grammar
     }
 
     /**
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * Create the column definition for a char type.
      *
      * @param  \Illuminate\Support\Fluent  $column
@@ -470,7 +504,11 @@ class PostgresGrammar extends Grammar
      */
     protected function typeInteger(Fluent $column)
     {
+<<<<<<< HEAD
         return $this->generatableColumn('integer', $column);
+=======
+        return $column->autoIncrement ? 'serial' : 'integer';
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     }
 
     /**
@@ -481,7 +519,11 @@ class PostgresGrammar extends Grammar
      */
     protected function typeBigInteger(Fluent $column)
     {
+<<<<<<< HEAD
         return $this->generatableColumn('bigint', $column);
+=======
+        return $column->autoIncrement ? 'bigserial' : 'bigint';
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     }
 
     /**
@@ -492,7 +534,11 @@ class PostgresGrammar extends Grammar
      */
     protected function typeMediumInteger(Fluent $column)
     {
+<<<<<<< HEAD
         return $this->generatableColumn('integer', $column);
+=======
+        return $column->autoIncrement ? 'serial' : 'integer';
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     }
 
     /**
@@ -503,7 +549,11 @@ class PostgresGrammar extends Grammar
      */
     protected function typeTinyInteger(Fluent $column)
     {
+<<<<<<< HEAD
         return $this->generatableColumn('smallint', $column);
+=======
+        return $column->autoIncrement ? 'smallserial' : 'smallint';
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     }
 
     /**
@@ -514,6 +564,7 @@ class PostgresGrammar extends Grammar
      */
     protected function typeSmallInteger(Fluent $column)
     {
+<<<<<<< HEAD
         return $this->generatableColumn('smallint', $column);
     }
 
@@ -550,6 +601,9 @@ class PostgresGrammar extends Grammar
             $column->always ? 'always' : 'by default',
             $options
         );
+=======
+        return $column->autoIncrement ? 'smallserial' : 'smallint';
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     }
 
     /**
@@ -608,18 +662,30 @@ class PostgresGrammar extends Grammar
     }
 
     /**
+<<<<<<< HEAD
      * Create the column definition for an enumeration type.
+=======
+     * Create the column definition for an enum type.
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      *
      * @param  \Illuminate\Support\Fluent  $column
      * @return string
      */
     protected function typeEnum(Fluent $column)
     {
+<<<<<<< HEAD
         return sprintf(
             'varchar(255) check ("%s" in (%s))',
             $column->name,
             $this->quoteString($column->allowed)
         );
+=======
+        $allowed = array_map(function ($a) {
+            return "'{$a}'";
+        }, $column->allowed);
+
+        return "varchar(255) check (\"{$column->name}\" in (".implode(', ', $allowed).'))';
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     }
 
     /**
@@ -663,7 +729,11 @@ class PostgresGrammar extends Grammar
      */
     protected function typeDateTime(Fluent $column)
     {
+<<<<<<< HEAD
         return $this->typeTimestamp($column);
+=======
+        return "timestamp($column->precision) without time zone";
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     }
 
     /**
@@ -674,7 +744,11 @@ class PostgresGrammar extends Grammar
      */
     protected function typeDateTimeTz(Fluent $column)
     {
+<<<<<<< HEAD
         return $this->typeTimestampTz($column);
+=======
+        return "timestamp($column->precision) with time zone";
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     }
 
     /**
@@ -784,11 +858,19 @@ class PostgresGrammar extends Grammar
      * Create the column definition for a spatial Geometry type.
      *
      * @param  \Illuminate\Support\Fluent  $column
+<<<<<<< HEAD
      * @return string
      */
     protected function typeGeometry(Fluent $column)
     {
         return $this->formatPostGisType('geometry');
+=======
+     * @throws \RuntimeException
+     */
+    protected function typeGeometry(Fluent $column)
+    {
+        throw new RuntimeException('The database driver in use does not support the Geometry spatial column type.');
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     }
 
     /**
@@ -880,6 +962,7 @@ class PostgresGrammar extends Grammar
     }
 
     /**
+<<<<<<< HEAD
      * Get the SQL for a collation column modifier.
      *
      * @param  \Illuminate\Database\Schema\Blueprint  $blueprint
@@ -894,6 +977,8 @@ class PostgresGrammar extends Grammar
     }
 
     /**
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * Get the SQL for a nullable column modifier.
      *
      * @param  \Illuminate\Database\Schema\Blueprint  $blueprint
@@ -928,7 +1013,11 @@ class PostgresGrammar extends Grammar
      */
     protected function modifyIncrement(Blueprint $blueprint, Fluent $column)
     {
+<<<<<<< HEAD
         if ((in_array($column->type, $this->serials) || ($column->generatedAs !== null)) && $column->autoIncrement) {
+=======
+        if (in_array($column->type, $this->serials) && $column->autoIncrement) {
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
             return ' primary key';
         }
     }

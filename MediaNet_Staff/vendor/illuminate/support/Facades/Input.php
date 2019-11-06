@@ -3,6 +3,7 @@
 namespace Illuminate\Support\Facades;
 
 /**
+<<<<<<< HEAD
  * @method static bool matchesType(string $actual, string $type)
  * @method static bool isJson()
  * @method static bool expectsJson()
@@ -84,6 +85,8 @@ namespace Illuminate\Support\Facades;
  * @method static void offsetSet(string $offset, mixed $value)
  * @method static void offsetUnset(string $offset)
  *
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
  * @see \Illuminate\Http\Request
  */
 class Input extends Facade
@@ -93,7 +96,11 @@ class Input extends Facade
      *
      * This method is used for all request verbs (GET, POST, PUT, and DELETE)
      *
+<<<<<<< HEAD
      * @param  string|null  $key
+=======
+     * @param  string  $key
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * @param  mixed   $default
      * @return mixed
      */

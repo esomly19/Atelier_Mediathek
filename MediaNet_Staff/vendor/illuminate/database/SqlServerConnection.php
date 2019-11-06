@@ -25,7 +25,11 @@ class SqlServerConnection extends Connection
     public function transaction(Closure $callback, $attempts = 1)
     {
         for ($a = 1; $a <= $attempts; $a++) {
+<<<<<<< HEAD
             if ($this->getDriverName() === 'sqlsrv') {
+=======
+            if ($this->getDriverName() == 'sqlsrv') {
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
                 return parent::transaction($callback);
             }
 

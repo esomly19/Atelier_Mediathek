@@ -45,7 +45,11 @@ $users = Capsule::table('users')->where('votes', '>', 100)->get();
 ```
 Other core methods may be accessed directly from the Capsule in the same manner as from the DB facade:
 ```PHP
+<<<<<<< HEAD
 $results = Capsule::select('select * from users where id = ?', [1]);
+=======
+$results = Capsule::select('select * from users where id = ?', array(1));
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
 ```
 
 **Using The Schema Builder**

@@ -1,6 +1,10 @@
 <?php
 
+<<<<<<< HEAD
 /**
+=======
+/*
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
  * This file is part of the Carbon package.
  *
  * (c) Brian Nesbitt <brian@nesbot.com>
@@ -9,6 +13,7 @@
  * file that was distributed with this source code.
  */
 
+<<<<<<< HEAD
 /*
  * Authors:
  * - mestremuten
@@ -45,17 +50,41 @@ return [
     's' => ':count s',
     'ago' => 'fa :time',
     'from_now' => 'd\'aquí a :time',
+=======
+return array(
+    'year' => ':count any|:count anys',
+    'y' => ':count any|:count anys',
+    'month' => ':count mes|:count mesos',
+    'm' => ':count mes|:count mesos',
+    'week' => ':count setmana|:count setmanes',
+    'w' => ':count setmana|:count setmanes',
+    'day' => ':count dia|:count dies',
+    'd' => ':count dia|:count dies',
+    'hour' => ':count hora|:count hores',
+    'h' => ':count hora|:count hores',
+    'minute' => ':count minut|:count minuts',
+    'min' => ':count minut|:count minuts',
+    'second' => ':count segon|:count segons',
+    's' => ':count segon|:count segons',
+    'ago' => 'fa :time',
+    'from_now' => 'd\'aquí :time',
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     'after' => ':time després',
     'before' => ':time abans',
     'diff_now' => 'ara mateix',
     'diff_yesterday' => 'ahir',
     'diff_tomorrow' => 'demà',
+<<<<<<< HEAD
     'diff_before_yesterday' => 'abans d\'ahir',
+=======
+    'diff_before_yesterday' => "abans d'ahir",
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     'diff_after_tomorrow' => 'demà passat',
     'period_recurrences' => ':count cop|:count cops',
     'period_interval' => 'cada :interval',
     'period_start_date' => 'de :date',
     'period_end_date' => 'fins a :date',
+<<<<<<< HEAD
     'formats' => [
         'LT' => 'H:mm',
         'LTS' => 'H:mm:ss',
@@ -108,3 +137,6 @@ return [
     'meridiem' => ['a. m.', 'p. m.'],
     'months_short_standalone' => ['gen.', 'febr.', 'març', 'abr.', 'maig', 'juny', 'jul.', 'ag.', 'set.', 'oct.', 'nov.', 'des.'],
 ];
+=======
+);
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10

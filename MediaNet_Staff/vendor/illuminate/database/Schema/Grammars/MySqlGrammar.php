@@ -2,7 +2,10 @@
 
 namespace Illuminate\Database\Schema\Grammars;
 
+<<<<<<< HEAD
 use RuntimeException;
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
 use Illuminate\Support\Fluent;
 use Illuminate\Database\Connection;
 use Illuminate\Database\Schema\Blueprint;
@@ -15,8 +18,13 @@ class MySqlGrammar extends Grammar
      * @var array
      */
     protected $modifiers = [
+<<<<<<< HEAD
         'Unsigned', 'Charset', 'Collate', 'VirtualAs', 'StoredAs', 'Nullable',
         'Default', 'Increment', 'Comment', 'After', 'First', 'Srid',
+=======
+        'Unsigned', 'VirtualAs', 'StoredAs', 'Charset', 'Collate', 'Nullable',
+        'Default', 'Increment', 'Comment', 'After', 'First',
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     ];
 
     /**
@@ -33,7 +41,11 @@ class MySqlGrammar extends Grammar
      */
     public function compileTableExists()
     {
+<<<<<<< HEAD
         return "select * from information_schema.tables where table_schema = ? and table_name = ? and table_type = 'BASE TABLE'";
+=======
+        return 'select * from information_schema.tables where table_schema = ? and table_name = ?';
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     }
 
     /**
@@ -115,9 +127,15 @@ class MySqlGrammar extends Grammar
         // added to either this create table blueprint or the configuration for this
         // connection that the query is targeting. We'll add it to this SQL query.
         if (isset($blueprint->collation)) {
+<<<<<<< HEAD
             $sql .= " collate '{$blueprint->collation}'";
         } elseif (! is_null($collation = $connection->getConfig('collation'))) {
             $sql .= " collate '{$collation}'";
+=======
+            $sql .= ' collate '.$blueprint->collation;
+        } elseif (! is_null($collation = $connection->getConfig('collation'))) {
+            $sql .= ' collate '.$collation;
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
         }
 
         return $sql;
@@ -344,6 +362,7 @@ class MySqlGrammar extends Grammar
     }
 
     /**
+<<<<<<< HEAD
      * Compile a rename index command.
      *
      * @param  \Illuminate\Database\Schema\Blueprint $blueprint
@@ -360,6 +379,8 @@ class MySqlGrammar extends Grammar
     }
 
     /**
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * Compile the SQL needed to drop all tables.
      *
      * @param  array  $tables
@@ -371,6 +392,7 @@ class MySqlGrammar extends Grammar
     }
 
     /**
+<<<<<<< HEAD
      * Compile the SQL needed to drop all views.
      *
      * @param  array  $views
@@ -382,6 +404,8 @@ class MySqlGrammar extends Grammar
     }
 
     /**
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * Compile the SQL needed to retrieve all table names.
      *
      * @return string
@@ -392,6 +416,7 @@ class MySqlGrammar extends Grammar
     }
 
     /**
+<<<<<<< HEAD
      * Compile the SQL needed to retrieve all view names.
      *
      * @return string
@@ -402,6 +427,8 @@ class MySqlGrammar extends Grammar
     }
 
     /**
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * Compile the command to enable foreign key constraints.
      *
      * @return string
@@ -580,13 +607,18 @@ class MySqlGrammar extends Grammar
     }
 
     /**
+<<<<<<< HEAD
      * Create the column definition for an enumeration type.
+=======
+     * Create the column definition for an enum type.
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      *
      * @param  \Illuminate\Support\Fluent  $column
      * @return string
      */
     protected function typeEnum(Fluent $column)
     {
+<<<<<<< HEAD
         return sprintf('enum(%s)', $this->quoteString($column->allowed));
     }
 
@@ -599,6 +631,9 @@ class MySqlGrammar extends Grammar
     protected function typeSet(Fluent $column)
     {
         return sprintf('set(%s)', $this->quoteString($column->allowed));
+=======
+        return "enum('".implode("', '", $column->allowed)."')";
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     }
 
     /**
@@ -642,9 +677,13 @@ class MySqlGrammar extends Grammar
      */
     protected function typeDateTime(Fluent $column)
     {
+<<<<<<< HEAD
         $columnType = $column->precision ? "datetime($column->precision)" : 'datetime';
 
         return $column->useCurrent ? "$columnType default CURRENT_TIMESTAMP" : $columnType;
+=======
+        return $column->precision ? "datetime($column->precision)" : 'datetime';
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     }
 
     /**
@@ -848,6 +887,7 @@ class MySqlGrammar extends Grammar
     }
 
     /**
+<<<<<<< HEAD
      * Create the column definition for a generated, computed column type.
      *
      * @param  \Illuminate\Support\Fluent  $column
@@ -861,6 +901,8 @@ class MySqlGrammar extends Grammar
     }
 
     /**
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * Get the SQL for a generated virtual column modifier.
      *
      * @param  \Illuminate\Database\Schema\Blueprint  $blueprint
@@ -926,7 +968,11 @@ class MySqlGrammar extends Grammar
     protected function modifyCollate(Blueprint $blueprint, Fluent $column)
     {
         if (! is_null($column->collation)) {
+<<<<<<< HEAD
             return " collate '{$column->collation}'";
+=======
+            return ' collate '.$column->collation;
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
         }
     }
 
@@ -1015,6 +1061,7 @@ class MySqlGrammar extends Grammar
     }
 
     /**
+<<<<<<< HEAD
      * Get the SQL for a SRID column modifier.
      *
      * @param  \Illuminate\Database\Schema\Blueprint  $blueprint
@@ -1029,6 +1076,8 @@ class MySqlGrammar extends Grammar
     }
 
     /**
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * Wrap a single string in keyword identifiers.
      *
      * @param  string  $value

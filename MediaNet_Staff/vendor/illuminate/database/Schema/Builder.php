@@ -4,8 +4,11 @@ namespace Illuminate\Database\Schema;
 
 use Closure;
 use LogicException;
+<<<<<<< HEAD
 use RuntimeException;
 use Doctrine\DBAL\Types\Type;
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
 use Illuminate\Database\Connection;
 
 class Builder
@@ -71,7 +74,11 @@ class Builder
     {
         $table = $this->connection->getTablePrefix().$table;
 
+<<<<<<< HEAD
         return count($this->connection->selectFromWriteConnection(
+=======
+        return count($this->connection->select(
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
             $this->grammar->compileTableExists(), [$table]
         )) > 0;
     }
@@ -132,7 +139,11 @@ class Builder
      */
     public function getColumnListing($table)
     {
+<<<<<<< HEAD
         $results = $this->connection->selectFromWriteConnection($this->grammar->compileColumnListing(
+=======
+        $results = $this->connection->select($this->grammar->compileColumnListing(
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
             $this->connection->getTablePrefix().$table
         ));
 
@@ -206,6 +217,7 @@ class Builder
     }
 
     /**
+<<<<<<< HEAD
      * Drop all views from the database.
      *
      * @return void
@@ -230,6 +242,8 @@ class Builder
     }
 
     /**
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * Rename a table on the schema.
      *
      * @param  string  $from
@@ -287,6 +301,7 @@ class Builder
      */
     protected function createBlueprint($table, Closure $callback = null)
     {
+<<<<<<< HEAD
         $prefix = $this->connection->getConfig('prefix_indexes')
                     ? $this->connection->getConfig('prefix')
                     : '';
@@ -324,6 +339,13 @@ class Builder
                 ->getDatabasePlatform()
                 ->registerDoctrineTypeMapping($type, $name);
         }
+=======
+        if (isset($this->resolver)) {
+            return call_user_func($this->resolver, $table, $callback);
+        }
+
+        return new Blueprint($table, $callback);
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     }
 
     /**

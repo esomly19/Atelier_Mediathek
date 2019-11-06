@@ -2,9 +2,13 @@
 
 namespace Illuminate\Database\Query\Grammars;
 
+<<<<<<< HEAD
 use RuntimeException;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
+=======
+use Illuminate\Support\Arr;
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
 use Illuminate\Database\Query\Builder;
 use Illuminate\Database\Query\JoinClause;
 use Illuminate\Database\Grammar as BaseGrammar;
@@ -46,10 +50,13 @@ class Grammar extends BaseGrammar
      */
     public function compileSelect(Builder $query)
     {
+<<<<<<< HEAD
         if ($query->unions && $query->aggregate) {
             return $this->compileUnionAggregate($query);
         }
 
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
         // If the query does not have any columns set, we'll set the columns to the
         // * character to just get all of the columns from the database. Then we
         // can build the query and concatenate all the pieces together as one.
@@ -85,7 +92,11 @@ class Grammar extends BaseGrammar
             // To compile the query, we'll spin through each component of the query and
             // see if that component exists. If it does we'll just call the compiler
             // function for the component which is responsible for making the SQL.
+<<<<<<< HEAD
             if (isset($query->$component) && ! is_null($query->$component)) {
+=======
+            if (! is_null($query->$component)) {
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
                 $method = 'compile'.ucfirst($component);
 
                 $sql[$component] = $this->$method($query, $query->$component);
@@ -158,6 +169,7 @@ class Grammar extends BaseGrammar
      */
     protected function compileJoins(Builder $query, $joins)
     {
+<<<<<<< HEAD
         return collect($joins)->map(function ($join) use ($query) {
             $table = $this->wrapTable($join->table);
 
@@ -166,6 +178,12 @@ class Grammar extends BaseGrammar
             $tableAndNestedJoins = is_null($join->joins) ? $table : '('.$table.$nestedJoins.')';
 
             return trim("{$join->type} join {$tableAndNestedJoins} {$this->compileWheres($join)}");
+=======
+        return collect($joins)->map(function ($join) {
+            $table = $this->wrapTable($join->table);
+
+            return trim("{$join->type} join {$table} {$this->compileWheres($join)}");
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
         })->implode(' ');
     }
 
@@ -280,6 +298,7 @@ class Grammar extends BaseGrammar
     }
 
     /**
+<<<<<<< HEAD
      * Compile a "where not in raw" clause.
      *
      * For safety, whereIntegerInRaw ensures this method is only used with integer values.
@@ -298,6 +317,8 @@ class Grammar extends BaseGrammar
     }
 
     /**
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * Compile a where in sub-select clause.
      *
      * @param  \Illuminate\Database\Query\Builder  $query
@@ -322,6 +343,7 @@ class Grammar extends BaseGrammar
     }
 
     /**
+<<<<<<< HEAD
      * Compile a "where in raw" clause.
      *
      * For safety, whereIntegerInRaw ensures this method is only used with integer values.
@@ -340,6 +362,8 @@ class Grammar extends BaseGrammar
     }
 
     /**
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * Compile a "where null" clause.
      *
      * @param  \Illuminate\Database\Query\Builder  $query
@@ -374,11 +398,15 @@ class Grammar extends BaseGrammar
     {
         $between = $where['not'] ? 'not between' : 'between';
 
+<<<<<<< HEAD
         $min = $this->parameter(reset($where['values']));
 
         $max = $this->parameter(end($where['values']));
 
         return $this->wrap($where['column']).' '.$between.' '.$min.' and '.$max;
+=======
+        return $this->wrap($where['column']).' '.$between.' ? and ?';
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     }
 
     /**
@@ -524,6 +552,7 @@ class Grammar extends BaseGrammar
     }
 
     /**
+<<<<<<< HEAD
      * Compile a where row values condition.
      *
      * @param  \Illuminate\Database\Query\Builder  $query
@@ -628,6 +657,8 @@ class Grammar extends BaseGrammar
     }
 
     /**
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * Compile the "group by" portions of the query.
      *
      * @param  \Illuminate\Database\Query\Builder  $query
@@ -666,8 +697,11 @@ class Grammar extends BaseGrammar
         // clause into SQL based on the components that make it up from builder.
         if ($having['type'] === 'Raw') {
             return $having['boolean'].' '.$having['sql'];
+<<<<<<< HEAD
         } elseif ($having['type'] === 'between') {
             return $this->compileHavingBetween($having);
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
         }
 
         return $this->compileBasicHaving($having);
@@ -689,6 +723,7 @@ class Grammar extends BaseGrammar
     }
 
     /**
+<<<<<<< HEAD
      * Compile a "between" having clause.
      *
      * @param  array  $having
@@ -708,6 +743,8 @@ class Grammar extends BaseGrammar
     }
 
     /**
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * Compile the "order by" portions of the query.
      *
      * @param  \Illuminate\Database\Query\Builder  $query
@@ -733,7 +770,13 @@ class Grammar extends BaseGrammar
     protected function compileOrdersToArray(Builder $query, $orders)
     {
         return array_map(function ($order) {
+<<<<<<< HEAD
             return $order['sql'] ?? $this->wrap($order['column']).' '.$order['direction'];
+=======
+            return ! isset($order['sql'])
+                        ? $this->wrap($order['column']).' '.$order['direction']
+                        : $order['sql'];
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
         }, $orders);
     }
 
@@ -809,6 +852,7 @@ class Grammar extends BaseGrammar
      */
     protected function compileUnion(array $union)
     {
+<<<<<<< HEAD
         $conjunction = $union['all'] ? ' union all ' : ' union ';
 
         return $conjunction.$union['query']->toSql();
@@ -827,6 +871,11 @@ class Grammar extends BaseGrammar
         $query->aggregate = null;
 
         return $sql.' from ('.$this->compileSelect($query).') as '.$this->wrapTable('temp_table');
+=======
+        $conjuction = $union['all'] ? ' union all ' : ' union ';
+
+        return $conjuction.$union['query']->toSql();
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     }
 
     /**
@@ -873,6 +922,7 @@ class Grammar extends BaseGrammar
     }
 
     /**
+<<<<<<< HEAD
      * Compile an insert ignore statement into SQL.
      *
      * @param  \Illuminate\Database\Query\Builder  $query
@@ -885,6 +935,8 @@ class Grammar extends BaseGrammar
     }
 
     /**
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * Compile an insert and get ID statement into SQL.
      *
      * @param  \Illuminate\Database\Query\Builder  $query
@@ -898,6 +950,7 @@ class Grammar extends BaseGrammar
     }
 
     /**
+<<<<<<< HEAD
      * Compile an insert statement using a subquery into SQL.
      *
      * @param  \Illuminate\Database\Query\Builder  $query
@@ -911,6 +964,8 @@ class Grammar extends BaseGrammar
     }
 
     /**
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * Compile an update statement into SQL.
      *
      * @param  \Illuminate\Database\Query\Builder  $query
@@ -954,7 +1009,11 @@ class Grammar extends BaseGrammar
      */
     public function prepareBindingsForUpdate(array $bindings, array $values)
     {
+<<<<<<< HEAD
         $cleanBindings = Arr::except($bindings, ['select', 'join']);
+=======
+        $cleanBindings = Arr::except($bindings, ['join', 'select']);
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
 
         return array_values(
             array_merge($bindings['join'], $values, Arr::flatten($cleanBindings))
@@ -982,9 +1041,13 @@ class Grammar extends BaseGrammar
      */
     public function prepareBindingsForDelete(array $bindings)
     {
+<<<<<<< HEAD
         return Arr::flatten(
             Arr::except($bindings, 'select')
         );
+=======
+        return Arr::flatten($bindings);
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     }
 
     /**
@@ -1043,6 +1106,7 @@ class Grammar extends BaseGrammar
     }
 
     /**
+<<<<<<< HEAD
      * Wrap a value in keyword identifiers.
      *
      * @param  \Illuminate\Database\Query\Expression|string  $value
@@ -1148,6 +1212,8 @@ class Grammar extends BaseGrammar
     }
 
     /**
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * Concatenate an array of segments, removing empties.
      *
      * @param  array   $segments

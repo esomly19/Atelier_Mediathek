@@ -1,6 +1,10 @@
 <?php
 
+<<<<<<< HEAD
 /**
+=======
+/*
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
  * This file is part of the Carbon package.
  *
  * (c) Brian Nesbitt <brian@nesbot.com>
@@ -8,10 +12,15 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+<<<<<<< HEAD
+=======
+
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
 \Symfony\Component\Translation\PluralizationRules::set(function ($number) {
     return ((1 == $number % 10) && (11 != $number % 100)) ? 0 : ((($number % 10 >= 2) && ($number % 10 <= 4) && (($number % 100 < 10) || ($number % 100 >= 20))) ? 1 : 2);
 }, 'sh');
 
+<<<<<<< HEAD
 /*
  * Authors:
  * - Томица Кораћ
@@ -30,6 +39,9 @@ return [
         'LLL' => 'DD MMM HH:mm',
         'LLLL' => 'MMMM DD, YYYY HH:mm',
     ],
+=======
+return array(
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     'year' => ':count godina|:count godine|:count godina',
     'y' => ':count godina|:count godine|:count godina',
     'month' => ':count mesec|:count meseca|:count meseci',
@@ -42,12 +54,18 @@ return [
     'h' => ':count čas|:count časa|:count časova',
     'minute' => ':count minut|:count minuta|:count minuta',
     'min' => ':count minut|:count minuta|:count minuta',
+<<<<<<< HEAD
     'second' => ':count sekund|:count sekunde|:count sekundi',
     's' => ':count sekund|:count sekunde|:count sekundi',
+=======
+    'second' => ':count sekund|:count sekunda|:count sekundi',
+    's' => ':count sekund|:count sekunda|:count sekundi',
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     'ago' => 'pre :time',
     'from_now' => 'za :time',
     'after' => 'nakon :time',
     'before' => ':time raniјe',
+<<<<<<< HEAD
     'weekdays' => ['Nedelja', 'Ponedeljak', 'Utorak', 'Sreda', 'Četvrtak', 'Petak', 'Subota'],
     'weekdays_short' => ['Ned', 'Pon', 'Uto', 'Sre', 'Čet', 'Pet', 'Sub'],
     'weekdays_min' => ['Ned', 'Pon', 'Uto', 'Sre', 'Čet', 'Pet', 'Sub'],
@@ -56,3 +74,6 @@ return [
     'list' => [', ', ' i '],
     'meridiem' => ['pre podne', 'po podne'],
 ];
+=======
+);
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10

@@ -2,7 +2,10 @@
 
 namespace Illuminate\Support\Testing\Fakes;
 
+<<<<<<< HEAD
 use Closure;
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
 use Illuminate\Support\Arr;
 use PHPUnit\Framework\Assert as PHPUnit;
 use Illuminate\Contracts\Events\Dispatcher;
@@ -135,7 +138,11 @@ class EventFake implements Dispatcher
      */
     public function listen($events, $listener)
     {
+<<<<<<< HEAD
         $this->dispatcher->listen($events, $listener);
+=======
+        //
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     }
 
     /**
@@ -146,7 +153,11 @@ class EventFake implements Dispatcher
      */
     public function hasListeners($eventName)
     {
+<<<<<<< HEAD
         return $this->dispatcher->hasListeners($eventName);
+=======
+        //
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     }
 
     /**
@@ -169,7 +180,11 @@ class EventFake implements Dispatcher
      */
     public function subscribe($subscriber)
     {
+<<<<<<< HEAD
         $this->dispatcher->subscribe($subscriber);
+=======
+        //
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     }
 
     /**
@@ -191,14 +206,37 @@ class EventFake implements Dispatcher
      * @param  bool  $halt
      * @return array|null
      */
+<<<<<<< HEAD
+=======
+    public function fire($event, $payload = [], $halt = false)
+    {
+        return $this->dispatch($event, $payload, $halt);
+    }
+
+    /**
+     * Fire an event and call the listeners.
+     *
+     * @param  string|object  $event
+     * @param  mixed  $payload
+     * @param  bool  $halt
+     * @return array|null
+     */
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     public function dispatch($event, $payload = [], $halt = false)
     {
         $name = is_object($event) ? get_class($event) : (string) $event;
 
+<<<<<<< HEAD
         if ($this->shouldFakeEvent($name, $payload)) {
             $this->events[$name][] = func_get_args();
         } else {
             return $this->dispatcher->dispatch($event, $payload, $halt);
+=======
+        if ($this->shouldFakeEvent($name)) {
+            $this->events[$name][] = func_get_args();
+        } else {
+            $this->dispatcher->dispatch($event, $payload, $halt);
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
         }
     }
 
@@ -206,6 +244,7 @@ class EventFake implements Dispatcher
      * Determine if an event should be faked or actually dispatched.
      *
      * @param  string  $eventName
+<<<<<<< HEAD
      * @param  mixed  $payload
      * @return bool
      */
@@ -222,6 +261,13 @@ class EventFake implements Dispatcher
                             : $event === $eventName;
             })
             ->isNotEmpty();
+=======
+     * @return bool
+     */
+    protected function shouldFakeEvent($eventName)
+    {
+        return empty($this->eventsToFake) || in_array($eventName, $this->eventsToFake);
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     }
 
     /**

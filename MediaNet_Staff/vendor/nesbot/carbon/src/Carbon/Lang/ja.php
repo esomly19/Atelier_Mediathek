@@ -1,6 +1,10 @@
 <?php
 
+<<<<<<< HEAD
 /**
+=======
+/*
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
  * This file is part of the Carbon package.
  *
  * (c) Brian Nesbitt <brian@nesbot.com>
@@ -9,6 +13,7 @@
  * file that was distributed with this source code.
  */
 
+<<<<<<< HEAD
 /**
  * Authors:
  * - Takuya Sawada
@@ -22,6 +27,9 @@
  * - atakigawa
  */
 return [
+=======
+return array(
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     'year' => ':count年',
     'y' => ':count年',
     'month' => ':countヶ月',
@@ -35,6 +43,7 @@ return [
     'minute' => ':count分',
     'min' => ':count分',
     'second' => ':count秒',
+<<<<<<< HEAD
     'a_second' => '{1}数秒|]1,Inf[:count秒',
     's' => ':count秒',
     'ago' => ':time前',
@@ -95,3 +104,11 @@ return [
         100 => '百',
     ],
 ];
+=======
+    's' => ':count秒',
+    'ago' => ':time前',
+    'from_now' => '今から:time',
+    'after' => ':time後',
+    'before' => ':time前',
+);
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10

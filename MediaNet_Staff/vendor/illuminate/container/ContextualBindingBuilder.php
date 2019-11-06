@@ -2,8 +2,11 @@
 
 namespace Illuminate\Container;
 
+<<<<<<< HEAD
 use Illuminate\Support\Arr;
 use Illuminate\Contracts\Container\Container;
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
 use Illuminate\Contracts\Container\ContextualBindingBuilder as ContextualBindingBuilderContract;
 
 class ContextualBindingBuilder implements ContextualBindingBuilderContract
@@ -11,14 +14,22 @@ class ContextualBindingBuilder implements ContextualBindingBuilderContract
     /**
      * The underlying container instance.
      *
+<<<<<<< HEAD
      * @var \Illuminate\Contracts\Container\Container
+=======
+     * @var \Illuminate\Container\Container
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      */
     protected $container;
 
     /**
      * The concrete instance.
      *
+<<<<<<< HEAD
      * @var string|array
+=======
+     * @var string
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      */
     protected $concrete;
 
@@ -32,8 +43,13 @@ class ContextualBindingBuilder implements ContextualBindingBuilderContract
     /**
      * Create a new contextual binding builder.
      *
+<<<<<<< HEAD
      * @param  \Illuminate\Contracts\Container\Container  $container
      * @param  string|array  $concrete
+=======
+     * @param  \Illuminate\Container\Container  $container
+     * @param  string  $concrete
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * @return void
      */
     public function __construct(Container $container, $concrete)
@@ -63,8 +79,14 @@ class ContextualBindingBuilder implements ContextualBindingBuilderContract
      */
     public function give($implementation)
     {
+<<<<<<< HEAD
         foreach (Arr::wrap($this->concrete) as $concrete) {
             $this->container->addContextualBinding($concrete, $this->needs, $implementation);
         }
+=======
+        $this->container->addContextualBinding(
+            $this->concrete, $this->needs, $implementation
+        );
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     }
 }

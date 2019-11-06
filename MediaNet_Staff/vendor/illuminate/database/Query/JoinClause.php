@@ -21,6 +21,7 @@ class JoinClause extends Builder
     public $table;
 
     /**
+<<<<<<< HEAD
      * The connection of the parent query builder.
      *
      * @var \Illuminate\Database\ConnectionInterface
@@ -47,6 +48,13 @@ class JoinClause extends Builder
      * @var string
      */
     protected $parentClass;
+=======
+     * The parent query builder instance.
+     *
+     * @var \Illuminate\Database\Query\Builder
+     */
+    private $parentQuery;
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
 
     /**
      * Create a new join clause instance.
@@ -60,6 +68,7 @@ class JoinClause extends Builder
     {
         $this->type = $type;
         $this->table = $table;
+<<<<<<< HEAD
         $this->parentClass = get_class($parentQuery);
         $this->parentGrammar = $parentQuery->getGrammar();
         $this->parentProcessor = $parentQuery->getProcessor();
@@ -67,6 +76,12 @@ class JoinClause extends Builder
 
         parent::__construct(
             $this->parentConnection, $this->parentGrammar, $this->parentProcessor
+=======
+        $this->parentQuery = $parentQuery;
+
+        parent::__construct(
+            $parentQuery->getConnection(), $parentQuery->getGrammar(), $parentQuery->getProcessor()
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
         );
     }
 
@@ -80,7 +95,11 @@ class JoinClause extends Builder
      *
      * will produce the following SQL:
      *
+<<<<<<< HEAD
      * on `contacts`.`user_id` = `users`.`id` and `contacts`.`info_id` = `info`.`id`
+=======
+     * on `contacts`.`user_id` = `users`.`id`  and `contacts`.`info_id` = `info`.`id`
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      *
      * @param  \Closure|string  $first
      * @param  string|null  $operator
@@ -119,7 +138,11 @@ class JoinClause extends Builder
      */
     public function newQuery()
     {
+<<<<<<< HEAD
         return new static($this->newParentQuery(), $this->type, $this->table);
+=======
+        return new static($this->parentQuery, $this->type, $this->table);
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     }
 
     /**
@@ -129,6 +152,7 @@ class JoinClause extends Builder
      */
     protected function forSubQuery()
     {
+<<<<<<< HEAD
         return $this->newParentQuery()->newQuery();
     }
 
@@ -142,5 +166,8 @@ class JoinClause extends Builder
         $class = $this->parentClass;
 
         return new $class($this->parentConnection, $this->parentGrammar, $this->parentProcessor);
+=======
+        return $this->parentQuery->newQuery();
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     }
 }

@@ -35,6 +35,7 @@ class FreshCommand extends Command
             return;
         }
 
+<<<<<<< HEAD
         $database = $this->input->getOption('database');
 
         if ($this->option('drop-views')) {
@@ -60,6 +61,19 @@ class FreshCommand extends Command
             '--force' => true,
             '--step' => $this->option('step'),
         ]));
+=======
+        $this->dropAllTables(
+            $database = $this->input->getOption('database')
+        );
+
+        $this->info('Dropped all tables successfully.');
+
+        $this->call('migrate', [
+            '--database' => $database,
+            '--path' => $this->input->getOption('path'),
+            '--force' => true,
+        ]);
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
 
         if ($this->needsSeeding()) {
             $this->runSeeder($database);
@@ -80,6 +94,7 @@ class FreshCommand extends Command
     }
 
     /**
+<<<<<<< HEAD
      * Drop all of the database views.
      *
      * @param  string  $database
@@ -106,6 +121,8 @@ class FreshCommand extends Command
     }
 
     /**
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * Determine if the developer has requested database seeding.
      *
      * @return bool
@@ -123,11 +140,19 @@ class FreshCommand extends Command
      */
     protected function runSeeder($database)
     {
+<<<<<<< HEAD
         $this->call('db:seed', array_filter([
             '--database' => $database,
             '--class' => $this->option('seeder') ?: 'DatabaseSeeder',
             '--force' => true,
         ]));
+=======
+        $this->call('db:seed', [
+            '--database' => $database,
+            '--class' => $this->option('seeder') ?: 'DatabaseSeeder',
+            '--force' => $this->option('force'),
+        ]);
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     }
 
     /**
@@ -138,6 +163,7 @@ class FreshCommand extends Command
     protected function getOptions()
     {
         return [
+<<<<<<< HEAD
             ['database', null, InputOption::VALUE_OPTIONAL, 'The database connection to use'],
             ['drop-views', null, InputOption::VALUE_NONE, 'Drop all tables and views'],
             ['drop-types', null, InputOption::VALUE_NONE, 'Drop all tables and types (Postgres only)'],
@@ -147,6 +173,17 @@ class FreshCommand extends Command
             ['seed', null, InputOption::VALUE_NONE, 'Indicates if the seed task should be re-run'],
             ['seeder', null, InputOption::VALUE_OPTIONAL, 'The class name of the root seeder'],
             ['step', null, InputOption::VALUE_NONE, 'Force the migrations to be run so they can be rolled back individually'],
+=======
+            ['database', null, InputOption::VALUE_OPTIONAL, 'The database connection to use.'],
+
+            ['force', null, InputOption::VALUE_NONE, 'Force the operation to run when in production.'],
+
+            ['path', null, InputOption::VALUE_OPTIONAL, 'The path of migrations files to be executed.'],
+
+            ['seed', null, InputOption::VALUE_NONE, 'Indicates if the seed task should be re-run.'],
+
+            ['seeder', null, InputOption::VALUE_OPTIONAL, 'The class name of the root seeder.'],
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
         ];
     }
 }

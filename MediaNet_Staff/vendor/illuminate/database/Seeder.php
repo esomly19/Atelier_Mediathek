@@ -35,6 +35,7 @@ abstract class Seeder
         $classes = Arr::wrap($class);
 
         foreach ($classes as $class) {
+<<<<<<< HEAD
             $seeder = $this->resolve($class);
 
             if ($silent === false && isset($this->command)) {
@@ -42,6 +43,13 @@ abstract class Seeder
             }
 
             $seeder->__invoke();
+=======
+            if ($silent === false && isset($this->command)) {
+                $this->command->getOutput()->writeln("<info>Seeding:</info> $class");
+            }
+
+            $this->resolve($class)->__invoke();
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
         }
 
         return $this;
@@ -110,7 +118,11 @@ abstract class Seeder
     /**
      * Run the database seeds.
      *
+<<<<<<< HEAD
      * @return mixed
+=======
+     * @return void
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      *
      * @throws \InvalidArgumentException
      */

@@ -3,6 +3,7 @@
 namespace Illuminate\Support\Facades;
 
 /**
+<<<<<<< HEAD
  * @method static bool exists(string $view)
  * @method static \Illuminate\Contracts\View\View file(string $path, array $data = [], array $mergeData = [])
  * @method static \Illuminate\Contracts\View\View make(string $view, array $data = [], array $mergeData = [])
@@ -12,6 +13,8 @@ namespace Illuminate\Support\Facades;
  * @method static \Illuminate\Contracts\View\Factory addNamespace(string $namespace, string|array $hints)
  * @method static \Illuminate\Contracts\View\Factory replaceNamespace(string $namespace, string|array $hints)
  *
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
  * @see \Illuminate\View\Factory
  */
 class View extends Facade

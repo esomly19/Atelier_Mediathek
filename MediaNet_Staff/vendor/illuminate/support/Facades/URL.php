@@ -3,6 +3,7 @@
 namespace Illuminate\Support\Facades;
 
 /**
+<<<<<<< HEAD
  * @method static string current()
  * @method static string full()
  * @method static string previous($fallback = false)
@@ -17,6 +18,8 @@ namespace Illuminate\Support\Facades;
  * @method static string hasValidSignature(\Illuminate\Http\Request $request, bool $absolute = true)
  * @method static void defaults(array $defaults)
  *
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
  * @see \Illuminate\Routing\UrlGenerator
  */
 class URL extends Facade

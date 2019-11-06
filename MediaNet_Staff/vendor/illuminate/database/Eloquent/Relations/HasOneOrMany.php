@@ -81,9 +81,13 @@ abstract class HasOneOrMany extends Relation
      */
     public function addEagerConstraints(array $models)
     {
+<<<<<<< HEAD
         $whereIn = $this->whereInMethod($this->parent, $this->localKey);
 
         $this->query->{$whereIn}(
+=======
+        $this->query->whereIn(
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
             $this->foreignKey, $this->getKeys($models, $this->localKey)
         );
     }
@@ -153,7 +157,11 @@ abstract class HasOneOrMany extends Relation
     {
         $value = $dictionary[$key];
 
+<<<<<<< HEAD
         return $type === 'one' ? reset($value) : $this->related->newCollection($value);
+=======
+        return $type == 'one' ? reset($value) : $this->related->newCollection($value);
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     }
 
     /**
@@ -255,8 +263,13 @@ abstract class HasOneOrMany extends Relation
     /**
      * Attach a collection of models to the parent instance.
      *
+<<<<<<< HEAD
      * @param  iterable  $models
      * @return iterable
+=======
+     * @param  \Traversable|array  $models
+     * @return \Traversable|array
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      */
     public function saveMany($models)
     {
@@ -311,6 +324,24 @@ abstract class HasOneOrMany extends Relation
     }
 
     /**
+<<<<<<< HEAD
+=======
+     * Perform an update on all the related models.
+     *
+     * @param  array  $attributes
+     * @return int
+     */
+    public function update(array $attributes)
+    {
+        if ($this->related->usesTimestamps()) {
+            $attributes[$this->relatedUpdatedAt()] = $this->related->freshTimestampString();
+        }
+
+        return $this->query->update($attributes);
+    }
+
+    /**
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * Add the constraints for a relationship query.
      *
      * @param  \Illuminate\Database\Eloquent\Builder  $query
@@ -407,6 +438,7 @@ abstract class HasOneOrMany extends Relation
     {
         return $this->foreignKey;
     }
+<<<<<<< HEAD
 
     /**
      * Get the local key for the relationship.
@@ -417,4 +449,6 @@ abstract class HasOneOrMany extends Relation
     {
         return $this->localKey;
     }
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
 }

@@ -33,22 +33,34 @@ trait Macroable
      * Mix another object into the class.
      *
      * @param  object  $mixin
+<<<<<<< HEAD
      * @param  bool  $replace
      * @return void
      *
      * @throws \ReflectionException
      */
     public static function mixin($mixin, $replace = true)
+=======
+     * @return void
+     */
+    public static function mixin($mixin)
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     {
         $methods = (new ReflectionClass($mixin))->getMethods(
             ReflectionMethod::IS_PUBLIC | ReflectionMethod::IS_PROTECTED
         );
 
         foreach ($methods as $method) {
+<<<<<<< HEAD
             if ($replace || ! static::hasMacro($method->name)) {
                 $method->setAccessible(true);
                 static::macro($method->name, $method->invoke($mixin));
             }
+=======
+            $method->setAccessible(true);
+
+            static::macro($method->name, $method->invoke($mixin));
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
         }
     }
 
@@ -67,7 +79,11 @@ trait Macroable
      * Dynamically handle calls to the class.
      *
      * @param  string  $method
+<<<<<<< HEAD
      * @param  array  $parameters
+=======
+     * @param  array   $parameters
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * @return mixed
      *
      * @throws \BadMethodCallException
@@ -75,6 +91,7 @@ trait Macroable
     public static function __callStatic($method, $parameters)
     {
         if (! static::hasMacro($method)) {
+<<<<<<< HEAD
             throw new BadMethodCallException(sprintf(
                 'Method %s::%s does not exist.', static::class, $method
             ));
@@ -87,13 +104,27 @@ trait Macroable
         }
 
         return $macro(...$parameters);
+=======
+            throw new BadMethodCallException("Method {$method} does not exist.");
+        }
+
+        if (static::$macros[$method] instanceof Closure) {
+            return call_user_func_array(Closure::bind(static::$macros[$method], null, static::class), $parameters);
+        }
+
+        return call_user_func_array(static::$macros[$method], $parameters);
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     }
 
     /**
      * Dynamically handle calls to the class.
      *
      * @param  string  $method
+<<<<<<< HEAD
      * @param  array  $parameters
+=======
+     * @param  array   $parameters
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * @return mixed
      *
      * @throws \BadMethodCallException
@@ -101,9 +132,13 @@ trait Macroable
     public function __call($method, $parameters)
     {
         if (! static::hasMacro($method)) {
+<<<<<<< HEAD
             throw new BadMethodCallException(sprintf(
                 'Method %s::%s does not exist.', static::class, $method
             ));
+=======
+            throw new BadMethodCallException("Method {$method} does not exist.");
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
         }
 
         $macro = static::$macros[$method];
@@ -112,6 +147,10 @@ trait Macroable
             return call_user_func_array($macro->bindTo($this, static::class), $parameters);
         }
 
+<<<<<<< HEAD
         return $macro(...$parameters);
+=======
+        return call_user_func_array($macro, $parameters);
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     }
 }

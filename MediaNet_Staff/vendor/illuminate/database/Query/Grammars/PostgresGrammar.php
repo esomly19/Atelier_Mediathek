@@ -9,6 +9,7 @@ use Illuminate\Database\Query\Builder;
 class PostgresGrammar extends Grammar
 {
     /**
+<<<<<<< HEAD
      * The components that make up a select clause.
      *
      * @var array
@@ -28,12 +29,15 @@ class PostgresGrammar extends Grammar
     ];
 
     /**
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * All of the available clause operators.
      *
      * @var array
      */
     protected $operators = [
         '=', '<', '>', '<=', '>=', '<>', '!=',
+<<<<<<< HEAD
         'like', 'not like', 'between', 'ilike', 'not ilike',
         '~', '&', '|', '#', '<<', '>>', '<<=', '>>=',
         '&&', '@>', '<@', '?', '?|', '?&', '||', '-', '-', '#-',
@@ -62,6 +66,14 @@ class PostgresGrammar extends Grammar
     }
 
     /**
+=======
+        'like', 'not like', 'between', 'ilike',
+        '~', '&', '|', '#', '<<', '>>', '<<=', '>>=',
+        '&&', '@>', '<@', '?', '?|', '?&', '||', '-', '+', '#-',
+    ];
+
+    /**
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * Compile a "where date" clause.
      *
      * @param  \Illuminate\Database\Query\Builder  $query
@@ -105,6 +117,7 @@ class PostgresGrammar extends Grammar
     }
 
     /**
+<<<<<<< HEAD
      * Compile a select query into SQL.
      *
      * @param  \Illuminate\Database\Query\Builder  $query
@@ -168,6 +181,8 @@ class PostgresGrammar extends Grammar
     }
 
     /**
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * Compile the lock into SQL.
      *
      * @param  \Illuminate\Database\Query\Builder  $query
@@ -196,6 +211,7 @@ class PostgresGrammar extends Grammar
     }
 
     /**
+<<<<<<< HEAD
      * Compile an insert ignore statement into SQL.
      *
      * @param  \Illuminate\Database\Query\Builder  $query
@@ -208,6 +224,8 @@ class PostgresGrammar extends Grammar
     }
 
     /**
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * Compile an insert and get ID statement into SQL.
      *
      * @param  \Illuminate\Database\Query\Builder  $query
@@ -217,7 +235,15 @@ class PostgresGrammar extends Grammar
      */
     public function compileInsertGetId(Builder $query, $values, $sequence)
     {
+<<<<<<< HEAD
         return $this->compileInsert($query, $values).' returning '.$this->wrap($sequence ?: 'id');
+=======
+        if (is_null($sequence)) {
+            $sequence = 'id';
+        }
+
+        return $this->compileInsert($query, $values).' returning '.$this->wrap($sequence);
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     }
 
     /**
@@ -234,7 +260,11 @@ class PostgresGrammar extends Grammar
         // Each one of the columns in the update statements needs to be wrapped in the
         // keyword identifiers, also a place-holder needs to be created for each of
         // the values in the list of bindings so we can make the sets statements.
+<<<<<<< HEAD
         $columns = $this->compileUpdateColumns($query, $values);
+=======
+        $columns = $this->compileUpdateColumns($values);
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
 
         $from = $this->compileUpdateFrom($query);
 
@@ -246,16 +276,24 @@ class PostgresGrammar extends Grammar
     /**
      * Compile the columns for the update statement.
      *
+<<<<<<< HEAD
      * @param  \Illuminate\Database\Query\Builder  $query
      * @param  array   $values
      * @return string
      */
     protected function compileUpdateColumns($query, $values)
+=======
+     * @param  array   $values
+     * @return string
+     */
+    protected function compileUpdateColumns($values)
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     {
         // When gathering the columns for an update statement, we'll wrap each of the
         // columns and convert it to a parameter value. Then we will concatenate a
         // list of the columns that can be added into this update query clauses.
         return collect($values)->map(function ($value, $key) {
+<<<<<<< HEAD
             $column = last(explode('.', $key));
 
             if ($this->isJsonSelector($key)) {
@@ -263,10 +301,14 @@ class PostgresGrammar extends Grammar
             }
 
             return $this->wrap($column).' = '.$this->parameter($value);
+=======
+            return $this->wrap($key).' = '.$this->parameter($value);
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
         })->implode(', ');
     }
 
     /**
+<<<<<<< HEAD
      * Prepares a JSON column being updated using the JSONB_SET function.
      *
      * @param  string  $key
@@ -285,6 +327,8 @@ class PostgresGrammar extends Grammar
     }
 
     /**
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * Compile the "from" clause for an update with a join.
      *
      * @param  \Illuminate\Database\Query\Builder  $query
@@ -367,6 +411,7 @@ class PostgresGrammar extends Grammar
      */
     public function prepareBindingsForUpdate(array $bindings, array $values)
     {
+<<<<<<< HEAD
         $values = collect($values)->map(function ($value, $column) {
             return $this->isJsonSelector($column) && ! $this->isExpression($value)
                 ? json_encode($value)
@@ -377,6 +422,15 @@ class PostgresGrammar extends Grammar
 
         return array_values(
             array_merge($values, $bindings['where'], Arr::flatten($bindingsWithoutWhere))
+=======
+        // Update statements with "joins" in Postgres use an interesting syntax. We need to
+        // take all of the bindings and put them on the end of this array since they are
+        // added to the end of the "where" clause statements as typical where clauses.
+        $bindingsWithoutJoin = Arr::except($bindings, 'join');
+
+        return array_values(
+            array_merge($values, $bindings['join'], Arr::flatten($bindingsWithoutJoin))
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
         );
     }
 
@@ -400,6 +454,10 @@ class PostgresGrammar extends Grammar
      *
      * @param  \Illuminate\Database\Query\Builder  $query
      * @param  string  $table
+<<<<<<< HEAD
+=======
+     * @param  array  $where
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * @return string
      */
     protected function compileDeleteWithJoins($query, $table)
@@ -408,6 +466,7 @@ class PostgresGrammar extends Grammar
             return $this->wrapTable($join->table);
         })->implode(', ');
 
+<<<<<<< HEAD
         $where = $this->compileUpdateWheres($query);
 
         return trim("delete from {$table}{$using} {$where}");
@@ -437,6 +496,44 @@ class PostgresGrammar extends Grammar
     public function compileTruncate(Builder $query)
     {
         return ['truncate '.$this->wrapTable($query->from).' restart identity cascade' => []];
+=======
+        $where = count($query->wheres) > 0 ? ' '.$this->compileUpdateWheres($query) : '';
+
+        return trim("delete from {$table}{$using}{$where}");
+    }
+
+    /**
+     * Compile a truncate table statement into SQL.
+     *
+     * @param  \Illuminate\Database\Query\Builder  $query
+     * @return array
+     */
+    public function compileTruncate(Builder $query)
+    {
+        return ['truncate '.$this->wrapTable($query->from).' restart identity' => []];
+    }
+
+    /**
+     * Wrap a single string in keyword identifiers.
+     *
+     * @param  string  $value
+     * @return string
+     */
+    protected function wrapValue($value)
+    {
+        if ($value === '*') {
+            return $value;
+        }
+
+        // If the given value is a JSON selector we will wrap it differently than a
+        // traditional value. We will need to split this path and wrap each part
+        // wrapped, etc. Otherwise, we will simply wrap the value as a string.
+        if (Str::contains($value, '->')) {
+            return $this->wrapJsonSelector($value);
+        }
+
+        return '"'.str_replace('"', '""', $value).'"';
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     }
 
     /**
@@ -449,7 +546,11 @@ class PostgresGrammar extends Grammar
     {
         $path = explode('->', $value);
 
+<<<<<<< HEAD
         $field = $this->wrapSegments(explode('.', array_shift($path)));
+=======
+        $field = $this->wrapValue(array_shift($path));
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
 
         $wrappedPath = $this->wrapJsonPathAttributes($path);
 
@@ -463,6 +564,7 @@ class PostgresGrammar extends Grammar
     }
 
     /**
+<<<<<<< HEAD
      *Wrap the given JSON selector for boolean values.
      *
      * @param  string  $value
@@ -490,6 +592,8 @@ class PostgresGrammar extends Grammar
     }
 
     /**
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * Wrap the attributes of the give JSON path.
      *
      * @param  array  $path

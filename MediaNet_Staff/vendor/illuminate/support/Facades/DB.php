@@ -3,6 +3,7 @@
 namespace Illuminate\Support\Facades;
 
 /**
+<<<<<<< HEAD
  * @method static \Illuminate\Database\ConnectionInterface connection(string $name = null)
  * @method static string getDefaultConnection()
  * @method static void setDefaultConnection(string $name)
@@ -24,6 +25,8 @@ namespace Illuminate\Support\Facades;
  * @method static int transactionLevel()
  * @method static array pretend(\Closure $callback)
  *
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
  * @see \Illuminate\Database\DatabaseManager
  * @see \Illuminate\Database\Connection
  */

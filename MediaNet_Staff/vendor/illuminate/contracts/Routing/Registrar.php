@@ -8,7 +8,11 @@ interface Registrar
      * Register a new GET route with the router.
      *
      * @param  string  $uri
+<<<<<<< HEAD
      * @param  \Closure|array|string|callable  $action
+=======
+     * @param  \Closure|array|string  $action
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * @return \Illuminate\Routing\Route
      */
     public function get($uri, $action);
@@ -17,7 +21,11 @@ interface Registrar
      * Register a new POST route with the router.
      *
      * @param  string  $uri
+<<<<<<< HEAD
      * @param  \Closure|array|string|callable  $action
+=======
+     * @param  \Closure|array|string  $action
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * @return \Illuminate\Routing\Route
      */
     public function post($uri, $action);
@@ -26,7 +34,11 @@ interface Registrar
      * Register a new PUT route with the router.
      *
      * @param  string  $uri
+<<<<<<< HEAD
      * @param  \Closure|array|string|callable  $action
+=======
+     * @param  \Closure|array|string  $action
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * @return \Illuminate\Routing\Route
      */
     public function put($uri, $action);
@@ -35,7 +47,11 @@ interface Registrar
      * Register a new DELETE route with the router.
      *
      * @param  string  $uri
+<<<<<<< HEAD
      * @param  \Closure|array|string|callable  $action
+=======
+     * @param  \Closure|array|string  $action
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * @return \Illuminate\Routing\Route
      */
     public function delete($uri, $action);
@@ -44,7 +60,11 @@ interface Registrar
      * Register a new PATCH route with the router.
      *
      * @param  string  $uri
+<<<<<<< HEAD
      * @param  \Closure|array|string|callable  $action
+=======
+     * @param  \Closure|array|string  $action
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * @return \Illuminate\Routing\Route
      */
     public function patch($uri, $action);
@@ -53,7 +73,11 @@ interface Registrar
      * Register a new OPTIONS route with the router.
      *
      * @param  string  $uri
+<<<<<<< HEAD
      * @param  \Closure|array|string|callable  $action
+=======
+     * @param  \Closure|array|string  $action
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * @return \Illuminate\Routing\Route
      */
     public function options($uri, $action);
@@ -63,7 +87,11 @@ interface Registrar
      *
      * @param  array|string  $methods
      * @param  string  $uri
+<<<<<<< HEAD
      * @param  \Closure|array|string|callable  $action
+=======
+     * @param  \Closure|array|string  $action
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * @return \Illuminate\Routing\Route
      */
     public function match($methods, $uri, $action);

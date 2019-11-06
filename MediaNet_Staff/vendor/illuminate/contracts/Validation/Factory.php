@@ -20,7 +20,11 @@ interface Factory
      *
      * @param  string  $rule
      * @param  \Closure|string  $extension
+<<<<<<< HEAD
      * @param  string|null  $message
+=======
+     * @param  string  $message
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * @return void
      */
     public function extend($rule, $extension, $message = null);
@@ -30,7 +34,11 @@ interface Factory
      *
      * @param  string   $rule
      * @param  \Closure|string  $extension
+<<<<<<< HEAD
      * @param  string|null  $message
+=======
+     * @param  string  $message
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * @return void
      */
     public function extendImplicit($rule, $extension, $message = null);

@@ -9,7 +9,11 @@ interface Loader
      *
      * @param  string  $locale
      * @param  string  $group
+<<<<<<< HEAD
      * @param  string|null  $namespace
+=======
+     * @param  string  $namespace
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * @return array
      */
     public function load($locale, $group, $namespace = null);

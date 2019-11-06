@@ -3,7 +3,10 @@
 namespace Illuminate\Support;
 
 use ArrayAccess;
+<<<<<<< HEAD
 use ArrayObject;
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
 
 class Optional implements ArrayAccess
 {
@@ -38,11 +41,16 @@ class Optional implements ArrayAccess
     public function __get($key)
     {
         if (is_object($this->value)) {
+<<<<<<< HEAD
             return $this->value->{$key} ?? null;
+=======
+            return $this->value->{$key};
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
         }
     }
 
     /**
+<<<<<<< HEAD
      * Dynamically check a property exists on the underlying object.
      *
      * @param  mixed  $name
@@ -59,6 +67,23 @@ class Optional implements ArrayAccess
         }
 
         return false;
+=======
+     * Dynamically pass a method to the underlying object.
+     *
+     * @param  string  $method
+     * @param  array  $parameters
+     * @return mixed
+     */
+    public function __call($method, $parameters)
+    {
+        if (static::hasMacro($method)) {
+            return $this->macroCall($method, $parameters);
+        }
+
+        if (is_object($this->value)) {
+            return $this->value->{$method}(...$parameters);
+        }
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     }
 
     /**
@@ -109,6 +134,7 @@ class Optional implements ArrayAccess
             unset($this->value[$key]);
         }
     }
+<<<<<<< HEAD
 
     /**
      * Dynamically pass a method to the underlying object.
@@ -127,4 +153,6 @@ class Optional implements ArrayAccess
             return $this->value->{$method}(...$parameters);
         }
     }
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
 }

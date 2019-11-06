@@ -2,8 +2,11 @@
 
 namespace Illuminate\Database\Eloquent\Concerns;
 
+<<<<<<< HEAD
 use Illuminate\Support\Arr;
 use InvalidArgumentException;
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
 use Illuminate\Contracts\Events\Dispatcher;
 
 trait HasEvents
@@ -27,6 +30,7 @@ trait HasEvents
     protected $observables = [];
 
     /**
+<<<<<<< HEAD
      * Register observers with the model.
      *
      * @param  object|array|string  $classes
@@ -54,11 +58,27 @@ trait HasEvents
     protected function registerObserver($class)
     {
         $className = $this->resolveObserverClassName($class);
+=======
+     * Register an observer with the Model.
+     *
+     * @param  object|string  $class
+     * @return void
+     */
+    public static function observe($class)
+    {
+        $instance = new static;
+
+        $className = is_string($class) ? $class : get_class($class);
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
 
         // When registering a model observer, we will spin through the possible events
         // and determine if this observer has that method. If it does, we will hook
         // it into the model's event system, making it convenient to watch these.
+<<<<<<< HEAD
         foreach ($this->getObservableEvents() as $event) {
+=======
+        foreach ($instance->getObservableEvents() as $event) {
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
             if (method_exists($class, $event)) {
                 static::registerModelEvent($event, $className.'@'.$event);
             }
@@ -66,6 +86,7 @@ trait HasEvents
     }
 
     /**
+<<<<<<< HEAD
      * Resolve the observer's class name from an object or string.
      *
      * @param  object|string $class
@@ -87,6 +108,8 @@ trait HasEvents
     }
 
     /**
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * Get the observable event names.
      *
      * @return array
@@ -95,9 +118,15 @@ trait HasEvents
     {
         return array_merge(
             [
+<<<<<<< HEAD
                 'retrieved', 'creating', 'created', 'updating', 'updated',
                 'saving', 'saved', 'restoring', 'restored', 'replicating',
                 'deleting', 'deleted', 'forceDeleted',
+=======
+                'retrieved', 'creating', 'created', 'updating',
+                'updated', 'deleting', 'deleted', 'saving',
+                'saved', 'restoring', 'restored',
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
             ],
             $this->observables
         );
@@ -174,7 +203,11 @@ trait HasEvents
         // First, we will get the proper method to call on the event dispatcher, and then we
         // will attempt to fire a custom, object based event for the given event. If that
         // returns a result we can return that result, or we'll call the string events.
+<<<<<<< HEAD
         $method = $halt ? 'until' : 'dispatch';
+=======
+        $method = $halt ? 'until' : 'fire';
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
 
         $result = $this->filterModelEventResults(
             $this->fireCustomModelEvent($event, $method)
@@ -304,6 +337,7 @@ trait HasEvents
     }
 
     /**
+<<<<<<< HEAD
      * Register a replicating model event with the dispatcher.
      *
      * @param  \Closure|string  $callback
@@ -315,6 +349,8 @@ trait HasEvents
     }
 
     /**
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * Register a deleting model event with the dispatcher.
      *
      * @param  \Closure|string  $callback
@@ -388,6 +424,7 @@ trait HasEvents
     {
         static::$dispatcher = null;
     }
+<<<<<<< HEAD
 
     /**
      * Execute a callback without firing any model events for any model type.
@@ -409,4 +446,6 @@ trait HasEvents
             }
         }
     }
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
 }

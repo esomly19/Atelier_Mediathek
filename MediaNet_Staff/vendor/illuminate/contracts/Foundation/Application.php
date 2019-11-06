@@ -2,7 +2,10 @@
 
 namespace Illuminate\Contracts\Foundation;
 
+<<<<<<< HEAD
 use Closure;
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
 use Illuminate\Contracts\Container\Container;
 
 interface Application extends Container
@@ -22,6 +25,7 @@ interface Application extends Container
     public function basePath();
 
     /**
+<<<<<<< HEAD
      * Get the path to the bootstrap directory.
      *
      * @param  string  $path Optionally, a path to append to the bootstrap path
@@ -77,12 +81,23 @@ interface Application extends Container
 
     /**
      * Determine if the application is running in the console.
+=======
+     * Get or check the current application environment.
+     *
+     * @return string
+     */
+    public function environment();
+
+    /**
+     * Determine if we are running in the console.
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      *
      * @return bool
      */
     public function runningInConsole();
 
     /**
+<<<<<<< HEAD
      * Determine if the application is running unit tests.
      *
      * @return bool
@@ -90,6 +105,8 @@ interface Application extends Container
     public function runningUnitTests();
 
     /**
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * Determine if the application is currently down for maintenance.
      *
      * @return bool
@@ -107,10 +124,18 @@ interface Application extends Container
      * Register a service provider with the application.
      *
      * @param  \Illuminate\Support\ServiceProvider|string  $provider
+<<<<<<< HEAD
      * @param  bool   $force
      * @return \Illuminate\Support\ServiceProvider
      */
     public function register($provider, $force = false);
+=======
+     * @param  array  $options
+     * @param  bool   $force
+     * @return \Illuminate\Support\ServiceProvider
+     */
+    public function register($provider, $options = [], $force = false);
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
 
     /**
      * Register a deferred provider and service.
@@ -122,6 +147,7 @@ interface Application extends Container
     public function registerDeferredProvider($provider, $service = null);
 
     /**
+<<<<<<< HEAD
      * Resolve a service provider instance from the class name.
      *
      * @param  string  $provider
@@ -130,6 +156,8 @@ interface Application extends Container
     public function resolveProvider($provider);
 
     /**
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * Boot the application's service providers.
      *
      * @return void
@@ -139,7 +167,11 @@ interface Application extends Container
     /**
      * Register a new boot listener.
      *
+<<<<<<< HEAD
      * @param  callable  $callback
+=======
+     * @param  mixed  $callback
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * @return void
      */
     public function booting($callback);
@@ -147,12 +179,17 @@ interface Application extends Container
     /**
      * Register a new "booted" listener.
      *
+<<<<<<< HEAD
      * @param  callable  $callback
+=======
+     * @param  mixed  $callback
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * @return void
      */
     public function booted($callback);
 
     /**
+<<<<<<< HEAD
      * Run the given array of bootstrap classes.
      *
      * @param  array  $bootstrappers
@@ -197,6 +234,8 @@ interface Application extends Container
     public function getCachedConfigPath();
 
     /**
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * Get the path to the cached services.php file.
      *
      * @return string
@@ -209,6 +248,7 @@ interface Application extends Container
      * @return string
      */
     public function getCachedPackagesPath();
+<<<<<<< HEAD
 
     /**
      * Get the path to the routes cache file.
@@ -291,4 +331,6 @@ interface Application extends Container
      * @return void
      */
     public function terminate();
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
 }

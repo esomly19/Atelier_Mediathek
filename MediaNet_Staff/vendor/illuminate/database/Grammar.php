@@ -2,13 +2,19 @@
 
 namespace Illuminate\Database;
 
+<<<<<<< HEAD
 use Illuminate\Support\Traits\Macroable;
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
 use Illuminate\Database\Query\Expression;
 
 abstract class Grammar
 {
+<<<<<<< HEAD
     use Macroable;
 
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     /**
      * The grammar table prefix.
      *
@@ -56,9 +62,15 @@ abstract class Grammar
         }
 
         // If the value being wrapped has a column alias we will need to separate out
+<<<<<<< HEAD
         // the pieces so we can wrap each of the segments of the expression on its
         // own, and then join these both back together using the "as" connector.
         if (stripos($value, ' as ') !== false) {
+=======
+        // the pieces so we can wrap each of the segments of the expression on it
+        // own, and then joins them both back together with the "as" connector.
+        if (strpos(strtolower($value), ' as ') !== false) {
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
             return $this->wrapAliasedValue($value, $prefixAlias);
         }
 
@@ -152,6 +164,7 @@ abstract class Grammar
     }
 
     /**
+<<<<<<< HEAD
      * Quote the given string literal.
      *
      * @param  string|array  $value
@@ -167,6 +180,8 @@ abstract class Grammar
     }
 
     /**
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * Determine if the given value is a raw expression.
      *
      * @param  mixed  $value

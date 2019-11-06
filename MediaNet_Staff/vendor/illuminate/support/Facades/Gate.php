@@ -5,6 +5,7 @@ namespace Illuminate\Support\Facades;
 use Illuminate\Contracts\Auth\Access\Gate as GateContract;
 
 /**
+<<<<<<< HEAD
  * @method static bool has(string $ability)
  * @method static \Illuminate\Contracts\Auth\Access\Gate define(string $ability, callable|string $callback)
  * @method static \Illuminate\Contracts\Auth\Access\Gate policy(string $class, string $policy)
@@ -20,6 +21,8 @@ use Illuminate\Contracts\Auth\Access\Gate as GateContract;
  * @method static \Illuminate\Contracts\Auth\Access\Gate forUser(\Illuminate\Contracts\Auth\Authenticatable|mixed $user)
  * @method static array abilities()
  *
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
  * @see \Illuminate\Contracts\Auth\Access\Gate
  */
 class Gate extends Facade

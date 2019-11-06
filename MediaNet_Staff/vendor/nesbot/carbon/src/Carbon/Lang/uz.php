@@ -1,6 +1,10 @@
 <?php
 
+<<<<<<< HEAD
 /**
+=======
+/*
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
  * This file is part of the Carbon package.
  *
  * (c) Brian Nesbitt <brian@nesbot.com>
@@ -8,6 +12,7 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+<<<<<<< HEAD
 \Symfony\Component\Translation\PluralizationRules::set(function ($number) {
     return $number === 1 ? 0 : 1;
 }, 'uz');
@@ -81,3 +86,26 @@ return [
     'meridiem' => ['ertalab', 'kechasi'],
     'list' => [', ', ' va '],
 ];
+=======
+
+return array(
+    'year' => ':count yil',
+    'y' => ':count yil',
+    'month' => ':count oy',
+    'm' => ':count oy',
+    'week' => ':count hafta',
+    'w' => ':count hafta',
+    'day' => ':count kun',
+    'd' => ':count kun',
+    'hour' => ':count soat',
+    'h' => ':count soat',
+    'minute' => ':count daqiqa',
+    'min' => ':count daq',
+    'second' => ':count soniya',
+    's' => ':count s',
+    'ago' => ':time avval',
+    'from_now' => ':time dan keyin',
+    'after' => ':time keyin',
+    'before' => ':time oldin',
+);
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10

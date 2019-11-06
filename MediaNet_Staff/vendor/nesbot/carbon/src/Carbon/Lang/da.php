@@ -1,6 +1,10 @@
 <?php
 
+<<<<<<< HEAD
 /**
+=======
+/*
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
  * This file is part of the Carbon package.
  *
  * (c) Brian Nesbitt <brian@nesbot.com>
@@ -9,6 +13,7 @@
  * file that was distributed with this source code.
  */
 
+<<<<<<< HEAD
 /**
  * Authors:
  * - Rune Mønnike
@@ -41,10 +46,28 @@ return [
     'second' => ':count sekund|:count sekunder',
     'a_second' => 'få sekunder|:count sekunder',
     's' => ':count s.',
+=======
+return array(
+    'year' => ':count år|:count år',
+    'y' => ':count år|:count år',
+    'month' => ':count måned|:count måneder',
+    'm' => ':count måned|:count måneder',
+    'week' => ':count uge|:count uger',
+    'w' => ':count uge|:count uger',
+    'day' => ':count dag|:count dage',
+    'd' => ':count dag|:count dage',
+    'hour' => ':count time|:count timer',
+    'h' => ':count time|:count timer',
+    'minute' => ':count minut|:count minutter',
+    'min' => ':count minut|:count minutter',
+    'second' => ':count sekund|:count sekunder',
+    's' => ':count sekund|:count sekunder',
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     'ago' => ':time siden',
     'from_now' => 'om :time',
     'after' => ':time efter',
     'before' => ':time før',
+<<<<<<< HEAD
     'formats' => [
         'LT' => 'HH:mm',
         'LTS' => 'HH:mm:ss',
@@ -71,3 +94,6 @@ return [
     'day_of_first_week_of_year' => 4,
     'list' => [', ', ' og '],
 ];
+=======
+);
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10

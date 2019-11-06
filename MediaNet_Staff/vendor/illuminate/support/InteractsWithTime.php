@@ -34,7 +34,11 @@ trait InteractsWithTime
 
         return $delay instanceof DateTimeInterface
                             ? $delay->getTimestamp()
+<<<<<<< HEAD
                             : Carbon::now()->addRealSeconds($delay)->getTimestamp();
+=======
+                            : Carbon::now()->addSeconds($delay)->getTimestamp();
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     }
 
     /**

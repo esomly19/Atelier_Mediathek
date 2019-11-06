@@ -39,10 +39,16 @@ class MigrationCreator
      *
      * @param  string  $name
      * @param  string  $path
+<<<<<<< HEAD
      * @param  string|null  $table
      * @param  bool    $create
      * @return string
      *
+=======
+     * @param  string  $table
+     * @param  bool    $create
+     * @return string
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * @throws \Exception
      */
     public function create($name, $path, $table = null, $create = false)
@@ -62,7 +68,11 @@ class MigrationCreator
         // Next, we will fire any hooks that are supposed to fire after a migration is
         // created. Once that is done we'll be ready to return the full path to the
         // migration file so it can be used however it's needed by the developer.
+<<<<<<< HEAD
         $this->firePostCreateHooks($table);
+=======
+        $this->firePostCreateHooks();
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
 
         return $path;
     }
@@ -85,7 +95,11 @@ class MigrationCreator
     /**
      * Get the migration stub file.
      *
+<<<<<<< HEAD
      * @param  string|null  $table
+=======
+     * @param  string  $table
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * @param  bool    $create
      * @return string
      */
@@ -108,7 +122,11 @@ class MigrationCreator
      *
      * @param  string  $name
      * @param  string  $stub
+<<<<<<< HEAD
      * @param  string|null  $table
+=======
+     * @param  string  $table
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * @return string
      */
     protected function populateStub($name, $stub, $table)
@@ -151,6 +169,7 @@ class MigrationCreator
     /**
      * Fire the registered post create hooks.
      *
+<<<<<<< HEAD
      * @param  string|null  $table
      * @return void
      */
@@ -158,6 +177,14 @@ class MigrationCreator
     {
         foreach ($this->postCreate as $callback) {
             call_user_func($callback, $table);
+=======
+     * @return void
+     */
+    protected function firePostCreateHooks()
+    {
+        foreach ($this->postCreate as $callback) {
+            call_user_func($callback);
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
         }
     }
 

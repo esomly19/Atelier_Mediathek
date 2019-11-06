@@ -15,6 +15,7 @@ interface ExceptionHandler
     public function report(Exception $e);
 
     /**
+<<<<<<< HEAD
      * Determine if the exception should be reported.
      *
      * @param  \Exception  $e
@@ -23,6 +24,8 @@ interface ExceptionHandler
     public function shouldReport(Exception $e);
 
     /**
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * Render an exception into an HTTP response.
      *
      * @param  \Illuminate\Http\Request  $request

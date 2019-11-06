@@ -2,7 +2,10 @@
 
 namespace Illuminate\Database\Schema\Grammars;
 
+<<<<<<< HEAD
 use RuntimeException;
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
 use Illuminate\Support\Fluent;
 use Doctrine\DBAL\Schema\TableDiff;
 use Illuminate\Database\Connection;
@@ -21,6 +24,7 @@ abstract class Grammar extends BaseGrammar
     protected $transactions = false;
 
     /**
+<<<<<<< HEAD
      * The commands to be executed outside of create or alter command.
      *
      * @var array
@@ -28,6 +32,8 @@ abstract class Grammar extends BaseGrammar
     protected $fluentCommands = [];
 
     /**
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * Compile a rename column command.
      *
      * @param  \Illuminate\Database\Schema\Blueprint  $blueprint
@@ -129,6 +135,7 @@ abstract class Grammar extends BaseGrammar
     }
 
     /**
+<<<<<<< HEAD
      * Create the column definition for a generated, computed column type.
      *
      * @param  \Illuminate\Support\Fluent  $column
@@ -142,6 +149,8 @@ abstract class Grammar extends BaseGrammar
     }
 
     /**
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * Add the column modifiers to the definition.
      *
      * @param  string  $sql
@@ -265,6 +274,7 @@ abstract class Grammar extends BaseGrammar
     }
 
     /**
+<<<<<<< HEAD
      * Get the fluent commands for the grammar.
      *
      * @return array
@@ -275,6 +285,8 @@ abstract class Grammar extends BaseGrammar
     }
 
     /**
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * Check if this Grammar supports schema changes wrapped in a transaction.
      *
      * @return bool

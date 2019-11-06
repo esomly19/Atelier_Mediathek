@@ -22,6 +22,7 @@ interface Dispatcher
     public function dispatchNow($command, $handler = null);
 
     /**
+<<<<<<< HEAD
      * Determine if the given command has a handler.
      *
      * @param  mixed  $command
@@ -38,12 +39,15 @@ interface Dispatcher
     public function getCommandHandler($command);
 
     /**
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * Set the pipes commands should be piped through before dispatching.
      *
      * @param  array  $pipes
      * @return $this
      */
     public function pipeThrough(array $pipes);
+<<<<<<< HEAD
 
     /**
      * Map a command to a handler.
@@ -52,4 +56,6 @@ interface Dispatcher
      * @return $this
      */
     public function map(array $map);
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
 }

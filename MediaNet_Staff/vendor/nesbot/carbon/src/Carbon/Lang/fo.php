@@ -1,6 +1,10 @@
 <?php
 
+<<<<<<< HEAD
 /**
+=======
+/*
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
  * This file is part of the Carbon package.
  *
  * (c) Brian Nesbitt <brian@nesbot.com>
@@ -9,6 +13,7 @@
  * file that was distributed with this source code.
  */
 
+<<<<<<< HEAD
 /**
  * Authors:
  * - Kristian Sakarisson
@@ -61,3 +66,25 @@ return [
     'day_of_first_week_of_year' => 4,
     'list' => [', ', ' og '],
 ];
+=======
+return array(
+    'year' => ':count ár|:count ár',
+    'y' => ':count ár|:count ár',
+    'month' => ':count mánaður|:count mánaðir',
+    'm' => ':count mánaður|:count mánaðir',
+    'week' => ':count vika|:count vikur',
+    'w' => ':count vika|:count vikur',
+    'day' => ':count dag|:count dagar',
+    'd' => ':count dag|:count dagar',
+    'hour' => ':count tími|:count tímar',
+    'h' => ':count tími|:count tímar',
+    'minute' => ':count minutt|:count minuttir',
+    'min' => ':count minutt|:count minuttir',
+    'second' => ':count sekund|:count sekundir',
+    's' => ':count sekund|:count sekundir',
+    'ago' => ':time síðan',
+    'from_now' => 'um :time',
+    'after' => ':time aftaná',
+    'before' => ':time áðrenn',
+);
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10

@@ -1,6 +1,10 @@
 <?php
 
+<<<<<<< HEAD
 /**
+=======
+/*
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
  * This file is part of the Carbon package.
  *
  * (c) Brian Nesbitt <brian@nesbot.com>
@@ -9,6 +13,7 @@
  * file that was distributed with this source code.
  */
 
+<<<<<<< HEAD
 /**
  * Authors:
  * - Josh Soref
@@ -43,10 +48,28 @@ return [
     'second' => ':count saniye',
     'a_second' => '{1}birkaç saniye|]1,Inf[:count saniye',
     's' => ':countsn',
+=======
+return array(
+    'year' => ':count yıl',
+    'y' => ':count yıl',
+    'month' => ':count ay',
+    'm' => ':count ay',
+    'week' => ':count hafta',
+    'w' => ':count hafta',
+    'day' => ':count gün',
+    'd' => ':count gün',
+    'hour' => ':count saat',
+    'h' => ':count saat',
+    'minute' => ':count dakika',
+    'min' => ':count dakika',
+    'second' => ':count saniye',
+    's' => ':count saniye',
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     'ago' => ':time önce',
     'from_now' => ':time sonra',
     'after' => ':time sonra',
     'before' => ':time önce',
+<<<<<<< HEAD
     'formats' => [
         'LT' => 'HH:mm',
         'LTS' => 'HH:mm:ss',
@@ -111,3 +134,6 @@ return [
     'day_of_first_week_of_year' => 1,
     'list' => [', ', ' ve '],
 ];
+=======
+);
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10

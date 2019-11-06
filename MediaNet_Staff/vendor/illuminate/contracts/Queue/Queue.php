@@ -7,7 +7,11 @@ interface Queue
     /**
      * Get the size of the queue.
      *
+<<<<<<< HEAD
      * @param  string|null  $queue
+=======
+     * @param  string  $queue
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * @return int
      */
     public function size($queue = null);
@@ -17,7 +21,11 @@ interface Queue
      *
      * @param  string|object  $job
      * @param  mixed   $data
+<<<<<<< HEAD
      * @param  string|null  $queue
+=======
+     * @param  string  $queue
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * @return mixed
      */
     public function push($job, $data = '', $queue = null);
@@ -36,7 +44,11 @@ interface Queue
      * Push a raw payload onto the queue.
      *
      * @param  string  $payload
+<<<<<<< HEAD
      * @param  string|null  $queue
+=======
+     * @param  string  $queue
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * @param  array   $options
      * @return mixed
      */
@@ -48,7 +60,11 @@ interface Queue
      * @param  \DateTimeInterface|\DateInterval|int  $delay
      * @param  string|object  $job
      * @param  mixed   $data
+<<<<<<< HEAD
      * @param  string|null  $queue
+=======
+     * @param  string  $queue
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * @return mixed
      */
     public function later($delay, $job, $data = '', $queue = null);
@@ -69,7 +85,11 @@ interface Queue
      *
      * @param  array   $jobs
      * @param  mixed   $data
+<<<<<<< HEAD
      * @param  string|null  $queue
+=======
+     * @param  string  $queue
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * @return mixed
      */
     public function bulk($jobs, $data = '', $queue = null);

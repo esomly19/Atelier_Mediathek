@@ -10,7 +10,11 @@ abstract class Manager
     /**
      * The application instance.
      *
+<<<<<<< HEAD
      * @var \Illuminate\Contracts\Foundation\Application
+=======
+     * @var \Illuminate\Foundation\Application
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      */
     protected $app;
 
@@ -31,7 +35,11 @@ abstract class Manager
     /**
      * Create a new manager instance.
      *
+<<<<<<< HEAD
      * @param  \Illuminate\Contracts\Foundation\Application  $app
+=======
+     * @param  \Illuminate\Foundation\Application  $app
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * @return void
      */
     public function __construct($app)
@@ -51,19 +59,25 @@ abstract class Manager
      *
      * @param  string  $driver
      * @return mixed
+<<<<<<< HEAD
      *
      * @throws \InvalidArgumentException
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      */
     public function driver($driver = null)
     {
         $driver = $driver ?: $this->getDefaultDriver();
 
+<<<<<<< HEAD
         if (is_null($driver)) {
             throw new InvalidArgumentException(sprintf(
                 'Unable to resolve NULL driver for [%s].', static::class
             ));
         }
 
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
         // If the given driver has not been created before, we will create the instances
         // here and cache it so we can return it next time very quickly. If there is
         // already a driver created by this name, we'll just return that instance.
@@ -84,9 +98,15 @@ abstract class Manager
      */
     protected function createDriver($driver)
     {
+<<<<<<< HEAD
         // First, we will determine if a custom driver creator exists for the given driver and
         // if it does not we will check for a creator method for the driver. Custom creator
         // callbacks allow developers to build their own "drivers" easily using Closures.
+=======
+        // We'll check to see if a creator method exists for the given driver. If not we
+        // will check for a custom driver creator, which allows developers to create
+        // drivers using their own customized driver creator Closure to create it.
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
         if (isset($this->customCreators[$driver])) {
             return $this->callCustomCreator($driver);
         } else {

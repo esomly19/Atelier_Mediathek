@@ -1,0 +1,51 @@
+@import '_bouton.scss';
+@import '_navbar.scss';
+@import '_grid.scss';
+
+$blanc_mais_pas_vraiment : rgb(190, 229, 236);
+$rouge : rgb(219, 17, 17);
+$noir : black;
+
+//variable bouton
+    //le style
+    $s_classic : classic;
+    $s_flat : flat;
+    $s_outline: outline;
+
+    //la taille
+    $t_small : small;
+    $t_medium : medium;
+    $t_large : large;
+
+//variable navbar concerne la position
+$centre : center;
+$gauche : flex-start;
+$droite : flex-end;
+
+//variable grid
+$columns: 12;
+$gutter-width: 1.6%;
+
+.boutton{
+    @include stylebouton($s_outline,$rouge,$t_medium);
+}
+
+.navbar{
+    @include row();
+    border-bottom: solid 1px;
+}
+
+.nav_left{
+    @include col();
+}
+
+.nav_right{
+    display: flex;
+    @include justify($droite);
+    @include col();
+}
+
+a{
+    outline: none;
+    text-decoration: none;
+}

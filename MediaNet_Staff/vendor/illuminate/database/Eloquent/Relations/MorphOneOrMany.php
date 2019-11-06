@@ -68,6 +68,22 @@ abstract class MorphOneOrMany extends HasOneOrMany
     }
 
     /**
+<<<<<<< HEAD
+=======
+     * Attach a model instance to the parent model.
+     *
+     * @param  \Illuminate\Database\Eloquent\Model  $model
+     * @return \Illuminate\Database\Eloquent\Model
+     */
+    public function save(Model $model)
+    {
+        $model->setAttribute($this->getMorphType(), $this->morphClass);
+
+        return parent::save($model);
+    }
+
+    /**
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * Set the foreign ID and type for creating a related model.
      *
      * @param  \Illuminate\Database\Eloquent\Model  $model
@@ -91,7 +107,11 @@ abstract class MorphOneOrMany extends HasOneOrMany
     public function getRelationExistenceQuery(Builder $query, Builder $parentQuery, $columns = ['*'])
     {
         return parent::getRelationExistenceQuery($query, $parentQuery, $columns)->where(
+<<<<<<< HEAD
             $query->qualifyColumn($this->getMorphType()), $this->morphClass
+=======
+            $this->morphType, $this->morphClass
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
         );
     }
 

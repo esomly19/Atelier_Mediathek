@@ -4,6 +4,7 @@ namespace Illuminate\Database;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Migrations\Migrator;
+<<<<<<< HEAD
 use Illuminate\Contracts\Support\DeferrableProvider;
 use Illuminate\Database\Migrations\MigrationCreator;
 use Illuminate\Database\Migrations\DatabaseMigrationRepository;
@@ -11,6 +12,21 @@ use Illuminate\Database\Migrations\DatabaseMigrationRepository;
 class MigrationServiceProvider extends ServiceProvider implements DeferrableProvider
 {
     /**
+=======
+use Illuminate\Database\Migrations\MigrationCreator;
+use Illuminate\Database\Migrations\DatabaseMigrationRepository;
+
+class MigrationServiceProvider extends ServiceProvider
+{
+    /**
+     * Indicates if loading of the provider is deferred.
+     *
+     * @var bool
+     */
+    protected $defer = true;
+
+    /**
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * Register the service provider.
      *
      * @return void
@@ -51,7 +67,11 @@ class MigrationServiceProvider extends ServiceProvider implements DeferrableProv
         $this->app->singleton('migrator', function ($app) {
             $repository = $app['migration.repository'];
 
+<<<<<<< HEAD
             return new Migrator($repository, $app['db'], $app['files'], $app['events']);
+=======
+            return new Migrator($repository, $app['db'], $app['files']);
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
         });
     }
 

@@ -21,8 +21,11 @@ interface Container extends ContainerInterface
      * @param  string  $abstract
      * @param  string  $alias
      * @return void
+<<<<<<< HEAD
      *
      * @throws \LogicException
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      */
     public function alias($abstract, $alias);
 
@@ -39,7 +42,11 @@ interface Container extends ContainerInterface
      * Resolve all of the bindings for a given tag.
      *
      * @param  string  $tag
+<<<<<<< HEAD
      * @return iterable
+=======
+     * @return array
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      */
     public function tagged($tag);
 
@@ -93,6 +100,7 @@ interface Container extends ContainerInterface
     public function instance($abstract, $instance);
 
     /**
+<<<<<<< HEAD
      * Add a contextual binding to the container.
      *
      * @param  string  $concrete
@@ -106,6 +114,11 @@ interface Container extends ContainerInterface
      * Define a contextual binding.
      *
      * @param  string|array  $concrete
+=======
+     * Define a contextual binding.
+     *
+     * @param  string  $concrete
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * @return \Illuminate\Contracts\Container\ContextualBindingBuilder
      */
     public function when($concrete);
@@ -119,6 +132,7 @@ interface Container extends ContainerInterface
     public function factory($abstract);
 
     /**
+<<<<<<< HEAD
      * Flush the container of all bindings and resolved instances.
      *
      * @return void
@@ -126,13 +140,18 @@ interface Container extends ContainerInterface
     public function flush();
 
     /**
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * Resolve the given type from the container.
      *
      * @param  string  $abstract
      * @param  array  $parameters
      * @return mixed
+<<<<<<< HEAD
      *
      * @throws \Illuminate\Contracts\Container\BindingResolutionException
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      */
     public function make($abstract, array $parameters = []);
 

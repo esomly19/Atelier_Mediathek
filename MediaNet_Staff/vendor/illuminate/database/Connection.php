@@ -504,7 +504,11 @@ class Connection implements ConnectionInterface
             }
 
             $this->recordsHaveBeenModified(
+<<<<<<< HEAD
                 $change = $this->getPdo()->exec($query) !== false
+=======
+                $change = ($this->getPdo()->exec($query) === false ? false : true)
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
             );
 
             return $change;
@@ -552,7 +556,11 @@ class Connection implements ConnectionInterface
 
         // Now we'll execute this callback and capture the result. Once it has been
         // executed we will restore the value of query logging and give back the
+<<<<<<< HEAD
         // value of the callback so the original callers can have the results.
+=======
+        // value of hte callback so the original callers can have the results.
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
         $result = $callback();
 
         $this->loggingQueries = $loggingQueries;
@@ -700,15 +708,25 @@ class Connection implements ConnectionInterface
     /**
      * Handle a query exception.
      *
+<<<<<<< HEAD
      * @param  \Illuminate\Database\QueryException  $e
+=======
+     * @param  \Exception  $e
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * @param  string  $query
      * @param  array  $bindings
      * @param  \Closure  $callback
      * @return mixed
+<<<<<<< HEAD
      *
      * @throws \Illuminate\Database\QueryException
      */
     protected function handleQueryException(QueryException $e, $query, $bindings, Closure $callback)
+=======
+     * @throws \Exception
+     */
+    protected function handleQueryException($e, $query, $bindings, Closure $callback)
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     {
         if ($this->transactions >= 1) {
             throw $e;
@@ -751,8 +769,11 @@ class Connection implements ConnectionInterface
     public function reconnect()
     {
         if (is_callable($this->reconnector)) {
+<<<<<<< HEAD
             $this->doctrineConnection = null;
 
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
             return call_user_func($this->reconnector, $this);
         }
 
@@ -897,12 +918,20 @@ class Connection implements ConnectionInterface
         if (is_null($this->doctrineConnection)) {
             $driver = $this->getDoctrineDriver();
 
+<<<<<<< HEAD
             $this->doctrineConnection = new DoctrineConnection(array_filter([
                 'pdo' => $this->getPdo(),
                 'dbname' => $this->getConfig('database'),
                 'driver' => $driver->getName(),
                 'serverVersion' => $this->getConfig('server_version'),
             ]), $driver);
+=======
+            $this->doctrineConnection = new DoctrineConnection([
+                'pdo' => $this->getPdo(),
+                'dbname' => $this->getConfig('database'),
+                'driver' => $driver->getName(),
+            ], $driver);
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
         }
 
         return $this->doctrineConnection;
@@ -933,7 +962,11 @@ class Connection implements ConnectionInterface
             return $this->getPdo();
         }
 
+<<<<<<< HEAD
         if ($this->recordsModified && $this->getConfig('sticky')) {
+=======
+        if ($this->getConfig('sticky') && $this->recordsModified) {
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
             return $this->getPdo();
         }
 
@@ -962,7 +995,11 @@ class Connection implements ConnectionInterface
     /**
      * Set the PDO connection used for reading.
      *
+<<<<<<< HEAD
      * @param  \PDO|\Closure|null  $pdo
+=======
+     * @param  \PDO||\Closure|null  $pdo
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * @return $this
      */
     public function setReadPdo($pdo)
@@ -1030,13 +1067,20 @@ class Connection implements ConnectionInterface
      * Set the query grammar used by the connection.
      *
      * @param  \Illuminate\Database\Query\Grammars\Grammar  $grammar
+<<<<<<< HEAD
      * @return $this
+=======
+     * @return void
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      */
     public function setQueryGrammar(Query\Grammars\Grammar $grammar)
     {
         $this->queryGrammar = $grammar;
+<<<<<<< HEAD
 
         return $this;
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     }
 
     /**
@@ -1053,13 +1097,20 @@ class Connection implements ConnectionInterface
      * Set the schema grammar used by the connection.
      *
      * @param  \Illuminate\Database\Schema\Grammars\Grammar  $grammar
+<<<<<<< HEAD
      * @return $this
+=======
+     * @return void
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      */
     public function setSchemaGrammar(Schema\Grammars\Grammar $grammar)
     {
         $this->schemaGrammar = $grammar;
+<<<<<<< HEAD
 
         return $this;
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     }
 
     /**
@@ -1076,13 +1127,20 @@ class Connection implements ConnectionInterface
      * Set the query post processor used by the connection.
      *
      * @param  \Illuminate\Database\Query\Processors\Processor  $processor
+<<<<<<< HEAD
      * @return $this
+=======
+     * @return void
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      */
     public function setPostProcessor(Processor $processor)
     {
         $this->postProcessor = $processor;
+<<<<<<< HEAD
 
         return $this;
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     }
 
     /**
@@ -1099,11 +1157,16 @@ class Connection implements ConnectionInterface
      * Set the event dispatcher instance on the connection.
      *
      * @param  \Illuminate\Contracts\Events\Dispatcher  $events
+<<<<<<< HEAD
      * @return $this
+=======
+     * @return void
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      */
     public function setEventDispatcher(Dispatcher $events)
     {
         $this->events = $events;
+<<<<<<< HEAD
 
         return $this;
     }
@@ -1120,6 +1183,12 @@ class Connection implements ConnectionInterface
 
     /**
      * Determine if the connection is in a "dry run".
+=======
+    }
+
+    /**
+     * Determine if the connection in a "dry run".
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      *
      * @return bool
      */
@@ -1192,13 +1261,20 @@ class Connection implements ConnectionInterface
      * Set the name of the connected database.
      *
      * @param  string  $database
+<<<<<<< HEAD
      * @return $this
+=======
+     * @return string
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      */
     public function setDatabaseName($database)
     {
         $this->database = $database;
+<<<<<<< HEAD
 
         return $this;
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     }
 
     /**
@@ -1215,15 +1291,22 @@ class Connection implements ConnectionInterface
      * Set the table prefix in use by the connection.
      *
      * @param  string  $prefix
+<<<<<<< HEAD
      * @return $this
+=======
+     * @return void
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      */
     public function setTablePrefix($prefix)
     {
         $this->tablePrefix = $prefix;
 
         $this->getQueryGrammar()->setTablePrefix($prefix);
+<<<<<<< HEAD
 
         return $this;
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     }
 
     /**

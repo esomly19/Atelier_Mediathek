@@ -4,11 +4,17 @@ namespace Illuminate\Database\Eloquent\Concerns;
 
 use LogicException;
 use DateTimeInterface;
+<<<<<<< HEAD
 use Carbon\CarbonInterface;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Date;
+=======
+use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
+use Illuminate\Support\Carbon;
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\Collection as BaseCollection;
@@ -191,10 +197,13 @@ trait HasAttributes
                 ($value === 'date' || $value === 'datetime')) {
                 $attributes[$key] = $this->serializeDate($attributes[$key]);
             }
+<<<<<<< HEAD
 
             if ($attributes[$key] && $this->isCustomDateTimeCast($value)) {
                 $attributes[$key] = $attributes[$key]->format(explode(':', $value, 2)[1]);
             }
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
         }
 
         return $attributes;
@@ -372,7 +381,13 @@ trait HasAttributes
      */
     protected function getAttributeFromArray($key)
     {
+<<<<<<< HEAD
         return $this->attributes[$key] ?? null;
+=======
+        if (isset($this->attributes[$key])) {
+            return $this->attributes[$key];
+        }
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     }
 
     /**
@@ -411,6 +426,7 @@ trait HasAttributes
         $relation = $this->$method();
 
         if (! $relation instanceof Relation) {
+<<<<<<< HEAD
             if (is_null($relation)) {
                 throw new LogicException(sprintf(
                     '%s::%s must return a relationship instance, but "null" was returned. Was the "return" keyword used?', static::class, $method
@@ -420,6 +436,9 @@ trait HasAttributes
             throw new LogicException(sprintf(
                 '%s::%s must return a relationship instance.', static::class, $method
             ));
+=======
+            throw new LogicException(get_class($this).'::'.$method.' must return a relationship instance.');
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
         }
 
         return tap($relation->getResults(), function ($results) use ($method) {
@@ -484,9 +503,13 @@ trait HasAttributes
             case 'real':
             case 'float':
             case 'double':
+<<<<<<< HEAD
                 return $this->fromFloat($value);
             case 'decimal':
                 return $this->asDecimal($value, explode(':', $this->getCasts()[$key], 2)[1]);
+=======
+                return (float) $value;
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
             case 'string':
                 return (string) $value;
             case 'bool':
@@ -502,7 +525,10 @@ trait HasAttributes
             case 'date':
                 return $this->asDate($value);
             case 'datetime':
+<<<<<<< HEAD
             case 'custom_datetime':
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
                 return $this->asDateTime($value);
             case 'timestamp':
                 return $this->asTimestamp($value);
@@ -519,6 +545,7 @@ trait HasAttributes
      */
     protected function getCastType($key)
     {
+<<<<<<< HEAD
         if ($this->isCustomDateTimeCast($this->getCasts()[$key])) {
             return 'custom_datetime';
         }
@@ -527,10 +554,13 @@ trait HasAttributes
             return 'decimal';
         }
 
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
         return trim(strtolower($this->getCasts()[$key]));
     }
 
     /**
+<<<<<<< HEAD
      * Determine if the cast type is a custom date time cast.
      *
      * @param  string  $cast
@@ -554,11 +584,17 @@ trait HasAttributes
     }
 
     /**
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * Set a given attribute on the model.
      *
      * @param  string  $key
      * @param  mixed  $value
+<<<<<<< HEAD
      * @return mixed
+=======
+     * @return $this
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      */
     public function setAttribute($key, $value)
     {
@@ -566,7 +602,13 @@ trait HasAttributes
         // which simply lets the developers tweak the attribute as it is set on
         // the model, such as "json_encoding" an listing of data for storage.
         if ($this->hasSetMutator($key)) {
+<<<<<<< HEAD
             return $this->setMutatedAttributeValue($key, $value);
+=======
+            $method = 'set'.Str::studly($key).'Attribute';
+
+            return $this->{$method}($value);
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
         }
 
         // If an attribute is listed as a "date", we'll convert it from a DateTime
@@ -604,6 +646,7 @@ trait HasAttributes
     }
 
     /**
+<<<<<<< HEAD
      * Set the value of an attribute using its mutator.
      *
      * @param  string  $key
@@ -616,6 +659,8 @@ trait HasAttributes
     }
 
     /**
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * Determine if the given attribute is a date or date castable.
      *
      * @param  string  $key
@@ -623,7 +668,11 @@ trait HasAttributes
      */
     protected function isDateAttribute($key)
     {
+<<<<<<< HEAD
         return in_array($key, $this->getDates(), true) ||
+=======
+        return in_array($key, $this->getDates()) ||
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
                                     $this->isDateCastable($key);
     }
 
@@ -636,7 +685,11 @@ trait HasAttributes
      */
     public function fillJsonAttribute($key, $value)
     {
+<<<<<<< HEAD
         [$key, $path] = explode('->', $key, 2);
+=======
+        list($key, $path) = explode('->', $key, 2);
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
 
         $this->attributes[$key] = $this->asJson($this->getArrayAttributeWithValue(
             $path, $key, $value
@@ -716,6 +769,7 @@ trait HasAttributes
     }
 
     /**
+<<<<<<< HEAD
      * Decode the given float.
      *
      * @param  mixed  $value
@@ -748,6 +802,8 @@ trait HasAttributes
     }
 
     /**
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * Return a timestamp as DateTime object with time set to 00:00:00.
      *
      * @param  mixed  $value
@@ -769,15 +825,24 @@ trait HasAttributes
         // If this value is already a Carbon instance, we shall just return it as is.
         // This prevents us having to re-instantiate a Carbon instance when we know
         // it already is one, which wouldn't be fulfilled by the DateTime check.
+<<<<<<< HEAD
         if ($value instanceof Carbon || $value instanceof CarbonInterface) {
             return Date::instance($value);
+=======
+        if ($value instanceof Carbon) {
+            return $value;
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
         }
 
         // If the value is already a DateTime instance, we will just skip the rest of
         // these checks since they will be a waste of time, and hinder performance
         // when checking the field. We will just return the DateTime right away.
         if ($value instanceof DateTimeInterface) {
+<<<<<<< HEAD
             return Date::parse(
+=======
+            return new Carbon(
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
                 $value->format('Y-m-d H:i:s.u'), $value->getTimezone()
             );
         }
@@ -786,13 +851,18 @@ trait HasAttributes
         // and format a Carbon object from this timestamp. This allows flexibility
         // when defining your date fields as they might be UNIX timestamps here.
         if (is_numeric($value)) {
+<<<<<<< HEAD
             return Date::createFromTimestamp($value);
+=======
+            return Carbon::createFromTimestamp($value);
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
         }
 
         // If the value is in simply year, month, day format, we will instantiate the
         // Carbon instances from that format. Again, this provides for simple date
         // fields on the database, while still supporting Carbonized conversion.
         if ($this->isStandardDateFormat($value)) {
+<<<<<<< HEAD
             return Date::instance(Carbon::createFromFormat('Y-m-d', $value)->startOfDay());
         }
 
@@ -801,12 +871,21 @@ trait HasAttributes
         // https://bugs.php.net/bug.php?id=75577
         if (version_compare(PHP_VERSION, '7.3.0-dev', '<')) {
             $format = str_replace('.v', '.u', $format);
+=======
+            return Carbon::createFromFormat('Y-m-d', $value)->startOfDay();
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
         }
 
         // Finally, we will just assume this date is in the format used by default on
         // the database connection and use that format to create the Carbon object
         // that is returned back out to the developers after we convert it here.
+<<<<<<< HEAD
         return Date::createFromFormat($format, $value);
+=======
+        return Carbon::createFromFormat(
+            str_replace('.v', '.u', $this->getDateFormat()), $value
+        );
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     }
 
     /**
@@ -823,8 +902,13 @@ trait HasAttributes
     /**
      * Convert a DateTime to a storable string.
      *
+<<<<<<< HEAD
      * @param  mixed  $value
      * @return string|null
+=======
+     * @param  \DateTime|int  $value
+     * @return string
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      */
     public function fromDateTime($value)
     {
@@ -874,7 +958,11 @@ trait HasAttributes
      *
      * @return string
      */
+<<<<<<< HEAD
     public function getDateFormat()
+=======
+    protected function getDateFormat()
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     {
         return $this->dateFormat ?: $this->getConnection()->getQueryGrammar()->getDateFormat();
     }
@@ -1021,6 +1109,7 @@ trait HasAttributes
      */
     public function syncOriginalAttribute($attribute)
     {
+<<<<<<< HEAD
         return $this->syncOriginalAttributes($attribute);
     }
 
@@ -1037,6 +1126,9 @@ trait HasAttributes
         foreach ($attributes as $attribute) {
             $this->original[$attribute] = $this->attributes[$attribute];
         }
+=======
+        $this->original[$attribute] = $this->attributes[$attribute];
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
 
         return $this;
     }
@@ -1054,7 +1146,11 @@ trait HasAttributes
     }
 
     /**
+<<<<<<< HEAD
      * Determine if the model or any of the given attribute(s) have been modified.
+=======
+     * Determine if the model or given attribute(s) have been modified.
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      *
      * @param  array|string|null  $attributes
      * @return bool
@@ -1067,7 +1163,11 @@ trait HasAttributes
     }
 
     /**
+<<<<<<< HEAD
      * Determine if the model and all the given attribute(s) have remained the same.
+=======
+     * Determine if the model or given attribute(s) have remained the same.
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      *
      * @param  array|string|null  $attributes
      * @return bool
@@ -1078,7 +1178,11 @@ trait HasAttributes
     }
 
     /**
+<<<<<<< HEAD
      * Determine if the model or any of the given attribute(s) have been modified.
+=======
+     * Determine if the model or given attribute(s) have been modified.
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      *
      * @param  array|string|null  $attributes
      * @return bool
@@ -1091,7 +1195,11 @@ trait HasAttributes
     }
 
     /**
+<<<<<<< HEAD
      * Determine if any of the given attributes were changed.
+=======
+     * Determine if the given attributes were changed.
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      *
      * @param  array  $changes
      * @param  array|string|null  $attributes
@@ -1153,7 +1261,11 @@ trait HasAttributes
      * @param  mixed  $current
      * @return bool
      */
+<<<<<<< HEAD
     public function originalIsEquivalent($key, $current)
+=======
+    protected function originalIsEquivalent($key, $current)
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     {
         if (! array_key_exists($key, $this->original)) {
             return false;

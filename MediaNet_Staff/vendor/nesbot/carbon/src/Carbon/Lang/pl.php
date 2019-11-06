@@ -1,6 +1,10 @@
 <?php
 
+<<<<<<< HEAD
 /**
+=======
+/*
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
  * This file is part of the Carbon package.
  *
  * (c) Brian Nesbitt <brian@nesbot.com>
@@ -9,6 +13,7 @@
  * file that was distributed with this source code.
  */
 
+<<<<<<< HEAD
 /**
  * Authors:
  * - Wacław Jacek
@@ -50,6 +55,25 @@ return [
     's' => ':count sek.',
     'ago' => ':time temu',
     'from_now' => 'za :time',
+=======
+return array(
+    'year' => ':count rok|:count lata|:count lat',
+    'y' => ':countr|:countl',
+    'month' => ':count miesiąc|:count miesiące|:count miesięcy',
+    'm' => ':countmies',
+    'week' => ':count tydzień|:count tygodnie|:count tygodni',
+    'w' => ':counttyg',
+    'day' => ':count dzień|:count dni|:count dni',
+    'd' => ':countd',
+    'hour' => ':count godzina|:count godziny|:count godzin',
+    'h' => ':countg',
+    'minute' => ':count minuta|:count minuty|:count minut',
+    'min' => ':countm',
+    'second' => ':count sekunda|:count sekundy|:count sekund',
+    's' => ':counts',
+    'ago' => ':time temu',
+    'from_now' => ':time od teraz',
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     'after' => ':time po',
     'before' => ':time przed',
     'diff_now' => 'przed chwilą',
@@ -57,6 +81,7 @@ return [
     'diff_tomorrow' => 'jutro',
     'diff_before_yesterday' => 'przedwczoraj',
     'diff_after_tomorrow' => 'pojutrze',
+<<<<<<< HEAD
     'formats' => [
         'LT' => 'HH:mm',
         'LTS' => 'HH:mm:ss',
@@ -110,3 +135,6 @@ return [
     'list' => [', ', ' i '],
     'meridiem' => ['przed południem', 'po południu'],
 ];
+=======
+);
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10

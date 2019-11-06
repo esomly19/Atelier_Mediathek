@@ -2,18 +2,27 @@
 
 namespace Illuminate\Support\Testing\Fakes;
 
+<<<<<<< HEAD
 use Illuminate\Support\Str;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Traits\Macroable;
 use PHPUnit\Framework\Assert as PHPUnit;
 use Illuminate\Contracts\Translation\HasLocalePreference;
+=======
+use Ramsey\Uuid\Uuid;
+use Illuminate\Support\Collection;
+use PHPUnit\Framework\Assert as PHPUnit;
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
 use Illuminate\Contracts\Notifications\Factory as NotificationFactory;
 use Illuminate\Contracts\Notifications\Dispatcher as NotificationDispatcher;
 
 class NotificationFake implements NotificationFactory, NotificationDispatcher
 {
+<<<<<<< HEAD
     use Macroable;
 
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     /**
      * All of the notifications that have been sent.
      *
@@ -22,6 +31,7 @@ class NotificationFake implements NotificationFactory, NotificationDispatcher
     protected $notifications = [];
 
     /**
+<<<<<<< HEAD
      * Locale used when sending notifications.
      *
      * @var string|null
@@ -29,6 +39,8 @@ class NotificationFake implements NotificationFactory, NotificationDispatcher
     public $locale;
 
     /**
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * Assert if a notification was sent based on a truth-test callback.
      *
      * @param  mixed  $notifiable
@@ -68,7 +80,11 @@ class NotificationFake implements NotificationFactory, NotificationDispatcher
     {
         PHPUnit::assertTrue(
             ($count = $this->sent($notifiable, $notification)->count()) === $times,
+<<<<<<< HEAD
             "Expected [{$notification}] to be sent {$times} times, but was sent {$count} times."
+=======
+            "The expected [{$notification}] notification was sent {$count} times instead of {$times} times."
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
         );
     }
 
@@ -107,6 +123,7 @@ class NotificationFake implements NotificationFactory, NotificationDispatcher
     }
 
     /**
+<<<<<<< HEAD
      * Assert the total amount of times a notification was sent.
      *
      * @param  int  $expectedCount
@@ -128,6 +145,8 @@ class NotificationFake implements NotificationFactory, NotificationDispatcher
     }
 
     /**
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * Get all of the notifications matching a truth-test callback.
      *
      * @param  mixed  $notifiable
@@ -173,7 +192,15 @@ class NotificationFake implements NotificationFactory, NotificationDispatcher
      */
     protected function notificationsFor($notifiable, $notification)
     {
+<<<<<<< HEAD
         return $this->notifications[get_class($notifiable)][$notifiable->getKey()][$notification] ?? [];
+=======
+        if (isset($this->notifications[get_class($notifiable)][$notifiable->getKey()][$notification])) {
+            return $this->notifications[get_class($notifiable)][$notifiable->getKey()][$notification];
+        }
+
+        return [];
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     }
 
     /**
@@ -193,10 +220,16 @@ class NotificationFake implements NotificationFactory, NotificationDispatcher
      *
      * @param  \Illuminate\Support\Collection|array|mixed  $notifiables
      * @param  mixed  $notification
+<<<<<<< HEAD
      * @param  array|null  $channels
      * @return void
      */
     public function sendNow($notifiables, $notification, array $channels = null)
+=======
+     * @return void
+     */
+    public function sendNow($notifiables, $notification)
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     {
         if (! $notifiables instanceof Collection && ! is_array($notifiables)) {
             $notifiables = [$notifiables];
@@ -204,11 +237,16 @@ class NotificationFake implements NotificationFactory, NotificationDispatcher
 
         foreach ($notifiables as $notifiable) {
             if (! $notification->id) {
+<<<<<<< HEAD
                 $notification->id = Str::uuid()->toString();
+=======
+                $notification->id = Uuid::uuid4()->toString();
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
             }
 
             $this->notifications[get_class($notifiable)][$notifiable->getKey()][get_class($notification)][] = [
                 'notification' => $notification,
+<<<<<<< HEAD
                 'channels' => $channels ?: $notification->via($notifiable),
                 'notifiable' => $notifiable,
                 'locale' => $notification->locale ?? $this->locale ?? value(function () use ($notifiable) {
@@ -216,6 +254,10 @@ class NotificationFake implements NotificationFactory, NotificationDispatcher
                         return $notifiable->preferredLocale();
                     }
                 }),
+=======
+                'channels' => $notification->via($notifiable),
+                'notifiable' => $notifiable,
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
             ];
         }
     }
@@ -230,6 +272,7 @@ class NotificationFake implements NotificationFactory, NotificationDispatcher
     {
         //
     }
+<<<<<<< HEAD
 
     /**
      * Set the locale of notifications.
@@ -243,4 +286,6 @@ class NotificationFake implements NotificationFactory, NotificationDispatcher
 
         return $this;
     }
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
 }

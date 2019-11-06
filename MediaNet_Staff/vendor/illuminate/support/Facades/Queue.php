@@ -5,6 +5,7 @@ namespace Illuminate\Support\Facades;
 use Illuminate\Support\Testing\Fakes\QueueFake;
 
 /**
+<<<<<<< HEAD
  * @method static int size(string $queue = null)
  * @method static mixed push(string|object $job, mixed $data = '', $queue = null)
  * @method static mixed pushOn(string $queue, string|object $job, mixed $data = '')
@@ -16,6 +17,8 @@ use Illuminate\Support\Testing\Fakes\QueueFake;
  * @method static string getConnectionName()
  * @method static \Illuminate\Contracts\Queue\Queue setConnectionName(string $name)
  *
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
  * @see \Illuminate\Queue\QueueManager
  * @see \Illuminate\Queue\Queue
  */
@@ -24,6 +27,7 @@ class Queue extends Facade
     /**
      * Replace the bound instance with a fake.
      *
+<<<<<<< HEAD
      * @return \Illuminate\Support\Testing\Fakes\QueueFake
      */
     public static function fake()
@@ -31,6 +35,13 @@ class Queue extends Facade
         static::swap($fake = new QueueFake(static::getFacadeApplication()));
 
         return $fake;
+=======
+     * @return void
+     */
+    public static function fake()
+    {
+        static::swap(new QueueFake(static::getFacadeApplication()));
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     }
 
     /**

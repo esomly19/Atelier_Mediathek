@@ -2,8 +2,13 @@
 
 namespace Illuminate\Support\Testing\Fakes;
 
+<<<<<<< HEAD
 use Illuminate\Mail\PendingMail;
 use Illuminate\Contracts\Mail\Mailable;
+=======
+use Illuminate\Mail\Mailable;
+use Illuminate\Mail\PendingMail;
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
 
 class PendingMailFake extends PendingMail
 {
@@ -21,7 +26,11 @@ class PendingMailFake extends PendingMail
     /**
      * Send a new mailable message instance.
      *
+<<<<<<< HEAD
      * @param  \Illuminate\Contracts\Mail\Mailable $mailable;
+=======
+     * @param  \Illuminate\Mail\Mailable $mailable
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * @return mixed
      */
     public function send(Mailable $mailable)
@@ -32,7 +41,11 @@ class PendingMailFake extends PendingMail
     /**
      * Send a mailable message immediately.
      *
+<<<<<<< HEAD
      * @param  \Illuminate\Contracts\Mail\Mailable $mailable;
+=======
+     * @param  \Illuminate\Mail\Mailable $mailable
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * @return mixed
      */
     public function sendNow(Mailable $mailable)
@@ -43,7 +56,11 @@ class PendingMailFake extends PendingMail
     /**
      * Push the given mailable onto the queue.
      *
+<<<<<<< HEAD
      * @param  \Illuminate\Contracts\Mail\Mailable $mailable;
+=======
+     * @param  \Illuminate\Mail\Mailable $mailable
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * @return mixed
      */
     public function queue(Mailable $mailable)

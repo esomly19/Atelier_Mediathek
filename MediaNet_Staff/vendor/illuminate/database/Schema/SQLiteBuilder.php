@@ -20,6 +20,7 @@ class SQLiteBuilder extends Builder
         $this->connection->select($this->grammar->compileDropAllTables());
 
         $this->connection->select($this->grammar->compileDisableWriteableSchema());
+<<<<<<< HEAD
 
         $this->connection->select($this->grammar->compileRebuild());
     }
@@ -38,6 +39,8 @@ class SQLiteBuilder extends Builder
         $this->connection->select($this->grammar->compileDisableWriteableSchema());
 
         $this->connection->select($this->grammar->compileRebuild());
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     }
 
     /**

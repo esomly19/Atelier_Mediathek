@@ -5,6 +5,7 @@ namespace Illuminate\Support\Facades;
 /**
  * @method static string version()
  * @method static string basePath()
+<<<<<<< HEAD
  * @method static string bootstrapPath(string $path = '')
  * @method static string configPath(string $path = '')
  * @method static string databasePath(string $path = '')
@@ -43,6 +44,19 @@ namespace Illuminate\Support\Facades;
  * @method static void terminate()
  *
  * @see \Illuminate\Contracts\Foundation\Application
+=======
+ * @method static string environment()
+ * @method static bool isDownForMaintenance()
+ * @method static void registerConfiguredProviders()
+ * @method static \Illuminate\Support\ServiceProvider register(\Illuminate\Support\ServiceProvider|string $provider, array $options = [], bool $force = false)
+ * @method static void registerDeferredProvider(string $provider, string $service = null)
+ * @method static void boot()
+ * @method static void booting(mixed $callback)
+ * @method static void booted(mixed $callback)
+ * @method static string getCachedServicesPath()
+ *
+ * @see \Illuminate\Foundation\Application
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
  */
 class App extends Facade
 {

@@ -64,7 +64,11 @@ class InstallCommand extends Command
     protected function getOptions()
     {
         return [
+<<<<<<< HEAD
             ['database', null, InputOption::VALUE_OPTIONAL, 'The database connection to use'],
+=======
+            ['database', null, InputOption::VALUE_OPTIONAL, 'The database connection to use.'],
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
         ];
     }
 }

@@ -11,6 +11,10 @@ use Illuminate\Database\SQLiteConnection;
 use Illuminate\Database\PostgresConnection;
 use Illuminate\Database\SqlServerConnection;
 use Illuminate\Contracts\Container\Container;
+<<<<<<< HEAD
+=======
+use Illuminate\Contracts\Debug\ExceptionHandler;
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
 
 class ConnectionFactory
 {
@@ -36,7 +40,11 @@ class ConnectionFactory
      * Establish a PDO connection based on the configuration.
      *
      * @param  array   $config
+<<<<<<< HEAD
      * @param  string|null  $name
+=======
+     * @param  string  $name
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * @return \Illuminate\Database\Connection
      */
     public function make(array $config, $name = null)
@@ -181,7 +189,13 @@ class ConnectionFactory
                 try {
                     return $this->createConnector($config)->connect($config);
                 } catch (PDOException $e) {
+<<<<<<< HEAD
                     continue;
+=======
+                    if (count($hosts) - 1 === $key && $this->container->bound(ExceptionHandler::class)) {
+                        $this->container->make(ExceptionHandler::class)->report($e);
+                    }
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
                 }
             }
 
@@ -280,6 +294,10 @@ class ConnectionFactory
                 return new SqlServerConnection($connection, $database, $prefix, $config);
         }
 
+<<<<<<< HEAD
         throw new InvalidArgumentException("Unsupported driver [{$driver}]");
+=======
+        throw new InvalidArgumentException("Unsupported driver [$driver]");
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     }
 }

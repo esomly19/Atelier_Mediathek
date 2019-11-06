@@ -10,16 +10,26 @@ use Illuminate\Contracts\Support\Arrayable;
 class Fluent implements ArrayAccess, Arrayable, Jsonable, JsonSerializable
 {
     /**
+<<<<<<< HEAD
      * All of the attributes set on the fluent instance.
+=======
+     * All of the attributes set on the container.
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      *
      * @var array
      */
     protected $attributes = [];
 
     /**
+<<<<<<< HEAD
      * Create a new fluent instance.
      *
      * @param  array|object  $attributes
+=======
+     * Create a new fluent container instance.
+     *
+     * @param  array|object    $attributes
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * @return void
      */
     public function __construct($attributes = [])
@@ -30,7 +40,11 @@ class Fluent implements ArrayAccess, Arrayable, Jsonable, JsonSerializable
     }
 
     /**
+<<<<<<< HEAD
      * Get an attribute from the fluent instance.
+=======
+     * Get an attribute from the container.
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      *
      * @param  string  $key
      * @param  mixed   $default
@@ -46,7 +60,11 @@ class Fluent implements ArrayAccess, Arrayable, Jsonable, JsonSerializable
     }
 
     /**
+<<<<<<< HEAD
      * Get the attributes from the fluent instance.
+=======
+     * Get the attributes from the container.
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      *
      * @return array
      */
@@ -56,7 +74,11 @@ class Fluent implements ArrayAccess, Arrayable, Jsonable, JsonSerializable
     }
 
     /**
+<<<<<<< HEAD
      * Convert the fluent instance to an array.
+=======
+     * Convert the Fluent instance to an array.
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      *
      * @return array
      */
@@ -76,7 +98,11 @@ class Fluent implements ArrayAccess, Arrayable, Jsonable, JsonSerializable
     }
 
     /**
+<<<<<<< HEAD
      * Convert the fluent instance to JSON.
+=======
+     * Convert the Fluent instance to JSON.
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      *
      * @param  int  $options
      * @return string
@@ -132,7 +158,11 @@ class Fluent implements ArrayAccess, Arrayable, Jsonable, JsonSerializable
     }
 
     /**
+<<<<<<< HEAD
      * Handle dynamic calls to the fluent instance to set attributes.
+=======
+     * Handle dynamic calls to the container to set attributes.
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      *
      * @param  string  $method
      * @param  array   $parameters

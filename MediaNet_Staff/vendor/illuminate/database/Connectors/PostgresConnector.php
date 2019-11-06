@@ -59,11 +59,17 @@ class PostgresConnector extends Connector implements ConnectorInterface
      */
     protected function configureEncoding($connection, $config)
     {
+<<<<<<< HEAD
         if (! isset($config['charset'])) {
             return;
         }
 
         $connection->prepare("set names '{$config['charset']}'")->execute();
+=======
+        $charset = $config['charset'];
+
+        $connection->prepare("set names '$charset'")->execute();
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     }
 
     /**

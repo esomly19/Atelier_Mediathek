@@ -3,9 +3,13 @@
 namespace Illuminate\Database\Schema\Grammars;
 
 use RuntimeException;
+<<<<<<< HEAD
 use Illuminate\Support\Arr;
 use Illuminate\Support\Fluent;
 use Doctrine\DBAL\Schema\Index;
+=======
+use Illuminate\Support\Fluent;
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
 use Illuminate\Database\Connection;
 use Illuminate\Database\Schema\Blueprint;
 
@@ -86,7 +90,11 @@ class SQLiteGrammar extends Grammar
 
             // If this foreign key specifies the action to be taken on update we will add
             // that to the statement here. We'll append it to this SQL and then return
+<<<<<<< HEAD
             // the SQL so we can keep adding any other foreign constraints onto this.
+=======
+            // the SQL so we can keep adding any other foreign consraints onto this.
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
             if (! is_null($foreign->onUpdate)) {
                 $sql .= " on update {$foreign->onUpdate}";
             }
@@ -179,7 +187,10 @@ class SQLiteGrammar extends Grammar
      *
      * @param  \Illuminate\Database\Schema\Blueprint  $blueprint
      * @param  \Illuminate\Support\Fluent  $command
+<<<<<<< HEAD
      *
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * @throws \RuntimeException
      */
     public function compileSpatialIndex(Blueprint $blueprint, Fluent $command)
@@ -234,6 +245,7 @@ class SQLiteGrammar extends Grammar
     }
 
     /**
+<<<<<<< HEAD
      * Compile the SQL needed to drop all views.
      *
      * @return string
@@ -254,6 +266,8 @@ class SQLiteGrammar extends Grammar
     }
 
     /**
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * Compile a drop column command.
      *
      * @param  \Illuminate\Database\Schema\Blueprint  $blueprint
@@ -309,7 +323,10 @@ class SQLiteGrammar extends Grammar
      *
      * @param  \Illuminate\Database\Schema\Blueprint  $blueprint
      * @param  \Illuminate\Support\Fluent  $command
+<<<<<<< HEAD
      *
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * @throws \RuntimeException
      */
     public function compileDropSpatialIndex(Blueprint $blueprint, Fluent $command)
@@ -332,6 +349,7 @@ class SQLiteGrammar extends Grammar
     }
 
     /**
+<<<<<<< HEAD
      * Compile a rename index command.
      *
      * @param  \Illuminate\Database\Schema\Blueprint $blueprint
@@ -365,6 +383,8 @@ class SQLiteGrammar extends Grammar
     }
 
     /**
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * Compile the command to enable foreign key constraints.
      *
      * @return string
@@ -559,18 +579,26 @@ class SQLiteGrammar extends Grammar
     }
 
     /**
+<<<<<<< HEAD
      * Create the column definition for an enumeration type.
+=======
+     * Create the column definition for an enum type.
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      *
      * @param  \Illuminate\Support\Fluent  $column
      * @return string
      */
     protected function typeEnum(Fluent $column)
     {
+<<<<<<< HEAD
         return sprintf(
             'varchar check ("%s" in (%s))',
             $column->name,
             $this->quoteString($column->allowed)
         );
+=======
+        return 'varchar';
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     }
 
     /**
@@ -614,7 +642,11 @@ class SQLiteGrammar extends Grammar
      */
     protected function typeDateTime(Fluent $column)
     {
+<<<<<<< HEAD
         return $this->typeTimestamp($column);
+=======
+        return 'datetime';
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     }
 
     /**

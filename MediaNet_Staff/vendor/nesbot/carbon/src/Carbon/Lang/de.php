@@ -1,6 +1,10 @@
 <?php
 
+<<<<<<< HEAD
 /**
+=======
+/*
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
  * This file is part of the Carbon package.
  *
  * (c) Brian Nesbitt <brian@nesbot.com>
@@ -9,6 +13,7 @@
  * file that was distributed with this source code.
  */
 
+<<<<<<< HEAD
 /*
  * Authors:
  * - Michael Hohl
@@ -39,6 +44,23 @@ return [
     'second' => ':count Sekunde|:count Sekunden',
     'a_second' => 'ein paar Sekunden|:count Sekunden',
     's' => ':count Sek.',
+=======
+return array(
+    'year' => ':count Jahr|:count Jahre',
+    'y' => ':countJ|:countJ',
+    'month' => ':count Monat|:count Monate',
+    'm' => ':countMon|:countMon',
+    'week' => ':count Woche|:count Wochen',
+    'w' => ':countWo|:countWo',
+    'day' => ':count Tag|:count Tage',
+    'd' => ':countTg|:countTg',
+    'hour' => ':count Stunde|:count Stunden',
+    'h' => ':countStd|:countStd',
+    'minute' => ':count Minute|:count Minuten',
+    'min' => ':countMin|:countMin',
+    'second' => ':count Sekunde|:count Sekunden',
+    's' => ':countSek|:countSek',
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     'ago' => 'vor :time',
     'from_now' => 'in :time',
     'after' => ':time später',
@@ -58,6 +80,7 @@ return [
     'diff_tomorrow' => 'Heute',
     'diff_before_yesterday' => 'Vorgestern',
     'diff_after_tomorrow' => 'Übermorgen',
+<<<<<<< HEAD
 
     'formats' => [
         'LT' => 'HH:mm',
@@ -87,3 +110,6 @@ return [
     'day_of_first_week_of_year' => 4,
     'list' => [', ', ' und '],
 ];
+=======
+);
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10

@@ -147,6 +147,7 @@ class MorphToMany extends BelongsToMany
     }
 
     /**
+<<<<<<< HEAD
      * Get the pivot columns for the relation.
      *
      * "pivot_" is prefixed at each column for easy removal later.
@@ -163,6 +164,8 @@ class MorphToMany extends BelongsToMany
     }
 
     /**
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * Get the foreign key "type" name.
      *
      * @return string
@@ -181,6 +184,7 @@ class MorphToMany extends BelongsToMany
     {
         return $this->morphClass;
     }
+<<<<<<< HEAD
 
     /**
      * Get the indicator for a reverse relationship.
@@ -191,4 +195,6 @@ class MorphToMany extends BelongsToMany
     {
         return $this->inverse;
     }
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
 }

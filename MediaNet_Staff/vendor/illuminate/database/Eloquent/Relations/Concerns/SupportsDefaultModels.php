@@ -51,7 +51,11 @@ trait SupportsDefaultModels
         $instance = $this->newRelatedInstanceFor($parent);
 
         if (is_callable($this->withDefault)) {
+<<<<<<< HEAD
             return call_user_func($this->withDefault, $instance, $parent) ?: $instance;
+=======
+            return call_user_func($this->withDefault, $instance) ?: $instance;
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
         }
 
         if (is_array($this->withDefault)) {

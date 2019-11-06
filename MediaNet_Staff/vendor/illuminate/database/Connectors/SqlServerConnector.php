@@ -43,6 +43,7 @@ class SqlServerConnector extends Connector implements ConnectorInterface
         // First we will create the basic DSN setup as well as the port if it is in
         // in the configuration options. This will give us the basic DSN we will
         // need to establish the PDO connections and return them back for use.
+<<<<<<< HEAD
         if ($this->prefersOdbc($config)) {
             return $this->getOdbcDsn($config);
         }
@@ -52,6 +53,15 @@ class SqlServerConnector extends Connector implements ConnectorInterface
         } else {
             return $this->getDblibDsn($config);
         }
+=======
+        if (in_array('dblib', $this->getAvailableDrivers())) {
+            return $this->getDblibDsn($config);
+        } elseif ($this->prefersOdbc($config)) {
+            return $this->getOdbcDsn($config);
+        }
+
+        return $this->getSqlSrvDsn($config);
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     }
 
     /**
@@ -166,11 +176,19 @@ class SqlServerConnector extends Connector implements ConnectorInterface
      */
     protected function buildHostString(array $config, $separator)
     {
+<<<<<<< HEAD
         if (empty($config['port'])) {
             return $config['host'];
         }
 
         return $config['host'].$separator.$config['port'];
+=======
+        if (isset($config['port']) && ! empty($config['port'])) {
+            return $config['host'].$separator.$config['port'];
+        } else {
+            return $config['host'];
+        }
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     }
 
     /**

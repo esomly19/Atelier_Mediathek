@@ -23,6 +23,7 @@ class Factory implements ArrayAccess
     protected $states = [];
 
     /**
+<<<<<<< HEAD
      * The registered after making callbacks.
      *
      * @var array
@@ -37,6 +38,8 @@ class Factory implements ArrayAccess
     protected $afterCreating = [];
 
     /**
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * The Faker instance for the builder.
      *
      * @var \Faker\Generator
@@ -112,6 +115,7 @@ class Factory implements ArrayAccess
     }
 
     /**
+<<<<<<< HEAD
      * Define a callback to run after making a model.
      *
      * @param  string  $class
@@ -168,6 +172,8 @@ class Factory implements ArrayAccess
     }
 
     /**
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * Create an instance of the given model and persist it to the database.
      *
      * @param  string  $class
@@ -254,10 +260,14 @@ class Factory implements ArrayAccess
      */
     public function of($class, $name = 'default')
     {
+<<<<<<< HEAD
         return new FactoryBuilder(
             $class, $name, $this->definitions, $this->states,
             $this->afterMaking, $this->afterCreating, $this->faker
         );
+=======
+        return new FactoryBuilder($class, $name, $this->definitions, $this->states, $this->faker);
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     }
 
     /**
@@ -310,7 +320,11 @@ class Factory implements ArrayAccess
      */
     public function offsetSet($offset, $value)
     {
+<<<<<<< HEAD
         $this->define($offset, $value);
+=======
+        return $this->define($offset, $value);
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     }
 
     /**

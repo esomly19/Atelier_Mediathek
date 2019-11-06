@@ -82,8 +82,13 @@ trait BuildsQueries
      *
      * @param  mixed  $value
      * @param  callable  $callback
+<<<<<<< HEAD
      * @param  callable|null  $default
      * @return mixed|$this
+=======
+     * @param  callable  $default
+     * @return mixed
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      */
     public function when($value, $callback, $default = null)
     {
@@ -99,7 +104,11 @@ trait BuildsQueries
     /**
      * Pass the query to a given callback.
      *
+<<<<<<< HEAD
      * @param  callable  $callback
+=======
+     * @param  \Closure  $callback
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * @return \Illuminate\Database\Query\Builder
      */
     public function tap($callback)
@@ -112,8 +121,13 @@ trait BuildsQueries
      *
      * @param  mixed  $value
      * @param  callable  $callback
+<<<<<<< HEAD
      * @param  callable|null  $default
      * @return mixed|$this
+=======
+     * @param  callable  $default
+     * @return mixed
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      */
     public function unless($value, $callback, $default = null)
     {

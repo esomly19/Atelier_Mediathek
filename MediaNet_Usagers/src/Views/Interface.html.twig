@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    {% block head %}
+    <link href="../../src/css/interface.css" type="text/css" rel="stylesheet" />
+    {% block stylesheets %}
+        
+    {% endblock %}
+        <title>{% block title %}{% endblock %} Mediathek </title>
+    {% endblock %}
+    </head>
+    <body>
+
+      <div id="header">
+        {% block header %}
+        <div class="navbar">
+            <div class="navLeft">
+                <button id="1" class="boutton"><a href="{{path_for('catalogue')}}">Catalogue</a></button>
+            </div>
+
+            <div class=""></div>
+
+            {% if condition %}
+
+            {% else %}
+
+            <div class="navRight">
+                <button  id="2"  class="boutton"><a href="{{path_for('connexion')}}">Se connecter</a></button>
+            </div>
+            
+            <div class="navRight">
+                <button  id="3" class="boutton"><a href="{{path_for('emprunt&retour')}}">mes emprunts / mes retours</a></button>
+            
+                <button  id="4" class="boutton"><a href="{{path_for('profil')}}">mon profils</a></button>
+            </div>
+
+            {% endif %}
+
+        </div>
+        {% endblock %}
+      </div> 
+
+        <div id="content">{% block content %}{% endblock %}</div>
+
+        <div id="footer">
+            {% block footer %}
+                Site crée par ...
+                &copy; Copyright (FOOTER)</a>.
+            {% endblock %}
+        </div>
+    </body>
+</html>
+
+

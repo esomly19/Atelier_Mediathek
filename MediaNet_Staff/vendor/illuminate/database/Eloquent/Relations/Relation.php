@@ -9,14 +9,21 @@ use Illuminate\Support\Traits\Macroable;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Eloquent\Collection;
+<<<<<<< HEAD
 use Illuminate\Support\Traits\ForwardsCalls;
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
 
 /**
  * @mixin \Illuminate\Database\Eloquent\Builder
  */
 abstract class Relation
 {
+<<<<<<< HEAD
     use ForwardsCalls, Macroable {
+=======
+    use Macroable {
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
         __call as macroCall;
     }
 
@@ -162,6 +169,7 @@ abstract class Relation
      */
     public function touch()
     {
+<<<<<<< HEAD
         $model = $this->getRelated();
 
         if (! $model::isIgnoringTouch()) {
@@ -169,6 +177,11 @@ abstract class Relation
                 $model->getUpdatedAtColumn() => $model->freshTimestampString(),
             ]);
         }
+=======
+        $column = $this->getRelated()->getUpdatedAtColumn();
+
+        $this->rawUpdate([$column => $this->getRelated()->freshTimestampString()]);
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     }
 
     /**
@@ -224,7 +237,11 @@ abstract class Relation
     {
         return collect($models)->map(function ($value) use ($key) {
             return $key ? $value->getAttribute($key) : $value->getKey();
+<<<<<<< HEAD
         })->values()->unique(null, true)->sort()->all();
+=======
+        })->values()->unique()->sort()->all();
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     }
 
     /**
@@ -308,6 +325,7 @@ abstract class Relation
     }
 
     /**
+<<<<<<< HEAD
      * Get the name of the "where in" method for eager loading.
      *
      * @param  \Illuminate\Database\Eloquent\Model  $model
@@ -324,6 +342,8 @@ abstract class Relation
     }
 
     /**
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * Set or get the morph map for polymorphic relations.
      *
      * @param  array|null  $map
@@ -367,7 +387,13 @@ abstract class Relation
      */
     public static function getMorphedModel($alias)
     {
+<<<<<<< HEAD
         return static::$morphMap[$alias] ?? null;
+=======
+        return array_key_exists($alias, self::$morphMap)
+                        ? self::$morphMap[$alias]
+                        : null;
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     }
 
     /**
@@ -383,7 +409,11 @@ abstract class Relation
             return $this->macroCall($method, $parameters);
         }
 
+<<<<<<< HEAD
         $result = $this->forwardCallTo($this->query, $method, $parameters);
+=======
+        $result = $this->query->{$method}(...$parameters);
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
 
         if ($result === $this->query) {
             return $this;

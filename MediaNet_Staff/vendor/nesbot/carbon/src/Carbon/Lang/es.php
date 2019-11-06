@@ -1,6 +1,10 @@
 <?php
 
+<<<<<<< HEAD
 /**
+=======
+/*
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
  * This file is part of the Carbon package.
  *
  * (c) Brian Nesbitt <brian@nesbot.com>
@@ -9,6 +13,7 @@
  * file that was distributed with this source code.
  */
 
+<<<<<<< HEAD
 /**
  * Authors:
  * - Kunal Marwaha
@@ -50,6 +55,25 @@ return [
     's' => ':counts',
     'ago' => 'hace :time',
     'from_now' => 'en :time',
+=======
+return array(
+    'year' => ':count año|:count años',
+    'y' => ':count año|:count años',
+    'month' => ':count mes|:count meses',
+    'm' => ':count mes|:count meses',
+    'week' => ':count semana|:count semanas',
+    'w' => ':count semana|:count semanas',
+    'day' => ':count día|:count días',
+    'd' => ':count día|:count días',
+    'hour' => ':count hora|:count horas',
+    'h' => ':count hora|:count horas',
+    'minute' => ':count minuto|:count minutos',
+    'min' => ':count minuto|:count minutos',
+    'second' => ':count segundo|:count segundos',
+    's' => ':count segundo|:count segundos',
+    'ago' => 'hace :time',
+    'from_now' => 'dentro de :time',
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     'after' => ':time después',
     'before' => ':time antes',
     'diff_now' => 'ahora mismo',
@@ -57,6 +81,7 @@ return [
     'diff_tomorrow' => 'mañana',
     'diff_before_yesterday' => 'antier',
     'diff_after_tomorrow' => 'pasado mañana',
+<<<<<<< HEAD
     'formats' => [
         'LT' => 'H:mm',
         'LTS' => 'H:mm:ss',
@@ -95,3 +120,6 @@ return [
     'list' => [', ', ' y '],
     'meridiem' => ['a. m.', 'p. m.'],
 ];
+=======
+);
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10

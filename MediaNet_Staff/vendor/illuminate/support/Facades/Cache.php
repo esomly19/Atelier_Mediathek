@@ -3,6 +3,7 @@
 namespace Illuminate\Support\Facades;
 
 /**
+<<<<<<< HEAD
  * @method static \Illuminate\Contracts\Cache\Repository  store(string|null $name = null)
  * @method static bool has(string $key)
  * @method static bool missing(string $key)
@@ -19,6 +20,8 @@ namespace Illuminate\Support\Facades;
  * @method static bool forget(string $key)
  * @method static \Illuminate\Contracts\Cache\Store getStore()
  *
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
  * @see \Illuminate\Cache\CacheManager
  * @see \Illuminate\Cache\Repository
  */

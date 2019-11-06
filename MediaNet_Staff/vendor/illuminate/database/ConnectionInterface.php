@@ -27,16 +27,23 @@ interface ConnectionInterface
      *
      * @param  string  $query
      * @param  array   $bindings
+<<<<<<< HEAD
      * @param  bool  $useReadPdo
      * @return mixed
      */
     public function selectOne($query, $bindings = [], $useReadPdo = true);
+=======
+     * @return mixed
+     */
+    public function selectOne($query, $bindings = []);
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
 
     /**
      * Run a select statement against the database.
      *
      * @param  string  $query
      * @param  array   $bindings
+<<<<<<< HEAD
      * @param  bool  $useReadPdo
      * @return array
      */
@@ -51,6 +58,11 @@ interface ConnectionInterface
      * @return \Generator
      */
     public function cursor($query, $bindings = [], $useReadPdo = true);
+=======
+     * @return array
+     */
+    public function select($query, $bindings = []);
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
 
     /**
      * Run an insert statement against the database.

@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Testing\Fakes\EventFake;
 
 /**
+<<<<<<< HEAD
  * @method static void listen(string|array $events, mixed $listener)
  * @method static bool hasListeners(string $eventName)
  * @method static void push(string $event, array $payload = [])
@@ -20,6 +21,8 @@ use Illuminate\Support\Testing\Fakes\EventFake;
  * @method static void forgetPushed()
  * @method static \Illuminate\Events\Dispatcher setQueueResolver(callable $resolver)
  *
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
  * @see \Illuminate\Events\Dispatcher
  */
 class Event extends Facade
@@ -28,13 +31,18 @@ class Event extends Facade
      * Replace the bound instance with a fake.
      *
      * @param  array|string  $eventsToFake
+<<<<<<< HEAD
      * @return \Illuminate\Support\Testing\Fakes\EventFake
+=======
+     * @return void
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      */
     public static function fake($eventsToFake = [])
     {
         static::swap($fake = new EventFake(static::getFacadeRoot(), $eventsToFake));
 
         Model::setEventDispatcher($fake);
+<<<<<<< HEAD
 
         return $fake;
     }
@@ -57,6 +65,8 @@ class Event extends Facade
 
             Model::setEventDispatcher($originalDispatcher);
         });
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     }
 
     /**

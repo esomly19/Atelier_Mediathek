@@ -3,6 +3,7 @@
 namespace Illuminate\Support\Facades;
 
 /**
+<<<<<<< HEAD
  * @method static bool supported(string $key, string $cipher)
  * @method static string generateKey(string $cipher)
  * @method static string encrypt(mixed $value, bool $serialize = true)
@@ -11,6 +12,8 @@ namespace Illuminate\Support\Facades;
  * @method static string decryptString(string $payload)
  * @method static string getKey()
  *
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
  * @see \Illuminate\Encryption\Encrypter
  */
 class Crypt extends Facade

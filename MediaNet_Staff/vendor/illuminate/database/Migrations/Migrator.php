@@ -5,6 +5,7 @@ namespace Illuminate\Database\Migrations;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use Illuminate\Support\Collection;
+<<<<<<< HEAD
 use Illuminate\Console\OutputStyle;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Contracts\Events\Dispatcher;
@@ -12,11 +13,15 @@ use Illuminate\Database\Events\MigrationEnded;
 use Illuminate\Database\Events\MigrationsEnded;
 use Illuminate\Database\Events\MigrationStarted;
 use Illuminate\Database\Events\MigrationsStarted;
+=======
+use Illuminate\Filesystem\Filesystem;
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
 use Illuminate\Database\ConnectionResolverInterface as Resolver;
 
 class Migrator
 {
     /**
+<<<<<<< HEAD
      * The event dispatcher instance.
      *
      * @var \Illuminate\Contracts\Events\Dispatcher
@@ -24,6 +29,8 @@ class Migrator
     protected $events;
 
     /**
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * The migration repository implementation.
      *
      * @var \Illuminate\Database\Migrations\MigrationRepositoryInterface
@@ -52,6 +59,7 @@ class Migrator
     protected $connection;
 
     /**
+<<<<<<< HEAD
      * The paths to all of the migration files.
      *
      * @var array
@@ -64,6 +72,20 @@ class Migrator
      * @var \Illuminate\Console\OutputStyle
      */
     protected $output;
+=======
+     * The notes for the current operation.
+     *
+     * @var array
+     */
+    protected $notes = [];
+
+    /**
+     * The paths to all of the migration files.
+     *
+     * @var array
+     */
+    protected $paths = [];
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
 
     /**
      * Create a new migrator instance.
@@ -71,16 +93,25 @@ class Migrator
      * @param  \Illuminate\Database\Migrations\MigrationRepositoryInterface  $repository
      * @param  \Illuminate\Database\ConnectionResolverInterface  $resolver
      * @param  \Illuminate\Filesystem\Filesystem  $files
+<<<<<<< HEAD
      * @param  \Illuminate\Contracts\Events\Dispatcher|null  $dispatcher
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * @return void
      */
     public function __construct(MigrationRepositoryInterface $repository,
                                 Resolver $resolver,
+<<<<<<< HEAD
                                 Filesystem $files,
                                 Dispatcher $dispatcher = null)
     {
         $this->files = $files;
         $this->events = $dispatcher;
+=======
+                                Filesystem $files)
+    {
+        $this->files = $files;
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
         $this->resolver = $resolver;
         $this->repository = $repository;
     }
@@ -94,6 +125,11 @@ class Migrator
      */
     public function run($paths = [], array $options = [])
     {
+<<<<<<< HEAD
+=======
+        $this->notes = [];
+
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
         // Once we grab all of the migration files for the path, we will compare them
         // against the migrations that have already been run for this package then
         // run each of the outstanding migrations against a database connection.
@@ -138,7 +174,11 @@ class Migrator
         // First we will just make sure that there are any migrations to run. If there
         // aren't, we will just make a note of it to the developer so they're aware
         // that all of the migrations have been run against this database system.
+<<<<<<< HEAD
         if (count($migrations) === 0) {
+=======
+        if (count($migrations) == 0) {
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
             $this->note('<info>Nothing to migrate.</info>');
 
             return;
@@ -153,8 +193,11 @@ class Migrator
 
         $step = $options['step'] ?? false;
 
+<<<<<<< HEAD
         $this->fireMigrationEvent(new MigrationsStarted);
 
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
         // Once we have the array of migrations, we will spin through them and run the
         // migrations "up" so the changes are made to the databases. We'll then log
         // that the migration was run so we don't repeat it next time we execute.
@@ -165,8 +208,11 @@ class Migrator
                 $batch++;
             }
         }
+<<<<<<< HEAD
 
         $this->fireMigrationEvent(new MigrationsEnded);
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     }
 
     /**
@@ -192,18 +238,27 @@ class Migrator
 
         $this->note("<comment>Migrating:</comment> {$name}");
 
+<<<<<<< HEAD
         $startTime = microtime(true);
 
         $this->runMigration($migration, 'up');
 
         $runTime = round(microtime(true) - $startTime, 2);
 
+=======
+        $this->runMigration($migration, 'up');
+
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
         // Once we have run a migrations class, we will log that it was run in this
         // repository so that we don't try to run it next time we do a migration
         // in the application. A migration repository keeps the migrate order.
         $this->repository->log($name, $batch);
 
+<<<<<<< HEAD
         $this->note("<info>Migrated:</info>  {$name} ({$runTime} seconds)");
+=======
+        $this->note("<info>Migrated:</info>  {$name}");
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     }
 
     /**
@@ -215,6 +270,11 @@ class Migrator
      */
     public function rollback($paths = [], array $options = [])
     {
+<<<<<<< HEAD
+=======
+        $this->notes = [];
+
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
         // We want to pull in the last batch of migrations that ran on the previous
         // migration operation. We'll then reverse those migrations and run each
         // of them "down" to reverse the last migration "operation" which ran.
@@ -239,9 +299,15 @@ class Migrator
     {
         if (($steps = $options['step'] ?? 0) > 0) {
             return $this->repository->getMigrations($steps);
+<<<<<<< HEAD
         }
 
         return $this->repository->getLast();
+=======
+        } else {
+            return $this->repository->getLast();
+        }
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     }
 
     /**
@@ -258,8 +324,11 @@ class Migrator
 
         $this->requireFiles($files = $this->getMigrationFiles($paths));
 
+<<<<<<< HEAD
         $this->fireMigrationEvent(new MigrationsStarted);
 
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
         // Next we will run through all of the migrations and call the "down" method
         // which will reverse each migration in order. This getLast method on the
         // repository already returns these migration's names in reverse order.
@@ -280,8 +349,11 @@ class Migrator
             );
         }
 
+<<<<<<< HEAD
         $this->fireMigrationEvent(new MigrationsEnded);
 
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
         return $rolledBack;
     }
 
@@ -294,6 +366,11 @@ class Migrator
      */
     public function reset($paths = [], $pretend = false)
     {
+<<<<<<< HEAD
+=======
+        $this->notes = [];
+
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
         // Next, we will reverse the migration list so we can run them back in the
         // correct order for resetting this database. This will allow us to get
         // the database back into its "empty" state ready for the migrations.
@@ -353,18 +430,27 @@ class Migrator
             return $this->pretendToRun($instance, 'down');
         }
 
+<<<<<<< HEAD
         $startTime = microtime(true);
 
         $this->runMigration($instance, 'down');
 
         $runTime = round(microtime(true) - $startTime, 2);
 
+=======
+        $this->runMigration($instance, 'down');
+
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
         // Once we have successfully run the migration "down" we will remove it from
         // the migration repository so it will be considered to have not been run
         // by the application then will be able to fire by any later operation.
         $this->repository->delete($migration);
 
+<<<<<<< HEAD
         $this->note("<info>Rolled back:</info>  {$name} ({$runTime} seconds)");
+=======
+        $this->note("<info>Rolled back:</info>  {$name}");
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     }
 
     /**
@@ -382,11 +468,15 @@ class Migrator
 
         $callback = function () use ($migration, $method) {
             if (method_exists($migration, $method)) {
+<<<<<<< HEAD
                 $this->fireMigrationEvent(new MigrationStarted($migration, $method));
 
                 $migration->{$method}();
 
                 $this->fireMigrationEvent(new MigrationEnded($migration, $method));
+=======
+                $migration->{$method}();
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
             }
         };
 
@@ -457,7 +547,11 @@ class Migrator
     public function getMigrationFiles($paths)
     {
         return Collection::make($paths)->flatMap(function ($path) {
+<<<<<<< HEAD
             return Str::endsWith($path, '.php') ? [$path] : $this->files->glob($path.'/*_*.php');
+=======
+            return $this->files->glob($path.'/*_*.php');
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
         })->filter()->sortBy(function ($file) {
             return $this->getMigrationName($file);
         })->values()->keyBy(function ($file) {
@@ -511,6 +605,7 @@ class Migrator
     }
 
     /**
+<<<<<<< HEAD
      * Get the default connection name.
      *
      * @return string
@@ -521,6 +616,8 @@ class Migrator
     }
 
     /**
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * Set the default connection name.
      *
      * @param  string  $name
@@ -596,6 +693,7 @@ class Migrator
     }
 
     /**
+<<<<<<< HEAD
      * Set the output implementation that should be used by the console.
      *
      * @param  \Illuminate\Console\OutputStyle  $output
@@ -610,12 +708,16 @@ class Migrator
 
     /**
      * Write a note to the console's output.
+=======
+     * Raise a note event for the migrator.
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      *
      * @param  string  $message
      * @return void
      */
     protected function note($message)
     {
+<<<<<<< HEAD
         if ($this->output) {
             $this->output->writeln($message);
         }
@@ -632,5 +734,18 @@ class Migrator
         if ($this->events) {
             $this->events->dispatch($event);
         }
+=======
+        $this->notes[] = $message;
+    }
+
+    /**
+     * Get the notes for the last operation.
+     *
+     * @return array
+     */
+    public function getNotes()
+    {
+        return $this->notes;
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     }
 }

@@ -3,7 +3,10 @@
 namespace Illuminate\Support;
 
 use Illuminate\Console\Application as Artisan;
+<<<<<<< HEAD
 use Illuminate\Contracts\Support\DeferrableProvider;
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
 
 abstract class ServiceProvider
 {
@@ -17,8 +20,11 @@ abstract class ServiceProvider
     /**
      * Indicates if loading of the provider is deferred.
      *
+<<<<<<< HEAD
      * @deprecated Implement the \Illuminate\Contracts\Support\DeferrableProvider interface instead. Will be removed in Laravel 6.0.
      *
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * @var bool
      */
     protected $defer = false;
@@ -49,6 +55,7 @@ abstract class ServiceProvider
     }
 
     /**
+<<<<<<< HEAD
      * Register any application services.
      *
      * @return void
@@ -59,6 +66,8 @@ abstract class ServiceProvider
     }
 
     /**
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * Merge the given configuration with the existing configuration.
      *
      * @param  string  $path
@@ -147,16 +156,27 @@ abstract class ServiceProvider
      * Register paths to be published by the publish command.
      *
      * @param  array  $paths
+<<<<<<< HEAD
      * @param  mixed  $groups
      * @return void
      */
     protected function publishes(array $paths, $groups = null)
+=======
+     * @param  string  $group
+     * @return void
+     */
+    protected function publishes(array $paths, $group = null)
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     {
         $this->ensurePublishArrayInitialized($class = static::class);
 
         static::$publishes[$class] = array_merge(static::$publishes[$class], $paths);
 
+<<<<<<< HEAD
         foreach ((array) $groups as $group) {
+=======
+        if ($group) {
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
             $this->addPublishGroup($group, $paths);
         }
     }
@@ -308,6 +328,10 @@ abstract class ServiceProvider
      */
     public function isDeferred()
     {
+<<<<<<< HEAD
         return $this->defer || $this instanceof DeferrableProvider;
+=======
+        return $this->defer;
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     }
 }

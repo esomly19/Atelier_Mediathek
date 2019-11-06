@@ -104,6 +104,7 @@ class SqlServerGrammar extends Grammar
     }
 
     /**
+<<<<<<< HEAD
      * Compile a "where time" clause.
      *
      * @param  \Illuminate\Database\Query\Builder  $query
@@ -158,6 +159,8 @@ class SqlServerGrammar extends Grammar
     }
 
     /**
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * Create a full ANSI offset clause for the query.
      *
      * @param  \Illuminate\Database\Query\Builder  $query
@@ -210,7 +213,11 @@ class SqlServerGrammar extends Grammar
     {
         $constraint = $this->compileRowConstraint($query);
 
+<<<<<<< HEAD
         return "select * from ({$sql}) as temp_table where row_num {$constraint} order by row_num";
+=======
+        return "select * from ({$sql}) as temp_table where row_num {$constraint}";
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     }
 
     /**
@@ -323,7 +330,11 @@ class SqlServerGrammar extends Grammar
     {
         $joins = ' '.$this->compileJoins($query, $query->joins);
 
+<<<<<<< HEAD
         $alias = stripos($table, ' as ') !== false
+=======
+        $alias = strpos(strtolower($table), ' as ') !== false
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
                 ? explode(' as ', $table)[1] : $table;
 
         return trim("delete {$alias} from {$table}{$joins} {$where}");
@@ -349,7 +360,11 @@ class SqlServerGrammar extends Grammar
      */
     public function compileUpdate(Builder $query, $values)
     {
+<<<<<<< HEAD
         [$table, $alias] = $this->parseUpdateTable($query->from);
+=======
+        list($table, $alias) = $this->parseUpdateTable($query->from);
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
 
         // Each one of the columns in the update statements needs to be wrapped in the
         // keyword identifiers, also a place-holder needs to be created for each of
@@ -389,7 +404,11 @@ class SqlServerGrammar extends Grammar
     {
         $table = $alias = $this->wrapTable($table);
 
+<<<<<<< HEAD
         if (stripos($table, '] as [') !== false) {
+=======
+        if (strpos(strtolower($table), '] as [') !== false) {
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
             $alias = '['.explode('] as [', $table)[1];
         }
 
@@ -405,14 +424,37 @@ class SqlServerGrammar extends Grammar
      */
     public function prepareBindingsForUpdate(array $bindings, array $values)
     {
+<<<<<<< HEAD
         $cleanBindings = Arr::except($bindings, 'select');
 
         return array_values(
             array_merge($values, Arr::flatten($cleanBindings))
+=======
+        // Update statements with joins in SQL Servers utilize an unique syntax. We need to
+        // take all of the bindings and put them on the end of this array since they are
+        // added to the end of the "where" clause statements as typical where clauses.
+        $bindingsWithoutJoin = Arr::except($bindings, 'join');
+
+        return array_values(
+            array_merge($values, $bindings['join'], Arr::flatten($bindingsWithoutJoin))
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
         );
     }
 
     /**
+<<<<<<< HEAD
+=======
+     * Determine if the grammar supports savepoints.
+     *
+     * @return bool
+     */
+    public function supportsSavepoints()
+    {
+        return true;
+    }
+
+    /**
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * Compile the SQL statement to define a savepoint.
      *
      * @param  string  $name
@@ -456,6 +498,7 @@ class SqlServerGrammar extends Grammar
     }
 
     /**
+<<<<<<< HEAD
      * Wrap the given JSON selector.
      *
      * @param  string  $value
@@ -480,6 +523,8 @@ class SqlServerGrammar extends Grammar
     }
 
     /**
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * Wrap a table in keyword identifiers.
      *
      * @param  \Illuminate\Database\Query\Expression|string  $table
@@ -487,11 +532,15 @@ class SqlServerGrammar extends Grammar
      */
     public function wrapTable($table)
     {
+<<<<<<< HEAD
         if (! $this->isExpression($table)) {
             return $this->wrapTableValuedFunction(parent::wrapTable($table));
         }
 
         return $this->getValue($table);
+=======
+        return $this->wrapTableValuedFunction(parent::wrapTable($table));
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     }
 
     /**

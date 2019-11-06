@@ -17,10 +17,13 @@ class MorphOne extends MorphOneOrMany
      */
     public function getResults()
     {
+<<<<<<< HEAD
         if (is_null($this->getParentKey())) {
             return $this->getDefaultFor($this->parent);
         }
 
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
         return $this->query->first() ?: $this->getDefaultFor($this->parent);
     }
 

@@ -66,7 +66,11 @@ class Manager
     /**
      * Get a connection instance from the global manager.
      *
+<<<<<<< HEAD
      * @param  string|null  $connection
+=======
+     * @param  string  $connection
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * @return \Illuminate\Database\Connection
      */
     public static function connection($connection = null)
@@ -78,7 +82,11 @@ class Manager
      * Get a fluent query builder instance.
      *
      * @param  string  $table
+<<<<<<< HEAD
      * @param  string|null  $connection
+=======
+     * @param  string  $connection
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * @return \Illuminate\Database\Query\Builder
      */
     public static function table($table, $connection = null)
@@ -89,7 +97,11 @@ class Manager
     /**
      * Get a schema builder instance.
      *
+<<<<<<< HEAD
      * @param  string|null  $connection
+=======
+     * @param  string  $connection
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * @return \Illuminate\Database\Schema\Builder
      */
     public static function schema($connection = null)
@@ -100,7 +112,11 @@ class Manager
     /**
      * Get a registered connection instance.
      *
+<<<<<<< HEAD
      * @param  string|null  $name
+=======
+     * @param  string  $name
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * @return \Illuminate\Database\Connection
      */
     public function getConnection($name = null)

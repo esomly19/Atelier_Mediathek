@@ -15,7 +15,11 @@ interface UserProvider
     /**
      * Retrieve a user by their unique identifier and "remember me" token.
      *
+<<<<<<< HEAD
      * @param  mixed  $identifier
+=======
+     * @param  mixed   $identifier
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * @param  string  $token
      * @return \Illuminate\Contracts\Auth\Authenticatable|null
      */

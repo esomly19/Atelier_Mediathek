@@ -1,6 +1,10 @@
 <?php
 
+<<<<<<< HEAD
 /**
+=======
+/*
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
  * This file is part of the Carbon package.
  *
  * (c) Brian Nesbitt <brian@nesbot.com>
@@ -9,14 +13,18 @@
  * file that was distributed with this source code.
  */
 
+<<<<<<< HEAD
 /*
  * Authors:
  * - Quentí
  */
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
 \Symfony\Component\Translation\PluralizationRules::set(function ($number) {
     return $number == 1 ? 0 : 1;
 }, 'oc');
 
+<<<<<<< HEAD
 return [
     'year' => ':count an|:count ans',
     'a_year' => 'un an|:count ans',
@@ -41,6 +49,25 @@ return [
     's' => ':count segonda|:count segondas',
     'ago' => 'fa :time',
     'from_now' => 'd\'aquí :time',
+=======
+return array(
+    'year' => ':count an|:count ans',
+    'y' => ':count an|:count ans',
+    'month' => ':count mes|:count meses',
+    'm' => ':count mes|:count meses',
+    'week' => ':count setmana|:count setmanas',
+    'w' => ':count setmana|:count setmanas',
+    'day' => ':count jorn|:count jorns',
+    'd' => ':count jorn|:count jorns',
+    'hour' => ':count ora|:count oras',
+    'h' => ':count ora|:count oras',
+    'minute' => ':count minuta|:count minutas',
+    'min' => ':count minuta|:count minutas',
+    'second' => ':count segonda|:count segondas',
+    's' => ':count segonda|:count segondas',
+    'ago' => 'fa :time',
+    'from_now' => 'dins :time',
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     'after' => ':time aprèp',
     'before' => ':time abans',
     'diff_now' => 'ara meteis',
@@ -52,6 +79,7 @@ return [
     'period_interval' => 'cada :interval',
     'period_start_date' => 'de :date',
     'period_end_date' => 'fins a :date',
+<<<<<<< HEAD
     'formats' => [
         'LT' => 'H:mm',
         'LTS' => 'H:mm:ss',
@@ -91,3 +119,6 @@ return [
     'day_of_first_week_of_year' => 4,
     'list' => [', ', ' e '],
 ];
+=======
+);
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10

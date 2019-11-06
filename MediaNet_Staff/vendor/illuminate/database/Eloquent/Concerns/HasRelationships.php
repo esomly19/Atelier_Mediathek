@@ -16,7 +16,10 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+<<<<<<< HEAD
 use Illuminate\Database\Eloquent\Relations\HasOneThrough;
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 
 trait HasRelationships
@@ -42,6 +45,10 @@ trait HasRelationships
      */
     public static $manyMethods = [
         'belongsToMany', 'morphToMany', 'morphedByMany',
+<<<<<<< HEAD
+=======
+        'guessBelongsToManyRelation', 'findFirstMethodThatIsntRelation',
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     ];
 
     /**
@@ -78,6 +85,7 @@ trait HasRelationships
     }
 
     /**
+<<<<<<< HEAD
      * Define a has-one-through relationship.
      *
      * @param  string  $related
@@ -121,6 +129,8 @@ trait HasRelationships
     }
 
     /**
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * Define a polymorphic one-to-one relationship.
      *
      * @param  string  $related
@@ -134,7 +144,11 @@ trait HasRelationships
     {
         $instance = $this->newRelatedInstance($related);
 
+<<<<<<< HEAD
         [$type, $id] = $this->getMorphs($name, $type, $id);
+=======
+        list($type, $id) = $this->getMorphs($name, $type, $id);
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
 
         $table = $instance->getTable();
 
@@ -216,17 +230,27 @@ trait HasRelationships
      * @param  string  $name
      * @param  string  $type
      * @param  string  $id
+<<<<<<< HEAD
      * @param  string  $ownerKey
      * @return \Illuminate\Database\Eloquent\Relations\MorphTo
      */
     public function morphTo($name = null, $type = null, $id = null, $ownerKey = null)
+=======
+     * @return \Illuminate\Database\Eloquent\Relations\MorphTo
+     */
+    public function morphTo($name = null, $type = null, $id = null)
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     {
         // If no name is provided, we will use the backtrace to get the function name
         // since that is most likely the name of the polymorphic interface. We can
         // use that to get both the class and foreign key that will be utilized.
         $name = $name ?: $this->guessBelongsToRelation();
 
+<<<<<<< HEAD
         [$type, $id] = $this->getMorphs(
+=======
+        list($type, $id) = $this->getMorphs(
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
             Str::snake($name), $type, $id
         );
 
@@ -234,8 +258,13 @@ trait HasRelationships
         // the relationship. In this case we'll just pass in a dummy query where we
         // need to remove any eager loads that may already be defined on a model.
         return empty($class = $this->{$type})
+<<<<<<< HEAD
                     ? $this->morphEagerTo($name, $type, $id, $ownerKey)
                     : $this->morphInstanceTo($class, $name, $type, $id, $ownerKey);
+=======
+                    ? $this->morphEagerTo($name, $type, $id)
+                    : $this->morphInstanceTo($class, $name, $type, $id);
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     }
 
     /**
@@ -244,6 +273,7 @@ trait HasRelationships
      * @param  string  $name
      * @param  string  $type
      * @param  string  $id
+<<<<<<< HEAD
      * @param  string  $ownerKey
      * @return \Illuminate\Database\Eloquent\Relations\MorphTo
      */
@@ -251,6 +281,14 @@ trait HasRelationships
     {
         return $this->newMorphTo(
             $this->newQuery()->setEagerLoads([]), $this, $id, $ownerKey, $type, $name
+=======
+     * @return \Illuminate\Database\Eloquent\Relations\MorphTo
+     */
+    protected function morphEagerTo($name, $type, $id)
+    {
+        return $this->newMorphTo(
+            $this->newQuery()->setEagerLoads([]), $this, $id, null, $type, $name
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
         );
     }
 
@@ -261,17 +299,27 @@ trait HasRelationships
      * @param  string  $name
      * @param  string  $type
      * @param  string  $id
+<<<<<<< HEAD
      * @param  string  $ownerKey
      * @return \Illuminate\Database\Eloquent\Relations\MorphTo
      */
     protected function morphInstanceTo($target, $name, $type, $id, $ownerKey)
+=======
+     * @return \Illuminate\Database\Eloquent\Relations\MorphTo
+     */
+    protected function morphInstanceTo($target, $name, $type, $id)
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     {
         $instance = $this->newRelatedInstance(
             static::getActualClassNameForMorph($target)
         );
 
         return $this->newMorphTo(
+<<<<<<< HEAD
             $instance->newQuery(), $this, $id, $ownerKey ?? $instance->getKeyName(), $type, $name
+=======
+            $instance->newQuery(), $this, $id, $instance->getKeyName(), $type, $name
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
         );
     }
 
@@ -309,7 +357,11 @@ trait HasRelationships
      */
     protected function guessBelongsToRelation()
     {
+<<<<<<< HEAD
         [$one, $two, $caller] = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS, 3);
+=======
+        list($one, $two, $caller) = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS, 3);
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
 
         return $caller['function'];
     }
@@ -409,7 +461,11 @@ trait HasRelationships
         // Here we will gather up the morph type and ID for the relationship so that we
         // can properly query the intermediate table of a relation. Finally, we will
         // get the table and create the relationship instances for the developers.
+<<<<<<< HEAD
         [$type, $id] = $this->getMorphs($name, $type, $id);
+=======
+        list($type, $id) = $this->getMorphs($name, $type, $id);
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
 
         $table = $instance->getTable();
 
@@ -468,7 +524,11 @@ trait HasRelationships
         // models using underscores in alphabetical order. The two model names
         // are transformed to snake case from their default CamelCase also.
         if (is_null($table)) {
+<<<<<<< HEAD
             $table = $this->joiningTable($related, $instance);
+=======
+            $table = $this->joiningTable($related);
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
         }
 
         return $this->newBelongsToMany(
@@ -528,6 +588,7 @@ trait HasRelationships
         // Now we're ready to create a new query builder for this related model and
         // the relationship instances for this relation. This relations will set
         // appropriate query constraints then entirely manages the hydrations.
+<<<<<<< HEAD
         if (! $table) {
             $words = preg_split('/(_)/u', $name, -1, PREG_SPLIT_DELIM_CAPTURE);
 
@@ -535,6 +596,9 @@ trait HasRelationships
 
             $table = implode('', $words).Str::plural($lastWord);
         }
+=======
+        $table = $table ?: Str::plural($name);
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
 
         return $this->newMorphToMany(
             $instance->newQuery(), $this, $name, $table,
@@ -544,7 +608,11 @@ trait HasRelationships
     }
 
     /**
+<<<<<<< HEAD
      * Instantiate a new MorphToMany relationship.
+=======
+     * Instantiate a new HasManyThrough relationship.
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      *
      * @param  \Illuminate\Database\Eloquent\Builder  $query
      * @param  \Illuminate\Database\Eloquent\Model  $parent
@@ -595,17 +663,27 @@ trait HasRelationships
     }
 
     /**
+<<<<<<< HEAD
      * Get the relationship name of the belongsToMany relationship.
      *
      * @return string|null
+=======
+     * Get the relationship name of the belongs to many.
+     *
+     * @return string
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      */
     protected function guessBelongsToManyRelation()
     {
         $caller = Arr::first(debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS), function ($trace) {
+<<<<<<< HEAD
             return ! in_array(
                 $trace['function'],
                 array_merge(static::$manyMethods, ['guessBelongsToManyRelation'])
             );
+=======
+            return ! in_array($trace['function'], Model::$manyMethods);
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
         });
 
         return ! is_null($caller) ? $caller['function'] : null;
@@ -615,23 +693,36 @@ trait HasRelationships
      * Get the joining table name for a many-to-many relation.
      *
      * @param  string  $related
+<<<<<<< HEAD
      * @param  \Illuminate\Database\Eloquent\Model|null  $instance
      * @return string
      */
     public function joiningTable($related, $instance = null)
+=======
+     * @return string
+     */
+    public function joiningTable($related)
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     {
         // The joining table name, by convention, is simply the snake cased models
         // sorted alphabetically and concatenated with an underscore, so we can
         // just sort the models and join them together to get the table name.
+<<<<<<< HEAD
         $segments = [
             $instance ? $instance->joiningTableSegment()
                       : Str::snake(class_basename($related)),
             $this->joiningTableSegment(),
+=======
+        $models = [
+            Str::snake(class_basename($related)),
+            Str::snake(class_basename($this)),
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
         ];
 
         // Now that we have the model names in an array we can just sort them and
         // use the implode function to join them together with an underscores,
         // which is typically used by convention within the database system.
+<<<<<<< HEAD
         sort($segments);
 
         return strtolower(implode('_', $segments));
@@ -645,6 +736,11 @@ trait HasRelationships
     public function joiningTableSegment()
     {
         return Str::snake(class_basename($this));
+=======
+        sort($models);
+
+        return strtolower(implode('_', $models));
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     }
 
     /**
@@ -757,7 +853,11 @@ trait HasRelationships
     }
 
     /**
+<<<<<<< HEAD
      * Set the given relationship on the model.
+=======
+     * Set the specific relationship in the model.
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      *
      * @param  string  $relation
      * @param  mixed  $value
@@ -771,6 +871,7 @@ trait HasRelationships
     }
 
     /**
+<<<<<<< HEAD
      * Unset a loaded relationship.
      *
      * @param  string  $relation
@@ -784,6 +885,8 @@ trait HasRelationships
     }
 
     /**
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * Set the entire relations array on the model.
      *
      * @param  array  $relations

@@ -37,6 +37,7 @@ interface Filesystem
     public function get($path);
 
     /**
+<<<<<<< HEAD
      * Get a resource to read the file.
      *
      * @param  string  $path
@@ -47,6 +48,8 @@ interface Filesystem
     public function readStream($path);
 
     /**
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * Write the contents of a file.
      *
      * @param  string  $path
@@ -57,6 +60,7 @@ interface Filesystem
     public function put($path, $contents, $options = []);
 
     /**
+<<<<<<< HEAD
      * Write a new file using a stream.
      *
      * @param  string  $path
@@ -70,6 +74,8 @@ interface Filesystem
     public function writeStream($path, $resource, array $options = []);
 
     /**
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * Get the visibility for the given path.
      *
      * @param  string  $path
@@ -82,7 +88,11 @@ interface Filesystem
      *
      * @param  string  $path
      * @param  string  $visibility
+<<<<<<< HEAD
      * @return bool
+=======
+     * @return void
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      */
     public function setVisibility($path, $visibility);
 
@@ -91,7 +101,11 @@ interface Filesystem
      *
      * @param  string  $path
      * @param  string  $data
+<<<<<<< HEAD
      * @return bool
+=======
+     * @return int
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      */
     public function prepend($path, $data);
 
@@ -100,7 +114,11 @@ interface Filesystem
      *
      * @param  string  $path
      * @param  string  $data
+<<<<<<< HEAD
      * @return bool
+=======
+     * @return int
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      */
     public function append($path, $data);
 

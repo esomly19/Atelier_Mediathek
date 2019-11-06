@@ -1,6 +1,10 @@
 <?php
 
+<<<<<<< HEAD
 /**
+=======
+/*
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
  * This file is part of the Carbon package.
  *
  * (c) Brian Nesbitt <brian@nesbot.com>
@@ -12,6 +16,7 @@
  * @translator Batmandakh Erdenebileg <batmandakh.e@icloud.com>
  */
 
+<<<<<<< HEAD
 /*
  * Authors:
  * - Philippe Vaucher
@@ -31,6 +36,9 @@
  * - Batmandakh
  */
 return [
+=======
+return array(
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     'year' => ':count жил',
     'y' => ':count жил',
     'month' => ':count сар',
@@ -70,7 +78,10 @@ return [
     'hour_after' => ':count цагий',
     'minute_after' => ':count минуты',
     'second_after' => ':count секунды',
+<<<<<<< HEAD
 
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     'before' => ':timeн өмнө',
     'year_before' => ':count жилий',
     'month_before' => ':count сары',
@@ -78,6 +89,7 @@ return [
     'hour_before' => ':count цагий',
     'minute_before' => ':count минуты',
     'second_before' => ':count секунды',
+<<<<<<< HEAD
 
     'list' => ', ',
     'formats' => [
@@ -96,3 +108,6 @@ return [
     'meridiem' => ['өглөө', 'орой'],
     'first_day_of_week' => 1,
 ];
+=======
+);
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10

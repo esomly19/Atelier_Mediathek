@@ -3,6 +3,7 @@
 namespace Illuminate\Support\Facades;
 
 /**
+<<<<<<< HEAD
  * @method static \Illuminate\Http\RedirectResponse home(int $status = 302)
  * @method static \Illuminate\Http\RedirectResponse back(int $status = 302, array $headers = [], $fallback = false)
  * @method static \Illuminate\Http\RedirectResponse refresh(int $status = 302, array $headers = [])
@@ -16,6 +17,8 @@ namespace Illuminate\Support\Facades;
  * @method static \Illuminate\Routing\UrlGenerator getUrlGenerator()
  * @method static void setSession(\Illuminate\Session\Store $session)
  *
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
  * @see \Illuminate\Routing\Redirector
  */
 class Redirect extends Facade

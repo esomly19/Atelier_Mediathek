@@ -6,7 +6,13 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+<<<<<<< HEAD
     'Twig_' => array($vendorDir . '/twig/twig/lib'),
     'Pimple' => array($vendorDir . '/pimple/pimple/src'),
     '' => array($baseDir . '/ext'),
+=======
+    'UpdateHelper\\' => array($vendorDir . '/kylekatarnls/update-helper/src'),
+    'Twig_' => array($vendorDir . '/twig/twig/lib'),
+    'Pimple' => array($vendorDir . '/pimple/pimple/src'),
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
 );

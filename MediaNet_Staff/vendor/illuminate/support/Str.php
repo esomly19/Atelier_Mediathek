@@ -2,11 +2,15 @@
 
 namespace Illuminate\Support;
 
+<<<<<<< HEAD
 use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\UuidFactory;
 use Illuminate\Support\Traits\Macroable;
 use Ramsey\Uuid\Generator\CombGenerator;
 use Ramsey\Uuid\Codec\TimestampFirstCombCodec;
+=======
+use Illuminate\Support\Traits\Macroable;
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
 
 class Str
 {
@@ -113,6 +117,7 @@ class Str
     }
 
     /**
+<<<<<<< HEAD
      * Determine if a given string contains all array values.
      *
      * @param  string  $haystack
@@ -131,6 +136,8 @@ class Str
     }
 
     /**
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * Determine if a given string ends with a given substring.
      *
      * @param  string  $haystack
@@ -171,7 +178,11 @@ class Str
      */
     public static function is($pattern, $value)
     {
+<<<<<<< HEAD
         $patterns = Arr::wrap($pattern);
+=======
+        $patterns = is_array($pattern) ? $pattern : (array) $pattern;
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
 
         if (empty($patterns)) {
             return false;
@@ -299,6 +310,7 @@ class Str
     }
 
     /**
+<<<<<<< HEAD
      * Pluralize the last word of an English, studly caps case string.
      *
      * @param  string  $value
@@ -315,6 +327,8 @@ class Str
     }
 
     /**
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * Generate a more truly "random" alpha-numeric string.
      *
      * @param  int  $length
@@ -345,6 +359,7 @@ class Str
      */
     public static function replaceArray($search, array $replace, $subject)
     {
+<<<<<<< HEAD
         $segments = explode($search, $subject);
 
         $result = array_shift($segments);
@@ -354,6 +369,13 @@ class Str
         }
 
         return $result;
+=======
+        foreach ($replace as $value) {
+            $subject = static::replaceFirst($search, $value, $subject);
+        }
+
+        return $subject;
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
     }
 
     /**
@@ -450,15 +472,26 @@ class Str
      *
      * @param  string  $title
      * @param  string  $separator
+<<<<<<< HEAD
      * @param  string|null  $language
+=======
+     * @param  string  $language
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * @return string
      */
     public static function slug($title, $separator = '-', $language = 'en')
     {
+<<<<<<< HEAD
         $title = $language ? static::ascii($title, $language) : $title;
 
         // Convert all dashes/underscores into separator
         $flip = $separator === '-' ? '_' : '-';
+=======
+        $title = static::ascii($title, $language);
+
+        // Convert all dashes/underscores into separator
+        $flip = $separator == '-' ? '_' : '-';
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
 
         $title = preg_replace('!['.preg_quote($flip).']+!u', $separator, $title);
 
@@ -466,7 +499,11 @@ class Str
         $title = str_replace('@', $separator.'at'.$separator, $title);
 
         // Remove all characters that are not the separator, letters, numbers, or whitespace.
+<<<<<<< HEAD
         $title = preg_replace('![^'.preg_quote($separator).'\pL\pN\s]+!u', '', static::lower($title));
+=======
+        $title = preg_replace('![^'.preg_quote($separator).'\pL\pN\s]+!u', '', mb_strtolower($title));
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
 
         // Replace all separator characters and whitespace by a single separator
         $title = preg_replace('!['.preg_quote($separator).'\s]+!u', $separator, $title);
@@ -560,6 +597,7 @@ class Str
     }
 
     /**
+<<<<<<< HEAD
      * Generate a UUID (version 4).
      *
      * @return \Ramsey\Uuid\UuidInterface
@@ -591,6 +629,8 @@ class Str
     }
 
     /**
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
      * Returns the replacements for the ascii method.
      *
      * Note: Adapted from Stringy\Stringy.
@@ -618,6 +658,7 @@ class Str
             '7'    => ['⁷', '₇', '۷', '７'],
             '8'    => ['⁸', '₈', '۸', '８'],
             '9'    => ['⁹', '₉', '۹', '９'],
+<<<<<<< HEAD
             'a'    => ['à', 'á', 'ả', 'ã', 'ạ', 'ă', 'ắ', 'ằ', 'ẳ', 'ẵ', 'ặ', 'â', 'ấ', 'ầ', 'ẩ', 'ẫ', 'ậ', 'ā', 'ą', 'å', 'α', 'ά', 'ἀ', 'ἁ', 'ἂ', 'ἃ', 'ἄ', 'ἅ', 'ἆ', 'ἇ', 'ᾀ', 'ᾁ', 'ᾂ', 'ᾃ', 'ᾄ', 'ᾅ', 'ᾆ', 'ᾇ', 'ὰ', 'ά', 'ᾰ', 'ᾱ', 'ᾲ', 'ᾳ', 'ᾴ', 'ᾶ', 'ᾷ', 'а', 'أ', 'အ', 'ာ', 'ါ', 'ǻ', 'ǎ', 'ª', 'ა', 'अ', 'ا', 'ａ', 'ä', 'א'],
             'b'    => ['б', 'β', 'ب', 'ဗ', 'ბ', 'ｂ', 'ב'],
             'c'    => ['ç', 'ć', 'č', 'ĉ', 'ċ', 'ｃ'],
@@ -644,12 +685,44 @@ class Str
             'x'    => ['χ', 'ξ', 'ｘ'],
             'y'    => ['ý', 'ỳ', 'ỷ', 'ỹ', 'ỵ', 'ÿ', 'ŷ', 'й', 'ы', 'υ', 'ϋ', 'ύ', 'ΰ', 'ي', 'ယ', 'ｙ'],
             'z'    => ['ź', 'ž', 'ż', 'з', 'ζ', 'ز', 'ဇ', 'ზ', 'ｚ', 'ז'],
+=======
+            'a'    => ['à', 'á', 'ả', 'ã', 'ạ', 'ă', 'ắ', 'ằ', 'ẳ', 'ẵ', 'ặ', 'â', 'ấ', 'ầ', 'ẩ', 'ẫ', 'ậ', 'ā', 'ą', 'å', 'α', 'ά', 'ἀ', 'ἁ', 'ἂ', 'ἃ', 'ἄ', 'ἅ', 'ἆ', 'ἇ', 'ᾀ', 'ᾁ', 'ᾂ', 'ᾃ', 'ᾄ', 'ᾅ', 'ᾆ', 'ᾇ', 'ὰ', 'ά', 'ᾰ', 'ᾱ', 'ᾲ', 'ᾳ', 'ᾴ', 'ᾶ', 'ᾷ', 'а', 'أ', 'အ', 'ာ', 'ါ', 'ǻ', 'ǎ', 'ª', 'ა', 'अ', 'ا', 'ａ', 'ä'],
+            'b'    => ['б', 'β', 'ب', 'ဗ', 'ბ', 'ｂ'],
+            'c'    => ['ç', 'ć', 'č', 'ĉ', 'ċ', 'ｃ'],
+            'd'    => ['ď', 'ð', 'đ', 'ƌ', 'ȡ', 'ɖ', 'ɗ', 'ᵭ', 'ᶁ', 'ᶑ', 'д', 'δ', 'د', 'ض', 'ဍ', 'ဒ', 'დ', 'ｄ'],
+            'e'    => ['é', 'è', 'ẻ', 'ẽ', 'ẹ', 'ê', 'ế', 'ề', 'ể', 'ễ', 'ệ', 'ë', 'ē', 'ę', 'ě', 'ĕ', 'ė', 'ε', 'έ', 'ἐ', 'ἑ', 'ἒ', 'ἓ', 'ἔ', 'ἕ', 'ὲ', 'έ', 'е', 'ё', 'э', 'є', 'ə', 'ဧ', 'ေ', 'ဲ', 'ე', 'ए', 'إ', 'ئ', 'ｅ'],
+            'f'    => ['ф', 'φ', 'ف', 'ƒ', 'ფ', 'ｆ'],
+            'g'    => ['ĝ', 'ğ', 'ġ', 'ģ', 'г', 'ґ', 'γ', 'ဂ', 'გ', 'گ', 'ｇ'],
+            'h'    => ['ĥ', 'ħ', 'η', 'ή', 'ح', 'ه', 'ဟ', 'ှ', 'ჰ', 'ｈ'],
+            'i'    => ['í', 'ì', 'ỉ', 'ĩ', 'ị', 'î', 'ï', 'ī', 'ĭ', 'į', 'ı', 'ι', 'ί', 'ϊ', 'ΐ', 'ἰ', 'ἱ', 'ἲ', 'ἳ', 'ἴ', 'ἵ', 'ἶ', 'ἷ', 'ὶ', 'ί', 'ῐ', 'ῑ', 'ῒ', 'ΐ', 'ῖ', 'ῗ', 'і', 'ї', 'и', 'ဣ', 'ိ', 'ီ', 'ည်', 'ǐ', 'ი', 'इ', 'ی', 'ｉ'],
+            'j'    => ['ĵ', 'ј', 'Ј', 'ჯ', 'ج', 'ｊ'],
+            'k'    => ['ķ', 'ĸ', 'к', 'κ', 'Ķ', 'ق', 'ك', 'က', 'კ', 'ქ', 'ک', 'ｋ'],
+            'l'    => ['ł', 'ľ', 'ĺ', 'ļ', 'ŀ', 'л', 'λ', 'ل', 'လ', 'ლ', 'ｌ'],
+            'm'    => ['м', 'μ', 'م', 'မ', 'მ', 'ｍ'],
+            'n'    => ['ñ', 'ń', 'ň', 'ņ', 'ŉ', 'ŋ', 'ν', 'н', 'ن', 'န', 'ნ', 'ｎ'],
+            'o'    => ['ó', 'ò', 'ỏ', 'õ', 'ọ', 'ô', 'ố', 'ồ', 'ổ', 'ỗ', 'ộ', 'ơ', 'ớ', 'ờ', 'ở', 'ỡ', 'ợ', 'ø', 'ō', 'ő', 'ŏ', 'ο', 'ὀ', 'ὁ', 'ὂ', 'ὃ', 'ὄ', 'ὅ', 'ὸ', 'ό', 'о', 'و', 'θ', 'ို', 'ǒ', 'ǿ', 'º', 'ო', 'ओ', 'ｏ', 'ö'],
+            'p'    => ['п', 'π', 'ပ', 'პ', 'پ', 'ｐ'],
+            'q'    => ['ყ', 'ｑ'],
+            'r'    => ['ŕ', 'ř', 'ŗ', 'р', 'ρ', 'ر', 'რ', 'ｒ'],
+            's'    => ['ś', 'š', 'ş', 'с', 'σ', 'ș', 'ς', 'س', 'ص', 'စ', 'ſ', 'ს', 'ｓ'],
+            't'    => ['ť', 'ţ', 'т', 'τ', 'ț', 'ت', 'ط', 'ဋ', 'တ', 'ŧ', 'თ', 'ტ', 'ｔ'],
+            'u'    => ['ú', 'ù', 'ủ', 'ũ', 'ụ', 'ư', 'ứ', 'ừ', 'ử', 'ữ', 'ự', 'û', 'ū', 'ů', 'ű', 'ŭ', 'ų', 'µ', 'у', 'ဉ', 'ု', 'ူ', 'ǔ', 'ǖ', 'ǘ', 'ǚ', 'ǜ', 'უ', 'उ', 'ｕ', 'ў', 'ü'],
+            'v'    => ['в', 'ვ', 'ϐ', 'ｖ'],
+            'w'    => ['ŵ', 'ω', 'ώ', 'ဝ', 'ွ', 'ｗ'],
+            'x'    => ['χ', 'ξ', 'ｘ'],
+            'y'    => ['ý', 'ỳ', 'ỷ', 'ỹ', 'ỵ', 'ÿ', 'ŷ', 'й', 'ы', 'υ', 'ϋ', 'ύ', 'ΰ', 'ي', 'ယ', 'ｙ'],
+            'z'    => ['ź', 'ž', 'ż', 'з', 'ζ', 'ز', 'ဇ', 'ზ', 'ｚ'],
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
             'aa'   => ['ع', 'आ', 'آ'],
             'ae'   => ['æ', 'ǽ'],
             'ai'   => ['ऐ'],
             'ch'   => ['ч', 'ჩ', 'ჭ', 'چ'],
             'dj'   => ['ђ', 'đ'],
+<<<<<<< HEAD
             'dz'   => ['џ', 'ძ', 'דז'],
+=======
+            'dz'   => ['џ', 'ძ'],
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
             'ei'   => ['ऍ'],
             'gh'   => ['غ', 'ღ'],
             'ii'   => ['ई'],
@@ -661,11 +734,19 @@ class Str
             'oi'   => ['ऑ'],
             'oii'  => ['ऒ'],
             'ps'   => ['ψ'],
+<<<<<<< HEAD
             'sh'   => ['ш', 'შ', 'ش', 'ש'],
             'shch' => ['щ'],
             'ss'   => ['ß'],
             'sx'   => ['ŝ'],
             'th'   => ['þ', 'ϑ', 'θ', 'ث', 'ذ', 'ظ'],
+=======
+            'sh'   => ['ш', 'შ', 'ش'],
+            'shch' => ['щ'],
+            'ss'   => ['ß'],
+            'sx'   => ['ŝ'],
+            'th'   => ['þ', 'ϑ', 'ث', 'ذ', 'ظ'],
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
             'ts'   => ['ц', 'ც', 'წ'],
             'ue'   => ['ü'],
             'uu'   => ['ऊ'],
@@ -687,7 +768,11 @@ class Str
             'L'    => ['Ĺ', 'Ł', 'Л', 'Λ', 'Ļ', 'Ľ', 'Ŀ', 'ल', 'Ｌ'],
             'M'    => ['М', 'Μ', 'Ｍ'],
             'N'    => ['Ń', 'Ñ', 'Ň', 'Ņ', 'Ŋ', 'Н', 'Ν', 'Ｎ'],
+<<<<<<< HEAD
             'O'    => ['Ó', 'Ò', 'Ỏ', 'Õ', 'Ọ', 'Ô', 'Ố', 'Ồ', 'Ổ', 'Ỗ', 'Ộ', 'Ơ', 'Ớ', 'Ờ', 'Ở', 'Ỡ', 'Ợ', 'Ø', 'Ō', 'Ő', 'Ŏ', 'Ο', 'Ό', 'Ὀ', 'Ὁ', 'Ὂ', 'Ὃ', 'Ὄ', 'Ὅ', 'Ὸ', 'Ό', 'О', 'Ө', 'Ǒ', 'Ǿ', 'Ｏ', 'Ö'],
+=======
+            'O'    => ['Ó', 'Ò', 'Ỏ', 'Õ', 'Ọ', 'Ô', 'Ố', 'Ồ', 'Ổ', 'Ỗ', 'Ộ', 'Ơ', 'Ớ', 'Ờ', 'Ở', 'Ỡ', 'Ợ', 'Ø', 'Ō', 'Ő', 'Ŏ', 'Ο', 'Ό', 'Ὀ', 'Ὁ', 'Ὂ', 'Ὃ', 'Ὄ', 'Ὅ', 'Ὸ', 'Ό', 'О', 'Θ', 'Ө', 'Ǒ', 'Ǿ', 'Ｏ', 'Ö'],
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
             'P'    => ['П', 'Π', 'Ｐ'],
             'Q'    => ['Ｑ'],
             'R'    => ['Ř', 'Ŕ', 'Р', 'Ρ', 'Ŗ', 'Ｒ'],
@@ -712,6 +797,7 @@ class Str
             'Nj'   => ['Њ'],
             'Oe'   => ['Œ'],
             'Ps'   => ['Ψ'],
+<<<<<<< HEAD
             'Sh'   => ['Ш', 'ש'],
             'Shch' => ['Щ'],
             'Ss'   => ['ẞ'],
@@ -719,6 +805,15 @@ class Str
             'Ts'   => ['Ц'],
             'Ya'   => ['Я', 'יא'],
             'Yu'   => ['Ю', 'יו'],
+=======
+            'Sh'   => ['Ш'],
+            'Shch' => ['Щ'],
+            'Ss'   => ['ẞ'],
+            'Th'   => ['Þ'],
+            'Ts'   => ['Ц'],
+            'Ya'   => ['Я'],
+            'Yu'   => ['Ю'],
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
             'Zh'   => ['Ж'],
             ' '    => ["\xC2\xA0", "\xE2\x80\x80", "\xE2\x80\x81", "\xE2\x80\x82", "\xE2\x80\x83", "\xE2\x80\x84", "\xE2\x80\x85", "\xE2\x80\x86", "\xE2\x80\x87", "\xE2\x80\x88", "\xE2\x80\x89", "\xE2\x80\x8A", "\xE2\x80\xAF", "\xE2\x81\x9F", "\xE3\x80\x80", "\xEF\xBE\xA0"],
         ];
@@ -744,14 +839,18 @@ class Str
                     ['х', 'Х', 'щ', 'Щ', 'ъ', 'Ъ', 'ь', 'Ь'],
                     ['h', 'H', 'sht', 'SHT', 'a', 'А', 'y', 'Y'],
                 ],
+<<<<<<< HEAD
                 'da' => [
                     ['æ', 'ø', 'å', 'Æ', 'Ø', 'Å'],
                     ['ae', 'oe', 'aa', 'Ae', 'Oe', 'Aa'],
                 ],
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
                 'de' => [
                     ['ä',  'ö',  'ü',  'Ä',  'Ö',  'Ü'],
                     ['ae', 'oe', 'ue', 'AE', 'OE', 'UE'],
                 ],
+<<<<<<< HEAD
                 'he' => [
                     ['א', 'ב', 'ג', 'ד', 'ה', 'ו'],
                     ['ז', 'ח', 'ט', 'י', 'כ', 'ל'],
@@ -762,6 +861,8 @@ class Str
                     ['ă', 'â', 'î', 'ș', 'ț', 'Ă', 'Â', 'Î', 'Ș', 'Ț'],
                     ['a', 'a', 'i', 's', 't', 'A', 'A', 'I', 'S', 'T'],
                 ],
+=======
+>>>>>>> e276af7ca3a444b9bfd2610046fdcc1660f60d10
             ];
         }
 
