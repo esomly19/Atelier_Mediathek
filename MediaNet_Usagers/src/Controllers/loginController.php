@@ -2,6 +2,8 @@
 
 namespace app\controllers;
 
+use app\Models\utilisateur;
+
 class loginController{
 
     public function __construct($container){
@@ -15,7 +17,7 @@ class loginController{
 
     public function seConnecter($request, $response,$args){
         $auth = $this->verification(
-            $request->getParam('identifiant'),
+            $request->getParam('mail'),
             $request->getParam('mdp')
         );
         if(!$auth){
@@ -31,14 +33,14 @@ class loginController{
         return isset($_SESSION['nom']);
     }
 
-    public function verification($pseudo, $mdp){
-        $user = User::where('username', $pseudo)->first();
+    public function verification($mail, $mdp){
+        $user = utilisateur::where('mail', $mail)->first();
         if(!$user){
             return false;
         }
 
         if(password_verify($mdp, $user->password)){
-            $_SESSION['user'] = $user->id_user;
+            $_SESSION['mail'] = $user->id;
             return true;
         }
 
