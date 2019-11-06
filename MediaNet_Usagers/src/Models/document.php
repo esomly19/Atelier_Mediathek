@@ -6,7 +6,7 @@
  * Time: 16:12
  */
 
-namespace app\models;
+namespace App\models;
 
 
 class Document extends \Illuminate\Database\Eloquent\Model

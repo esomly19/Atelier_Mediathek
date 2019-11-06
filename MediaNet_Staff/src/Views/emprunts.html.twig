@@ -1,1 +1,21 @@
-<p>lol</p>
+   
+   {% include 'layout.html.twig' %}
+{% block stylesheets %}
+    <link href="../src/css/listeUtilisateur.css" type="text/css" rel="stylesheet" />
+{% endblock %}
+<h1>Liste des emprunts : </h1>
+<div>
+    <label for="rechercher-utilisateur">Rechercher un emprunts</label>
+    <input type="search" id="rechercher-utilisateur" name="ru"
+           aria-label="Search through site content">
+
+    <button>rechercher</button>
+</div>
+
+<div class="content">
+   {% for emprunt in emprunts %}
+        <div class="ligne-u">
+            <span class="nom">{{ emprunt.id_document }} </span><span class="prenom">{{ emprunt.id_utilisateur }} </span><span>{{ emprunt.date_emprunt }} </span><span>{{ emprunt.date_retour }} </span><span>{{ emprunt.date_limite }} </span>
+        </div>
+    {% endfor %}
+    </div>

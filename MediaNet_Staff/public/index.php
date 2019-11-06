@@ -45,19 +45,13 @@ $app->get('/', function(Request $request, Response $response, $args){
     return $this->view->render($response, 'Accueil.html.twig');
 });
 
-$app->get('/usagers', function(Request $request, Response $response, $args){
-    return $this->view->render($response, 'GestionUsagers.html.twig');
-})->setName('usagers');
-
-$app->get('/emprunts', function(Request $request, Response $response, $args){
-    return $this->view->render($response, 'emprunts.html.twig');
-})->setName('emprunts');
 
 $app->get('/retour', function(Request $request, Response $response, $args){
     return $this->view->render($response, 'retour.html.twig');
 })->setName('retour');
 
-$app->get('/informationUtilisateurs', "\\app\\Controllers\\utilisateurController:informationUtilisateur");
+$app->get('/informationUtilisateurs', "\\app\\Controllers\\utilisateurController:informationUtilisateur")->setName('usagers');;
+$app->get('/emprunts', "\\app\\Controllers\\emprunterController:emprunterinfo")->setName('emprunts');;
 
 
 try {

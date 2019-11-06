@@ -21,7 +21,7 @@ $container["view"] = function ($container){
 $container['settings'] = $config;
 
 //Eloquent
-$app = new \Slim\App($container,[
+$app = new \Slim\app($container,[
     'settings' => [
         'debug' => true,
         'displayErrorDetails' => true
@@ -39,6 +39,9 @@ $capsule->bootEloquent();
 $container['db'] = function ($container) use ($capsule) {
     return $capsule;
 };
+
+session_start();
+
 $app->get('/d', "\\app\\controllers\\documentController:Index");
 
 $app->get('/', function(Request $request, Response $response, $args){
@@ -48,10 +51,9 @@ $app->get('/', function(Request $request, Response $response, $args){
 $app->get('/connection', function(Request $request, Response $response, $args){
     return $this->view->render($response, 'Connexion.html.twig');
 })->setName('connexion');
-
-$app->get('/catalogue', function(Request $request, Response $response, $args){
-    return $this->view->render($response, 'Catalogue.html.twig');
-})->setName('catalogue');
+$app->post('/connection', function(Request $request, Response $response, $args){
+    return $this->view->render($response, 'Connexion.html.twig');
+});
 
 $app->get('/emprunt&retour', function(Request $request, Response $response, $args){
     return $this->view->render($response, 'EmpruntRetour.html.twig');
@@ -60,6 +62,10 @@ $app->get('/emprunt&retour', function(Request $request, Response $response, $arg
 $app->get('/profil', function(Request $request, Response $response, $args){
     return $this->view->render($response, 'Profil.html.twig');
 })->setName('profil');
+
+
+$app->get('/catalogue', "\\app\\Controllers\\catalogueController:afficherCatalogue")->setName('catalogue');
+
 
 try {
     $app->run();
