@@ -1,7 +1,7 @@
 
-MediaNet-Staff/vendor/
-MediaNet-Usagers/vendor/
-MediaNet-Staff/src/config
+MediaNet_Staff/vendor/
+MediaNet_Usagers/vendor/
+MediaNet_Staff/src/config
 */config/capsule.php
 
 composer.json
