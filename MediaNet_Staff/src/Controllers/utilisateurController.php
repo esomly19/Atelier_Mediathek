@@ -21,7 +21,12 @@ class utilisateurController
 
     public function informationUtilisateur($request, $response) {
         $listeUtilisateurs = Utilisateur::all();
-        return $this->container->view->render($response, "utilisateur/informationUtilisateur.html.twig", ['utilisateurs'=>$listeUtilisateurs]);
+        $listeCommandesUtilisateurs = Utilisateur::first()->Join('emprunter', 'emprunter.id_utilisateur', '=', 'utilisateur.id')->select(
+            'mail',
+            'emprunter.id'
+        )->get();
+
+        return $this->container->view->render($response, "utilisateur/informationUtilisateur.html.twig", ['utilisateurs'=>$listeUtilisateurs,'commandes'=>$listeCommandesUtilisateurs]);
     }
 
 }
