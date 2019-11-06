@@ -46,7 +46,8 @@ $app->get('/', function(Request $request, Response $response, $args){
 });
 
 
-$app->get('/informationUtilisateurs', "\\app\\Controllers\\utilisateurController:informationUtilisateur")->setName('usagers');
+$app->get('/usagers', "\\app\\Controllers\\utilisateurController:gestionUsager")->setName('usagers');
+$app->get('/listusagers', "\\app\\Controllers\\utilisateurController:informationUtilisateur")->setName('listusagers');
 $app->get('/emprunts', "\\app\\Controllers\\emprunterController:emprunterinfo")->setName('emprunts');
 $app->get('/retour', "\\app\\Controllers\\emprunterController:retourinfo")->setName('retour');
 
