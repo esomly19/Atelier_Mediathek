@@ -57,7 +57,7 @@ $app->get('/retour', function(Request $request, Response $response, $args){
     return $this->view->render($response, 'retour.html.twig');
 })->setName('retour');
 
-$app->get('/informationUtilisateurs', app\controllers\utilisateurController::class.':informationUtilisateur');
+$app->get('/informationUtilisateurs', "\\app\\Controllers\\utilisateurController:informationUtilisateur");
 
 
 try {
