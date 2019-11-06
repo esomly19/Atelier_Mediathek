@@ -1,5 +1,6 @@
 
-
+MediaNet_Staff/vendor/
+MediaNet_Usagers/vendor/
 MediaNet_Staff/src/config
 */config/capsule.php
 
