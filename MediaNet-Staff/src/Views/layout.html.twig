@@ -1,14 +1,34 @@
-  {% block stylesheets %}
-            <link href="../../src/css/layout.css" type="text/css" rel="stylesheet" />
+<!DOCTYPE html>
+<html>
+    <head>
+        {% block head %}
+        {% block stylesheets %}
+          <link href="../../src/css/layout.css" type="text/css" rel="stylesheet" />
         {% endblock %}
+            <title>{% block title %}{% endblock %} Dora </title>
+        {% endblock %}
+    </head>
+    <body>
 
-   
-{% block content %}     
-      
+      <div id="header">
+        {% block header %}
+     
 <ul>
-  <li><a href="">Usagers</a></li>
-  <li><a href="">Emprunts</a></li>
-  <li><a href="">Retour</a></li>
+  <li><a href="#home">Home</a></li>
+  <li><a href="#news">News</a></li>
+  <li><a href="#contact">Contact</a></li>
 </ul>
 
-{% endblock %}
+        {% endblock %}
+      </div> 
+
+        <div id="content">{% block content %}{% endblock %}</div>
+
+        <div id="footer">
+            {% block footer %}
+                Site crée par ...
+                &copy; Copyright (FOOTER)</a>.
+            {% endblock %}
+        </div>
+    </body>
+</html>
