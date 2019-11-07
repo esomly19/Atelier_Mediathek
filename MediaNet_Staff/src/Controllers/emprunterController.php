@@ -24,19 +24,6 @@ class emprunterController
         return $this->container->view->render($response, "retour.html.twig", ['emprunts'=>$listeemprunts]);
     }
 
-    public function suppEmprunt($request, $response) {
-        $id_document = $_POST["ide"];
-        $id_utilisateur = $_POST["idu"];
-        $emprunt = Emprunter::where('emprunter.id_document', '=', $id_document)->whereAnd('emprunter.id_utilisateur', '=',$id_utilisateur)->first();
-
-        /**$emprunt->date_rendu = new Date();
-        $emprunt->save();
-        $document = Document::find($id_document)->first();
-        $document->etat = 0;
-        $document->save();*/
-        //return $response->withRedirect($this->container->router->pathFor('infousager'));
-    }
-
     public function rendreDoc($request, $response) {
         $id_document = $_GET["ide"];
         $id_utilisateur = $_GET["idu"];
@@ -46,5 +33,18 @@ class emprunterController
         $listedocuments = Document::where("document.etat", "=", "1")->where("emprunter.date_retour",'=', null)->where("emprunter.id_utilisateur", "=" ,$id_utilisateur)->Join("emprunter", "emprunter.id_document","=","document.id")->get();
 
         return $this->container->view->render($response, "rendredocument.html.twig", ['emprunt'=>$emprunt, 'utilisateur'=>$utilisateur, 'document'=>$document, 'listeDesDocuments'=>$listedocuments]);
+    }
+
+    public function traiterRendreDoc($request, $response) {
+        $id_utilisateur = $_POST["idu"];
+        $id_doc = $_POST["id_doc"];
+        $date_rendu = $_POST["dateRendu"];
+        $emprunt = Emprunter::where('emprunter.id_document', '=', $id_doc)->where('emprunter.id_utilisateur', '=',$id_utilisateur)->first();
+        $emprunt->date_retour = $date_rendu;
+        $document = Document::where('id', "=",$id_doc)->first();
+        $document->etat = 0;
+        $document->save();
+        $emprunt->save();
+        return $response->withRedirect($this->container->router->pathFor("listusagers"));
     }
 }
