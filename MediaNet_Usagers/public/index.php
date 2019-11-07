@@ -9,6 +9,10 @@ use Illuminate\Database\Capsule\Manager as DB;
 
 $container = array();
 
+$container['flash'] = function ($container){
+    return new \Slim\Flash\Messages;
+};
+
 $container["view"] = function ($container){
 
     $view = new \Slim\Views\Twig(__DIR__.'/../src/Views');
@@ -20,9 +24,6 @@ $container["view"] = function ($container){
     return $view;
 };
 
-$container['flash'] = function ($container){
-    return new \Slim\Flash\Messages;
-};
 
 $container['settings'] = $config;
 

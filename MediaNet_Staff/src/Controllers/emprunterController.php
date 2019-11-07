@@ -20,4 +20,12 @@ class emprunterController
         $listeemprunts = Emprunter::all();
         return $this->container->view->render($response, "retour.html.twig", ['emprunts'=>$listeemprunts]);
     }
+
+    public function suppEmprunt($request, $response) {
+        $id_document = $_POST["ide"];
+        $id_utilisateur = $_POST["idu"];
+        $emprunt = Emprunter::where('emprunter.id_document', '=', $id_document)->whereAnd('emprunter.id_utilisateur', '=',$id_utilisateur)->first();
+        $emprunt->delete();
+        return $response->withRedirect($this->container->router->pathFor('infousager'));
+    }
 }

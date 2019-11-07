@@ -6,6 +6,8 @@ use app\Models\utilisateur;
 
 class loginController{
 
+    const salt = "@|-°+==00001ddQ";
+
     public function __construct($container){
         $this->container = $container;
     }
@@ -23,17 +25,17 @@ class loginController{
     }
 
     public function seConnecter($request, $response,$args){
-        echo $request->getParam('mail') . " ". $request->getParam('mdp');
         $auth = $this->verification(
             $request->getParam('mail'),
             $request->getParam('mdp')
         );
-        var_dump($auth);
 
         if(!$auth){
-            var_dump($this->container->flash->addMessage('error', 'Le couple Username/Password n\'est pas correct !'));
+
+            $this->container->flash->addMessage('error', 'Le couple mail/mot de passe n\'est pas correct !');
             return $response->withRedirect($this->container->router->pathFor('connexion'));
         }
+
         $this->container->flash->addMessage('success', 'Vous êtes connecté !');
         return $response->withRedirect($this->container->router->pathFor('accueil'));
     }
@@ -48,13 +50,12 @@ class loginController{
             return false;
         }
 
-        if(password_verify($mdp, $user->mdp)){
+        if(password_verify($mdp.self::salt, $user->mdp)){
             $_SESSION['user'] = $user->id;
             return true;
-        }else{
-            return false;
         }
-
+        
+        return false;
     }
 
 

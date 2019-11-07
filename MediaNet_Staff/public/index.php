@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 require_once '../vendor/autoload.php';
 require_once '../src/config/config.inc.php';
 
@@ -50,10 +50,12 @@ $app->get('/usagers', "\\app\\Controllers\\utilisateurController:gestionUsager")
 $app->get('/listusagers', "\\app\\Controllers\\utilisateurController:informationUtilisateur")->setName('listusagers');
 $app->get('/emprunts', "\\app\\Controllers\\emprunterController:emprunterinfo")->setName('emprunts');
 $app->get('/retour', "\\app\\Controllers\\emprunterController:retourinfo")->setName('retour');
+$app->get('/informationusager', "\\app\\Controllers\\utilisateurController:informationUsager")->setName("infousager");
+$app->post('/supprimeremprunt', "\\app\\Controllers\\emprunterController:suppEmprunt")->setName("supprimerEmprunt");
+
 
 $app->get('/creercompte', "\\app\\Controllers\\utilisateurController:voir")->setName('creacompte');
 $app->post('/creercompte', "\\app\\Controllers\\utilisateurController:creerCompte");
-
 
 
 try {
