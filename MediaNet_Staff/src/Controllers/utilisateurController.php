@@ -30,8 +30,8 @@ class utilisateurController
     
     public function voir($request, $response,$args)
 	{
-        $user= Utilisateur::find(intVal($args['id']));
-         $this->container->view->render($response,'comptecreer.html.twig', ['utilisateurs'=>$user]);
+        
+         $this->container->view->render($response,'comptecreer.html.twig');
 
     }
     public function creerCompte($request, $response) {
