@@ -60,5 +60,31 @@ class documentController
          return $this->container->view->render($response, "documents/Catalogue.html.twig", ['catalogue'=>$doc, 'genres'=>$genres]);
       }
   
+      
+      public function ajouter($request, $response, $args){
+        $this->container->view->render($response, 'documents/creationDocument.html.twig');
+      }
+
+
+    
+      public  function afficher($request, $response, $args)
+      {
+        $doc = new document();
+        $doc->titre = $_POST["titre"];
+        $doc->id_image = $_POST["id_image"];
+        $doc->description_doc = $_POST["description_doc"];
+        $doc->code = $_POST["code"];
+        $doc->etat = $_POST["etat"];
+        $doc->id_genre = $_POST["id_genre"];
+        $doc->type = $_POST["type"];
+        $doc->save();
+        $doc = document::first()
+        ->leftJoin('image', 'image.id_image', '=', 'document.id_image')
+        ->leftJoin('genre', 'genre.id_genre', "=", "document.id_genre")
+        ->get();
+
+         $genres = Genre::first()->get();
+         return $this->container->view->render($response, "documents/Catalogue.html.twig", ['catalogue'=>$doc, 'genres'=>$genres]);
+      }
     
 }
