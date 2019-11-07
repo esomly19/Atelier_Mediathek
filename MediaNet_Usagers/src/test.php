@@ -23,15 +23,12 @@ $db->setAsGlobal();
 $db->bootEloquent();
 
 $RC = "</br></br>";
+$salt = "@|-°+==00001ddQ";
 
-echo "hashage d'un mdp pour FClapetti" . $RC;
-$password = 1234;
+
+echo "hashage d'un mdp + sel" . $RC;
+$password = 1234 . $salt;
 $mdp = password_hash($password, PASSWORD_DEFAULT);
 
 echo $mdp . $RC;
 
-
-echo "testage de la co a la base . $RC";
-$user = utilisateur::where('id',1)->first();
-
-var_dump($user);

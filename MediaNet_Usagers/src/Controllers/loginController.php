@@ -6,6 +6,8 @@ use app\Models\utilisateur;
 
 class loginController{
 
+    const salt = "@|-°+==00001ddQ";
+
     public function __construct($container){
         $this->container = $container;
     }
@@ -29,7 +31,7 @@ class loginController{
         );
 
         if(!$auth){
-            
+
             $this->container->flash->addMessage('error', 'Le couple mail/mot de passe n\'est pas correct !');
             return $response->withRedirect($this->container->router->pathFor('connexion'));
         }
@@ -48,7 +50,7 @@ class loginController{
             return false;
         }
 
-        if(password_verify($mdp, $user->mdp)){
+        if(password_verify($mdp.self::salt, $user->mdp)){
             $_SESSION['user'] = $user->id;
             return true;
         }
