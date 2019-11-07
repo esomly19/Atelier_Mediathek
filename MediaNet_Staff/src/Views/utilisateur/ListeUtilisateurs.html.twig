@@ -1,6 +1,7 @@
 {% include 'layout.html.twig' %}
 {% block stylesheets %}
     <link href="../../src/css/listeUtilisateur.css" type="text/css" rel="stylesheet" />
+    <link href="../../src/css/grid.css" type="text/css" rel="stylesheet" />
 {% endblock %}
 <h1>Liste des utilisateurs : </h1>
 <div class="search">
@@ -10,7 +11,7 @@
     <button id="submit_research">rechercher</button><div id="infoSearch"></div>
 </div>
 <div class="content">
-    <div class="ligne-p">
+    <div class="row">
         <label name="nom">Nom </label><label name="prenom">Prenom </label><label>Email </label><label>Telephone </label><label>Adresse </label><label>Date d'adhesion </label><label>nombre d'emprunts </label>
     </div>
     <div id="iu">
@@ -22,9 +23,17 @@
                     {% set nbCommandes = nbCommandes + 1 %}
                 {% endif %}
             {% endfor %}
-            <div class="ligne-u">
-                <form action="informationusager" method="post">
-                    <label name="nom">{{ utilisateur.nom }} </label><label name="prenom">{{ utilisateur.prenom }} </label><input type="hidden" name="idu" value={{ utilisateur.id }}><label name = "mail" id="mail">{{ utilisateur.mail }} </label><label>{{ utilisateur.adresse }} </label><label>{{ utilisateur.telephone }} </label><label>{{ utilisateur.date_adhesion }} </label><label>{{ nbCommandes }} </label> <button type="submit" >Consulter</button>
+            <div class="row">
+                <form action="informationusager" method="get">
+                    <label name="nom">{{ utilisateur.nom }} </label>
+                    <label name="prenom">{{ utilisateur.prenom }} </label>
+                    <input type="hidden" name="idu" value={{ utilisateur.id }}>
+                    <label name = "mail" id="mail">{{ utilisateur.mail }} </label>
+                    <label>{{ utilisateur.adresse }} </label>
+                    <label>{{ utilisateur.telephone }} </label>
+                    <label>{{ utilisateur.date_adhesion }} </label>
+                    <label>{{ nbCommandes }} </label>
+                    <button type="submit" >Consulter</button>
                 </form>
             </div>
         {% endfor %}
@@ -65,17 +74,17 @@
 
             utilisateurTrouve.forEach(function (utilisateur) {
 
-                content.innerHTML += "<div class=\"ligne-u\">\n" +
-                    "                <label class=\"nom\">"+utilisateur[0] +" </label><label class=\"prenom\">"+utilisateur[1] +" </label><label>"+utilisateur[2] +" </label><label>"+utilisateur[3] +" </label><label>"+utilisateur[4] +" </label><label>"+utilisateur[5] +" </label><label>"+utilisateur[7] +" </label>  <button value=\""+utilisateur[6] +" id = "+utilisateur[6] +"\">Consulter</button>\n" +
-                    "            </div>"
+                content.innerHTML += "<form action=\"informationusager\" method=\"post\"><div class=\"ligne-u\">\n" +
+                    "                <label class=\"nom\">"+utilisateur[0] +" </label><label class=\"prenom\">"+utilisateur[1] +" </label><label>"+utilisateur[2] +" </label><label>"+utilisateur[3] +" </label><label>"+utilisateur[4] +" </label><label>"+utilisateur[5] +" </label><label>"+utilisateur[7] +" </label><input type=\"hidden\" name=\"idu\" value="+utilisateur[6]+">  <button type='submit'>Consulter</button>\n" +
+                    "            </div></form>"
             })
         }else{
             content.innerHTML = "";
             listeNomUtilisateur.forEach(function (utilisateur) {
 
-                content.innerHTML += "<div class=\"ligne-u\">\n" +
-                    "                <label class=\"nom\">"+utilisateur[0] +" </label><label class=\"prenom\">"+utilisateur[1] +" </label><label>"+utilisateur[2] +" </label><label>"+utilisateur[3] +" </label><label>"+utilisateur[4] +" </label><label>"+utilisateur[5] +" </label><label>"+utilisateur[7] +" </label> <button value=\""+utilisateur[6] +" id = "+utilisateur[6] +"\">Consulter</button>\n" +
-                    "            </div>"
+                content.innerHTML += "<form action=\"informationusager\" method=\"post\"><div class=\"ligne-u\">\n" +
+                    "                <label class=\"nom\">"+utilisateur[0] +" </label><label class=\"prenom\">"+utilisateur[1] +" </label><label>"+utilisateur[2] +" </label><label>"+utilisateur[3] +" </label><label>"+utilisateur[4] +" </label><label>"+utilisateur[5] +" </label><label>"+utilisateur[7] +" </label><input type=\"hidden\" name=\"idu\" value="+utilisateur[6]+">  <button type='submit'>Consulter</button>\n" +
+                    "            </div></form>"
 
                 document.getElementById("infoSearch").innerHTML = "Aucun utilisateur trouvé"
 

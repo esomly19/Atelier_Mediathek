@@ -40,10 +40,9 @@ class utilisateurController
     }
 
     public function informationUsager($request, $response) {
-        $id = $_POST["idu"];
+        $id = $_GET["idu"];
         $uti = Utilisateur::find($id);
         $listeDocumentEmprunt = Document::where('emprunter.id_utilisateur', '=', $id)->Join('emprunter', 'emprunter.id_document', '=', 'document.id')->get();
-        //$listeEmprunt = Emprunter::where('id_utilisateur','=',$id)->Join("document", 'document.id','=',"emprunt.id_document")->get();
         return $this->container->view->render($response, "utilisateur/informationUtilisateur.html.twig",["uti"=>$uti,"emprunt"=> $listeDocumentEmprunt]);
     }
 }

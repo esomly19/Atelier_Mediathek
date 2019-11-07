@@ -1,2 +1,25 @@
-{{ uti }}
-{{ emprunt }}
+{% include 'layout.html.twig' %}
+{% block stylesheets %}
+    <link href="../../src/css/grid.css" type="text/css" rel="stylesheet" />
+    <link href="../../src/css/infoUtilisateur.css" type="text/css" rel="stylesheet" />
+{% endblock %}
+
+<h1>Liste media emprunté par {{ uti.nom }} {{ uti.prenom }}</h1>
+<div class="content">
+    <div class="row">
+        <div class="tab">Type</div><div class="infobar">Titre</div>
+    </div>
+
+    {% for doc in emprunt %}
+        <div class="row">
+            <div class="tab">{{ doc.type }}</div>
+            <div class="tab">{{ doc.titre }}</div>
+            <form action="supprimeremprunt" method="post">
+                <input type="hidden" name="idu" value={{ uti.id }}>
+                <input type="hidden" name="ide" value={{ doc.id_document }}>
+                <button type="submit">Rendu</button></form>
+        </div>
+    {% endfor %}
+</div>
+
+
