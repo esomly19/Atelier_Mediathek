@@ -46,12 +46,14 @@ $app->get('/', function(Request $request, Response $response, $args){
 });
 
 
-$app->get('/retour', function(Request $request, Response $response, $args){
-    return $this->view->render($response, 'retour.html.twig');
-})->setName('retour');
+$app->get('/usagers', "\\app\\Controllers\\utilisateurController:gestionUsager")->setName('usagers');
+$app->get('/listusagers', "\\app\\Controllers\\utilisateurController:informationUtilisateur")->setName('listusagers');
+$app->get('/emprunts', "\\app\\Controllers\\emprunterController:emprunterinfo")->setName('emprunts');
+$app->get('/retour', "\\app\\Controllers\\emprunterController:retourinfo")->setName('retour');
 
-$app->get('/informationUtilisateurs', "\\app\\Controllers\\utilisateurController:informationUtilisateur")->setName('usagers');;
-$app->get('/emprunts', "\\app\\Controllers\\emprunterController:emprunterinfo")->setName('emprunts');;
+$app->get('/creercompte', "\\app\\Controllers\\utilisateurController:voir")->setName('creacompte');
+$app->post('/creercompte', "\\app\\Controllers\\utilisateurController:creerCompte");
+
 
 
 try {

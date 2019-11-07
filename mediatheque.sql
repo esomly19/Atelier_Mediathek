@@ -103,6 +103,7 @@ DROP TABLE IF EXISTS `utilisateur`;
 CREATE TABLE IF NOT EXISTS `utilisateur` (
   `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `nom` varchar(55) NOT NULL,
+  `prenom` varchar(55) NOT NULL,
   `mdp` varchar(255) NOT NULL,
   `mail` varchar(100) NOT NULL,
   `adresse` varchar(255) NOT NULL,

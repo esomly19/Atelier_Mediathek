@@ -1,4 +1,9 @@
 
+body{
+  background:#7a8fa3;
+  font-family: 'Open Sans', sans-serif;
+}
+
 ul {
     list-style-type: none;
     margin: 0;
@@ -8,7 +13,7 @@ ul {
   }
   
   li {
-    float: left;
+    float: right;
   }
   
   li a {
