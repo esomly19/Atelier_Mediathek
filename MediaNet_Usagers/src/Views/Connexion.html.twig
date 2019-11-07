@@ -7,16 +7,16 @@
 {% block content %}
 
     <h1>Identifier vous</h1>
-       
-    <form action="{{ path_for('connexion') }}" method="post">	
+
+    <form action="{{ path_for('connexion') }}" method="post">
         <div class="form-group">
 		    <label for="mail">Email</label>
 			<input type="text" name="mail"  value="{{utilisateur.mail}}" required>
-			
+
 			<label for="mdp">Mot de passe</label>
 			<input type="password" name="mdp" id="mdp" value="{{utilisateur.mdp}}" required>
-					
-			
+
+
 			<button type="submit" >Se connecter</button>
 		</div>
 	</form>
