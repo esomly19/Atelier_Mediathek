@@ -13,6 +13,7 @@ use app\models\Utilisateur;
 
 class utilisateurController
 {
+    const salt = "@|-°+==00001ddQ";
 
     public function __construct($container)
     {
@@ -26,10 +27,24 @@ class utilisateurController
         $listeUtilisateurs = Utilisateur::all();
         return $this->container->view->render($response, "utilisateur/informationUtilisateur.html.twig", ['utilisateurs'=>$listeUtilisateurs]);
     }
+    
+    public function voir($request, $response,$args)
+	{
+        $user= Utilisateur::find(intVal($args['id']));
+         $this->container->view->render($response,'comptecreer.html.twig', ['utilisateurs'=>$user]);
 
+    }
     public function creerCompte($request, $response) {
-        $listeUtilisateurs = Utilisateur::all();
-        return $this->container->view->render($response, "creationCompte.html.twig", ['utilisateurs'=>$listeUtilisateurs]);
+        $user= new Utilisateur();
+        $user->nom = $_POST["nom"];
+        $user->prenom = $_POST["prenom"];
+        $password = $_POST["mdp"].self::salt;
+        $user->mdp = password_hash($password, PASSWORD_DEFAULT);
+        $user->mail = $_POST["mail"];
+        $user->adresse = $_POST["adresse"];
+        $user->telephone = $_POST["telephone"];
+        $user->save();
+        return $this->container->view->render($response, "creationCompte.html.twig",['utilisateurs'=>$user]);
     }
 
 }
