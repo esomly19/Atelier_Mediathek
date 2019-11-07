@@ -10,6 +10,7 @@ namespace app\controllers;
 
 
 use app\models\Utilisateur;
+use Faker\Provider\tr_TR\DateTime;
 
 class utilisateurController
 {
@@ -30,8 +31,7 @@ class utilisateurController
     
     public function voir($request, $response,$args)
 	{
-        
-         $this->container->view->render($response,'comptecreer.html.twig');
+        return $this->container->view->render($response, "creationCompte.html.twig");
 
     }
     public function creerCompte($request, $response) {
@@ -43,8 +43,10 @@ class utilisateurController
         $user->mail = $_POST["mail"];
         $user->adresse = $_POST["adresse"];
         $user->telephone = $_POST["telephone"];
+        $user->date_adhesion = date("Y/m/d");
         $user->save();
-        return $this->container->view->render($response, "creationCompte.html.twig",['utilisateurs'=>$user]);
+        $listeUtilisateurs = Utilisateur::all();
+        return $this->container->view->render($response, "utilisateur/informationUtilisateur.html.twig", ['utilisateurs'=>$listeUtilisateurs]);
     }
 
 }
