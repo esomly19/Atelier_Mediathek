@@ -114,7 +114,7 @@
         <div class = "cardDoc"  style="" etatDoc={{ document.etat }} genreDoc={{ document.id_genre }} typeDoc={{ document.type }}>
         <div class="top">
                   {% if document.etat == 0 %}
-                    <button>Modifier</button>
+                    <a href="{{ path_for('modifierdocuments', { 'id': document.id }) }}"> <button>Modifier</button></a>
                     <button>Emprunter</button>
                     <button>Supprimer</button>
             {% endif %}</div>
