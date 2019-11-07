@@ -57,6 +57,7 @@ $app->post('/supprimeremprunt', "\\app\\Controllers\\emprunterController:suppEmp
 $app->get('/creercompte', "\\app\\Controllers\\utilisateurController:voir")->setName('creacompte');
 $app->post('/creercompte', "\\app\\Controllers\\utilisateurController:creerCompte");
 
+$app->get('/rendredoc', "\\app\\Controllers\\emprunterController:rendreDoc");
 
 
 $app->get('/documents', "\\app\\Controllers\\documentController:voir")->setName('documents');
