@@ -15,6 +15,7 @@ $container["view"] = function ($container){
     $router = $container->get('router');
     $uri = \Slim\Http\Uri::createFromEnvironment(new \Slim\Http\Environment($_SERVER));
     $view->addExtension(new \Slim\Views\TwigExtension($router, $uri));
+    $view->getEnvironment()->addGlobal('auth', new app\Controllers\loginController($container));
     $view->getEnvironment()->addGlobal('flash', $container->flash);
     return $view;
 };
@@ -58,6 +59,9 @@ $app->get('/connection', function(Request $request, Response $response, $args){
 })->setName('connexion');
 $app->post('/connection', "\\app\\Controllers\\loginController:seConnecter");
 
+$app->get('/deconnection', "\\app\\Controllers\\loginController:seDeconnecter")->setName('deconnection');
+
+
 $app->get('/emprunt&retour', function(Request $request, Response $response, $args){
     return $this->view->render($response, 'EmpruntRetour.html.twig');
 })->setName('emprunt&retour');
@@ -75,8 +79,3 @@ try {
 } catch (Throwable $e) {
     var_dump($e);
 }
-
-
-
-
-
