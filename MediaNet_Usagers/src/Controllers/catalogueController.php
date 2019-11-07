@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\models\document;
+use app\models\Genre;
 
 class catalogueController{
 
@@ -12,8 +13,13 @@ class catalogueController{
     }
 
     public function afficherCatalogue($request, $response) {
-        $documents = document::all();
-        return $this->container->view->render($response, "Catalogue.html.twig", ['docs'=>$documents]);
+        $documents = document::first()
+            ->leftJoin('image', 'image.id_image', '=', 'document.id_image')
+            ->leftJoin('genre', 'genre.id_genre', "=", "document.id_genre")
+            ->get();
+
+        $genres = Genre::first()->get();
+        return $this->container->view->render($response, "Catalogue.html.twig", ['catalogue'=>$documents, 'genres'=>$genres]);
     }
 
 

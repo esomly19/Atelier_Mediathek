@@ -33,11 +33,11 @@ CREATE TABLE IF NOT EXISTS `document` (
   `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `id_image` int(11) DEFAULT NULL,
   `titre` varchar(55) NOT NULL,
-  `description` varchar(255) NOT NULL,
-  `code` varchar(5) NOT NULL,
+  `description_doc` varchar(255) NOT NULL,
+  `code` varchar(10) NOT NULL,
   `etat` int(11) NOT NULL,
   `id_genre` int(11) NOT NULL,
-  `type` int(11) NOT NULL,
+  `type` varchar(20) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`),
   UNIQUE KEY `code` (`code`)
@@ -70,11 +70,11 @@ CREATE TABLE IF NOT EXISTS `emprunter` (
 
 DROP TABLE IF EXISTS `genre`;
 CREATE TABLE IF NOT EXISTS `genre` (
-  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `nom` varchar(55) NOT NULL,
-  `description` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `id` (`id`)
+  `id_genre` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `nom_genre` varchar(55) NOT NULL,
+  `description_genre` varchar(255) NOT NULL,
+  PRIMARY KEY (`id_genre`),
+  UNIQUE KEY `id_genre` (`id_genre`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -87,7 +87,7 @@ DROP TABLE IF EXISTS `image`;
 CREATE TABLE IF NOT EXISTS `image` (
   `id_image` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `nom` varchar(55) NOT NULL,
-  `description` varchar(255) NOT NULL,
+  `description_image` varchar(255) NOT NULL,
   `path` varchar(255) NOT NULL,
   PRIMARY KEY (`id_image`),
   UNIQUE KEY `id_image` (`id_image`)

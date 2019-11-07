@@ -1,11 +1,171 @@
 {% extends 'Interface.html.twig' %}
-   
+
 {% block stylesheets %}
+
         <link href="../../src/css/catalogue.css" type="text/css" rel="stylesheet" />
+
+{% endblock %}
+
+{% block script %}
+
+    <script type="application/javascript" >
+
+    /*
+    function filterSelection(c) {
+        let x, i;
+        x = document.getElementsByClassName("filterButton");
+        if (c == "all") c = "";
+        for (i = 0; i < x.length; i++) {
+            removeClass(x[i], "show");
+            if (x[i].className.indexOf(c) > -1) addClass(x[i], "show");
+        }
+    }
+
+    function addClass(element, name) {
+        let i, arr1, arr2;
+        arr1 = element.className.split(" ");
+        arr2 = name.split(" ");
+        for (i = 0; i < arr2.length; i++) {
+            if (arr1.indexOf(arr2[i]) == -1) {element.className += " " + arr2[i];}
+        }
+    }
+
+    function removeClass(element, name) {
+        let i, arr1, arr2;
+        arr1 = element.className.split(" ");
+        arr2 = name.split(" ");
+        for (i = 0; i < arr2.length; i++) {
+            while (arr1.indexOf(arr2[i]) > -1) {
+                arr1.splice(arr1.indexOf(arr2[i]), 1);
+            }
+        }
+        element.className = arr1.join(" ");
+    }
+
+    window.onload = function selection() {
+
+        let btnContainer = document.getElementById("filter");
+        let btns = btnContainer.getElementsByClassName("filterButton");
+        for (let i = 0; i < btns.length; i++) {
+            btns[i].addEventListener("click", function(){
+                let current = document.getElementsByClassName("active");
+                current[0].className = current[0].className.replace(" active", "");
+                this.className += " active";
+            });
+        }
+
+    }*/
+
+    function returnDetails(details) {
+
+    }
+
+    function hideAll() {
+        let docs = document.getElementsByClassName("cardDoc")
+        let docValue=[]
+        for (let i = 0; i<docs.length; i++){
+            docs[i].style.display= 'none'
+        }
+    }
+
+    function showAll() {
+        let docs = document.getElementsByClassName("cardDoc")
+        let docValue=[]
+        for (let i = 0; i<docs.length; i++){
+            docs[i].style.display= 'block'
+        }
+    }
+
+    function show(filtre,type) {
+        let docs = document.getElementsByClassName("cardDoc")
+
+        if(filtre == "All"){
+            showAll()
+        }else {
+            for (let i = 0; i < docs.length; i++) {
+                if (docs[i].getAttribute(type == filtre)) {
+                    docs[i].style.display = "block"
+                }
+
+            }
+        }
+    }
+
+    function filterButton(){
+        let buttons = document.getElementsByClassName("filterButton")
+        for (let i = 0; i < buttons.length; i++) {
+
+            buttons[i].addEventListener("click", function () {
+                hideAll()
+                show(buttons[i].value)
+
+            })
+        }
+
+
+    }
+
+    window.onload = function selection() {
+        filterButtonGenre()
+    }
+
+
+
+</script>
+
 {% endblock %}
 
 {% block content %}
 
-    <p>à venir</p>
+
+
+    <div>
+        <button class="filterButton" value="All"> Show all</button>
+
+        {% for genre in genres %}
+        <button class="filterButton"  id="filter" value={{ genre.id_genre }}> {{ genre.nom_genre }}</button>
+        {% endfor %}
+
+
+
+
+
+
+
+    </div>
+
+
+    {% for document in catalogue %}
+
+        <div class = "cardDoc"  style="" etatDoc={{ document.etat }} genreDoc={{ document.id_genre }} typeDoc={{ document.type }}>
+            <img style="width: 256px" src="../{{ document.path }}"
+                 alt="{{ document.description_image }}">
+            <h5> {{ document.titre }} </h5>
+            <div>{{ document.description_doc }}</div>
+            <div>{{ document.nom_genre }}</div>
+
+            {% if document.etat == 0 %}
+                Disponible
+                <button>Réserver</button>
+            {% endif %}
+
+            {% if document.etat == 1 %}
+                Réservé
+            {% endif %}
+
+            {% if document.etat == 2 %}
+                Emprunté
+            {% endif %}
+
+            {% if document.etat == 3 %}
+                En réparation
+            {% endif %}
+
+
+
+        </div>
+
+    {% endfor %}
 
 {% endblock %}
+
