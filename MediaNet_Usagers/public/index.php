@@ -67,9 +67,7 @@ $app->get('/emprunt&retour', function(Request $request, Response $response, $arg
     return $this->view->render($response, 'EmpruntRetour.html.twig');
 })->setName('emprunt&retour');
 
-$app->get('/profil', function(Request $request, Response $response, $args){
-    return $this->view->render($response, 'Profil.html.twig');
-})->setName('profil');
+$app->get('/profil',"\\app\\Controllers\\loginController:monProfil")->setName('profil');
 
 
 $app->get('/catalogue', "\\app\\Controllers\\catalogueController:afficherCatalogue")->setName('catalogue');

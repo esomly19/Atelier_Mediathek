@@ -12,11 +12,6 @@ class loginController{
         $this->container = $container;
     }
 
-    //Renvoie la page avec le formulaire pour se connecter
-    public function signIn($request, $response){
-        $this->container->view->render($response, 'user/connection.html.twig');
-    }
-
     //Methode qui permet de se déconnecter 
     public function seDeconnecter($request, $response){
         session_destroy();
@@ -56,6 +51,14 @@ class loginController{
         }
         
         return false;
+    }
+
+    public function monProfil($request, $response){
+        if(!self::isConnected()){
+            return $response->withRedirect($this->container->router->pathFor('connexion'));
+        }
+        $user = Utilisateur::find($_SESSION['user']);
+        $this->container->view->render($response, "Profil.html.twig", ['utilisateur'=>$user]);
     }
 
 

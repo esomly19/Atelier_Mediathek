@@ -1,0 +1,149 @@
+{% include 'layout.html.twig' %}
+
+{% block stylesheets %}
+
+        <link href="../../src/css/catalogue.css" type="text/css" rel="stylesheet" />
+
+{% endblock %}
+
+{% block script %}
+
+    <script type="application/javascript" >
+
+
+    function hideAll() {
+        let docs = document.getElementsByClassName("cardDoc")
+        let docValue=[]
+        for (let i = 0; i<docs.length; i++){
+            docs[i].style.display= 'none'
+        }
+    }
+
+    function showAll() {
+        let docs = document.getElementsByClassName("cardDoc")
+        for (let i = 0; i<docs.length; i++){
+            docs[i].style.display= 'block'
+        }
+    }
+
+    function show(filtre, type ) {
+        let docs = document.getElementsByClassName("cardDoc")
+        hideAll()
+        if(filtre == "All"){
+            showAll()
+        }else {
+            for (let i = 0; i < docs.length; i++) {
+                if (docs[i].getAttribute(type) == filtre) {
+                    docs[i].style.display = "block"
+                }
+
+            }
+        }
+    }
+
+    function buttonAll(){
+        let button = document.getElementById("All")
+        button.addEventListener("click", function () {
+            showAll()
+        })
+    }
+
+    function filterListe() {
+        let liste = document.getElementsByClassName("filterListe")
+        for (let i = 0; i < liste.length; i ++)
+        liste[i].addEventListener("change", function () {
+            show(liste[i].value, liste[i].getAttribute("id"))
+        })
+    }
+
+
+    window.onload = function selection() {
+        filterListe()
+        buttonAll()
+    }
+
+
+
+</script>
+
+{% endblock %}
+
+{% block content %}
+
+
+
+    <div>
+
+        <button class="filterButton" id="All"> Show all</button>
+
+
+        <label for="filterGenre">Genres : </label>
+        <select name="filterGenre" class="filterListe" id="genreDoc">
+        {% for genre in genres %}
+            <option value={{ genre.id_genre }}> {{ genre.nom_genre }}</option>
+        {% endfor %}
+        </select>
+
+
+        <label for="filterType">Types : </label>
+        <select name="filterType" class="filterListe" id="typeDoc">
+
+            <option value="livre"> Livres </option>
+            <option value="CD"> CD </option>
+            <option value="DVD"> DVD </option>
+
+        </select>
+
+        <label for="filterEtat">Types : </label>
+        <select name="filterEtat" class="filterListe" id="etatDoc">
+
+            <option value="0"> Documents disponibles </option>
+            <option value="1"> Documents empruntés </option>
+            <option value="2"> Documents réservés </option>
+            <option value="3"> Documents indisponibles (raisons diverses) </option>
+
+
+        </select>
+
+
+    </div>
+
+<div class="cata">
+    {% for document in catalogue %}
+
+        <div class = "cardDoc"  style="" etatDoc={{ document.etat }} genreDoc={{ document.id_genre }} typeDoc={{ document.type }}>
+        <div class="top">
+                  {% if document.etat == 0 %}
+                    <button>Modifier</button>
+                    <button>Emprunter</button>
+                    <button>Supprimer</button>
+            {% endif %}</div>
+            <img style="width: 256px" src="../{{ document.path }}"
+                 alt="{{ document.description_image }}">
+            <h5> {{ document.titre }} </h5>
+            <div>{{ document.description_doc }}</div>
+            <div>{{ document.nom_genre }}</div>
+
+               {% if document.etat == 0 %}
+                Disponible
+                 {% endif %}
+            {% if document.etat == 1 %}
+                Réservé
+            {% endif %}
+
+            {% if document.etat == 2 %}
+                Emprunté
+            {% endif %}
+
+            {% if document.etat == 3 %}
+                En réparation
+            {% endif %}
+
+
+
+        </div>
+
+    {% endfor %}
+
+{% endblock %}
+
