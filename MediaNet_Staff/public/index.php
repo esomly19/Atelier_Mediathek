@@ -58,6 +58,12 @@ $app->get('/creercompte', "\\app\\Controllers\\utilisateurController:voir")->set
 $app->post('/creercompte', "\\app\\Controllers\\utilisateurController:creerCompte");
 
 
+
+$app->get('/documents', "\\app\\Controllers\\documentController:voir")->setName('documents');
+$app->post('/documents', "\\app\\Controllers\\documentController:creerDocuements");
+
+
+
 try {
     $app->run();
 } catch (Throwable $e) {

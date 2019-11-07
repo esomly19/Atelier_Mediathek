@@ -24,7 +24,7 @@ class utilisateurController
     }
 
     public function gestionUsager($request, $response) {
-        return $this->container->view->render($response, "gestionUsagers.html.twig");
+        return $this->container->view->render($response, "utilisateur/gestionUsagers.html.twig");
     }
     public function informationUtilisateur($request, $response) {
         $listeUtilisateurs = Utilisateur::all();
@@ -38,13 +38,11 @@ class utilisateurController
     
     public function voir($request, $response,$args)
 	{
-        return $this->container->view->render($response, "creationCompte.html.twig");
+        return $this->container->view->render($response, "utilisateur/creationCompte.html.twig");
 
     }
     public function creerCompte($request, $response) {
-            if(is_null (Utilisateur::find( $_POST["mail"])) ){
-                return $this->container->view->render($response, "erreurmail.html.twig");
-            }else{
+            if(is_null(Utilisateur::find( $_POST["mail"]))){
                 $user= new Utilisateur();
                 $user->nom = $_POST["nom"];
                 $user->prenom = $_POST["prenom"];
@@ -57,6 +55,8 @@ class utilisateurController
                 $user->save();
                 $listeUtilisateurs = Utilisateur::all();
                 return $this->container->view->render($response, "utilisateur/informationUtilisateur.html.twig", ['utilisateurs'=>$listeUtilisateurs]);
+            }else{
+                return $this->container->view->render($response, "utilisateur/erreurmail.html.twig");
             }
     }
 
