@@ -64,6 +64,9 @@ $app->post('/documents', "\\app\\Controllers\\documentController:creerDocuements
 
 
 
+$app->get('/doc{id}', "\\app\\Controllers\\documentController:modifier")->setName('modifierdocuments');
+$app->post('/doc{id}', "\\app\\Controllers\\documentController:update");
+
 try {
     $app->run();
 } catch (Throwable $e) {
