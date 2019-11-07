@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 require_once '../vendor/autoload.php';
 require_once '../src/config/config.inc.php';
 
@@ -43,16 +43,24 @@ $app->get('/d', "\\app\\controllers\\documentController:Index");
 
 $app->get('/', function(Request $request, Response $response, $args){
     return $this->view->render($response, 'Accueil.html.twig');
-});
+})->setName('accueil');;
 
 
 $app->get('/usagers', "\\app\\Controllers\\utilisateurController:gestionUsager")->setName('usagers');
 $app->get('/listusagers', "\\app\\Controllers\\utilisateurController:informationUtilisateur")->setName('listusagers');
 $app->get('/emprunts', "\\app\\Controllers\\emprunterController:emprunterinfo")->setName('emprunts');
 $app->get('/retour', "\\app\\Controllers\\emprunterController:retourinfo")->setName('retour');
+$app->get('/informationusager', "\\app\\Controllers\\utilisateurController:informationUsager")->setName("infousager");
+$app->post('/supprimeremprunt', "\\app\\Controllers\\emprunterController:suppEmprunt")->setName("supprimerEmprunt");
+
 
 $app->get('/creercompte', "\\app\\Controllers\\utilisateurController:voir")->setName('creacompte');
 $app->post('/creercompte', "\\app\\Controllers\\utilisateurController:creerCompte");
+
+
+
+$app->get('/documents', "\\app\\Controllers\\documentController:voir")->setName('documents');
+$app->post('/documents', "\\app\\Controllers\\documentController:creerDocuements");
 
 
 

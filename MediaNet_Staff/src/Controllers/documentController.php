@@ -8,6 +8,7 @@
 
 namespace app\controllers;
 
+use app\models\Document;
 
 class documentController
 {
@@ -16,7 +17,13 @@ class documentController
         $this->container = $container;
     }
 
-    public function Index($request, $response) {
-        return $this->container->view->render($response, "test.html.twig");
+   
+    public function voir($request, $response) {
+        $listeDocuments = Document::all();
+        return $this->container->view->render($response, "documents/listeDocuments.html.twig",['documents'=>$listeDocuments]);
+    }
+
+    public function creerDocuements($request, $response) {
+        return $this->container->view->render($response, "documents/listeDocuements.html.twig");
     }
 }

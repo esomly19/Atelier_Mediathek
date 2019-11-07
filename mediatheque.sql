@@ -58,8 +58,7 @@ CREATE TABLE IF NOT EXISTS `emprunter` (
   `date_retour` date NOT NULL,
   `date_limite` date NOT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `id` (`id`),
-  UNIQUE KEY `id_document` (`id_document`)
+  UNIQUE KEY `id` (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------

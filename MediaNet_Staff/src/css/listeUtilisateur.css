@@ -1,3 +1,4 @@
+
 .content {
     display: flex;
     flex-direction: column;
@@ -10,7 +11,7 @@
 }
 
 .ligne-u {
-    background-color: #f1c40f;
+    background-color: #cbf199;
 }
 
 .nom {
@@ -18,6 +19,12 @@
     min-width: 2em;
 }
 
+<<<<<<< HEAD
+.search {
+    display: flex;
+    background-color: #f1c40f;
+}
+=======
 span {
     min-width: 8%;
 }
@@ -27,3 +34,4 @@ body{
     font-family: 'Open Sans', sans-serif;
   }
   
+>>>>>>> a8c919d0a599132d3443a6763fd820696f3370fd
