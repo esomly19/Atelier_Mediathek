@@ -1,5 +1,5 @@
-@mixin couleurbouton($couleur) {
-    background-color: $couleur;
+@mixin couleurbouton($couleur,$bColeur) {
+    background-color: $bColeur;
     color: darken($couleur,60%);
     border-color: $couleur;
 }
@@ -9,23 +9,23 @@
         font-size: 1.3em;
         padding :0.1em;
     }@else if $taille == medium{
-        font-size: 2.3em;
+        font-size: 1.7em;
         padding :0.2em;
     }@else if $taille == large{
-        font-size: 3.5em;
-        padding : 0.4em;
+        font-size: 2.3em;
+        padding :0.2em;
     }
 }
 
-@mixin stylebouton($style,$couleur,$taille){
+@mixin stylebouton($style,$couleur,$bColeur,$taille){
 
     @if $style == classic {
-        @include couleurbouton($couleur);
+        @include couleurbouton($couleur,$bColeur);
     }@else if $style == flat{
-        @include couleurbouton($couleur);
+        @include couleurbouton($couleur,$bColeur);
         border-radius: 15px;
     }@else if $style == outline{
-        @include couleurbouton($couleur);
+        @include couleurbouton($couleur,$bColeur);
         background-color: white;
         border: 2px solid $couleur;
     }

@@ -2,7 +2,7 @@
 
 namespace app\controllers;
 
-use app\Models\utilisateur;
+use app\models\Utilisateur;
 
 class loginController{
 

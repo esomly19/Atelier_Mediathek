@@ -14,25 +14,25 @@
       <div id="header">
         {% block header %}
         <div class="navbar">
-            <div class="navLeft">
+            
                 <button class="boutton"><a href="{{path_for('catalogue')}}">Catalogue</a></button>
-            </div>
+            
 
             {% if auth.isConnected %}
 
-            <div class="navRight">
+            
                 <button class="boutton"><a href="{{path_for('emprunt&retour')}}">mes emprunts / mes retours</a></button>
             
                 <button class="boutton"><a href="{{path_for('profil')}}">mon profils</a></button>
 
                 <button class="boutton"><a href="{{path_for('deconnection')}}">Se déconnecter</a></button>
-            </div>
+            
 
             {% else %}
 
-            <div class="navRight">
+            
                 <button class="boutton"><a href="{{path_for('connexion')}}">Se connecter</a></button>
-            </div>
+            
             
             
 

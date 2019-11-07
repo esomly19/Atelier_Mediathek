@@ -54,7 +54,7 @@ class utilisateurController
                 $user->date_adhesion = date("Y/m/d");
                 $user->save();
                 $listeUtilisateurs = Utilisateur::all();
-                return $this->container->view->render($response, "utilisateur/informationUtilisateur.html.twig", ['utilisateurs'=>$listeUtilisateurs]);
+                return $this->container->view->render($response, "utilisateur/ListeUtilisateurs.html.twig", ['utilisateurs'=>$listeUtilisateurs]);
             }else{
                 return $this->container->view->render($response, "utilisateur/erreurmail.html.twig");
             }
