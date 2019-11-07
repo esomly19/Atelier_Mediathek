@@ -6,6 +6,8 @@ use app\Models\utilisateur;
 
 class loginController{
 
+    const salt = "@|-°+==00001ddQ";
+
     public function __construct($container){
         $this->container = $container;
     }
@@ -15,22 +17,31 @@ class loginController{
         $this->container->view->render($response, 'user/connection.html.twig');
     }
 
+    //Methode qui permet de se déconnecter 
+    public function seDeconnecter($request, $response){
+        session_destroy();
+        $this->container->flash->addMessage('info', 'Vous venez de vous déconnecter');
+        return $response->withRedirect($this->container->router->pathFor('accueil'));
+    }
+
     public function seConnecter($request, $response,$args){
         $auth = $this->verification(
             $request->getParam('mail'),
             $request->getParam('mdp')
         );
+
         if(!$auth){
-            $this->container->flash->addMessage('error', 'Le couple Username/Password n\'est pas correct !');
+
+            $this->container->flash->addMessage('error', 'Le couple mail/mot de passe n\'est pas correct !');
             return $response->withRedirect($this->container->router->pathFor('connexion'));
         }
-        // self::loadProfile($user);
+
         $this->container->flash->addMessage('success', 'Vous êtes connecté !');
         return $response->withRedirect($this->container->router->pathFor('accueil'));
     }
 
     public static function isConnected(){
-        return isset($_SESSION['nom']);
+        return isset($_SESSION['user']);
     }
 
     public function verification($mail, $mdp){
@@ -39,11 +50,11 @@ class loginController{
             return false;
         }
 
-        if(password_verify($mdp, $user->password)){
-            $_SESSION['mail'] = $user->id;
+        if(password_verify($mdp.self::salt, $user->mdp)){
+            $_SESSION['user'] = $user->id;
             return true;
         }
-
+        
         return false;
     }
 

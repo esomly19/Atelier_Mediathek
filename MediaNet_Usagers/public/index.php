@@ -9,19 +9,21 @@ use Illuminate\Database\Capsule\Manager as DB;
 
 $container = array();
 
+$container['flash'] = function ($container){
+    return new \Slim\Flash\Messages;
+};
+
 $container["view"] = function ($container){
 
     $view = new \Slim\Views\Twig(__DIR__.'/../src/Views');
     $router = $container->get('router');
     $uri = \Slim\Http\Uri::createFromEnvironment(new \Slim\Http\Environment($_SERVER));
     $view->addExtension(new \Slim\Views\TwigExtension($router, $uri));
+    $view->getEnvironment()->addGlobal('auth', new app\Controllers\loginController($container));
     $view->getEnvironment()->addGlobal('flash', $container->flash);
     return $view;
 };
 
-$container['flash'] = function ($container){
-    return new \Slim\Flash\Messages;
-};
 
 $container['settings'] = $config;
 
@@ -58,6 +60,9 @@ $app->get('/connection', function(Request $request, Response $response, $args){
 })->setName('connexion');
 $app->post('/connection', "\\app\\Controllers\\loginController:seConnecter");
 
+$app->get('/deconnection', "\\app\\Controllers\\loginController:seDeconnecter")->setName('deconnection');
+
+
 $app->get('/emprunt&retour', function(Request $request, Response $response, $args){
     return $this->view->render($response, 'EmpruntRetour.html.twig');
 })->setName('emprunt&retour');
@@ -75,8 +80,3 @@ try {
 } catch (Throwable $e) {
     var_dump($e);
 }
-
-
-
-
-

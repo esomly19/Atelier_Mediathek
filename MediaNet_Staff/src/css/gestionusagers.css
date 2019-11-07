@@ -1,3 +1,10 @@
+
+body{
+  background:#7a8fa3;
+  font-family: 'Open Sans', sans-serif;
+}
+
+
 .main{
     display: flex;
   }
@@ -8,7 +15,7 @@
   }
 .button {
     position: relative;
-    background-color: #f39c12;
+    background-color: #5452b3;
     border: none;
     padding: 20px;
     cursor: pointer;
@@ -22,6 +29,21 @@
     overflow: hidden;
 }
 
+p{
+  color:#fff;
+  text-align: center;
+  padding-top: 500px;
+  font-size: 10px;
+}
+
+a{
+   text-decoration:none;
+   color:#fff;
+}
+
+a:hover{
+   color:black;
+}
 .button:hover{
    background:#fff;
    box-shadow:0px 2px 10px 5px #97B1BF;
@@ -30,7 +52,7 @@
 
 .button:after {
     content: "";
-    background: #f1c40f;
+    background: #5452b3;
     display: block;
     position: absolute;
     margin-top: -120%;
