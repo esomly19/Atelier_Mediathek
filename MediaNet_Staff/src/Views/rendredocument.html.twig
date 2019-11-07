@@ -1,0 +1,57 @@
+{% include 'layout.html.twig' %}
+
+<h1>Rendre un document</h1>
+
+<form action="" method="post">
+    <div class="content">
+        <div class="row">
+            <h2>Information sur l'utilisateur : </h2>
+            <label for="nom">nom : </label><input type="text" id="nom" name="nom" disabled="disabled" value={{ utilisateur.nom }} >
+            <label for="prenom">prenom : </label><input type="text" id="prenom" name="prenom" disabled="disabled" value={{ utilisateur.prenom }}>
+            <label for="mail">mail : </label><input type="text" id="mail" name="mail" disabled="disabled" value= {{ utilisateur.mail }}>
+        </div>
+        <div class="row">
+            <h2>Information sur le document à rendre : </h2>
+            <div class="boite content">
+                <label for="typeDoc">type : </label><input type="text" id="typeDoc" name="typeDoc" disabled="disabled" value={{ document.type }}>
+                <label for="nomDoc">nom : </label><input type="text" id="nomDoc" name="nomDoc" disabled="disabled" value={{ document.titre|escape }}>
+                <label for="codeDoc">code : </label><input type="text" id="codeDoc" name="codeDoc" disabled="disabled" value={{ document.code }}>
+                <label for="dateRendu">code : </label><input type="date" id="dateRendu" name="dateRendu">
+            </div>
+
+        </div>
+
+    </div>
+    <button type="submit">confirmer le rendu</button>
+</form>
+<div class="search">
+    <label for="search_code">Rechercher un document</label>
+    <input type="search" id="search_code" name="ru" value="code du document..." onfocus="if(this.value=='code du document...')this.value=''" onblur="if(this.value=='')this.value='code du document...'" autocomplete="off">
+    <button id="submit_research_code">rechercher</button><div id="infoSearch"></div>
+</div>
+
+<script type="application/javascript">
+    let listeDocuments = [];
+
+    {% for doc in listeDesDocuments %}
+        listeDocuments.push(["{{ doc.type }}","{{ doc.titre }}","{{ doc.code }}"]);
+    {% endfor %}
+    let rechercher = document.getElementById("submit_research_code");
+    let codeDocument = document.getElementById("search_code");
+
+    rechercher.addEventListener('click', function (event) {
+        listeDocuments.forEach(function (doc) {
+            if(doc[2] == codeDocument.value) {
+                let type = document.getElementById("typeDoc");
+                let titre = document.getElementById("nomDoc");
+                let code = document.getElementById("codeDoc");
+                type.value = doc[0];
+                titre.value=doc[1];
+                code.value=doc[2];
+            }else {
+
+            }
+        })
+    });
+
+</script>
