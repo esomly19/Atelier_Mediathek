@@ -16,7 +16,7 @@ $db->addConnection([
 	'database' => 'Atelier_Mediathek',
 	'username' => 'root',
 	'password' => '',
-	'charset' => 'utf8',
+	'charset' => 'utf8', bite
 	'collation' => 'utf8_general_ci'
 ]);
 $db->setAsGlobal();
