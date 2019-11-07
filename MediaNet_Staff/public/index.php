@@ -43,7 +43,7 @@ $app->get('/d', "\\app\\controllers\\documentController:Index");
 
 $app->get('/', function(Request $request, Response $response, $args){
     return $this->view->render($response, 'Accueil.html.twig');
-});
+})->setName('accueil');;
 
 
 $app->get('/usagers', "\\app\\Controllers\\utilisateurController:gestionUsager")->setName('usagers');
@@ -58,6 +58,15 @@ $app->get('/creercompte', "\\app\\Controllers\\utilisateurController:voir")->set
 $app->post('/creercompte', "\\app\\Controllers\\utilisateurController:creerCompte");
 
 $app->get('/rendredoc', "\\app\\Controllers\\emprunterController:rendreDoc");
+
+
+$app->get('/documents', "\\app\\Controllers\\documentController:voir")->setName('documents');
+$app->post('/documents', "\\app\\Controllers\\documentController:creerDocuements");
+
+
+
+$app->get('/doc{id}', "\\app\\Controllers\\documentController:modifier")->setName('modifierdocuments');
+$app->post('/doc{id}', "\\app\\Controllers\\documentController:update");
 
 try {
     $app->run();

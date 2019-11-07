@@ -24,7 +24,7 @@ class utilisateurController
     }
 
     public function gestionUsager($request, $response) {
-        return $this->container->view->render($response, "gestionUsagers.html.twig");
+        return $this->container->view->render($response, "utilisateur/gestionUsagers.html.twig");
     }
     public function informationUtilisateur($request, $response) {
         $listeUtilisateurs = Utilisateur::all();
@@ -38,22 +38,26 @@ class utilisateurController
     
     public function voir($request, $response,$args)
 	{
-        return $this->container->view->render($response, "creationCompte.html.twig");
+        return $this->container->view->render($response, "utilisateur/creationCompte.html.twig");
 
     }
     public function creerCompte($request, $response) {
-        $user= new Utilisateur();
-        $user->nom = $_POST["nom"];
-        $user->prenom = $_POST["prenom"];
-        $password = $_POST["mdp"].self::salt;
-        $user->mdp = password_hash($password, PASSWORD_DEFAULT);
-        $user->mail = $_POST["mail"];
-        $user->adresse = $_POST["adresse"];
-        $user->telephone = $_POST["telephone"];
-        $user->date_adhesion = date("Y/m/d");
-        $user->save();
-        $listeUtilisateurs = Utilisateur::all();
-        return $this->container->view->render($response, "utilisateur/informationUtilisateur.html.twig", ['utilisateurs'=>$listeUtilisateurs]);
+            if(is_null(Utilisateur::find( $_POST["mail"]))){
+                $user= new Utilisateur();
+                $user->nom = $_POST["nom"];
+                $user->prenom = $_POST["prenom"];
+                $password = $_POST["mdp"].self::salt;
+                $user->mdp = password_hash($password, PASSWORD_DEFAULT);
+                $user->mail = $_POST["mail"];
+                $user->adresse = $_POST["adresse"];
+                $user->telephone = $_POST["telephone"];
+                $user->date_adhesion = date("Y/m/d");
+                $user->save();
+                $listeUtilisateurs = Utilisateur::all();
+                return $this->container->view->render($response, "utilisateur/informationUtilisateur.html.twig", ['utilisateurs'=>$listeUtilisateurs]);
+            }else{
+                return $this->container->view->render($response, "utilisateur/erreurmail.html.twig");
+            }
     }
 
     public function informationUsager($request, $response) {

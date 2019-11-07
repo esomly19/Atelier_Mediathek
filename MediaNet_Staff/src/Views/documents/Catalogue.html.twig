@@ -1,4 +1,4 @@
-{% extends 'Interface.html.twig' %}
+{% include 'layout.html.twig' %}
 
 {% block stylesheets %}
 
@@ -112,17 +112,21 @@
     {% for document in catalogue %}
 
         <div class = "cardDoc"  style="" etatDoc={{ document.etat }} genreDoc={{ document.id_genre }} typeDoc={{ document.type }}>
+        <div class="top">
+                  {% if document.etat == 0 %}
+                    <a href="{{ path_for('modifierdocuments', { 'id': document.id }) }}"> <button>Modifier</button></a>
+                    <button>Emprunter</button>
+                    <button>Supprimer</button>
+            {% endif %}</div>
             <img style="width: 256px" src="../{{ document.path }}"
                  alt="{{ document.description_image }}">
             <h5> {{ document.titre }} </h5>
             <div>{{ document.description_doc }}</div>
             <div>{{ document.nom_genre }}</div>
 
-            {% if document.etat == 0 %}
+               {% if document.etat == 0 %}
                 Disponible
-                <button>Réserver</button>
-            {% endif %}
-
+                 {% endif %}
             {% if document.etat == 1 %}
                 Réservé
             {% endif %}
@@ -139,7 +143,9 @@
 
         </div>
 
+
     {% endfor %}
 </div>
+
 {% endblock %}
 
