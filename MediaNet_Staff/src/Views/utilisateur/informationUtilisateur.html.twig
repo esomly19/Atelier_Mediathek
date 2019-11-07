@@ -1,65 +1,25 @@
 {% include 'layout.html.twig' %}
 {% block stylesheets %}
-    <link href="../../src/css/listeUtilisateur.css" type="text/css" rel="stylesheet" />
+    <link href="../../src/css/grid.css" type="text/css" rel="stylesheet" />
+    <link href="../../src/css/infoUtilisateur.css" type="text/css" rel="stylesheet" />
 {% endblock %}
 
-<h1>Liste des utilisateurs : </h1>
-<div>
-    <label for="search_user">Rechercher un utilisateur</label>
-    <input type="search" id="search_user" name="ru" value="nom de l'utilisateur..." onfocus="if(this.value=='nom de l\'utilisateur...')this.value=''" onblur="if(this.value=='')this.value='nom de l\'utilisateur...'" autocomplete="off">
-
-    <button id="submit_research">rechercher</button>
-</div>
-
+<h1>Liste media emprunté par {{ uti.nom }} {{ uti.prenom }}</h1>
 <div class="content">
-    <div class="ligne-p">
-        <span class="nom">Nom </span><span class="prenom">Prenom </span><span>Email </span><span>Telephone </span><span>Adresse </span><span>Date d'adhesion </span><span>nombre d'emprunts </span>
+    <div class="row">
+        <div class="tab">Type</div><div class="infobar">Titre</div>
     </div>
-    <div id="iu">
-        {% for utilisateur in utilisateurs %}
-            <div class="ligne-u">
-                <span class="nom">{{ utilisateur.nom }} </span><span class="prenom">{{ utilisateur.prenom }} </span><span>{{ utilisateur.mail }} </span><span>{{ utilisateur.adresse }} </span><span>{{ utilisateur.telephone }} </span><span>{{ utilisateur.date_adhesion }} </span> <button value="{{ utilisateur.id }} id = {{ utilisateur.id }}">Sélectionner</button>
-            </div>
-        {% endfor %}
-    </div>
+
+    {% for doc in emprunt %}
+        <div class="row">
+            <div class="tab">{{ doc.type }}</div>
+            <div class="tab">{{ doc.titre }}</div>
+            <form action="supprimeremprunt" method="post">
+                <input type="hidden" name="idu" value={{ uti.id }}>
+                <input type="hidden" name="ide" value={{ doc.id_document }}>
+                <button type="submit">Rendu</button></form>
+        </div>
+    {% endfor %}
 </div>
 
-<script type="application/javascript">
-    let listeNomUtilisateur = [];
 
-    {% for utilisateur in utilisateurs %}
-        listeNomUtilisateur.push(""+"{{utilisateur.nom}}");
-    {% endfor %}
-
-    let rechercher = document.getElementById("submit_research");
-    let nomUtilisateur = document.getElementById("search_user");
-
-    rechercher.addEventListener('click', function (event) {
-        console.log(nomUtilisateur.value)
-
-        let utilisateurTrouve = [];
-
-
-
-        listeNomUtilisateur.forEach(function (utilisateur) {
-            if(nomUtilisateur.value.toLowerCase() === utilisateur["nom"].toLowerCase()) {
-                utilisateurTrouve.push(utilisateur)
-            }
-        })
-
-        if(utilisateurTrouve.length >= 1 ){
-            content.innerHTML = "";
-            let content = document.getElementById("iu");
-            utilisateurTrouve.forEach(function (utilisateur) {
-                content.innerHTML += "<div class=ligne-u>" +
-                    "<span class=nom>"+utilisateur["nom"]+"</span><span class='prenom'>"
-            })
-        }else{
-            console.log("no one");
-        }
-
-
-    });
-
-
-</script>

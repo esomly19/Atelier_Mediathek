@@ -9,6 +9,8 @@
 namespace app\controllers;
 
 
+use app\models\Document;
+use app\models\Emprunter;
 use app\models\Utilisateur;
 use Faker\Provider\tr_TR\DateTime;
 
@@ -26,7 +28,12 @@ class utilisateurController
     }
     public function informationUtilisateur($request, $response) {
         $listeUtilisateurs = Utilisateur::all();
-        return $this->container->view->render($response, "utilisateur/informationUtilisateur.html.twig", ['utilisateurs'=>$listeUtilisateurs]);
+        $listeCommandesUtilisateurs = Utilisateur::first()->Join('emprunter', 'emprunter.id_utilisateur', '=', 'utilisateur.id')->select(
+            'mail',
+            'emprunter.id'
+        )->get();
+
+        return $this->container->view->render($response, "utilisateur/ListeUtilisateurs.html.twig", ['utilisateurs'=>$listeUtilisateurs,'commandes'=>$listeCommandesUtilisateurs]);
     }
     
     public function voir($request, $response,$args)
@@ -53,4 +60,10 @@ class utilisateurController
             }
     }
 
+    public function informationUsager($request, $response) {
+        $id = $_GET["idu"];
+        $uti = Utilisateur::find($id);
+        $listeDocumentEmprunt = Document::where('emprunter.id_utilisateur', '=', $id)->Join('emprunter', 'emprunter.id_document', '=', 'document.id')->get();
+        return $this->container->view->render($response, "utilisateur/informationUtilisateur.html.twig",["uti"=>$uti,"emprunt"=> $listeDocumentEmprunt]);
+    }
 }
