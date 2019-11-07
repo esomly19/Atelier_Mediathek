@@ -8,7 +8,8 @@
 
 namespace app\controllers;
 
-use app\models\Document;
+use app\models\document;
+use app\models\Genre;
 
 class documentController
 {
@@ -19,8 +20,13 @@ class documentController
 
    
     public function voir($request, $response) {
-        $listeDocuments = Document::all();
-        return $this->container->view->render($response, "documents/listeDocuments.html.twig",['documents'=>$listeDocuments]);
+        $documents = document::first()
+        ->leftJoin('image', 'image.id_image', '=', 'document.id_image')
+        ->leftJoin('genre', 'genre.id_genre', "=", "document.id_genre")
+        ->get();
+
+    $genres = Genre::first()->get();
+    return $this->container->view->render($response, "documents/Catalogue.html.twig", ['catalogue'=>$documents, 'genres'=>$genres]);
     }
 
     public function creerDocuements($request, $response) {
