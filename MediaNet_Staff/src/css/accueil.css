@@ -23,7 +23,7 @@ a{
 }
 
 a:hover{
-   color:#2ecc71;
+  color:black;
 }
 
 .main{
@@ -37,7 +37,7 @@ a:hover{
 
 .button {
     position: relative;
-    background-color: #f39c12;
+    background-color: #5452b3;
     border: none;
     padding: 20px;
     cursor: pointer;
@@ -59,7 +59,7 @@ a:hover{
 
 .button:after {
     content: "";
-    background: #f1c40f;
+    background: #5452b3;
     display: block;
     position: absolute;
     margin-top: -120%;
