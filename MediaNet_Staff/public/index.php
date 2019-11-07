@@ -50,8 +50,9 @@ $app->get('/usagers', "\\app\\Controllers\\utilisateurController:gestionUsager")
 $app->get('/listusagers', "\\app\\Controllers\\utilisateurController:informationUtilisateur")->setName('listusagers');
 $app->get('/emprunts', "\\app\\Controllers\\emprunterController:emprunterinfo")->setName('emprunts');
 $app->get('/retour', "\\app\\Controllers\\emprunterController:retourinfo")->setName('retour');
-$app->get('/creercompte', "\\app\\Controllers\\utilisateurController:voir");
-$app->post('/creercompte', "\\app\\Controllers\\utilisateurController:creerCompte")->setName('creacompte');
+
+$app->get('/creercompte', "\\app\\Controllers\\utilisateurController:voir")->setName('creacompte');
+$app->post('/creercompte', "\\app\\Controllers\\utilisateurController:creerCompte");
 
 
 
