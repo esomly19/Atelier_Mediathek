@@ -70,20 +70,19 @@
 
     function showAll() {
         let docs = document.getElementsByClassName("cardDoc")
-        let docValue=[]
         for (let i = 0; i<docs.length; i++){
             docs[i].style.display= 'block'
         }
     }
 
-    function show(filtre,type) {
+    function show(filtre, type ) {
         let docs = document.getElementsByClassName("cardDoc")
 
         if(filtre == "All"){
             showAll()
         }else {
             for (let i = 0; i < docs.length; i++) {
-                if (docs[i].getAttribute(type == filtre)) {
+                if (docs[i].getAttribute(type) == filtre) {
                     docs[i].style.display = "block"
                 }
 
@@ -97,7 +96,7 @@
 
             buttons[i].addEventListener("click", function () {
                 hideAll()
-                show(buttons[i].value)
+                show(buttons[i].getAttribute("valueButton"),buttons[i].getAttribute("id"))
 
             })
         }
@@ -106,7 +105,7 @@
     }
 
     window.onload = function selection() {
-        filterButtonGenre()
+        filterButton()
     }
 
 
@@ -120,11 +119,30 @@
 
 
     <div>
-        <button class="filterButton" value="All"> Show all</button>
+        <button class="filterButton" id="All" valueButton="All"> Show all</button>
 
         {% for genre in genres %}
-        <button class="filterButton"  id="filter" value={{ genre.id_genre }}> {{ genre.nom_genre }}</button>
+        <button class="filterButton"  id="genreDoc" valueButton={{ genre.id_genre }}> {{ genre.nom_genre }}</button>
         {% endfor %}
+
+        <button class="filterButton"  id="typeDoc" valueButton="livre"> Livres </button>
+
+        <button class="filterButton"  id="typeDoc" valueButton="CD"> CD </button>
+
+        <button class="filterButton"  id="typeDoc" valueButton="DVD"> DVD </button>
+
+        <button class="filterButton"  id="etatDoc" valueButton="0"> Documents disponibles </button>
+
+        <button class="filterButton"  id="etatDoc" valueButton="1"> Documents réservés </button>
+
+        <button class="filterButton"  id="etatDoc" valueButton="2"> Documents empruntés </button>
+
+        <button class="filterButton"  id="etatDoc" valueButton="3"> Documents en réparation </button>
+
+
+        
+
+
 
 
 
