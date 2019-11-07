@@ -43,7 +43,7 @@ $app->get('/d', "\\app\\controllers\\documentController:Index");
 
 $app->get('/', function(Request $request, Response $response, $args){
     return $this->view->render($response, 'Accueil.html.twig');
-});
+})->setName('accueil');;
 
 
 $app->get('/usagers', "\\app\\Controllers\\utilisateurController:gestionUsager")->setName('usagers');
