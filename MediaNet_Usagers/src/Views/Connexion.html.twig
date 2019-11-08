@@ -7,11 +7,11 @@
 {% block content %}
 
 	<div class="container">
-		<h1>Identifier vous</h1>
-
+		<h1>Identifiez vous</h1>
+		
 		<form action="{{ path_for('connexion') }}" method="post">
 			<div class="form-group">
-				<label for="mail">Email</label>
+				<label id="logname" for="mail">Email</label>
 				<input type="text" name="mail"  value="{{utilisateur.mail}}" required>
 				<br>
 				<br>
@@ -22,7 +22,7 @@
 				<button type="submit" >Se connecter</button>
 			</div>
 		</form>
-
-		<button class="boutton"><a href="{{path_for('accueil')}}">retour</a></button>
-	<div>
+		<br>
+		<button class="btnretour"><a href="{{path_for('accueil')}}">retour</a></button>
+	</div>
 {% endblock %}

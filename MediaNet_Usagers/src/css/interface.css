@@ -5,6 +5,10 @@
   font-size: 1.7em;
   padding: 0.2em;
 }
+.boutton :hover {
+  background-color: black;
+  color: white;
+}
 
 .navbar {
   margin: 0;
@@ -108,6 +112,10 @@ body {
     font-size: 1em;
     padding: 0.2em;
   }
+  .boutton :hover {
+    background-color: black;
+    color: white;
+  }
 }
 @media only screen and (min-device-width: 0px) and (max-device-width: 650px) {
   .boutton {
@@ -116,6 +124,10 @@ body {
     border-color: #bee5ec;
     font-size: 0.8em;
     padding: 0.1em;
+  }
+  .boutton :hover {
+    background-color: black;
+    color: white;
   }
 }
 
