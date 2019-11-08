@@ -29,10 +29,10 @@ class emprunterController
         $id_utilisateur = $_GET["idu"];
         $utilisateur = Utilisateur::where("id","=",$id_utilisateur)->first();
         $document = Document::where("id","=",$id_document)->first();
-        $emprunt = Emprunter::where('emprunter.id_document', '=', $id_document)->whereAnd('emprunter.id_utilisateur', '=',$id_utilisateur)->first();
+        $emprunt = Emprunter::where('emprunter.id_document', '=', $id_document)->where('emprunter.id_utilisateur', '=',$id_utilisateur)->first();
         $listedocuments = Document::where("document.etat", "=", "1")->where("emprunter.date_retour",'=', null)->where("emprunter.id_utilisateur", "=" ,$id_utilisateur)->Join("emprunter", "emprunter.id_document","=","document.id")->get();
 
-        return $this->container->view->render($response, "rendredocument.html.twig", ['emprunt'=>$emprunt, 'utilisateur'=>$utilisateur, 'document'=>$document, 'listeDesDocuments'=>$listedocuments]);
+        return $this->container->view->render($response, "emprunter/rendredocument.html.twig", ['emprunt'=>$emprunt, 'utilisateur'=>$utilisateur, 'document'=>$document, 'listeDesDocuments'=>$listedocuments]);
     }
 
     public function traiterRendreDoc($request, $response) {
@@ -46,5 +46,30 @@ class emprunterController
         $document->save();
         $emprunt->save();
         return $response->withRedirect($this->container->router->pathFor("listusagers"));
+    }
+
+    public function emprunterDoc($request, $response) {
+        $id_document = $_GET["idd"];
+        $document = Document::where("id","=",$id_document)->first();
+        $listedocuments = Document::where("document.etat", "=", "0")->get();
+        $listeutilisateurs = Utilisateur::all();
+        return $this->container->view->render($response, "emprunter/emprunterDocument.html.twig", ['document'=>$document, 'listeDesDocuments'=>$listedocuments, 'listeUtilisateurs'=>$listeutilisateurs]);
+    }
+
+    public function traiterEmprunterDoc($request, $response) {
+        $id_document = $_POST["id_doc"];
+        $mail = $_POST["mail"];
+        $date = $_POST["date"];
+        $utilisateur = Utilisateur::where('mail', '=', $mail)->first();
+        $emprunt = new Emprunter();
+        $emprunt->id_document = $id_document;
+        $emprunt->id_utilisateur = $utilisateur->id;
+        $emprunt->date_emprunt = $date;
+        $emprunt->date_limite = $date;
+        $emprunt->date_retour = null;
+        $document = Document::where('id', "=",$id_document)->first();
+        $document->etat = 1;
+        $document->save();
+        $emprunt->save();
     }
 }
