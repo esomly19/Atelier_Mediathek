@@ -5,9 +5,74 @@
 {% endblock %}
 
 {% block content %}
+    <div class="row">
 
-    <h1>Mes emprunts</h1>
+        <div>
+            <table class="emprunts">
+                <thead>
+                    <tr>
+                        <h1>Mes emprunts</h1>
+                    </tr>
+                    <tr>
+                        <th>type</th>
+                        <th>titre</th>
+                        <th>date emprunt</th>
+                        <th>date retour limite</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for media in Emprunts %}
+                {{ smedia }}
+                {% if not media.date_retour %}
+                    <tr>
+                        <th>{{media.type}}</th>
+                        <th>{{media.titre}}</th>
+                        <th>{{media.date_emprunt}}</th>
+                        <th>{{media.date_limite}}</th>
+                    </tr>
+                {% endif %}
+                
+                {% endfor %}
+            </tbody>
+            </table>
+        </div>
 
-    <h1>Mes retours</h1>
+        <div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <h1>Mes retours</h1>
+                    </tr>
+                    <tr>
+                        <th>type</th>
+                        <th>titre</th>
+                        <th>date retour</th>
+                        <th>retard</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for media in Emprunts %}
+                {% if  media.date_retour %}
+            
+                    <tr>
+                        <th>{{media.type}}</th>
+                        <th>{{media.titre}}</th>
+                        <th>{{media.date_retour}}</th>
+                        {# {{% if media.date_retour < media.date_limite %}}
+                        <th>\u00D7</th>
+                        {{% else %}} #}
+                        <th></th>
+                        {# {{% endif %}} #}
+                    </tr>
+            {% endif %}
+            
+            {% endfor %}
+            </tbody>
+            </table>
+        </div>
+
+
+    </div>
 
 {% endblock %}
