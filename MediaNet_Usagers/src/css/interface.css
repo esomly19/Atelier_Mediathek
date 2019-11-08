@@ -82,6 +82,10 @@ button a {
   color: black;
 }
 
+h1 {
+  color: #bee5ec;
+}
+
 #footer {
   position: fixed;
   left: 0;
