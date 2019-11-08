@@ -47,7 +47,7 @@
     
     .cardDoc{
         border: 2px black solid;
-        width: 32.5%;
+        width: 31%;
         background-color : white;
     }
     .top{
@@ -61,7 +61,7 @@
 
 
     
-@media only screen and (min-device-width : 300px) and (max-device-width : 650px) {
+@media only screen and (min-device-width : 0px) and (max-device-width : 650px) {
  
     .cata{
         display : flex;
@@ -79,7 +79,7 @@
     
     .cardDoc{
         border: 2px black solid;
-        width: 49%;
+        width: 45%;
         background-color : white;
     }
     .top{
