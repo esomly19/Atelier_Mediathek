@@ -37,7 +37,7 @@ $droite : flex-end;
     $tp_succes : succes;
 
 .boutton{
-    @include stylebouton($s_classic,$noir,$sombre,$t_medium);
+    @include stylebouton($s_classic,$blanc_mais_pas_vraiment,$sombre,$t_medium);
 }
 
 .navbar{
@@ -48,7 +48,7 @@ $droite : flex-end;
     display: flex;
     @include justify($centre);
     @include navcouleur($sombre);
-    border-bottom: solid 4px $rouge;
+    border-bottom: solid 4px $blanc_mais_pas_vraiment;
 }
 
 button {
@@ -80,6 +80,10 @@ button {
   
 .alert-info{
     @include typealert($tp_informative);
+}
+
+h1{
+    color: $blanc_mais_pas_vraiment;
 }
 
 #footer {

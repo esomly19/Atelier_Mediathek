@@ -5,71 +5,80 @@
 {% endblock %}
 
 <h1>Liste media emprunté par {{ uti.nom }} {{ uti.prenom }}</h1>
-<div class="content">
-    <div class="row">
-        <div class="tab">Type</div><div class="tab">Titre</div><div class="tab">date d'emprunt </div><div class="tab">date de rendu </div><div class="tab">date limite </div><div class="tab">etat </div>
-    </div>
+
+<table class="blueTable">
+<thead>
+<tr>
+<th> Type document</th>
+<th> Titre document</th>
+<th>Date emprunt</th>
+<th>Date retour</th>
+<th>Date limite</th>
+<th>Etat</th>
+</tr>
+</thead>
 
     {% for doc in emprunt %}
-
+<tbody>
             {% if doc.etat == 1 and doc.date_retour == "" %}
-                <div class="row">
-                    <div class="tab">{{ doc.type }}</div>
-                    <div class="tab">{{ doc.titre }}</div>
-                    <div class="tab">{{ doc.date_emprunt }}</div>
-                    <div class="tab">{{ doc.date_retour }}</div>
-                    <div class="tab">{{ doc.date_limite }}</div>
-                    <form action="rendredoc" method="get">
+                     <tr>
+            <td>{{ doc.type }} </td>
+            <td>{{ doc.titre }}</td>
+            <td>{{ doc.date_emprunt }}</td>
+            <td>{{ doc.date_retour }}</td>
+            <td>{{ doc.date_limite}}</td>
+            <form action="rendredoc" method="get">
                         <input type="hidden" name="idu" value={{ uti.id }}>
                         <input type="hidden" name="ide" value={{ doc.id_document }}>
-                        <button type="submit">Rendu</button></form>
-                </div>
+            <td>    <button type="submit">Rendu</button></form></td>
+            </tr>
             {% elseif doc.etat == 1 %}
-                <div class="row">
-                    <div class="tab">{{ doc.type }}</div>
-                    <div class="tab">{{ doc.titre }}</div>
-                    <div class="tab">{{ doc.date_emprunt }}</div>
-                    <div class="tab">{{ doc.date_retour }}</div>
-                    <div class="tab">{{ doc.date_limite }}</div>
-                    <div class="tab">Emprunté</div>
-                </div>
+                    <tr>
+            <td>{{ doc.type }} </td>
+            <td>{{ doc.titre }}</td>
+            <td>{{ doc.date_emprunt }}</td>
+            <td>{{ doc.date_retour }}</td>
+            <td>{{ doc.date_limite}}</td>
+            <td>Emprunté</td>
+            </tr>
             {% endif %}
 
             {% if doc.etat == 0 %}
-                <div class="row">
-                    <div class="tab">{{ doc.type }}</div>
-                    <div class="tab">{{ doc.titre }}</div>
-                    <div class="tab">{{ doc.date_emprunt }}</div>
-                    <div class="tab">{{ doc.date_retour }}</div>
-                    <div class="tab">{{ doc.date_limite }}</div>
-                    <div class="tab">disponible</div>
-                </div>
+                    <tr>
+            <td>{{ doc.type }} </td>
+            <td>{{ doc.titre }}</td>
+            <td>{{ doc.date_emprunt }}</td>
+            <td>{{ doc.date_retour }}</td>
+            <td>{{ doc.date_limite}}</td>
+            <td>disponible</td>
+            </tr>
             {% endif %}
 
             {% if doc.etat == 2 %}
-                <div class="row">
-                    <div class="tab">{{ doc.type }}</div>
-                    <div class="tab">{{ doc.titre }}</div>
-                    <div class="tab">{{ doc.date_emprunt }}</div>
-                    <div class="tab">{{ doc.date_retour }}</div>
-                    <div class="tab">{{ doc.date_limite }}</div>
-                    <div class="tab">réservé</div>
-                </div>
+                    <tr>
+            <td>{{ doc.type }} </td>
+            <td>{{ doc.titre }}</td>
+            <td>{{ doc.date_emprunt }}</td>
+            <td>{{ doc.date_retour }}</td>
+            <td>{{ doc.date_limite}}</td>
+            <td> réservé</td>
+            </tr>
             {% endif %}
 
             {% if doc.etat == 3 %}
-                <div class="row">
-                    <div class="tab">{{ doc.type }}</div>
-                    <div class="tab">{{ doc.titre }}</div>
-                    <div class="tab">{{ doc.date_emprunt }}</div>
-                    <div class="tab">{{ doc.date_retour }}</div>
-                    <div class="tab">{{ doc.date_limite }}</div>
-                    <div class="tab">indisponible</div>
-                </div>
+            <tr>
+            <td>{{ doc.type }} </td>
+            <td>{{ doc.titre }}</td>
+            <td>{{ doc.date_emprunt }}</td>
+            <td>{{ doc.date_retour }}</td>
+            <td>{{ doc.date_limite}}</td>
+            <td>indisponible</td>
+            </tr>
             {% endif %}
 
-
+</tbody>
     {% endfor %}
+     </table>
 </div>
 
 
