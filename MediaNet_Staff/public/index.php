@@ -72,6 +72,8 @@ $app->post('/doc{id}', "\\app\\Controllers\\documentController:update");
 
 $app->get('/accepter{id}', "\\app\\Controllers\\adhesionController:accepter")->setName('accepter');
 $app->get('/refuser{id}', "\\app\\Controllers\\adhesionController:refuser")->setName('refuser');
+$app->get('/supprimer{id}', "\\app\\Controllers\\documentController:supprimer")->setName('supprimer');
+
 
 $app->get('/ajouterdoc', "\\app\\Controllers\\documentController:ajouter")->setName('ajouterdoc');
 $app->post('/ajouterdoc', "\\app\\Controllers\\documentController:afficher");

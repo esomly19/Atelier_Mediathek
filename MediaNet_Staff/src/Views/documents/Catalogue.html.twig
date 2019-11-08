@@ -119,7 +119,8 @@
                         <input type="hidden" id="idd" name="idd" value="{{ document.id }}">
                         <button type="submit">Emprunter</button>
                     </form>
-                    <button>Supprimer</button>
+                       <a href="{{ path_for('supprimer', { 'id': document.id }) }}"> <button>Supprimer</button></a>
+                
             {% endif %}
                     {% if document.etat == 1 %}
                   <a href="{{ path_for('modifierdocuments', { 'id': document.id }) }}"> <button>Modifier</button></a>

@@ -1,9 +1,10 @@
 <?php
 namespace app\models;
 
-
+use Illuminate\Database\Eloquent\SoftDeletes;
 class Document extends \Illuminate\Database\Eloquent\Model
 {
+    use SoftDeletes;
     protected $table = "document";
     protected $primaryKey = "id";
     public $timestamps = false;
