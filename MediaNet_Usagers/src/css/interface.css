@@ -1,7 +1,7 @@
 .boutton {
   background-color: #474747;
   color: black;
-  border-color: #db1111;
+  border-color: black;
   font-size: 1.7em;
   padding: 0.2em;
 }
@@ -58,6 +58,18 @@ button a {
   color: black;
 }
 
+.alert-warning {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 8px;
+  padding: 0.5em;
+  margin-top: 1em;
+  background-color: red;
+  border: 1px solid #990000;
+  color: black;
+}
+
 .alert-info {
   display: block;
   width: 100%;
@@ -80,9 +92,7 @@ button a {
   text-align: center;
 }
 
-
-
-@media only screen and (min-device-width : 640px) and (max-device-width : 1024px) {
+@media only screen and (min-device-width: 640px) and (max-device-width: 1024px) {
   .boutton {
     background-color: #474747;
     color: black;
@@ -90,7 +100,7 @@ button a {
     font-size: 1em;
     padding: 0.2em;
   }
-  
+
   .navbar {
     margin: 0;
     padding: 0;
@@ -101,15 +111,8 @@ button a {
     background-color: #474747;
     border-bottom: solid 4px #db1111;
   }
-
-  
-  }
-
-
-  
-@media only screen and (min-device-width : 0px) and (max-device-width : 650px) {
-
-  
+}
+@media only screen and (min-device-width: 0px) and (max-device-width: 650px) {
   .boutton {
     background-color: #474747;
     color: black;
@@ -117,7 +120,7 @@ button a {
     font-size: 0.8em;
     padding: 0.1em;
   }
-  
+
   .navbar {
     margin: 0;
     padding: 0;
@@ -128,6 +131,6 @@ button a {
     background-color: #474747;
     border-bottom: solid 4px #db1111;
   }
-  }
+}
 
 /*# sourceMappingURL=interface.css.map */
