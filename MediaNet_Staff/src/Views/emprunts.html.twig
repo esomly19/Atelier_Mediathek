@@ -11,6 +11,11 @@
         <option value="2">decroissant</option>
     </select>
 </div>
+   <div class="search">
+       <label for="search_code">Rechercher un document</label>
+       <input type="search" id="search_code" name="ru" value="code du document..." onfocus="if(this.value=='code du document...')this.value=''" onblur="if(this.value=='')this.value='code du document...'" autocomplete="off">
+       <button id="submit_research_code">rechercher</button><div id="infoRecherche"></div>
+   </div>
 
    <div id="tab">
 <table class="blueTable">
@@ -42,6 +47,23 @@
           </table>
     </div>
    <script type="application/javascript">
+       let listeDocuments = [];
+
+       {% for emprunt in emprunts %}
+        listeDocuments.push(["{{ emprunt.id }}","{{ emprunt.mail }}","{{ emprunt.titre}}","{{ emprunt.date_emprunt}}","{{ emprunt.date_retour}}","{{ emprunt.date_limite}}","{{ emprunt.retard }}"])
+       {% endfor %}
+       let codeDocument = document.getElementById("search_code");
+
+       rechercher.addEventListener('click', function (event) {
+           let rechCode = document.getElementById("infoRecherche");
+           listeDocuments.forEach(function (doc) {
+               if(doc[2] == codeDocument.value) {
+                   rechCode.innerHTML = "";
+               }else {
+                   rechCode.innerHTML = "pas de code correspondant";
+               }
+           })
+       });
        let tri = document.getElementById("type-search")
        let content = document.getElementById("tab")
         tri.addEventListener('change', function (event) {
