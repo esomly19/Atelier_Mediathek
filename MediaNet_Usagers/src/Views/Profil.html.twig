@@ -8,8 +8,6 @@
 
     <h1>Mon profils</h1>
 
-    {% if auth.isConnected %}
-
     <div class="donnees">
     <label> Nom Prenom :</label>
         {{utilisateur.nom}} {{utilisateur.prenom}}
@@ -30,12 +28,5 @@
     <label>date d'adhésion :</label>
         {{utilisateur.date_adhesion}}
     </div>
-    
-
-    {% else %}
-
-    <h2>Vous devez etre connecter pour acceder a cette page !</h2>
-
-    {% endif %}
 
 {% endblock %}

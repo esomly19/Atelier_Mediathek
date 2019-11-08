@@ -1,14 +1,14 @@
 {% extends 'Interface.html.twig' %}
    
 {% block stylesheets %}
-        <link href="../../src/css/EmpruntRetour.css" type="text/css" rel="stylesheet" />
+        <link href="../../src/css/empruntretour.css" type="text/css" rel="stylesheet" />
 {% endblock %}
 
 {% block content %}
     <div class="row">
 
-        <div>
-            <table class="emprunts">
+        <div class="tab_droite">
+            <table class="darkTable">
                 <thead>
                     <tr>
                         <h1>Mes emprunts</h1>
@@ -37,9 +37,9 @@
             </table>
         </div>
 
-        <div>
+        <div class="tab_gauche">
 
-            <table>
+            <table class="darkTable">
                 <thead>
                     <tr>
                         <h1>Mes retours</h1>
@@ -59,11 +59,11 @@
                         <th>{{media.type}}</th>
                         <th>{{media.titre}}</th>
                         <th>{{media.date_retour}}</th>
-                        {# {{% if media.date_retour < media.date_limite %}}
-                        <th>\u00D7</th>
-                        {{% else %}} #}
+                        {% if media.date_retour > media.date_limite %}
+                        <th>&times;</th>
+                        {% else %}
                         <th></th>
-                        {# {{% endif %}} #}
+                        {% endif %}
                     </tr>
             {% endif %}
             
