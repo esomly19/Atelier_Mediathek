@@ -1,11 +1,30 @@
 .accueil {
+  background-color: #474747;
+  color: #bee5ec;
   text-align: center;
 }
 
-content {
-  background-image: url("../../../img/mediatheque-ferme-buisson.JPG");
-  width: 100%;
-  height: 1vm;
+.container {
+  background-image: url("../../../img/mediatheque.jpg");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  width: auto;
+  height: 87vh;
+}
+
+@media only screen and (min-device-width: 640px) and (max-device-width: 1024px) {
+  .container {
+    background-image: url("../../../img/mediatheque-2.jpg");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: auto;
+    height: 87vh;
+  }
+}
+@media only screen and (min-device-width: 0px) and (max-device-width: 650px) {
+  .container {
+    background-image: none;
+  }
 }
 
 /*# sourceMappingURL=accueil.css.map */
