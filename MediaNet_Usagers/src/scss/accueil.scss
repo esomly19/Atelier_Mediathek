@@ -10,13 +10,27 @@ $sombre : rgb(71, 71, 71);
 }
 
 .container{
-    background-image: url('../../../img/mediatheque-ferme-buisson.JPG');
-    
-    width: 100%;
+    background-image: url('../../../img/mediatheque.jpg');
+    background-size:100%;
+    background-repeat: no-repeat;
+    width: auto;
     height: 87vh;
 }
 
-// ipad 940 1024
-
+// ipad 640 1024
+@media only screen and (min-device-width : 640px) and (max-device-width : 1024px) {
+    .container{
+        background-image: url('../../../img/mediatheque-2.jpg');
+        background-size:100%;
+        background-repeat: no-repeat;
+        width: auto;
+        height: 87vh;
+    }
+}
 
 //tel 300 650
+@media only screen and (min-device-width : 0px) and (max-device-width : 650px) {
+    .container{
+        background-image: none;
+    }
+}
