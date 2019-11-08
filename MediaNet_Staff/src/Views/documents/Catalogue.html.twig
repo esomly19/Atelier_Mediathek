@@ -115,7 +115,10 @@
         <div class="top">
                   {% if document.etat == 0 %}
                     <a href="{{ path_for('modifierdocuments', { 'id': document.id }) }}"> <button>Modifier</button></a>
-                    <button>Emprunter</button>
+                    <form action="emprunter" method="get">
+                        <input type="hidden" id="idd" name="idd" value="{{ document.id }}">
+                        <button type="submit">Emprunter</button>
+                    </form>
                     <button>Supprimer</button>
             {% endif %}</div>
             <div id="image">
