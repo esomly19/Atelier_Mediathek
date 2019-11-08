@@ -55,7 +55,7 @@ CREATE TABLE IF NOT EXISTS `emprunter` (
   `id_document` int(11) NOT NULL,
   `id_utilisateur` int(11) NOT NULL,
   `date_emprunt` date NOT NULL,
-  `date_retour` date NOT NULL,
+  `date_retour`date,
   `date_limite` date NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`)

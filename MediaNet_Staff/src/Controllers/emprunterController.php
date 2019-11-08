@@ -57,6 +57,19 @@ class emprunterController
     }
 
     public function traiterEmprunterDoc($request, $response) {
-
+        $id_document = $_POST["id_doc"];
+        $mail = $_POST["mail"];
+        $date = $_POST["date"];
+        $utilisateur = Utilisateur::where('mail', '=', $mail)->first();
+        $emprunt = new Emprunter();
+        $emprunt->id_document = $id_document;
+        $emprunt->id_utilisateur = $utilisateur->id;
+        $emprunt->date_emprunt = $date;
+        $emprunt->date_limite = $date;
+        $emprunt->date_retour = null;
+        $document = Document::where('id', "=",$id_document)->first();
+        $document->etat = 1;
+        $document->save();
+        $emprunt->save();
     }
 }
