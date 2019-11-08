@@ -120,6 +120,26 @@
                         <button type="submit">Emprunter</button>
                     </form>
                     <button>Supprimer</button>
+            {% endif %}
+                    {% if document.etat == 1 %}
+                  <a href="{{ path_for('modifierdocuments', { 'id': document.id }) }}"> <button>Modifier</button></a>
+                  
+                    <button>Supprimer</button>
+            {% endif %}
+
+            {% if document.etat == 2 %}
+                  <a href="{{ path_for('modifierdocuments', { 'id': document.id }) }}"> <button>Modifier</button></a>
+                    <form action="rendreDoc" method="get">
+                        <input type="hidden" id="idd" name="idd" value="{{ document.id }}">
+                        <button type="submit">Rendu</button>
+                    </form>
+                    <button>Supprimer</button>
+            {% endif %}
+
+            {% if document.etat == 3 %}
+                <a href="{{ path_for('modifierdocuments', { 'id': document.id }) }}"> <button>Modifier</button></a>
+                  
+                    <button>Supprimer</button>
             {% endif %}</div>
             <div id="image">
             <img src="../{{ document.path }}"
