@@ -1,13 +1,14 @@
 .accueil {
   color: #bee5ec;
   text-align: center;
-  background-color: #474747;
+  background-color: #7a8fa3;
 }
 
 .container {
   background-image: url("../../../img/mediatheque-3.jpeg");
   background-size: 100%;
   background-repeat: no-repeat;
+  background-position: center;
   width: auto;
   height: 87vh;
 }

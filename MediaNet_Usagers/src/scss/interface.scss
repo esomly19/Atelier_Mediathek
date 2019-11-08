@@ -1,8 +1,9 @@
 @import '_bouton.scss';
 @import '_navbar.scss';
 @import '_alert.scss';
+@import '_couleur.scss';
 
-$blanc_mais_pas_vraiment : rgb(190, 229, 236);
+
 $rouge : rgb(219, 17, 17);
 $noir : black;
 $sombre : rgb(71, 71, 71);
@@ -37,7 +38,7 @@ $droite : flex-end;
     $tp_succes : succes;
 
 .boutton{
-    @include stylebouton($s_classic,$blanc_mais_pas_vraiment,$sombre,$t_large);
+    @include stylebouton($s_classic,$blanc,$un_peu_noir,$t_large);
 }
 
 .navbar{
@@ -47,8 +48,8 @@ $droite : flex-end;
     list-style-type: none;
     display: flex;
     @include justify($centre);
-    @include navcouleur($sombre);
-    border-bottom: solid 4px $blanc_mais_pas_vraiment;
+    @include navcouleur($un_peu_noir);
+    border-bottom: solid 4px $blanc;
 }
 
 button {
@@ -60,7 +61,7 @@ button {
         text-decoration: none;
         outline: none;
         text-decoration: none;
-        color: $blanc_mais_pas_vraiment;
+        color: $blanc;
     }
 }
 
@@ -83,11 +84,11 @@ button {
 }
 
 h1{
-    color: $blanc_mais_pas_vraiment;
+    color: $blanc;
 }
 
 body{
-    background-color: $sombre;
+    background-color: $bleu;
 }
 
 #footer {
@@ -102,7 +103,7 @@ body{
 
  @media only screen and (min-device-width : 640px) and (max-device-width : 1024px) {
     .boutton{
-        @include stylebouton($s_classic,$blanc_mais_pas_vraiment,$sombre,$t_medium);
+        @include stylebouton($s_classic,$blanc,$bleu,$t_medium);
     }
 }
   
@@ -110,6 +111,6 @@ body{
   
   @media only screen and (min-device-width : 0px) and (max-device-width : 650px) {
     .boutton{
-        @include stylebouton($s_classic,$blanc_mais_pas_vraiment,$sombre,$t_small);
+        @include stylebouton($s_classic,$blanc,$bleu,$t_small);
     }
 }

@@ -6,4 +6,26 @@ label {
   text-align: center;
 }
 
+form {
+  background-color: #332e2e;
+  border: solid;
+  border-radius: 20px;
+  padding: 10px;
+  display: inline-block;
+  margin-bottom: 5vh;
+}
+
+#logname {
+  margin-left: 4em;
+}
+
+.btnretour {
+  background-color: black;
+  color: black;
+  border-color: #db1111;
+  border-radius: 15px;
+  font-size: 1.7em;
+  padding: 0.2em;
+}
+
 /*# sourceMappingURL=connexion.css.map */
