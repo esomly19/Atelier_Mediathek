@@ -1,7 +1,7 @@
    
    {% include 'layout.html.twig' %}
 {% block stylesheets %}
-    <link href="../src/css/listeUtilisateur.css" type="text/css" rel="stylesheet" />
+    <link href="../../src/css/listeUtilisateur.css" type="text/css" rel="stylesheet" />
 {% endblock %}
 <h1>Liste des emprunts : </h1>
 <div>
@@ -12,13 +12,29 @@
     <button>rechercher</button>
 </div>
 
-<div class="content">
-    <div class="ligne-p">
-        <span class="nom">ID Doc  | </span><span class="prenom">ID UTILISATEUR  |   </span><span>Date Emprunt   |  </span><span>Date Retour </span>
-    </div>
+
+<table class="blueTable">
+<thead>
+<tr>
+<th>ID document</th>
+<th>ID Utilisateur</th>
+<th>Date emprunt</th>
+<th>Date retour</th>
+<th>Date limite</th>
+</tr>
+</thead>
    {% for emprunt in emprunts %}
-        <div class="ligne-u">
-            <span class="nom">{{ emprunt.id_document }} </span><span class="prenom">{{ emprunt.id_utilisateur }} </span><span>{{ emprunt.date_emprunt }} </span><span>{{ emprunt.date_retour }} </span><span>{{ emprunt.date_limite }} </span>
-        </div>
+       					
+<tbody>
+<tr>
+<td>{{ emprunt.id_document }} </td>
+<td>{{ emprunt.id_utilisateur }}</td>
+<td>{{ emprunt.date_emprunt  }}</td>
+<td>{{ emprunt.date_retour }}</td>
+<td>{{ emprunt.date_limite }}</td>
+</tr>
+</tbody>
+
     {% endfor %}
+          </table>
     </div>
