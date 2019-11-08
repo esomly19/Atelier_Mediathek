@@ -13,7 +13,7 @@ class loginController{
     }
 
     //Methode qui permet de se déconnecter 
-    public function seDeconnecter($request, $response){
+    public function seDeconnecter($request, $response,$args){
         session_destroy();
         $this->container->flash->addMessage('info', 'Vous venez de vous déconnecter');
         return $response->withRedirect($this->container->router->pathFor('accueil'));
@@ -26,7 +26,6 @@ class loginController{
         );
 
         if(!$auth){
-
             $this->container->flash->addMessage('error', 'Le couple mail/mot de passe n\'est pas correct !');
             return $response->withRedirect($this->container->router->pathFor('connexion'));
         }

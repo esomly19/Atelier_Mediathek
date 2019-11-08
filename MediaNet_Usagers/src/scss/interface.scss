@@ -1,5 +1,6 @@
 @import '_bouton.scss';
 @import '_navbar.scss';
+@import '_alert.scss';
 
 $blanc_mais_pas_vraiment : rgb(190, 229, 236);
 $rouge : rgb(219, 17, 17);
@@ -48,6 +49,24 @@ button {
         text-decoration: none;
         color: $blanc_mais_pas_vraiment;
     }
+}
+
+
+
+.alert-success{
+    @include typealert($tp_succes);
+}
+  
+.alert-danger{
+    @include typealert($tp_danger);
+}
+  
+.alert-warning{
+    @include typealert($tp_avertissement);
+}
+  
+.alert-info{
+    @include typealert($tp_informative);
 }
 
 #footer {

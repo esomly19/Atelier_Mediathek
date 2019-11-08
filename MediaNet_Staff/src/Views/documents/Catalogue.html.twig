@@ -107,7 +107,7 @@
 
 
     </div>
-
+ <a href="{{ path_for('ajouterdoc')}}"> <button>Ajouter Document</button></a>
 <div class="cata">
     {% for document in catalogue %}
 
@@ -118,8 +118,10 @@
                     <button>Emprunter</button>
                     <button>Supprimer</button>
             {% endif %}</div>
-            <img style="width: 256px" src="../{{ document.path }}"
+            <div id="image">
+            <img src="../{{ document.path }}"
                  alt="{{ document.description_image }}">
+                 </div>
             <h5> {{ document.titre }} </h5>
             <div>{{ document.description_doc }}</div>
             <div>{{ document.nom_genre }}</div>

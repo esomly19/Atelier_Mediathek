@@ -1,0 +1,35 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+
+<h1> Creation de document  </h1>
+
+<!--  path_for('perso')  -->
+
+<form action="{{ Creationdoc }}" method="post">
+</br></br>  <label for "titre"> Titre </label>
+  <input type="text" name="titre" id="titre" value="{{document.titre}}">
+</br></br>
+<label for "id_image"> Descrition code </label>
+<input type="number" name="id_image" id="id_image" value="{{document.id_image}}">
+</br></br>
+<label for "description_doc"> Descrition code </label>
+<input type="text" name="description_doc" id="description_doc" value="{{document.description_doc}}">
+</br></br>
+<label for "code"> Code </label>
+<input type="number" name="code" id="code" value="{{document.code}}">
+</br></br>
+  <label for "etat"> Etat</label>
+  <input type="number" min=0 max=3 name="etat" id="etat" value="{{document.etat}}">
+</br></br>
+<label for "id_genre"> ID Genre </label>
+<input type="number" name="id_genre" id="id_genre" value="{{document.id_genre}}">
+</br></br>
+<label for "type"> Type </label>
+<input type="text" name="type" id="type" value="{{document.type}}">
+</br></br>
+<button type="submit" > créer </button>
+</form>
+
+
+{% endblock  %}
