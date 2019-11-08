@@ -1,11 +1,13 @@
 .accueil {
+  background-color: #474747;
+  color: #bee5ec;
   text-align: center;
 }
 
-content {
+.container {
   background-image: url("../../../img/mediatheque-ferme-buisson.JPG");
   width: 100%;
-  height: 1vm;
+  height: 87vh;
 }
 
 /*# sourceMappingURL=accueil.css.map */

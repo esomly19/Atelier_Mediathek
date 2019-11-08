@@ -1,11 +1,22 @@
 $blanc_mais_pas_vraiment : rgb(190, 229, 236);
+$rouge : rgb(219, 17, 17);
+$noir : black;
+$sombre : rgb(71, 71, 71);
 
 .accueil{
+    background-color: $sombre;
+    color: $blanc_mais_pas_vraiment;
     text-align: center;
 }
 
-content{
+.container{
     background-image: url('../../../img/mediatheque-ferme-buisson.JPG');
+    
     width: 100%;
-    height: 1vm;
+    height: 87vh;
 }
+
+// ipad 940 1024
+
+
+//tel 300 650
