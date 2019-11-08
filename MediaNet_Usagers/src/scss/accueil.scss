@@ -1,12 +1,14 @@
-$blanc_mais_pas_vraiment : rgb(190, 229, 236);
+@import 'couleur.scss';
+
+$blanc : rgb(190, 229, 236);
 $rouge : rgb(219, 17, 17);
 $noir : black;
 $sombre : rgb(71, 71, 71);
 
 .accueil{
-    color: $blanc_mais_pas_vraiment;
+    color: $blanc;
     text-align: center;
-    background-color: $sombre;
+    background-color: $bleu;
 }
 
 .container{

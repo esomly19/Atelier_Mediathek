@@ -1,13 +1,9 @@
 .boutton {
-  background-color: #474747;
-  color: #1b535d;
-  border-color: #bee5ec;
+  background-color: #333;
+  color: #666666;
+  border-color: white;
   font-size: 1.7em;
   padding: 0.2em;
-}
-.boutton :hover {
-  background-color: black;
-  color: white;
 }
 
 .navbar {
@@ -17,12 +13,12 @@
   list-style-type: none;
   display: flex;
   justify-content: center;
-  background-color: #474747;
-  border-bottom: solid 4px #bee5ec;
+  background-color: #333;
+  border-bottom: solid 4px white;
 }
 .navbar :hover {
   background-color: black;
-  color: #fafafa;
+  color: #e6e6e6;
 }
 
 button {
@@ -35,7 +31,7 @@ button a {
   text-decoration: none;
   outline: none;
   text-decoration: none;
-  color: #bee5ec;
+  color: white;
 }
 
 .alert-success {
@@ -87,11 +83,11 @@ button a {
 }
 
 h1 {
-  color: #bee5ec;
+  color: white;
 }
 
 body {
-  background-color: #474747;
+  background-color: #7a8fa3;
 }
 
 #footer {
@@ -106,28 +102,20 @@ body {
 
 @media only screen and (min-device-width: 640px) and (max-device-width: 1024px) {
   .boutton {
-    background-color: #474747;
-    color: #1b535d;
-    border-color: #bee5ec;
+    background-color: #7a8fa3;
+    color: #666666;
+    border-color: white;
     font-size: 1em;
     padding: 0.2em;
-  }
-  .boutton :hover {
-    background-color: black;
-    color: white;
   }
 }
 @media only screen and (min-device-width: 0px) and (max-device-width: 650px) {
   .boutton {
-    background-color: #474747;
-    color: #1b535d;
-    border-color: #bee5ec;
+    background-color: #7a8fa3;
+    color: #666666;
+    border-color: white;
     font-size: 0.8em;
     padding: 0.1em;
-  }
-  .boutton :hover {
-    background-color: black;
-    color: white;
   }
 }
 

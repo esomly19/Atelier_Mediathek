@@ -6,7 +6,7 @@ $columns: 12;
 $gutter-width: 1.6%;
 
 
-$blanc_mais_pas_vraiment : rgb(190, 229, 236);
+$blanc : rgb(190, 229, 236);
 $rouge : rgb(219, 17, 17);
 $noir : black;
 $gris1 : rgb(139, 138, 138);
@@ -29,7 +29,7 @@ $gris2 :rgb(150, 129, 129);
 
 .darkTable tbody td {
     font-size: 13px;
-    color: $blanc_mais_pas_vraiment;
+    color: $blanc;
   }
 
 .darkTable tr:nth-child(even) {
@@ -44,7 +44,7 @@ $gris2 :rgb(150, 129, 129);
 .darkTable thead th {
     font-size: 15px;
     font-weight: bold;
-    color: $blanc_mais_pas_vraiment;
+    color: $blanc;
     text-align: center;
     border-left: 2px solid $gris1;
 }
