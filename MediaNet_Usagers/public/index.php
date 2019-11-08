@@ -74,9 +74,7 @@ $app->get('/deconnection', "\\app\\Controllers\\loginController:seDeconnecter")-
 $app->get('/catalogue', "\\app\\Controllers\\catalogueController:afficherCatalogue")->setName('catalogue');
 
 $app->group('', function() {
-    $this->get('/emprunt&retour', function(Request $request, Response $response, $args){
-        return $this->view->render($response, 'EmpruntRetour.html.twig');
-    })->setName('emprunt&retour');
+    $this->get('/emprunt&retour', "\\app\\Controllers\\empruntRetourController:mesEmpruntRetour")->setName('emprunt&retour');
     
     $this->get('/profil',"\\app\\Controllers\\loginController:monProfil")->setName('profil');
 
