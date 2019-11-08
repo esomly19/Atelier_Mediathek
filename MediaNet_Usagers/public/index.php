@@ -6,11 +6,16 @@ require_once '../src/config/config.inc.php';
 use Slim\Http\Request;
 use Slim\Http\Response;
 use Illuminate\Database\Capsule\Manager as DB;
+use app\middleware\AuthMiddleware;
 
 $container = array();
 
 $container['flash'] = function ($container){
     return new \Slim\Flash\Messages;
+};
+
+$container['auth'] = function ($container){
+    return new app\Controllers\loginController($container);
 };
 
 $container["view"] = function ($container){
@@ -63,17 +68,19 @@ $app->post('/connection', "\\app\\Controllers\\loginController:seConnecter");
 $app->get('/deconnection', "\\app\\Controllers\\loginController:seDeconnecter")->setName('deconnection');
 
 
-$app->get('/emprunt&retour', function(Request $request, Response $response, $args){
-    return $this->view->render($response, 'EmpruntRetour.html.twig');
-})->setName('emprunt&retour');
 
-$app->get('/profil',"\\app\\Controllers\\loginController:monProfil")->setName('profil');
 
 
 $app->get('/catalogue', "\\app\\Controllers\\catalogueController:afficherCatalogue")->setName('catalogue');
 
-$app->get('/recherche', "\\app\\Controllers\\rechercheController:recherche")->setName('recherche');
+$app->group('', function() {
+    $this->get('/emprunt&retour', function(Request $request, Response $response, $args){
+        return $this->view->render($response, 'EmpruntRetour.html.twig');
+    })->setName('emprunt&retour');
+    
+    $this->get('/profil',"\\app\\Controllers\\loginController:monProfil")->setName('profil');
 
+})->add(new AuthMiddleware($app->getContainer()));
 
 try {
     $app->run();

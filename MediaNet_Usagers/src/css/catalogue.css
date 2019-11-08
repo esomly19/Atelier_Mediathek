@@ -2,12 +2,15 @@
     display : flex;
     justify-content: flex-start;
     flex-wrap: wrap;
+    background-color: cadetblue;
 }
 
 .cardDoc{
     border: 2px black solid;
     width: 13.5%;
     background-color : white;
+    margin: 2px;
+    padding: 4px;
 }
 .top{
     background-color: lightblue;
