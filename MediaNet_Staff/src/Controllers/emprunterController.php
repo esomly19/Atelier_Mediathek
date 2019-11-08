@@ -43,7 +43,17 @@ class emprunterController
     }
 
     public function retourinfo($request, $response) {
-        $listeemprunts = Emprunter::all();
+        $listeemprunts = Emprunter::where('emprunter.date_retour', '=', null)->Join('utilisateur', 'utilisateur.id', '=', 'emprunter.id_utilisateur')->Join('document', 'document.id', '=', 'emprunter.id_document')->select(
+            'mail',
+            'emprunter.id',
+            'document.code',
+            'document.titre',
+            'date_emprunt',
+            'date_retour',
+            'date_limite'
+        )->get();
+
+
         return $this->container->view->render($response, "retour.html.twig", ['emprunts'=>$listeemprunts]);
     }
 
