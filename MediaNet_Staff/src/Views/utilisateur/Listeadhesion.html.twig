@@ -1,0 +1,43 @@
+{% include 'layout.html.twig' %}
+{% block stylesheets %}
+
+    <link href="../../src/css/listeUtilisateur.css" type="text/css" rel="stylesheet" />
+{% endblock %}
+<h1>Liste des demandes d'adhésion : </h1>
+<div class="search">
+    <label for="search_user">Rechercher un utilisateur</label>
+    <input type="search" id="search_user" name="ru" value="nom de l'utilisateur..." onfocus="if(this.value=='nom de l\'utilisateur...')this.value=''" onblur="if(this.value=='')this.value='nom de l\'utilisateur...'" autocomplete="off">
+
+    <button id="submit_research">rechercher</button><div id="infoSearch"></div>
+</div>
+<table class="blueTable">
+<thead>
+<tr>
+<th>Nom</th>
+<th>Prenom</th>
+<th>mail</th>
+<th>adresse</th>
+<th>telephone</th>
+<th>Date demande d'adhesion</th>
+</tr>
+</thead>
+        {% for adh in ladhesion %}
+          
+						
+<tbody>
+<tr>
+<td>{{ adh.nom }} </td>
+<td>{{ adh.prenom }}</td>
+  <input type="hidden" name="idu" value={{ adh.id }}>
+<td>{{ adh.mail }}</td>
+<td>{{ adh.adresse }}</td>
+<td>{{ adh.telephone }}</td>
+<td>{{ adh.date_adhesion }}</td>
+<td><a href="{{ path_for('accepter', { 'id': adh.id }) }}"> <button  >accepter</button></a><a href="{{ path_for('refuser', { 'id': adh.id }) }}"><button  >refuser</button></a></td>
+</tr>
+</tbody>
+        {% endfor %}
+        </table>
+      
+</div>
+
