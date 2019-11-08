@@ -8,6 +8,8 @@
     border: 2px black solid;
     width: 13.5%;
     background-color : white;
+    margin : 0.1%;
+    margin-bottom : 0.6%;
 }
 .top{
     background-color: lightblue;

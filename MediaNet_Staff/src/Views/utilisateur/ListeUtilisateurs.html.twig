@@ -1,7 +1,7 @@
 {% include 'layout.html.twig' %}
 {% block stylesheets %}
+
     <link href="../../src/css/listeUtilisateur.css" type="text/css" rel="stylesheet" />
-    <link href="../../src/css/grid.css" type="text/css" rel="stylesheet" />
 {% endblock %}
 <h1>Liste des utilisateurs : </h1>
 <div class="search">
@@ -10,11 +10,19 @@
 
     <button id="submit_research">rechercher</button><div id="infoSearch"></div>
 </div>
-<div class="content">
-    <div class="row">
-        <label name="nom">Nom </label><label name="prenom">Prenom </label><label>Email </label><label>Telephone </label><label>Adresse </label><label>Date d'adhesion </label><label>nombre d'emprunts </label>
-    </div>
-    <div id="iu">
+<table class="blueTable">
+<thead>
+<tr>
+<th>Nom</th>
+<th>Prenom</th>
+<th>mail</th>
+<th>adresse</th>
+<th>telephone</th>
+<th>Date d'adhesion</th>
+<th>Nombre de commandes</th>
+<th></th>
+</tr>
+</thead>
         {% for utilisateur in utilisateurs %}
             {% set nbCommandes = 0 %}
 
@@ -23,21 +31,25 @@
                     {% set nbCommandes = nbCommandes + 1 %}
                 {% endif %}
             {% endfor %}
-            <div class="row">
-                <form action="informationusager" method="get">
-                    <label name="nom">{{ utilisateur.nom }} </label>
-                    <label name="prenom">{{ utilisateur.prenom }} </label>
-                    <input type="hidden" name="idu" value={{ utilisateur.id }}>
-                    <label name = "mail" id="mail">{{ utilisateur.mail }} </label>
-                    <label>{{ utilisateur.adresse }} </label>
-                    <label>{{ utilisateur.telephone }} </label>
-                    <label>{{ utilisateur.date_adhesion }} </label>
-                    <label>{{ nbCommandes }} </label>
-                    <button type="submit" >Consulter</button>
-                </form>
-            </div>
+						
+<tbody>
+<tr>
+<form action="informationusager" method="get">
+<td>{{ utilisateur.nom }} </td>
+<td>{{ utilisateur.prenom }}</td>
+  <input type="hidden" name="idu" value={{ utilisateur.id }}>
+<td>{{ utilisateur.mail }}</td>
+<td>{{ utilisateur.adresse }}</td>
+<td>{{ utilisateur.telephone }}</td>
+<td>{{ utilisateur.date_adhesion }}</td>
+<td> {{ nbCommandes }} </td>
+<td> <button type="submit" >Consulter</button></td>
+        </form>
+</tr>
+</tbody>
         {% endfor %}
-    </div>
+        </table>
+      
 </div>
 
 <script type="application/javascript">
