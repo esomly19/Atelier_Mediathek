@@ -2,7 +2,7 @@
 
 namespace app\controllers;
 
-use app\models\document;
+use app\models\Document;
 use app\models\Genre;
 
 class catalogueController{
@@ -13,7 +13,7 @@ class catalogueController{
     }
 
     public function afficherCatalogue($request, $response) {
-        $documents = document::first()
+        $documents = Document::first()
             ->leftJoin('image', 'image.id_image', '=', 'document.id_image')
             ->leftJoin('genre', 'genre.id_genre', "=", "document.id_genre")
             ->get();

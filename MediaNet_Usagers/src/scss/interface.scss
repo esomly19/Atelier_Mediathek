@@ -1,10 +1,11 @@
 @import '_bouton.scss';
 @import '_navbar.scss';
-@import '_grid.scss';
+@import '_alert.scss';
 
 $blanc_mais_pas_vraiment : rgb(190, 229, 236);
 $rouge : rgb(219, 17, 17);
 $noir : black;
+$sombre : rgb(71, 71, 71);
 
 //variable bouton
     //le style
@@ -22,30 +23,58 @@ $centre : center;
 $gauche : flex-start;
 $droite : flex-end;
 
-//variable grid
-$columns: 12;
-$gutter-width: 1.6%;
-
 .boutton{
-    @include stylebouton($s_outline,$rouge,$t_medium);
+    @include stylebouton($s_classic,$rouge,$sombre,$t_medium);
 }
 
 .navbar{
-    @include row();
-    border-bottom: solid 1px;
-}
-
-.nav_left{
-    @include col();
-}
-
-.nav_right{
+    margin:0;
+    padding: 0;
+    padding-bottom: 2px;
+    list-style-type: none;
     display: flex;
-    @include justify($droite);
-    @include col();
+    @include justify($centre);
+    @include navcouleur($sombre);
+    border-bottom: solid 4px $rouge;
 }
 
-a{
-    outline: none;
-    text-decoration: none;
+button {
+    margin-right: 2px;    
+    a {
+        display: block;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        outline: none;
+        text-decoration: none;
+        color: $blanc_mais_pas_vraiment;
+    }
 }
+
+
+
+.alert-success{
+    @include typealert($tp_succes);
+}
+  
+.alert-danger{
+    @include typealert($tp_danger);
+}
+  
+.alert-warning{
+    @include typealert($tp_avertissement);
+}
+  
+.alert-info{
+    @include typealert($tp_informative);
+}
+
+#footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: black;
+    color: white;
+    text-align: center;
+ }

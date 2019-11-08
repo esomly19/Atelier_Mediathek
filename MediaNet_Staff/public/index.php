@@ -57,11 +57,21 @@ $app->post('/supprimeremprunt', "\\app\\Controllers\\emprunterController:suppEmp
 $app->get('/creercompte', "\\app\\Controllers\\utilisateurController:voir")->setName('creacompte');
 $app->post('/creercompte', "\\app\\Controllers\\utilisateurController:creerCompte");
 
-
+$app->get('/rendredoc', "\\app\\Controllers\\emprunterController:rendreDoc")->setName("rendreDoc");
+$app->post('/rendredoc', "\\app\\Controllers\\emprunterController:traiterRendreDoc");
 
 $app->get('/documents', "\\app\\Controllers\\documentController:voir")->setName('documents');
 $app->post('/documents', "\\app\\Controllers\\documentController:creerDocuements");
 
+
+
+$app->get('/doc{id}', "\\app\\Controllers\\documentController:modifier")->setName('modifierdocuments');
+$app->post('/doc{id}', "\\app\\Controllers\\documentController:update");
+
+
+
+$app->get('/ajouterdoc', "\\app\\Controllers\\documentController:ajouter")->setName('ajouterdoc');
+$app->post('/ajouterdoc', "\\app\\Controllers\\documentController:afficher");
 
 
 try {

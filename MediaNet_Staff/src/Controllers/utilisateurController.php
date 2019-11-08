@@ -54,7 +54,7 @@ class utilisateurController
                 $user->date_adhesion = date("Y/m/d");
                 $user->save();
                 $listeUtilisateurs = Utilisateur::all();
-                return $this->container->view->render($response, "utilisateur/informationUtilisateur.html.twig", ['utilisateurs'=>$listeUtilisateurs]);
+                return $this->container->view->render($response, "utilisateur/ListeUtilisateurs.html.twig", ['utilisateurs'=>$listeUtilisateurs]);
             }else{
                 return $this->container->view->render($response, "utilisateur/erreurmail.html.twig");
             }
@@ -64,6 +64,6 @@ class utilisateurController
         $id = $_GET["idu"];
         $uti = Utilisateur::find($id);
         $listeDocumentEmprunt = Document::where('emprunter.id_utilisateur', '=', $id)->Join('emprunter', 'emprunter.id_document', '=', 'document.id')->get();
-        return $this->container->view->render($response, "utilisateur/informationUtilisateur.html.twig",["uti"=>$uti,"emprunt"=> $listeDocumentEmprunt]);
+        return $this->container->view->render($response, "utilisateur/ListeUtilisateurs.html.twig",["uti"=>$uti,"emprunt"=> $listeDocumentEmprunt]);
     }
 }
