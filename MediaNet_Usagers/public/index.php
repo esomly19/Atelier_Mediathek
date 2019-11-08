@@ -67,6 +67,9 @@ $app->post('/connection', "\\app\\Controllers\\loginController:seConnecter");
 
 $app->get('/deconnection', "\\app\\Controllers\\loginController:seDeconnecter")->setName('deconnection');
 
+$app->get('/demandadhesion', "\\app\\Controllers\\adhesionController:voir")->setName('demandadhesion');
+$app->post('/demandadhesion', "\\app\\Controllers\\adhesionController:demandeAdhesion");
+
 
 
 

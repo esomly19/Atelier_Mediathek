@@ -41,3 +41,59 @@
       
 </div>
 
+<script type="application/javascript">
+    let listeNomUtilisateur = [];
+
+    {% for utilisateur in utilisateurs %}
+        {% set nbCommandes = 0 %}
+
+        {% for comm in commandes %}
+            {% if utilisateur.mail == comm.mail %}
+                {% set nbCommandes = nbCommandes + 1 %}
+            {% endif %}
+        {% endfor %}
+        listeNomUtilisateur.push(["{{ utilisateur.nom }}","{{ utilisateur.prenom }}","{{ utilisateur.mail }}","{{ utilisateur.adresse}}","{{ utilisateur.telephone }}","{{ utilisateur.date_adhesion }}","{{ utilisateur.id }}","{{ nbCommandes }}"]);
+    {% endfor %}
+    let rechercher = document.getElementById("submit_research");
+    let nomUtilisateur = document.getElementById("search_user");
+
+    rechercher.addEventListener('click', function (event) {
+        let utilisateurTrouve = [];
+
+        listeNomUtilisateur.forEach(function (utilisateur) {
+            if(nomUtilisateur.value.toLowerCase() === utilisateur[0].toLowerCase()) {
+                utilisateurTrouve.push(utilisateur)
+            }
+        })
+
+
+        let content = document.getElementById("iu");
+        if(utilisateurTrouve.length >= 1 ){
+
+
+            content.innerHTML = "";
+
+            utilisateurTrouve.forEach(function (utilisateur) {
+
+                content.innerHTML += "<form action=\"informationusager\" method=\"post\"><div class=\"ligne-u\">\n" +
+                    "                <label class=\"nom\">"+utilisateur[0] +" </label><label class=\"prenom\">"+utilisateur[1] +" </label><label>"+utilisateur[2] +" </label><label>"+utilisateur[3] +" </label><label>"+utilisateur[4] +" </label><label>"+utilisateur[5] +" </label><label>"+utilisateur[7] +" </label><input type=\"hidden\" name=\"idu\" value="+utilisateur[6]+">  <button type='submit'>Consulter</button>\n" +
+                    "            </div></form>"
+            })
+        }else{
+            content.innerHTML = "";
+            listeNomUtilisateur.forEach(function (utilisateur) {
+
+                content.innerHTML += "<form action=\"informationusager\" method=\"post\"><div class=\"ligne-u\">\n" +
+                    "                <label class=\"nom\">"+utilisateur[0] +" </label><label class=\"prenom\">"+utilisateur[1] +" </label><label>"+utilisateur[2] +" </label><label>"+utilisateur[3] +" </label><label>"+utilisateur[4] +" </label><label>"+utilisateur[5] +" </label><label>"+utilisateur[7] +" </label><input type=\"hidden\" name=\"idu\" value="+utilisateur[6]+">  <button type='submit'>Consulter</button>\n" +
+                    "            </div></form>"
+
+                document.getElementById("infoSearch").innerHTML = "Aucun utilisateur trouvé"
+
+            })
+        }
+
+
+    });
+
+
+</script>

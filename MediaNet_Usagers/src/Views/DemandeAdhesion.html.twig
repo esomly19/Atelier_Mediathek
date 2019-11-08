@@ -1,0 +1,50 @@
+{% extends 'Interface.html.twig' %}
+   
+{% block stylesheets %}
+        <link href="../../src/css/connexion.css" type="text/css" rel="stylesheet" />
+{% endblock %}
+
+{% block content %}
+
+
+<h1> Demande d'adhésion </h1>
+				
+
+
+				<!--path_for('login') -->
+				<form action="{{adhesion.id}}"method="post">	
+					<div class="form-group">
+					<div>
+						<label for="nom">Nom</label>
+						<input type="text" name="nom"  id="nom" value="{{adhesion.nom}}" required>
+							</div>
+                        <br>
+								<div>
+                        	<label for="prenom">Prénom</label>
+						<input type="text" name="prenom"  id="prenom" value="{{adhesion.prenom}}" required>
+                               
+							   			</div> <br>
+												<div>
+						<label for="mdp">Mot de passe</label>
+						<input type="password" name="mdp" id="mdp" value="{{adhesion.mdp}}" required>
+                                	</div><br>
+										<div>
+                        	<label for="mail"> Email</label>
+						<input type="text" name="mail" id="mail" value="{{adhesion.mail}}" required>
+                              	</div>  <br>
+										<div>
+                        	<label for="adresse">Adresse</label>
+						<input type="text" name="adresse" id="adresse" value="{{adhesion.adresse}}" required>
+                              	</div>  <br>
+										<div>
+                        	<label for="telephone">Téléphone</label>
+						<input type="number" name="telephone" id="telephone"   min="0" value="{{adhesion.telephone}}" required>
+                                <br>
+										</div>
+           		
+						<button type="submit" >Valider!</button>
+					</div>
+				</form>
+
+
+{% endblock %}
