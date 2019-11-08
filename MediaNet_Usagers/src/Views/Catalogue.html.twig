@@ -112,8 +112,10 @@
     {% for document in catalogue %}
 
         <div class = "cardDoc"  style="" etatDoc={{ document.etat }} genreDoc={{ document.id_genre }} typeDoc={{ document.type }}>
-            <img style="width: 256px" src="../{{ document.path }}"
+         <div id="image">
+            <img  src="../{{ document.path }}"
                  alt="{{ document.description_image }}">
+                    </div>
             <h5> {{ document.titre }} </h5>
             <div>{{ document.description_doc }}</div>
             <div>{{ document.nom_genre }}</div>
