@@ -73,7 +73,7 @@ $app->post('/doc{id}', "\\app\\Controllers\\documentController:update");
 $app->get('/ajouterdoc', "\\app\\Controllers\\documentController:ajouter")->setName('ajouterdoc');
 $app->post('/ajouterdoc', "\\app\\Controllers\\documentController:afficher");
 
-$app->get('/emprunter', "\\app\\Controllers\\emprunterController:emprunterDoc");
+$app->get('/emprunter', "\\app\\Controllers\\emprunterController:emprunterDoc")->setName('emprunter');
 $app->post('/emprunter', "\\app\\Controllers\\emprunterController:traiterEmprunterDoc");
 try {
     $app->run();

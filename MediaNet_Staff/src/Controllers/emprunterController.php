@@ -65,11 +65,17 @@ class emprunterController
         $emprunt->id_document = $id_document;
         $emprunt->id_utilisateur = $utilisateur->id;
         $emprunt->date_emprunt = $date;
-        $emprunt->date_limite = $date;
+        $emprunt->date_limite = date('Y-m-d', strtotime('+15 days'));
         $emprunt->date_retour = null;
         $document = Document::where('id', "=",$id_document)->first();
-        $document->etat = 1;
-        $document->save();
-        $emprunt->save();
+        if($document->etat == 0){
+            $document->etat = 1;
+            $document->save();
+            $emprunt->save();
+            return $response->withRedirect($this->container->router->pathFor('documents'));
+        }else {
+            return $response->withRedirect($this->container->router->pathFor('emprunter'));
+        }
+
     }
 }
