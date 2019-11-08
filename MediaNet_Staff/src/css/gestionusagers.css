@@ -66,3 +66,20 @@ a:hover{
     opacity: 1;
     transition: 0s;
 }
+
+
+
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+ 
+  
+  .main{
+    display: grid;
+    justify-content: center;
+    
+  }
+  .sub-main{
+    width: 100%;
+    margin:15px;
+  
+  }
+  }
