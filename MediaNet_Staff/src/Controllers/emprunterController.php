@@ -5,6 +5,7 @@ namespace app\controllers;
 use app\models\Document;
 use app\models\Emprunter;
 use app\models\Utilisateur;
+use Faker\Provider\DateTime;
 use Illuminate\Support\Facades\Date;
 
 class emprunterController
@@ -15,7 +16,29 @@ class emprunterController
     }
 
     public function emprunterinfo($request, $response) {
-        $listeemprunts = Emprunter::all();
+        $listeemprunts = Emprunter::where('emprunter.date_retour', '!=', null)->Join('utilisateur', 'utilisateur.id', '=', 'emprunter.id_utilisateur')->Join('document', 'document.id', '=', 'emprunter.id_document')->select(
+            'mail',
+            'emprunter.id',
+            'document.code',
+            'document.titre',
+            'date_emprunt',
+            'date_retour',
+            'date_limite'
+        )->get();
+
+        foreach ($listeemprunts as $emprunt) {
+            $datelimite = date_create($emprunt["date_limite"]);
+            $dateretour = date_create($emprunt["date_retour"]);
+
+            $retard = date_diff($dateretour, $datelimite);
+            $retard = $retard->format('%R%a');
+
+
+            $emprunt["retard"] = $retard;
+
+
+        }
+
         return $this->container->view->render($response, "emprunts.html.twig", ['emprunts'=>$listeemprunts]);
     }
 
