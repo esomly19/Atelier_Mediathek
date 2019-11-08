@@ -11,10 +11,11 @@
     <button id="submit_research">rechercher</button><div id="infoSearch"></div>
 </div>
 <div class="content">
-    <div class="row">
-        <label name="nom">Nom </label><label name="prenom">Prenom </label><label>Email </label><label>Telephone </label><label>Adresse </label><label>Date d'adhesion </label><label>nombre d'emprunts </label>
-    </div>
+    <tr>
+       <th name="nom">Nom</th><th name="prenom">Prenom </th><th>Email</th><th>Telephone</th><th>Adresse</th><th>Date d'adhesion</th><th>nombre d'emprunts </th>
+   </tr>
     <div id="iu">
+    <table class="rwd-table">
         {% for utilisateur in utilisateurs %}
             {% set nbCommandes = 0 %}
 
@@ -37,6 +38,7 @@
                 </form>
             </div>
         {% endfor %}
+         </table>
     </div>
 </div>
 
