@@ -82,6 +82,9 @@ button {
     @include typealert($tp_informative);
 }
 
+h1{
+    color: $blanc_mais_pas_vraiment;
+}
 
 #footer {
     position: fixed;
