@@ -6,6 +6,7 @@ require_once '../src/config/config.inc.php';
 use Slim\Http\Request;
 use Slim\Http\Response;
 use Illuminate\Database\Capsule\Manager as DB;
+use app\middleware\AuthMiddleware;
 
 $container = array();
 

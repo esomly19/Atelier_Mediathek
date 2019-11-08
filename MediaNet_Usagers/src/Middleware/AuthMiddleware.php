@@ -1,6 +1,6 @@
 <?php
 
-namespace dawa\middleware;
+namespace app\middleware;
 
 class AuthMiddleware{
 
@@ -12,6 +12,7 @@ class AuthMiddleware{
 
     public function __invoke($request, $response, $next){
         if (!$this->container->auth->isConnected()){
+            $this->container->flash->addMessage('error', 'Il faut se connecter pour pouvoir accéder à cette page');
             return $response->withRedirect($this->container->router->pathFor('connexion'));
         }
         $response = $next($request, $response);
