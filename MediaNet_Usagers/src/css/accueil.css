@@ -1,13 +1,12 @@
 .accueil {
-  background-color: #474747;
   color: #bee5ec;
   text-align: center;
+  background-color: #474747;
 }
 
 .container {
   background-image: url("../../../img/mediatheque-3.jpeg");
   background-size: 100%;
-  background-color: #474747;
   background-repeat: no-repeat;
   width: auto;
   height: 87vh;
@@ -16,17 +15,16 @@
 @media only screen and (min-device-width: 640px) and (max-device-width: 1024px) {
   .container {
     background-image: url("../../../img/mediatheque-3.jpeg");
-    background-color: #474747;
-    background-size: 100%;
+    background-size: auto 100%;
     background-repeat: no-repeat;
     width: auto;
-    height: 87vh;
+    height: 90vh;
   }
 }
 @media only screen and (min-device-width: 0px) and (max-device-width: 650px) {
   .container {
     background-image: none;
-    background-color: #474747;
+    height: auto;
   }
 }
 

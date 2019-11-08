@@ -6,13 +6,13 @@
 
 @mixin taillebouton($taille){
     @if $taille == small {
-        font-size: 1.3em;
-        padding :0.1em;
+        font-size: 0.8em;
+      padding: 0.1em;
     }@else if $taille == medium{
-        font-size: 1.7em;
-        padding :0.2em;
+        font-size: 1em;
+      padding: 0.2em;
     }@else if $taille == large{
-        font-size: 2.3em;
+        font-size: 1.7em;
         padding :0.2em;
     }
 }

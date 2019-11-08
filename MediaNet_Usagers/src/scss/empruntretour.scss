@@ -56,11 +56,19 @@ $gris2 :rgb(150, 129, 129);
 
 .row{
     @include row();
-    background-color: $sombre;
+    justify-content: space-between;
 }
 
 .tab_droite .tab_gauche{
     @include col();
-    padding-right: 10%;
+    
+}
+
+.tab_droite{
+    align-items: flex-start;
+}
+
+.tab_gauche{
+    align-items: flex-end;
 }
   

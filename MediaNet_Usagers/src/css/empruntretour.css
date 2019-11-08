@@ -42,8 +42,7 @@
   margin: 0 0 1.6%;
   display: flex;
   flex-wrap: wrap;
-  min-width: 87vh;
-  background-color: #474747;
+  justify-content: space-between;
 }
 
 .tab_droite .tab_gauche {
@@ -51,10 +50,17 @@
   display: block;
   margin-right: 1.6%;
   padding: 1em;
-  padding-right: 10%;
 }
 .row .tab_droite .tab_gauche:last-of-type {
   margin-right: 0;
+}
+
+.tab_droite {
+  align-items: flex-start;
+}
+
+.tab_gauche {
+  align-items: flex-end;
 }
 
 /*# sourceMappingURL=empruntretour.css.map */
