@@ -34,6 +34,42 @@ button a {
   color: #bee5ec;
 }
 
+.alert-success {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 8px;
+  padding: 0.5em;
+  margin-top: 1em;
+  background-color: lime;
+  border: 1px solid #009900;
+  color: black;
+}
+
+.alert-danger {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 8px;
+  padding: 0.5em;
+  margin-top: 1em;
+  background-color: orange;
+  border: 1px solid #996300;
+  color: black;
+}
+
+.alert-info {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 8px;
+  padding: 0.5em;
+  margin-top: 1em;
+  background-color: #00b7ff;
+  border: 1px solid #006e99;
+  color: black;
+}
+
 #footer {
   position: fixed;
   left: 0;
