@@ -65,6 +65,20 @@ class utilisateurController
         $uti = Utilisateur::find($id);
 
         $listeDocumentEmprunt = Document::where('emprunter.id_utilisateur', '=', $id)->Join('emprunter', 'emprunter.id_document', '=', 'document.id')->get();
+        foreach ($listeDocumentEmprunt as $emprunt) {
+            $datelimite = date_create($emprunt["date_limite"]);
+            $dateretour = date_create($emprunt["date_retour"]);
+            $datecourrante = date("Y/m/d");
+            if($dateretour == null) {
+                $retard = date_diff($datecourrante, $datelimite);
+            }else {
+                $retard = date_diff($dateretour, $datelimite);
+            }
+            $retard = $retard->format('%R%a');
+            $emprunt["retard"] = $retard;
+
+
+        }
         return $this->container->view->render($response, "utilisateur/informationUtilisateur.html.twig",["uti"=>$uti,"emprunt"=> $listeDocumentEmprunt]);
     }
 }

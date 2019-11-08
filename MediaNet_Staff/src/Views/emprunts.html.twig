@@ -5,36 +5,106 @@
 {% endblock %}
 <h1>Liste des emprunts : </h1>
 <div>
-    <label for="rechercher-utilisateur">Rechercher un emprunts</label>
-    <input type="search" id="rechercher-utilisateur" name="ru"
-           aria-label="Search through site content">
-
-    <button>rechercher</button>
+    <label for="type-search">Trier par ordre: </label>
+    <select name="type-search" id="type-search">
+        <option value="1">croissant</option>
+        <option value="2">decroissant</option>
+    </select>
 </div>
 
-
+   <div id="tab">
 <table class="blueTable">
 <thead>
 <tr>
-<th>ID document</th>
-<th>ID Utilisateur</th>
+    <th>Numéro de l'emprunt</th>
+<th>email de l'utilisateur</th>
+<th>nom du document - code</th>
 <th>Date emprunt</th>
 <th>Date retour</th>
 <th>Date limite</th>
+    <th>Nombre de jours de retards</th>
 </tr>
 </thead>
    {% for emprunt in emprunts %}
-       					
-<tbody>
-<tr>
-<td>{{ emprunt.id_document }} </td>
-<td>{{ emprunt.id_utilisateur }}</td>
-<td>{{ emprunt.date_emprunt  }}</td>
-<td>{{ emprunt.date_retour }}</td>
-<td>{{ emprunt.date_limite }}</td>
-</tr>
-</tbody>
-
+        <tbody>
+        <tr>
+            <td>{{ emprunt.id }}</td>
+        <td>{{ emprunt.mail }} </td>
+        <td>{{ emprunt.titre}} - {{ emprunt.code }}</td>
+        <td>{{ emprunt.date_emprunt  }}</td>
+        <td>{{ emprunt.date_retour }}</td>
+        <td>{{ emprunt.date_limite }}</td>
+            <td>{{ emprunt.retard }}</td>
+        </tr>
+        </tbody>
     {% endfor %}
+
           </table>
     </div>
+   <script type="application/javascript">
+       let tri = document.getElementById("type-search")
+       let content = document.getElementById("tab")
+        tri.addEventListener('change', function (event) {
+            if(tri.value == 2 ) {
+
+                content.innerHTML = "<table class=\"blueTable\">\n" +
+                    "<thead>\n" +
+                    "<tr>\n" +
+                    "    <th>Numéro de l'emprunt</th>\n" +
+                    "<th>email de l'utilisateur</th>\n" +
+                    "<th>nom du document - code</th>\n" +
+                    "<th>Date emprunt</th>\n" +
+                    "<th>Date retour</th>\n" +
+                    "<th>Date limite</th>\n" +
+                    "    <th>Nombre de jours de retards</th>\n" +
+                    "</tr>\n" +
+                    "</thead>\n" +
+                    "   {% for emprunt in emprunts|reverse %}\n" +
+                    "        <tbody>\n" +
+                    "        <tr>\n" +
+                    "            <td>{{ emprunt.id }}</td>\n" +
+                    "        <td>{{ emprunt.mail }} </td>\n" +
+                    "        <td>{{ emprunt.titre }} - {{ emprunt.code }}</td>\n" +
+                    "        <td>{{ emprunt.date_emprunt }}</td>\n" +
+                    "        <td>{{ emprunt.date_retour }}</td>\n" +
+                    "        <td>{{ emprunt.date_limite }}</td>\n" +
+                    "            <td>{{ emprunt.retard }}</td>\n" +
+                    "        </tr>\n" +
+                    "        </tbody>\n" +
+                    "    {% endfor %}\n" +
+                    "\n" +
+                    "          </table>"
+
+            }else {
+                content.innerHTML = "<table class=\"blueTable\">\n" +
+                    "<thead>\n" +
+                    "<tr>\n" +
+                    "    <th>Numéro de l'emprunt</th>\n" +
+                    "<th>email de l'utilisateur</th>\n" +
+                    "<th>nom du document - code</th>\n" +
+                    "<th>Date emprunt</th>\n" +
+                    "<th>Date retour</th>\n" +
+                    "<th>Date limite</th>\n" +
+                    "    <th>Nombre de jours de retards</th>\n" +
+                    "</tr>\n" +
+                    "</thead>\n" +
+                    "   {% for emprunt in emprunts %}\n" +
+                    "        <tbody>\n" +
+                    "        <tr>\n" +
+                    "            <td>{{ emprunt.id }}</td>\n" +
+                    "        <td>{{ emprunt.mail }} </td>\n" +
+                    "        <td>{{ emprunt.titre }} - {{ emprunt.code }}</td>\n" +
+                    "        <td>{{ emprunt.date_emprunt }}</td>\n" +
+                    "        <td>{{ emprunt.date_retour }}</td>\n" +
+                    "        <td>{{ emprunt.date_limite }}</td>\n" +
+                    "            <td>{{ emprunt.retard }}</td>\n" +
+                    "        </tr>\n" +
+                    "        </tbody>\n" +
+                    "    {% endfor %}\n" +
+                    "\n" +
+                    "          </table>";
+            }
+
+        })
+
+   </script>
