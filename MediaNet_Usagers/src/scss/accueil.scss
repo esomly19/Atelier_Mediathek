@@ -10,8 +10,9 @@ $sombre : rgb(71, 71, 71);
 }
 
 .container{
-    background-image: url('../../../img/mediatheque.jpg');
+    background-image: url('../../../img/mediatheque-3.jpeg');
     background-size:100%;
+    background-color: $sombre;
     background-repeat: no-repeat;
     width: auto;
     height: 87vh;
@@ -20,7 +21,8 @@ $sombre : rgb(71, 71, 71);
 // ipad 640 1024
 @media only screen and (min-device-width : 640px) and (max-device-width : 1024px) {
     .container{
-        background-image: url('../../../img/mediatheque-2.jpg');
+        background-image: url('../../../img/mediatheque-3.jpeg');
+        background-color: $sombre;
         background-size:100%;
         background-repeat: no-repeat;
         width: auto;
@@ -32,5 +34,6 @@ $sombre : rgb(71, 71, 71);
 @media only screen and (min-device-width : 0px) and (max-device-width : 650px) {
     .container{
         background-image: none;
+        background-color: $sombre;
     }
 }
