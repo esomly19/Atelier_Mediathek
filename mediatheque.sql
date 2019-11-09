@@ -38,6 +38,7 @@ CREATE TABLE IF NOT EXISTS `document` (
   `etat` int(11) NOT NULL,
   `id_genre` int(11) NOT NULL,
   `type` varchar(20) NOT NULL,
+   `deleted_at` datetime NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id` (`id`),
   UNIQUE KEY `code` (`code`)
@@ -117,3 +118,20 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+DROP TABLE IF EXISTS `adhesion`;
+CREATE TABLE IF NOT EXISTS `adhesion` (
+  `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `nom` varchar(55) NOT NULL,
+  `prenom` varchar(55) NOT NULL,
+  `mdp` varchar(255) NOT NULL,
+  `mail` varchar(100) NOT NULL,
+  `adresse` varchar(255) NOT NULL,
+  `telephone` varchar(12) NOT NULL,
+  `date_adhesion` date NOT NULL,
+ `deleted_at` datetime NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id` (`id`),
+  UNIQUE KEY `mail` (`mail`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+COMMIT;
