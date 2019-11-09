@@ -63,8 +63,8 @@ $app->post('/rendredoc', "\\app\\Controllers\\emprunterController:traiterRendreD
 $app->get('/documents', "\\app\\Controllers\\documentController:voir")->setName('documents');
 $app->post('/documents', "\\app\\Controllers\\documentController:creerDocuements");
 
-
-
+$app->get('/faireemprunts',"\\app\\Controllers\\emprunterController:faireDesEmprunts")->setName('faireemprunts');
+$app->post('/faireemprunt',"\\app\\Controllers\\emprunterController:traiterfaireDesEmprunts");
 $app->get('/doc{id}', "\\app\\Controllers\\documentController:modifier")->setName('modifierdocuments');
 $app->post('/doc{id}', "\\app\\Controllers\\documentController:update");
 

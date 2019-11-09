@@ -5,6 +5,11 @@
 {% endblock %}
 
 <h1>Liste media emprunté par {{ uti.nom }} {{ uti.prenom }}</h1>
+<form action="faireemprunts" method="get">
+
+    <button type="submit">Emprunter des documents</button>
+    <input type="hidden" name="idu" value={{ uti.id }}>
+</form>
 <table class="blueTable">
 <thead>
 <tr>
@@ -86,5 +91,6 @@
     {% endfor %}
      </table>
 </div>
+
 
 

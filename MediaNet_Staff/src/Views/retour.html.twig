@@ -3,7 +3,7 @@
 {% block stylesheets %}
     <link href="../../src/css/listeUtilisateur.css" type="text/css" rel="stylesheet" />
 {% endblock %}
-<h1>Liste des emprunts : </h1>
+<h1>Liste des emprunts en cours : </h1>
 <div>
     <label for="type-search">Trier par ordre: </label>
     <select name="type-search" id="type-search">
@@ -25,9 +25,7 @@
             <th>email de l'utilisateur</th>
             <th>nom du document - code</th>
             <th>Date emprunt</th>
-            <th>Date retour</th>
             <th>Date limite</th>
-            <th>Nombre de jours de retards</th>
         </tr>
         </thead>
         {% for emprunt in emprunts %}
@@ -37,9 +35,8 @@
                 <td>{{ emprunt.mail }} </td>
                 <td>{{ emprunt.titre}} - {{ emprunt.code }}</td>
                 <td>{{ emprunt.date_emprunt  }}</td>
-                <td>{{ emprunt.date_retour }}</td>
                 <td>{{ emprunt.date_limite }}</td>
-                <td>{{ emprunt.retard }}</td>
+
             </tr>
             </tbody>
         {% endfor %}
@@ -64,9 +61,7 @@
             "<th>email de l'utilisateur</th>\n" +
             "<th>nom du document - code</th>\n" +
             "<th>Date emprunt</th>\n" +
-            "<th>Date retour</th>\n" +
             "<th>Date limite</th>\n" +
-            "    <th>Nombre de jours de retards</th>\n" +
             "</tr>\n" +
             "</thead>";
         let find = 0
@@ -80,9 +75,7 @@
                     "        <td>"+doc[1]+" </td>\n" +
                     "        <td>"+doc[3]+" - "+doc[2]+"</td>\n" +
                     "        <td>"+doc[4]+"</td>\n" +
-                    "        <td>"+doc[5]+"</td>\n" +
                     "        <td>"+doc[6]+"</td>\n" +
-                    "            <td>"+doc[7]+"</td>\n" +
                     "        </tr>\n" +
                     "        </tbody>"
                 find = 1
@@ -95,9 +88,7 @@
                     "<th>email de l'utilisateur</th>\n" +
                     "<th>nom du document - code</th>\n" +
                     "<th>Date emprunt</th>\n" +
-                    "<th>Date retour</th>\n" +
                     "<th>Date limite</th>\n" +
-                    "    <th>Nombre de jours de retards</th>\n" +
                     "</tr>\n" +
                     "</thead>\n" +
                     "   {% for emprunt in emprunts|reverse %}\n" +
@@ -107,9 +98,7 @@
                     "        <td>{{ emprunt.mail }} </td>\n" +
                     "        <td>{{ emprunt.titre }} - {{ emprunt.code }}</td>\n" +
                     "        <td>{{ emprunt.date_emprunt }}</td>\n" +
-                    "        <td>{{ emprunt.date_retour }}</td>\n" +
                     "        <td>{{ emprunt.date_limite }}</td>\n" +
-                    "            <td>{{ emprunt.retard }}</td>\n" +
                     "        </tr>\n" +
                     "        </tbody>\n" +
                     "    {% endfor %}\n" +
@@ -135,9 +124,7 @@
                 "<th>email de l'utilisateur</th>\n" +
                 "<th>nom du document - code</th>\n" +
                 "<th>Date emprunt</th>\n" +
-                "<th>Date retour</th>\n" +
                 "<th>Date limite</th>\n" +
-                "    <th>Nombre de jours de retards</th>\n" +
                 "</tr>\n" +
                 "</thead>\n" +
                 "   {% for emprunt in emprunts|reverse %}\n" +
@@ -147,9 +134,7 @@
                 "        <td>{{ emprunt.mail }} </td>\n" +
                 "        <td>{{ emprunt.titre }} - {{ emprunt.code }}</td>\n" +
                 "        <td>{{ emprunt.date_emprunt }}</td>\n" +
-                "        <td>{{ emprunt.date_retour }}</td>\n" +
                 "        <td>{{ emprunt.date_limite }}</td>\n" +
-                "            <td>{{ emprunt.retard }}</td>\n" +
                 "        </tr>\n" +
                 "        </tbody>\n" +
                 "    {% endfor %}\n" +
@@ -164,9 +149,7 @@
                 "<th>email de l'utilisateur</th>\n" +
                 "<th>nom du document - code</th>\n" +
                 "<th>Date emprunt</th>\n" +
-                "<th>Date retour</th>\n" +
                 "<th>Date limite</th>\n" +
-                "    <th>Nombre de jours de retards</th>\n" +
                 "</tr>\n" +
                 "</thead>\n" +
                 "   {% for emprunt in emprunts %}\n" +
@@ -176,9 +159,7 @@
                 "        <td>{{ emprunt.mail }} </td>\n" +
                 "        <td>{{ emprunt.titre }} - {{ emprunt.code }}</td>\n" +
                 "        <td>{{ emprunt.date_emprunt }}</td>\n" +
-                "        <td>{{ emprunt.date_retour }}</td>\n" +
                 "        <td>{{ emprunt.date_limite }}</td>\n" +
-                "            <td>{{ emprunt.retard }}</td>\n" +
                 "        </tr>\n" +
                 "        </tbody>\n" +
                 "    {% endfor %}\n" +
