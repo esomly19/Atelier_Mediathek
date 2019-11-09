@@ -58,10 +58,12 @@
 
     function comparaison(rech, doc) {
         let trouve = false
-        let recherche = rech.split(' ')
-        let docTitre = doc.getAttribute("titreDoc").split(' ')
-        let docDescription = doc.getAttribute("descriptionDoc").replace(/,/g, " ").split(' ')
-        let docGenre = doc.getAttribute("nomGenreDoc")
+        rech.toLowerCase()
+        let recherche = rech.toLowerCase().split(' ')
+        let docTitre = doc.getAttribute("titreDoc").toLowerCase().split(' ')
+        let docDescription = doc.getAttribute("descriptionDoc").replace(/,/g, " ").toLowerCase().split(' ')
+        let docGenre = doc.getAttribute("nomGenreDoc").toLowerCase()
+
 
         console.log(recherche)
         console.log(docTitre)
@@ -111,7 +113,10 @@
         if (trouve == 0){
             alert("Pas de document correspondant à votre recherche")
         }else {
-            alert(trouve + " résultats trouvés")
+            if(trouve == 1){alert("1 résultat trouvé")}
+            else {
+                alert(trouve + " résultats trouvés")
+            }
         }
     }
 

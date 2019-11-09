@@ -116,3 +116,10 @@ INSERT INTO `genre` (`id_genre`, `nom_genre`, `description_genre`) VALUES
 (NULL, 'Comédie', 'Film censé provoquer le rire (ou pas, selon la qualité du film)'),
 (NULL, 'Thriller', 'Oeuvre basé sur le suspense pour garder le lecteur/ spectateur en haleine'),
 (NULL, 'Guerre', 'Boum boum pan pan (mais avec une histoire!)');
+
+INSERT INTO `utilisateur` (`id`, `nom`, `prenom`, `mdp`, `mail`, `adresse`, `telephone`, `date_adhesion`) VALUES
+(NULL, 'BonBeurre', 'Jean', '$2y$10$UyIOtnPAXYJNdMVkU6xcPOiJV8.4fo7saeY7eyugdaiA5Xezdkwgq', 'gemlaviand@herta.fr', '3, rue de la charcuterie, Sandouich', '0256658478', '2019-11-08'),
+(NULL, 'Brasse', 'Jean', '$2y$10$nmQmx3MWCcjQSCJk/W0U7uOvXBMjBtlVeIbwVLenUXpo8pIs6grEi', 'lamourcbeau@love.com', '65 avenue des Sentiments, Pau', '0965857475', '2019-11-08'),
+(NULL, 'Root', 'root', '$2y$10$jrp8jce7LwtKCvstG1q8UOz6lQ8I3rZiqONaw0hQmmAsYXOCqZbYK', 'root', 'root', '4007', '2019-11-08'),
+(NULL, 'admin', 'admin', '$2y$10$wAuBBoVd290t9s7GKJbmNusk3QPfW9LoHkNs3swbIhW4iu3HzgEFG', 'admin', 'admin', '46812', '2019-11-08'),
+(NULL, 'Deter', 'Pomme', '$2y$10$RNJNqb/1//eU8rLLwgeaxuw.PmJiBeXMgR4vI3StaKWaUndU8ipEq', 'raclette4life@manger.com', '24 impasse de la brochette, St-Etienne', '0604458575', '2019-11-08');
