@@ -17,9 +17,9 @@
             <h2>Information sur l'utilisateur : </h2>
                 <div class="boite content">
                     <input type="hidden" id="idu" name="idu">
-                    <div><label for="nom">nom : </label><input type="text" id="nom" name="nom"></div>
-                    <div><label for="prenom">prenom : </label><input type="text" id="prenom" name="prenom"></div>
-                    <div><label for="mail">mail : </label><input type="text" id="mail" name="mail"></div>
+                    <div><label for="nom">nom : </label><input type="text" id="nom" name="nom" required></div>
+                    <div><label for="prenom">prenom : </label><input type="text" id="prenom" name="prenom" required></div>
+                    <div><label for="mail">mail : </label><input type="text" id="mail" name="mail" required></div>
                 </div>
         </div>
         <div class="row">
@@ -29,7 +29,7 @@
                     <div><label for="typeDoc">type : </label><input type="text" id="typeDoc" name="typeDoc" value={{ document.type }}></div>
                     <div><label for="nomDoc">nom : </label><input type="text" id="nomDoc" name="nomDoc" value={{ document.titre|escape }}></div>
                     <div><label for="codeDoc">code : </label><input type="text" id="codeDoc" name="codeDoc" value={{ document.code }}></div>
-                    <div><label for="dateRendu">date : </label><input type="date" id="date" name="date"></div>
+                    <div><label for="dateRendu">date : </label><input type="date" id="date" name="date" required></div>
                 </div>
         </div>
     </div>

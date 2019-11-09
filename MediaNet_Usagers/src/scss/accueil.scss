@@ -1,19 +1,21 @@
-$blanc_mais_pas_vraiment : rgb(190, 229, 236);
+@import 'couleur.scss';
+
+$blanc : rgb(190, 229, 236);
 $rouge : rgb(219, 17, 17);
 $noir : black;
 $sombre : rgb(71, 71, 71);
 
 .accueil{
-    background-color: $sombre;
-    color: $blanc_mais_pas_vraiment;
+    color: $blanc;
     text-align: center;
+    background-color: $bleu;
 }
 
 .container{
     background-image: url('../../../img/mediatheque-3.jpeg');
     background-size:100%;
-    background-color: $sombre;
     background-repeat: no-repeat;
+    background-position: center;
     width: auto;
     height: 87vh;
 }
@@ -22,11 +24,10 @@ $sombre : rgb(71, 71, 71);
 @media only screen and (min-device-width : 640px) and (max-device-width : 1024px) {
     .container{
         background-image: url('../../../img/mediatheque-3.jpeg');
-        background-color: $sombre;
-        background-size:100%;
+        background-size:auto 100%;
         background-repeat: no-repeat;
         width: auto;
-        height: 87vh;
+        height: 90vh;
     }
 }
 
@@ -34,6 +35,6 @@ $sombre : rgb(71, 71, 71);
 @media only screen and (min-device-width : 0px) and (max-device-width : 650px) {
     .container{
         background-image: none;
-        background-color: $sombre;
+        height: auto;
     }
 }

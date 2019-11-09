@@ -1,8 +1,9 @@
 @import '_bouton.scss';
 @import '_navbar.scss';
 @import '_alert.scss';
+@import '_couleur.scss';
 
-$blanc_mais_pas_vraiment : rgb(190, 229, 236);
+
 $rouge : rgb(219, 17, 17);
 $noir : black;
 $sombre : rgb(71, 71, 71);
@@ -37,7 +38,7 @@ $droite : flex-end;
     $tp_succes : succes;
 
 .boutton{
-    @include stylebouton($s_classic,$blanc_mais_pas_vraiment,$sombre,$t_medium);
+    @include stylebouton($s_classic,$blanc,$un_peu_noir,$t_large);
 }
 
 .navbar{
@@ -47,8 +48,8 @@ $droite : flex-end;
     list-style-type: none;
     display: flex;
     @include justify($centre);
-    @include navcouleur($sombre);
-    border-bottom: solid 4px $blanc_mais_pas_vraiment;
+    @include navcouleur($un_peu_noir);
+    border-bottom: solid 4px $blanc;
 }
 
 button {
@@ -60,7 +61,7 @@ button {
         text-decoration: none;
         outline: none;
         text-decoration: none;
-        color: $blanc_mais_pas_vraiment;
+        color: $blanc;
     }
 }
 
@@ -83,7 +84,11 @@ button {
 }
 
 h1{
-    color: $blanc_mais_pas_vraiment;
+    color: $blanc;
+}
+
+body{
+    background-color: $bleu;
 }
 
 #footer {
@@ -97,49 +102,15 @@ h1{
  }
 
  @media only screen and (min-device-width : 640px) and (max-device-width : 1024px) {
-    .boutton {
-      background-color: #474747;
-      color: black;
-      border-color: #db1111;
-      font-size: 1em;
-      padding: 0.2em;
+    .boutton{
+        @include stylebouton($s_classic,$blanc,$bleu,$t_medium);
     }
-  
-    .navbar {
-      margin: 0;
-      padding: 0;
-      padding-bottom: 2px;
-      list-style-type: none;
-      display: flex;
-      justify-content: center;
-      background-color: #474747;
-      border-bottom: solid 4px #db1111;
-    }
-  
-  
-    }
+}
   
   
   
   @media only screen and (min-device-width : 0px) and (max-device-width : 650px) {
-  
-  
-    .boutton {
-      background-color: #474747;
-      color: black;
-      border-color: #db1111;
-      font-size: 0.8em;
-      padding: 0.1em;
+    .boutton{
+        @include stylebouton($s_classic,$blanc,$bleu,$t_small);
     }
-  
-    .navbar {
-      margin: 0;
-      padding: 0;
-      padding-bottom: 2px;
-      list-style-type: none;
-      display: flex;
-      justify-content: center;
-      background-color: #474747;
-      border-bottom: solid 4px #db1111;
-    }
-    }
+}
