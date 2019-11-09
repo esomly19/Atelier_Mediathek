@@ -63,11 +63,18 @@ $app->post('/rendredoc', "\\app\\Controllers\\emprunterController:traiterRendreD
 $app->get('/documents', "\\app\\Controllers\\documentController:voir")->setName('documents');
 $app->post('/documents', "\\app\\Controllers\\documentController:creerDocuements");
 
+$app->get('/faireemprunts',"\\app\\Controllers\\emprunterController:faireDesEmprunts")->setName('faireemprunts');
+$app->post('/faireemprunt',"\\app\\Controllers\\emprunterController:traiterfaireDesEmprunts");
+
+$app->get('/ladhesion', "\\app\\Controllers\\adhesionController:adhesion")->setName('ladhesion');
 
 
 $app->get('/doc{id}', "\\app\\Controllers\\documentController:modifier")->setName('modifierdocuments');
 $app->post('/doc{id}', "\\app\\Controllers\\documentController:update");
 
+$app->get('/accepter{id}', "\\app\\Controllers\\adhesionController:accepter")->setName('accepter');
+$app->get('/refuser{id}', "\\app\\Controllers\\adhesionController:refuser")->setName('refuser');
+$app->get('/supprimer{id}', "\\app\\Controllers\\documentController:supprimer")->setName('supprimer');
 
 
 $app->get('/ajouterdoc', "\\app\\Controllers\\documentController:ajouter")->setName('ajouterdoc');

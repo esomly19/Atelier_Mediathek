@@ -86,5 +86,14 @@ class documentController
          $genres = Genre::first()->get();
          return $this->container->view->render($response, "documents/Catalogue.html.twig", ['catalogue'=>$doc, 'genres'=>$genres]);
       }
-    
+      public function supprimer($request, $response, $args){
+        $doc = document::find(intVal($args['id']));
+        $doc->delete();
+        $documents = Document::first()
+        ->leftJoin('image', 'image.id_image', '=', 'document.id_image')
+        ->leftJoin('genre', 'genre.id_genre', "=", "document.id_genre")
+        ->get();
+    $genres = Genre::first()->get();
+    return $this->container->view->render($response, "documents/Catalogue.html.twig", ['catalogue'=>$documents, 'genres'=>$genres]);
+      }
 }
