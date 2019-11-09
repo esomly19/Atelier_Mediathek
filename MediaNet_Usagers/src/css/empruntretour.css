@@ -57,4 +57,37 @@
   width: 45%;
 }
 
+@media only screen and (min-device-width: 640px) and (max-device-width: 1024px) {
+  .tab_droite {
+    align-items: flex-start;
+    width: 45%;
+    font-size-adjust: 0.5;
+  }
+
+  .tab_gauche {
+    align-items: flex-end;
+    width: 45%;
+    font-size-adjust: 0.5;
+  }
+}
+@media only screen and (min-device-width: 0px) and (max-device-width: 650px) {
+  .tab_droite {
+    width: 100%;
+    margin: 0 0 1.6%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    width: auto;
+  }
+
+  .tab_gauche {
+    width: 100%;
+    margin: 0 0 1.6%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    width: auto;
+  }
+}
+
 /*# sourceMappingURL=empruntretour.css.map */

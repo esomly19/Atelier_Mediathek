@@ -31,3 +31,38 @@ $gutter-width: 1.6%;
     align-items: flex-end;
     width: 45%;
 }
+
+// ipad 640 1024
+@media only screen and (min-device-width : 640px) and (max-device-width : 1024px) {
+
+  .tab_droite{
+    align-items: flex-start;
+    width: 45%;
+    font-size-adjust: 0.5;
+
+  }
+
+  .tab_gauche{
+    align-items: flex-end;
+    width: 45%;
+    font-size-adjust: 0.5;
+  }
+}
+
+
+//tel 300 650
+@media only screen and (min-device-width : 0px) and (max-device-width : 650px) {
+
+  .tab_droite{
+    @include row();
+    align-items: flex-start;
+    width: auto;
+  }
+
+  .tab_gauche{
+    @include row();
+    align-items: flex-start;
+    width: auto;
+  }
+
+}
