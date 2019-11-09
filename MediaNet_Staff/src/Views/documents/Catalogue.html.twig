@@ -56,11 +56,81 @@
         })
     }
 
+    function comparaison(rech, doc) {
+        let trouve = false
+        rech.toLowerCase()
+        let recherche = rech.toLowerCase().split(' ')
+        let docTitre = doc.getAttribute("titreDoc").toLowerCase().split(' ')
+        let docDescription = doc.getAttribute("descriptionDoc").replace(/,/g, " ").toLowerCase().split(' ')
+        let docGenre = doc.getAttribute("nomGenreDoc").toLowerCase()
+
+        recherche.forEach(function (mot) {
+
+            docTitre.forEach(function (titre) {
+                if (mot == titre) {
+                    trouve = true
+                }
+            })
+
+            docDescription.forEach(function (descr) {
+                if (mot == descr) {
+                    trouve = true
+                }
+            })
+
+            if (mot == docGenre || rech == docGenre) {
+                trouve = true
+            }
+
+
+        })
+
+        return trouve
+
+    }
+
+
+    function afficherRecherche(champRecherche) {
+        let docs = document.getElementsByClassName("cardDoc")
+        let trouve = 0
+        let champ = champRecherche.value
+        hideAll()
+
+        Array.from(docs).forEach(function (doc) {
+            if (comparaison(champ, doc)){
+                doc.style.display = "block"
+                trouve ++
+            }
+        })
+        but = document.getElementById("buttons")
+        if (trouve == 0){
+            alert("Pas de document correspondant à votre recherche")
+        }else {
+            if(trouve == 1){but.innerHTML = "1 résultat trouvé"}
+            else {
+                but.innerHTML = trouve + " résultats trouvés"
+            }
+        }
+    }
+
+
+    function recherche(){
+        let recherche = document.getElementById("rechercheButton")
+        recherche.addEventListener("click", function () {
+            let champ = document.getElementById("rechercheChamp")
+            afficherRecherche(champ)
+        })
+
+    }
+
 
     window.onload = function selection() {
         filterListe()
         buttonAll()
+        recherche()
     }
+
+
 
 
 
@@ -108,10 +178,16 @@
 
     </div>
  <a href="{{ path_for('ajouterdoc')}}"> <button>Ajouter Document</button></a>
+
+    <div class="rechercheBar">
+        <input type=text  id = "rechercheChamp" placeholder="Mot-clé, autheur, groupe..."></input>
+        <button type=submit id = "rechercheButton">Rechercher</button>
+    </div>
+
 <div class="cata">
     {% for document in catalogue %}
 
-        <div class = "cardDoc"  style="" etatDoc={{ document.etat }} genreDoc={{ document.id_genre }} typeDoc={{ document.type }}>
+        <div class = "cardDoc"  style="" etatDoc={{ document.etat }} genreDoc={{ document.id_genre }} typeDoc={{ document.type }} titreDoc="{{ document.titre }}" descriptionDoc="{{ document.description_doc }}" nomGenreDoc="{{ document.nom_genre }}">
         <div class="top">
                   {% if document.etat == 0 %}
                     <a href="{{ path_for('modifierdocuments', { 'id': document.id }) }}"> <button>Modifier</button></a>
