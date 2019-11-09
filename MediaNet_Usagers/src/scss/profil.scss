@@ -1,8 +1,16 @@
-$blanc : rgb(190, 229, 236);
-$rouge : rgb(219, 17, 17);
-$noir : black;
-$sombre : rgb(71, 71, 71);
+@import 'couleur.scss';
+
+
+.container{
+    text-align: center;
+}
 
 div .donnees{
+    background-color: $un_peu_noir;
+    border: solid;
+    border-radius: 20px;
+    padding: 10px;
+    display: inline-block;
+    margin-bottom: 5vh;
     color : $blanc;
 }
