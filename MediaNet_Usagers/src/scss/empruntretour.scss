@@ -1,56 +1,15 @@
 @import '_grid.scss';
+@import '_tableau.scss';
+@import '_couleur.scss';
+
 
 
 //variable grid
 $columns: 12;
 $gutter-width: 1.6%;
 
-
-$blanc : rgb(190, 229, 236);
-$rouge : rgb(219, 17, 17);
-$noir : black;
-$gris1 : rgb(139, 138, 138);
-$sombre : rgb(71, 71, 71);
-$gris2 :rgb(150, 129, 129);
-
-.darkTable {
-    border: 2px solid $noir;
-    background-color: $gris1;
-    width: 100%;
-    // height: 200px;
-    text-align: center;
-    border-collapse: collapse;
-  }
-
-.darkTable td, .darkTable th {
-    border: 1px solid $gris1;
-    padding: 3px 2px;
-  }
-
-.darkTable tbody td {
-    font-size: 13px;
-    color: $blanc;
-  }
-
-.darkTable tr:nth-child(even) {
-    background: $gris2;
-  }
-
-.darkTable thead {
-    background: $noir;
-    border-bottom: 3px solid $noir;
-  }
-
-.darkTable thead th {
-    font-size: 15px;
-    font-weight: bold;
-    color: $blanc;
-    text-align: center;
-    border-left: 2px solid $gris1;
-}
-
-.darkTable thead th:first-child {
-    border-left: none;
+.tableau{
+  @include tableau($moins_blanc,$noir,$un_peu_noir,$blanc);
 }
 
 
@@ -61,14 +20,14 @@ $gris2 :rgb(150, 129, 129);
 
 .tab_droite .tab_gauche{
     @include col();
-    
 }
 
 .tab_droite{
     align-items: flex-start;
+    width: 45%;
 }
 
 .tab_gauche{
     align-items: flex-end;
+    width: 45%;
 }
-  

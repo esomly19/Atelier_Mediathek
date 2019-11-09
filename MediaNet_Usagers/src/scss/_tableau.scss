@@ -1,0 +1,42 @@
+
+@mixin tableau($bgColor,$TextColor,$HeadbgColor,$HeadTextColor){
+
+    background-color: $bgColor;
+    width: 100%;
+    text-align: left;
+    border-collapse: collapse;
+    color: $TextColor;
+
+    td, th {
+        border: 1px solid $bgColor;
+        padding: 3px 2px;
+    }
+     
+    tbody td {
+        font-size: 13px;
+    }
+
+    tr:nth-child(even) {
+        background-color: darken($bgColor, 20%);
+    }
+    
+    thead {
+        color: $HeadTextColor;
+        border-bottom: 2px solid darken($HeadbgColor, 60%);
+    }
+    
+    thead th {
+        font-size: 15px;
+        font-weight: bold;
+        background-color: $HeadbgColor;
+        border-left: 2px solid lighten($HeadbgColor, 60%);
+    }
+    
+    thead th:first-child {
+        border-left: none;
+    }
+    
+
+}
+
+
