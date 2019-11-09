@@ -1,39 +1,31 @@
-.darkTable {
-  border: 2px solid black;
-  background-color: #8b8a8a;
+.tableau {
+  background-color: #eeeeee;
   width: 100%;
-  text-align: center;
+  text-align: left;
   border-collapse: collapse;
+  color: black;
 }
-
-.darkTable td, .darkTable th {
-  border: 1px solid #8b8a8a;
+.tableau td, .tableau th {
+  border: 1px solid #eeeeee;
   padding: 3px 2px;
 }
-
-.darkTable tbody td {
+.tableau tbody td {
   font-size: 13px;
-  color: #bee5ec;
 }
-
-.darkTable tr:nth-child(even) {
-  background: #968181;
+.tableau tr:nth-child(even) {
+  background-color: #bbbbbb;
 }
-
-.darkTable thead {
-  background: black;
-  border-bottom: 3px solid black;
+.tableau thead {
+  color: white;
+  border-bottom: 2px solid black;
 }
-
-.darkTable thead th {
+.tableau thead th {
   font-size: 15px;
   font-weight: bold;
-  color: #bee5ec;
-  text-align: center;
-  border-left: 2px solid #8b8a8a;
+  background-color: #333;
+  border-left: 2px solid #cccccc;
 }
-
-.darkTable thead th:first-child {
+.tableau thead th:first-child {
   border-left: none;
 }
 
@@ -57,10 +49,45 @@
 
 .tab_droite {
   align-items: flex-start;
+  width: 45%;
 }
 
 .tab_gauche {
   align-items: flex-end;
+  width: 45%;
+}
+
+@media only screen and (min-device-width: 640px) and (max-device-width: 1024px) {
+  .tab_droite {
+    align-items: flex-start;
+    width: 45%;
+    font-size-adjust: 0.5;
+  }
+
+  .tab_gauche {
+    align-items: flex-end;
+    width: 45%;
+    font-size-adjust: 0.5;
+  }
+}
+@media only screen and (min-device-width: 0px) and (max-device-width: 650px) {
+  .tab_droite {
+    width: 100%;
+    margin: 0 0 1.6%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    width: auto;
+  }
+
+  .tab_gauche {
+    width: 100%;
+    margin: 0 0 1.6%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    width: auto;
+  }
 }
 
 /*# sourceMappingURL=empruntretour.css.map */

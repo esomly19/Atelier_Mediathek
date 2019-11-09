@@ -32,8 +32,8 @@
 <form action="faireemprunt" method="post">
     <div><label for="dateRendu">date : </label><input type="date" id="date" name="date" required></div>
     <input type="hidden" id="idu" name="idu" value={{ utilisateur.id }} >
-    <input type="hidden" id="liste" name="liste">
-    <button type="submit">confirmer l'emprunt</button>
+    <input type="hidden" id="liste" name="liste" value="empty" required>
+    <button type="submit" id="confE" disabled="disabled">confirmer l'emprunt</button>
 </form>
 
 
@@ -56,6 +56,7 @@
         let id = document.getElementById("id_doc").value
         let content = document.getElementById("listedoc")
         let listeid = document.getElementById("liste")
+        document.getElementById("confE").disabled = ""
 
         if(!listeDocEmpId.includes(id)) {
             listeDocEmp.push([type, nom, code, date])
