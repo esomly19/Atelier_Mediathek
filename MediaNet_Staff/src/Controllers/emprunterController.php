@@ -125,23 +125,21 @@ class emprunterController
         $listeDoc = $_POST["liste"];
         $listeDoc = explode(",", $listeDoc);
         $date = $_POST["date"];
-        foreach ($listeDoc as $id) {
-            $utilisateur = Utilisateur::where('id', '=', $id_utilisateur)->first();
-            $emprunt = new Emprunter();
-            $emprunt->id_document = $id;
-            $emprunt->id_utilisateur = $utilisateur->id;
-            $emprunt->date_emprunt = $date;
-            $emprunt->date_limite = date('Y-m-d', strtotime('+15 days'));
-            $emprunt->date_retour = null;
-            $document = Document::where('id', "=",$id)->first();
-            var_dump($id);
-            var_dump($document);
-            $document->etat = 1;
-            $document->save();
-            $emprunt->save();
+            foreach ($listeDoc as $id) {
+                $utilisateur = Utilisateur::where('id', '=', $id_utilisateur)->first();
+                $emprunt = new Emprunter();
+                $emprunt->id_document = $id;
+                $emprunt->id_utilisateur = $utilisateur->id;
+                $emprunt->date_emprunt = $date;
+                $emprunt->date_limite = date('Y-m-d', strtotime('+15 days'));
+                $emprunt->date_retour = null;
+                $document = Document::where('id', "=", $id)->first();
+                $document->etat = 1;
+                $document->save();
+                $emprunt->save();
+            }
 
-        }
-        return $response->withRedirect($this->container->router->pathFor('infousager'));
+        return $response->withRedirect($this->container->router->pathFor('listusagers'));
 
     }
 }

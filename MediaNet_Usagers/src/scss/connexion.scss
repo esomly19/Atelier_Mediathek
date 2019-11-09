@@ -12,14 +12,6 @@
     $t_medium : medium;
     $t_large : large;
 
-$blanc : rgb(190, 229, 236);
-$rouge : rgb(219, 17, 17);
-$noir : black;
-$gris1 : rgb(139, 138, 138);
-$sombre : rgb(71, 71, 71);
-$gris2 :rgb(150, 129, 129);
-$gris3 :rgb(51, 46, 46);
-
 label{
     color: $blanc;
 }
@@ -29,7 +21,7 @@ label{
 }
 
 form{
-    background-color: $gris3;
+    background-color: $un_peu_noir;
     border: solid;
     border-radius: 20px;
     padding: 10px;

@@ -56,36 +56,70 @@
         })
     }
 
-    function afficherRecherche(champRecherche) {
-        let docs = document.getElementsByClassName("cardDoc")
+    function comparaison(rech, doc) {
         let trouve = false
-        let champ = champRecherche.value
-        console.log("Début de la recherche avec : "+champ)
-        hideAll()
-        for (let i = 0; i<docs.length; i++){
-            let doc = docs[i]
-            let description = doc.getAttribute("descriptionDoc").replace(/,/g, " ").split(' ')
-            console.log(champ+doc.getAttribute("titreDoc"))
-            if (champ == doc.getAttribute("titreDoc") || champ ==doc.getAttribute("genreDoc")){
-                alert("trouvé")
-                doc.style.display = "block"
-                trouve = true
-            }else{
-                for (let i = 0; i < description.length; i++){
-                    if (description[i] == champ){
-                        doc.style.display = "block"
-                        trouve = true
-                    }
+        rech.toLowerCase()
+        let recherche = rech.toLowerCase().split(' ')
+        let docTitre = doc.getAttribute("titreDoc").toLowerCase().split(' ')
+        let docDescription = doc.getAttribute("descriptionDoc").replace(/,/g, " ").toLowerCase().split(' ')
+        let docGenre = doc.getAttribute("nomGenreDoc").toLowerCase()
+
+
+        console.log(recherche)
+        console.log(docTitre)
+        console.log(docDescription)
+        console.log(docGenre)
+
+        recherche.forEach(function (mot) {
+
+            docTitre.forEach(function (titre) {
+                if (mot == titre) {
+                    trouve = true
                 }
+            })
+
+            docDescription.forEach(function (descr) {
+                if (mot == descr) {
+                    trouve = true
+                }
+            })
+
+            if (mot == docGenre || rech == docGenre) {
+                trouve = true
             }
 
 
+        })
 
-        }
-        if (trouve == false){
+        return trouve
+
+    }
+
+
+    function afficherRecherche(champRecherche) {
+        let docs = document.getElementsByClassName("cardDoc")
+        let trouve = 0
+        let champ = champRecherche.value
+        console.log("Début de la recherche avec : "+champ)
+        hideAll()
+
+        Array.from(docs).forEach(function (doc) {
+            if (comparaison(champ, doc)){
+                doc.style.display = "block"
+                trouve ++
+            }
+        })
+
+        if (trouve == 0){
             alert("Pas de document correspondant à votre recherche")
+        }else {
+            if(trouve == 1){alert("1 résultat trouvé")}
+            else {
+                alert(trouve + " résultats trouvés")
+            }
         }
     }
+
 
     function recherche(){
         let recherche = document.getElementById("rechercheButton")
@@ -95,6 +129,8 @@
         })
 
     }
+
+
 
 
     window.onload = function selection() {
@@ -157,7 +193,7 @@
 <div class="cata">
     {% for document in catalogue %}
 
-        <div class = "cardDoc"  style="" etatDoc={{ document.etat }} genreDoc={{ document.id_genre }} typeDoc={{ document.type }}>
+        <div class = "cardDoc"  style="" etatDoc={{ document.etat }} genreDoc={{ document.id_genre }} nomGenreDoc="{{ document.nom_genre }}" typeDoc={{ document.type }} titreDoc="{{ document.titre }}" descriptionDoc="{{ document.description_doc }}">
          <div id="image">
             <img  src="../{{ document.path }}"
                  alt="{{ document.description_image }}">

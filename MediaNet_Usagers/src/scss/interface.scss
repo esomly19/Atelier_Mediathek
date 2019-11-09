@@ -4,10 +4,6 @@
 @import '_couleur.scss';
 
 
-$rouge : rgb(219, 17, 17);
-$noir : black;
-$sombre : rgb(71, 71, 71);
-
 //variable bouton
     //le style
     $s_classic : classic;
@@ -103,7 +99,7 @@ body{
 
  @media only screen and (min-device-width : 640px) and (max-device-width : 1024px) {
     .boutton{
-        @include stylebouton($s_classic,$blanc,$bleu,$t_medium);
+        @include stylebouton($s_classic,$blanc,$un_peu_noir,$t_medium);
     }
 }
   
@@ -111,6 +107,6 @@ body{
   
   @media only screen and (min-device-width : 0px) and (max-device-width : 650px) {
     .boutton{
-        @include stylebouton($s_classic,$blanc,$bleu,$t_small);
+        @include stylebouton($s_classic,$blanc,$un_peu_noir,$t_small);
     }
 }
