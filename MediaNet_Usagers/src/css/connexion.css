@@ -20,12 +20,23 @@ form {
 }
 
 .btnretour {
-  background-color: black;
+  background-color: #333;
   color: black;
   border-color: #db1111;
   border-radius: 15px;
   font-size: 1.7em;
   padding: 0.2em;
+}
+
+@media only screen and (min-device-width: 0px) and (max-device-width: 650px) {
+  .btnretour {
+    background-color: #333;
+    color: black;
+    border-color: #db1111;
+    border-radius: 15px;
+    font-size: 1em;
+    padding: 0.2em;
+  }
 }
 
 /*# sourceMappingURL=connexion.css.map */
