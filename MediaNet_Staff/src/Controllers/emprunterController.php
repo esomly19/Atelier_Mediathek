@@ -134,14 +134,13 @@ class emprunterController
             $emprunt->date_limite = date('Y-m-d', strtotime('+15 days'));
             $emprunt->date_retour = null;
             $document = Document::where('id', "=",$id)->first();
-            var_dump($id);
-            var_dump($document);
             $document->etat = 1;
             $document->save();
             $emprunt->save();
 
         }
-        return $response->withRedirect($this->container->router->pathFor('infousager'));
+
+        return $response->withRedirect($this->container->router->pathFor('listusagers'));
 
     }
 }
