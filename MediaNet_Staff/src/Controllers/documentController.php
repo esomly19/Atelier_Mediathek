@@ -10,6 +10,7 @@ namespace app\controllers;
 
 use app\models\Document;
 use app\models\Genre;
+use app\models\Image;
 
 class documentController
 {
@@ -35,7 +36,7 @@ class documentController
 
     
     public function modifier($request, $response, $args){
-        $documents = document::find(intVal($args['id']));
+        $documents = Document::find(intVal($args['id']));
         $this->container->view->render($response, 'documents/modificationDocuments.html.twig', ['document'=>$documents]);
       }
 
@@ -43,7 +44,7 @@ class documentController
     
       public  function update($request, $response, $args)
       {
-        $doc = document::find(intVal($args['id']));
+        $doc = Document::find(intVal($args['id']));
         $doc->titre = $_POST["titre"];
         $doc->description_doc = $_POST["description_doc"];
         $doc->code = $_POST["code"];
@@ -51,7 +52,7 @@ class documentController
         $doc->id_genre = $_POST["id_genre"];
         $doc->type = $_POST["type"];
         $doc->save();
-        $doc = document::first()
+        $doc = Document::first()
         ->leftJoin('image', 'image.id_image', '=', 'document.id_image')
         ->leftJoin('genre', 'genre.id_genre', "=", "document.id_genre")
         ->get();
@@ -69,16 +70,24 @@ class documentController
     
       public  function afficher($request, $response, $args)
       {
-        $doc = new document();
+        $doc = new Document();
+        $img= new Image();
+        $img->nom= $_POST["titre"];
+        $img->description_image= $_POST["titre"];
+        $img->path=$_POST["path"] ;
+        $img->save();
+        $e =  $img->id;
+        $ex = explode(' ',$e);
+        $last = end($ex);
         $doc->titre = $_POST["titre"];
-        $doc->id_image = $_POST["id_image"];
+        $doc->id_image = $last;
         $doc->description_doc = $_POST["description_doc"];
         $doc->code = $_POST["code"];
         $doc->etat = $_POST["etat"];
         $doc->id_genre = $_POST["id_genre"];
         $doc->type = $_POST["type"];
         $doc->save();
-        $doc = document::first()
+        $doc = Document::first()
         ->leftJoin('image', 'image.id_image', '=', 'document.id_image')
         ->leftJoin('genre', 'genre.id_genre', "=", "document.id_genre")
         ->get();
@@ -87,7 +96,7 @@ class documentController
          return $this->container->view->render($response, "documents/Catalogue.html.twig", ['catalogue'=>$doc, 'genres'=>$genres]);
       }
       public function supprimer($request, $response, $args){
-        $doc = document::find(intVal($args['id']));
+        $doc = Document::find(intVal($args['id']));
         $doc->delete();
         $documents = Document::first()
         ->leftJoin('image', 'image.id_image', '=', 'document.id_image')
