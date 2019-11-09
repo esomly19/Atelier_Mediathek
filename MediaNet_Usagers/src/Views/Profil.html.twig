@@ -6,27 +6,29 @@
 
 {% block content %}
 
-    <h1>Mon profils</h1>
+    <div class="container">
+        <h1>Mon profils</h1>
 
-    <div class="donnees">
-    <label> Nom Prenom :</label>
-        {{utilisateur.nom}} {{utilisateur.prenom}}
-    <br>
-    <br>
-    <label>adresse mail :</label>
-        {{utilisateur.mail}}
-    <br>
-    <br>
-    <label>adresse :</label>
-        {{utilisateur.adresse}}
-    <br>
-    <br>
-    <label>téléphone:</label>
-        {{utilisateur.telephone}}
-    <br>
-    <br>
-    <label>date d'adhésion :</label>
-        {{utilisateur.date_adhesion}}
+        <div class="donnees">
+        <label> Nom Prenom :</label>
+            {{utilisateur.nom}} {{utilisateur.prenom}}
+        <br>
+        <br>
+        <label>adresse mail :</label>
+            {{utilisateur.mail}}
+        <br>
+        <br>
+        <label>adresse :</label>
+            {{utilisateur.adresse}}
+        <br>
+        <br>
+        <label>téléphone:</label>
+            {{utilisateur.telephone}}
+        <br>
+        <br>
+        <label>date d'adhésion :</label>
+            {{utilisateur.date_adhesion}}
+        </div>
     </div>
 
 {% endblock %}
