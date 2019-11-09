@@ -64,12 +64,6 @@
         let docDescription = doc.getAttribute("descriptionDoc").replace(/,/g, " ").toLowerCase().split(' ')
         let docGenre = doc.getAttribute("nomGenreDoc").toLowerCase()
 
-
-        console.log(recherche)
-        console.log(docTitre)
-        console.log(docDescription)
-        console.log(docGenre)
-
         recherche.forEach(function (mot) {
 
             docTitre.forEach(function (titre) {
@@ -100,7 +94,6 @@
         let docs = document.getElementsByClassName("cardDoc")
         let trouve = 0
         let champ = champRecherche.value
-        console.log("Début de la recherche avec : "+champ)
         hideAll()
 
         Array.from(docs).forEach(function (doc) {
@@ -109,13 +102,13 @@
                 trouve ++
             }
         })
-
+        but = document.getElementById("buttons")
         if (trouve == 0){
             alert("Pas de document correspondant à votre recherche")
         }else {
-            if(trouve == 1){alert("1 résultat trouvé")}
+            if(trouve == 1){but.innerHTML = "1 résultat trouvé"}
             else {
-                alert(trouve + " résultats trouvés")
+                but.innerHTML = trouve + " résultats trouvés"
             }
         }
     }
@@ -149,7 +142,7 @@
 
 
 
-    <div>
+    <div id = "buttons">
 
         <button class="filterButton" id="All"> Show all</button>
 
