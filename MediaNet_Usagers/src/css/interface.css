@@ -41,9 +41,10 @@ button a {
   border-radius: 8px;
   padding: 0.5em;
   margin-top: 1em;
-  background-color: lime;
-  border: 1px solid #009900;
+  background-color: #32CD32;
+  border: 1px solid #1e7b1e;
   color: black;
+  width: auto;
 }
 
 .alert-danger {

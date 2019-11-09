@@ -5,6 +5,8 @@ namespace app\controllers;
 use app\models\Adhesion;
 use app\models\Utilisateur;
 
+use app\Controllers\loginController;
+
 class adhesionController{
     
     public function __construct($container){
@@ -13,6 +15,10 @@ class adhesionController{
 
     public function voir($request, $response,$args)
 	{
+        if(loginController::isConnected()){
+            $this->container->flash->addMessage('error', 'vous avez déjà un compte');
+            return $response->withRedirect($this->container->router->pathFor('profil'));
+        }
         return $this->container->view->render($response, "DemandeAdhesion.html.twig");
 
     }

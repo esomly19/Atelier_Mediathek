@@ -15,7 +15,7 @@ class loginController{
     //Methode qui permet de se déconnecter 
     public function seDeconnecter($request, $response,$args){
         session_destroy();
-        $this->container->flash->addMessage('info', 'Vous venez de vous déconnecter');
+        $this->container->flash->addMessage('info', 'Vous venez de vous déconnecter !');
         return $response->withRedirect($this->container->router->pathFor('accueil'));
     }
 
