@@ -27,17 +27,19 @@
                 <div class="boite content">
                     <input type="hidden" id="id_doc" name="id_doc" value={{ document.id }}>
                     <div><label for="typeDoc">type : </label><input type="text" id="typeDoc" name="typeDoc" value={{ document.type }}></div>
-                    <div><label for="nomDoc">nom : </label><input type="text" id="nomDoc" name="nomDoc" value={{ document.titre|escape }}></div>
+                    <div><label for="nomDoc">nom : </label><input type="text" id="nomDoc" name="nomDoc" value="{{ document.titre|escape }}"></div>
                     <div><label for="codeDoc">code : </label><input type="text" id="codeDoc" name="codeDoc" value={{ document.code }}></div>
                     <div><label for="dateRendu">date : </label><input type="date" id="date" name="date" required></div>
                 </div>
         </div>
     </div>
     <button type="submit">confirmer l'emprunt</button>
+    <button id="test" value={{ document.titre|escape }}>Test</button>
 </form>
 
 
 <script type="application/javascript">
+    
     let listeDocuments = [];
 
     {% for doc in listeDesDocuments %}
