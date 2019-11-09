@@ -16,7 +16,6 @@
         <div class="navbar">
 
                 <button class="boutton"><a href="{{path_for('catalogue')}}">Catalogue</a></button>
-                 <button class="boutton"><a href="{{path_for('demandadhesion')}}">Demande d'adhésion</a></button>
 
 
             {% if auth.isConnected %}
@@ -31,7 +30,7 @@
 
             {% else %}
 
-            
+                <button class="boutton"><a href="{{path_for('demandadhesion')}}">Demande d'adhésion</a></button>
                 <button class="boutton"><a href="{{path_for('connexion')}}">Se connecter</a></button>
             
             
@@ -68,7 +67,7 @@
         <div id="footer">
             {% block footer %}
                 Site crée par Farruggia, Fraschini, Ligerot, Vancoille
-                &copy; Copyright (FOOTER)</a>.
+                &copy; Copyright</a>.
             {% endblock %}
         </div>
     </body>
