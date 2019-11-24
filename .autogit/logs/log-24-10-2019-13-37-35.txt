@@ -1,0 +1,15 @@
+-------------------- Auto-Git Log --------------------
+		Sun Nov 24 2019 13:37:35 GMT+0100 (heure normale d’Europe centrale)
+------------------------------------------------------
+
+Modified files:
+
+
+Created files:
+* .autogit/logs/log-24-10-2019-13-7-29.txt
+
+
+Deleted files:
+
+
+Renamed files:
